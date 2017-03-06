@@ -10,3 +10,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# IDE settings
+.idea
+
+# Spring Boot iml
+./gs-spring-boot.iml
+
+# Target Folder
+target
+
