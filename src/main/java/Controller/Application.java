@@ -1,5 +1,6 @@
-package hello;
-
+package Controller; /**
+ * Created by fzr on 06.03.17.
+ */
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
