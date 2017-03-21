@@ -15,10 +15,10 @@ hs_err_pid*
 .idea
 
 # Spring Boot iml
-./gs-spring-boot.iml
-./spring-boot-web-jsp.iml
+spring-boot-web-jsp.iml
 
 
 # Target Folder
 target
+
 
