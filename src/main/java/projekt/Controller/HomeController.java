@@ -1,4 +1,4 @@
-package Controller;
+package projekt.Controller;
 
 /**
  * Created by fzr on 06.03.17.

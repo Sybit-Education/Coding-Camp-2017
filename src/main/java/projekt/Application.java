@@ -1,4 +1,4 @@
-package Controller; /**
+package projekt; /**
  * Created by fzr on 06.03.17.
  */
 import org.springframework.boot.SpringApplication;
