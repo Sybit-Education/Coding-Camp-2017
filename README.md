@@ -1,5 +1,6 @@
-# schuelerprogrammierwoche-2017
-Sybit Schülerprogrammierwoche 2017 in Kooperation mit der Stadtjugendpflege Radolfzell
+
+# Schülerprogrammierwoche 2017
+Die Schülerprogrammierwoche 2017 der Sybit GmbH findet in Kooperation mit der Stadtjugendpflege Radolfzell im Rahmen des Sommerferienprogramms der Stadt Radolfzell statt.
 
 ## Install
 
@@ -11,3 +12,4 @@ Schritt 2: Kommandozeile in entsprechendem Ordner öffnen
 ``mvn spring-boot:run``
 
 Schritt 3: Browser öffnen [localhost:8080](http://localhost:8080)
+
