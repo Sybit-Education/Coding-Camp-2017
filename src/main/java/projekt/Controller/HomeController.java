@@ -13,10 +13,17 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
+    //TODO Wanted or unnecessary?
     // inject via application.properties
     @Value("${welcome.message:test}")
     private String message = "Hello World";
 
+    /**
+     * Base Controller
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping("/")
     public String welcome(Map<String, Object> model) {
         model.put("message", this.message);

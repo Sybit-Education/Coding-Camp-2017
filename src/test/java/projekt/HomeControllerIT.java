@@ -32,6 +32,7 @@ public class HomeControllerIT {
         this.base = new URL("http://localhost:" + port + "/");
     }
 
+    //TODO Check Integration Test shouldn´t work anymore
     @Test
     public void getHello() throws Exception {
         ResponseEntity<String> response = template.getForEntity(base.toString(),
