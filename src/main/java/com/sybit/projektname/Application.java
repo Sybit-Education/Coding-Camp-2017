@@ -1,4 +1,4 @@
-package projekt; /**
+package com.sybit.projektname; /**
  * Created by fzr on 06.03.17.
  */
 import org.springframework.boot.SpringApplication;
