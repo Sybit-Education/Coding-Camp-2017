@@ -2,6 +2,7 @@ package com.sybit.projektname.database;
 
 import com.sybit.airtable.Airtable;
 import com.sybit.airtable.Base;
+import com.sybit.airtable.Table;
 import com.sybit.airtable.exception.AirtableException;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +22,10 @@ public class AirtableService {
         return base;
     }
 
-/*    public Table getLocationTable(){
+    public Table getLocationTable() throws AirtableException {
 
         return getAirtableBase().table("Location",Location.class);
-    }*/
+    }
 
 
 }

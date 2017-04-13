@@ -25,6 +25,8 @@
 
 
     <h3>My Google Maps Demo</h3>
+    <h3>${LocationName}</h3>
+    <p>${LocationKoord}</p>
     <div id="map"></div>
 
 </div>

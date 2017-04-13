@@ -1,8 +1,7 @@
 package com.sybit.projektname.database;
 
-
-import com.google.gson.annotations.SerializedName;
 import com.sybit.airtable.vo.Attachment;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 

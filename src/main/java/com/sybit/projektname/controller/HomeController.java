@@ -4,6 +4,7 @@ package com.sybit.projektname.controller;
  * Created by fzr on 06.03.17.
  */
 
+
 import com.sybit.airtable.exception.AirtableException;
 import com.sybit.projektname.database.Location;
 import com.sybit.projektname.database.LocationService;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 @Controller
 public class HomeController {
+
 
     @Autowired
     private LocationService locationService;
@@ -30,7 +32,11 @@ public class HomeController {
      */
     @RequestMapping("/")
     public String welcome(Map<String, Object> model) throws AirtableException {
+
         List<Location> locations = locationService.getLocations();
+
+        model.put("LocationName",locationService.getLocation("recpJf3sxsVuFc4fW").getName());
+        model.put("LocationKoord",locationService.getLocation("recpJf3sxsVuFc4fW").getGeoKoordinates());
         model.put("message", this.message);
         return "welcome";
     }

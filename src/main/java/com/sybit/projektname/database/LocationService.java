@@ -5,6 +5,7 @@ import com.sybit.airtable.exception.AirtableException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 
 /**
@@ -16,15 +17,28 @@ public class LocationService {
     @Autowired
     private AirtableService airtableService;
 
-    public List<Location> getLocations() throws AirtableException {
+    public List getLocations()  {
 
-       return null;//airtableService.getAirtableBase().table("Location", Location.class).select();
+        try {
+            return airtableService.getAirtableBase().table("Location", Location.class).select();
+        } catch (AirtableException e) {
+            e.printStackTrace();
+            return null;
+        } catch (org.apache.http.client.HttpResponseException e) {
+            e.printStackTrace();
+            return null;
+        }
 
     }
 
-    public Location getLocation(String id){
+    public Location getLocation(String id)  {
 
-        return null;//airtableService.getAirtableBase().table("Location",Location.class).find("STRING_ID");
+        try {
+            return (Location) airtableService.getAirtableBase().table("Location",Location.class).find(id);
+        } catch (AirtableException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
