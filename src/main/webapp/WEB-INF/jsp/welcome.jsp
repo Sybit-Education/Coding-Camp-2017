@@ -39,6 +39,7 @@
             zoom: 16,
             center: sybit
         });
+
         var marker = new google.maps.Marker({
             position: sybit,
             map: map,
@@ -51,6 +52,16 @@
         });
     }
 </script>
+
+<script>
+
+    for(var i = 0; i < 5; i++) {
+        var locationNames = new Array();
+        locationNames[i] = "${locations[i].name}";
+    }
+
+</script>
+
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJuUkhivatfWJONIXbqYPGhdJuqhOh_9M&callback=initMap"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>

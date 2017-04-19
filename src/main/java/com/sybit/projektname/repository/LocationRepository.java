@@ -1,26 +1,22 @@
-package com.sybit.projektname.database;
+package com.sybit.projektname.repository;
 
 
 import com.sybit.airtable.exception.AirtableException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by fzr on 11.04.17.
  */
-@Service
-public class LocationService {
+@Repository
+public class LocationRepository extends AirtableRepository {
 
-    @Autowired
-    private AirtableService airtableService;
 
-    public List getLocations()  {
+    public List getLocationList()  {
 
         try {
-            return airtableService.getAirtableBase().table("Location", Location.class).select();
+            return getAirtableBase().table("Location", Location.class).select();
         } catch (AirtableException e) {
             e.printStackTrace();
             return null;
@@ -34,11 +30,13 @@ public class LocationService {
     public Location getLocation(String id)  {
 
         try {
-            return (Location) airtableService.getAirtableBase().table("Location",Location.class).find(id);
+            return (Location) getAirtableBase().table("Location",Location.class).find(id);
         } catch (AirtableException e) {
             e.printStackTrace();
             return null;
         }
     }
+
+
 
 }
