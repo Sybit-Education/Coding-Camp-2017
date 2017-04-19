@@ -12,16 +12,20 @@ public class Location {
 
     @SerializedName("Name")
     private String name;
+    @SerializedName("Status")
+    private String status;
+    @SerializedName("Slug")
+    private String slug;
     @SerializedName("Foto")
     private List<Attachment> photo;
     @SerializedName("Beschreibung")
     private String description;
+    @SerializedName("Code")
+    private String code;
     @SerializedName("Fragen")
     private List<String> fragen;
     @SerializedName("Medien")
     private List<String> medien;
-    @SerializedName("Code")
-    private String code;
     @SerializedName("Code Hinweis")
     private String codeHinweis;
     @SerializedName("Code Hinweis Foto")
@@ -32,8 +36,7 @@ public class Location {
     private String geoLng;
     @SerializedName("Geo-Zoom")
     private String geoZoom;
-    @SerializedName("Status")
-    private String status;
+
 
 
     public String getName() {
@@ -130,5 +133,13 @@ public class Location {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }
