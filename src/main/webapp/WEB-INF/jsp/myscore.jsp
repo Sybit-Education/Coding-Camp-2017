@@ -11,9 +11,7 @@
 <body>
 <c:import url="include/navigation.jsp"/>
       
-<div class="container-fluid">
-    <img src="holder.js/1440x560" class="center-block img-responsive" alt="Responsive image">
-</div>    
+
    
  <div class="container"> 
      
@@ -24,9 +22,9 @@
     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
     </p>
     
-    <img src="resources/img/score.jpg" class="center-block img-responsive" alt="Responsive image">
+    <img src="resources/score.jpg" class="center-block img-responsive" alt="Responsive image">
     
-    <a href="<c:url value="/" />"><center><button type="button" class="btn btn-default">Location-Übersicht</button></center></a>
+    <a href="<c:url value="/" />"><center><button type="button" class="btn btn-default">Location-ï¿½bersicht</button></center></a>
     
      
 </div> 

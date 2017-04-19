@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html lang="en">
+<html lang="de">
 <head>
   <c:import url="include/head.jsp"/>
-</head>
-
-    <!-- Access the bootstrap Css like this,
-        Spring boot will handle the resource mapping automcatically -->
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-
-
     <style>
         #map {
             width: 100%;
@@ -28,8 +21,8 @@
     <div class="page-header">
         <h1>Erleben-Wissen-Punkten</h1>
     </div>
-      
 
+    <div id="map"></div>
 
 <b>Beschreibung</b><br> 
 <p>Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
@@ -55,7 +48,7 @@
     }
 </script>
 
- <a href="<c:url value="location.jsp" />">Location...</a>
+ <a href="<c:url value="location" />">Location...</a>
 </div>
 
 
@@ -71,7 +64,8 @@
 <c:import url="include/navbar-bottom.jsp"/>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJuUkhivatfWJONIXbqYPGhdJuqhOh_9M&callback=initMap"></script>
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<c:import url="include/footer.jsp"/>
 
 </body>
 
