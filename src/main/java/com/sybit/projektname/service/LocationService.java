@@ -22,8 +22,8 @@ public class LocationService {
 
     }
 
-    public Location getLocation(String id){
+    public Location getLocation(String slug){
 
-        return locationRepository.getLocation(id);
+        return locationRepository.getLocation(slug);
     }
 }

@@ -28,7 +28,53 @@
 <p>Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
 </p>
 
+ <a href="<c:url value="location" />">Location...</a>
+</div>
+
+
 <script>
+
+    $(document).ready(function(){
+
+        var response;
+
+        $.ajax({
+            url: '<c:url value="/location/all"/>',
+            type: 'GET',
+            success: function(res) {
+                response = $.parseJSON(res);
+                console.log(res);
+                createMarker(response);
+            },
+            error: function(){
+                response = null;
+                console.log("Error loading Location Data!")
+            }
+        });
+
+        function createMarker(response){
+
+            var markers = [];
+            console.log(response[13]["Geo-Lat"]);
+
+            for(var i = 0; i < response.length; i++){
+                markers.push(new google.maps.Marker({
+                    position: {lat: response[i]['Geo-Lat'], lng: response[i]['Geo-Lng']},
+                    map: map,
+                    title: response[i].Name,
+                    url:'http://www.sybit.de/'
+                }));
+            }
+
+            console.log(markers);
+
+        }
+
+
+
+
+    });
+
     function initMap() {
         var sybit = {lat: 47.740115, lng: 8.971420999999964};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -46,18 +92,7 @@
             window.location.href = this.url;
         });
     }
-</script>
 
- <a href="<c:url value="location" />">Location...</a>
-</div>
-
-
-<script>
-
-    for(var i = 0; i < 5; i++) {
-        var locationNames = new Array();
-        locationNames[i] = "${locations[i].name}";
-    }
 
 </script>
 
