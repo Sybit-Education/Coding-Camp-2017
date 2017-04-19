@@ -25,7 +25,7 @@ public class HomeController {
     private String message = "Hello World";
 
     /**
-     * Base controller
+     * Base Controller
      *
      * @param model
      * @return

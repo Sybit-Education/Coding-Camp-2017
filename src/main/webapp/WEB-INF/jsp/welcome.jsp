@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
+  <c:import url="include/head.jsp"/>
+</head>
 
     <!-- Access the bootstrap Css like this,
         Spring boot will handle the resource mapping automcatically -->
@@ -18,19 +20,20 @@
     </style>
 </head>
 <body>
+<c:import url="include/navigation.jsp"/>
 
-<!-- Navbar -->
+      
+<div class="container"> 
+     
+    <div class="page-header">
+        <h1>Erleben-Wissen-Punkten</h1>
+    </div>
+      
 
-<div class="container">
 
-
-    <h3>My Google Maps Demo</h3>
-    <h3>${LocationName}</h3>
-    <p>${LocationKoord}</p>
-    <div id="map"></div>
-
-</div>
-
+<b>Beschreibung</b><br> 
+<p>Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
+</p>
 
 <script>
     function initMap() {
@@ -46,12 +49,15 @@
             title: 'Sybit',
             url:'http://www.sybit.de/'
         });
-
         google.maps.event.addListener(marker, 'click', function() {
             window.location.href = this.url;
         });
     }
 </script>
+
+ <a href="<c:url value="location.jsp" />">Location...</a>
+</div>
+
 
 <script>
 
@@ -62,6 +68,7 @@
 
 </script>
 
+<c:import url="include/navbar-bottom.jsp"/>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJuUkhivatfWJONIXbqYPGhdJuqhOh_9M&callback=initMap"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
