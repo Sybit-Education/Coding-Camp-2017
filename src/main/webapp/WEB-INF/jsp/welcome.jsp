@@ -34,64 +34,65 @@
 
 <script>
 
-    $(document).ready(function(){
-
-        var response;
-
-        $.ajax({
-            url: '<c:url value="/location/all"/>',
-            type: 'GET',
-            success: function(res) {
-                response = $.parseJSON(res);
-                console.log(res);
-                createMarker(response);
-            },
-            error: function(){
-                response = null;
-                console.log("Error loading Location Data!")
-            }
-        });
-
-        function createMarker(response){
-
-            var markers = [];
-            console.log(response[13]["Geo-Lat"]);
-
-            for(var i = 0; i < response.length; i++){
-                markers.push(new google.maps.Marker({
-                    position: {lat: response[i]['Geo-Lat'], lng: response[i]['Geo-Lng']},
-                    map: map,
-                    title: response[i].Name,
-                    url:'http://www.sybit.de/'
-                }));
-            }
-
-            console.log(markers);
-
-        }
-
-
-
-
-    });
-
     function initMap() {
-        var sybit = {lat: 47.740115, lng: 8.971420999999964};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: sybit
+
+
+        $(document).ready(function(){
+
+            var response;
+
+            var sybit = {lat: 47.740115, lng: 8.971420999999964};
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: sybit
+            });
+
+            $.ajax({
+                url: '<c:url value="/location/all"/>',
+                type: 'GET',
+                success: function(res) {
+                    response = $.parseJSON(res);
+                    console.log(res);
+                    createMarker(response);
+                },
+                error: function(){
+                    response = null;
+                    console.log("Error loading Location Data!")
+                }
+            });
+
+            function createMarker(response){
+
+                var markers = [];
+
+                for(var i = 0; i < response.length; i++){
+                    console.log(response[i]["Geo-Lat"]);
+                    console.log(response[i]["Geo-Lng"]);
+                    markers.push(new google.maps.Marker({
+                        position: {lat: parseFloat(response[i]['Geo-Lat']), lng: parseFloat(response[i]['Geo-Lng'])},
+                        map: map,
+                        title: response[i].Name,
+                        url:'http://www.sybit.de/'
+                    }));
+                }
+
+                console.log(markers);
+
+            }
+
+/*            google.maps.event.addListener(marker, 'click', function() {
+                window.location.href = this.url;
+            });*/
+
+
         });
 
-        var marker = new google.maps.Marker({
-            position: sybit,
-            map: map,
-            title: 'Sybit',
-            url:'http://www.sybit.de/'
-        });
-        google.maps.event.addListener(marker, 'click', function() {
-            window.location.href = this.url;
-        });
     }
+
+
+
+
 
 
 </script>
