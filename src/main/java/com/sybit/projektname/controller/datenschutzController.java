@@ -1,4 +1,4 @@
-package projekt.Controller;
+package com.sybit.projektname.controller;
 
 /**
  * Created by fzr on 06.03.17.
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Map;
 
 @Controller
-public class datenschutz {
+public class datenschutzController {
     
 
 

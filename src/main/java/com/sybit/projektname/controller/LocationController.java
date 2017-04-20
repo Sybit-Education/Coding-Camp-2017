@@ -1,4 +1,4 @@
-package projekt.Controller;
+package com.sybit.projektname.controller;
 
 /**
  * Created by fzr on 06.03.17.
@@ -13,7 +13,7 @@ import java.util.Map;
 public class LocationController {
     
     private String location = "Milchwerk";
-    private String locatinImg = "https://dl.airtable.com/ddNZDQDSLiyK5Vmkhg76_full_2017-03-03%2021.03.00.jpg";
+    private String locatinImg = "resources/Platzhalter-1000x250.png";
 
 
     /**

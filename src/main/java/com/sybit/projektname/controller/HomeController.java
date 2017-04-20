@@ -1,4 +1,4 @@
-package projekt.Controller;
+package com.sybit.projektname.controller;
 
 /**
  * Created by fzr on 06.03.17.

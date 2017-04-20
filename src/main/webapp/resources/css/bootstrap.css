@@ -5819,6 +5819,9 @@ button.list-group-item-danger.active:focus {
 .embed-responsive-16by9 {
   padding-bottom: 56.25%;
 }
+.embed-responsive-smal {
+  padding-bottom: 36.25%;
+}
 .embed-responsive-4by3 {
   padding-bottom: 75%;
 }
