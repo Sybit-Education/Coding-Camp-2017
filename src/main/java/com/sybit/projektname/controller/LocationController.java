@@ -22,13 +22,11 @@ import java.util.Map;
 public class LocationController {
     
     private String location = "Milchwerk";
-<<<<<<< HEAD
     private String locatinImg = "resources/Platzhalter-1000x250.png";
-=======
-    private String locatinImg = "https://dl.airtable.com/ddNZDQDSLiyK5Vmkhg76_full_2017-03-03%2021.03.00.jpg";
+
     @Autowired
     private LocationService locationService;
->>>>>>> d1c538952414f38329c7bcbc39f8bc50a94f51d9
+
 
 
     /**
