@@ -1,7 +1,10 @@
-package com.sybit.projekt;
+package com.sybit.projektname.controller;
 
 import com.sybit.projektname.Application;
+<<<<<<< HEAD:src/test/java/com/sybit/projekt/HomeControllerTest.java
 
+=======
+>>>>>>> d1c538952414f38329c7bcbc39f8bc50a94f51d9:src/test/java/com/sybit/projektname/controller/HomeControllerTest.java
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

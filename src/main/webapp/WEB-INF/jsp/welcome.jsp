@@ -2,13 +2,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="de">
-    
-    
 <head>
   <c:import url="include/head.jsp"/>
+    <style>
+        #map {
+            width: 100%;
+            height: 400px;
+            background-color: grey;
+        }
+    </style>
 </head>
-
-
 <body>
 <c:import url="include/navigation.jsp"/>
 
@@ -18,23 +21,87 @@
     <div class="page-header">
         <h1>Erleben-Wissen-Punkten</h1>
     </div>
-      
-    
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2683.130894058282!2d8.969232315793843!3d47.74011497919381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479a61e89ba4d95b%3A0x7acd8ecb1ddcfdfb!2sSybit+GmbH!5e0!3m2!1sde!2sde!4v1489999736684" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-</div>
-      
+
+    <div id="map"></div>
 
 <b>Beschreibung</b><br> 
 <p>Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
 </p>
 
-<a href="<c:url value="/location" />">Location...</a>
-</div> 
+ <a href="<c:url value="location" />">Location...</a>
+</div>
+
+
+<script>
+
+    $(document).ready(function(){
+
+        var response;
+
+        $.ajax({
+            url: '<c:url value="/location/all"/>',
+            type: 'GET',
+            success: function(res) {
+                response = $.parseJSON(res);
+                console.log(res);
+                createMarker(response);
+            },
+            error: function(){
+                response = null;
+                console.log("Error loading Location Data!")
+            }
+        });
+
+        function createMarker(response){
+
+            var markers = [];
+            console.log(response[13]["Geo-Lat"]);
+
+            for(var i = 0; i < response.length; i++){
+                markers.push(new google.maps.Marker({
+                    position: {lat: response[i]['Geo-Lat'], lng: response[i]['Geo-Lng']},
+                    map: map,
+                    title: response[i].Name,
+                    url:'http://www.sybit.de/'
+                }));
+            }
+
+            console.log(markers);
+
+        }
+
+
+
+
+    });
+
+    function initMap() {
+        var sybit = {lat: 47.740115, lng: 8.971420999999964};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: sybit
+        });
+
+        var marker = new google.maps.Marker({
+            position: sybit,
+            map: map,
+            title: 'Sybit',
+            url:'http://www.sybit.de/'
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            window.location.href = this.url;
+        });
+    }
+
+
+</script>
 
 <c:import url="include/navbar-bottom.jsp"/>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJuUkhivatfWJONIXbqYPGhdJuqhOh_9M&callback=initMap"></script>
+
 <c:import url="include/footer.jsp"/>
+
 </body>
 
 </html>

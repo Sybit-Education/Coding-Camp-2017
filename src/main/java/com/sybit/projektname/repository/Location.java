@@ -1,4 +1,4 @@
-package com.sybit.projektname.database;
+package com.sybit.projektname.repository;
 
 import com.sybit.airtable.vo.Attachment;
 import com.google.gson.annotations.SerializedName;
@@ -12,24 +12,32 @@ public class Location {
 
     @SerializedName("Name")
     private String name;
+    @SerializedName("Status")
+    private String status;
+    @SerializedName("Slug")
+    private String slug;
     @SerializedName("Foto")
     private List<Attachment> photo;
     @SerializedName("Beschreibung")
     private String description;
-    @SerializedName("Geo-Koordinaten")
-    private String geoKoordinates;
+    @SerializedName("Code")
+    private String code;
     @SerializedName("Fragen")
     private List<String> fragen;
     @SerializedName("Medien")
     private List<String> medien;
-    @SerializedName("Code")
-    private String code;
     @SerializedName("Code Hinweis")
     private String codeHinweis;
     @SerializedName("Code Hinweis Foto")
     private List<Attachment> codeHintPhoto;
-    @SerializedName("Events")
-    private String events;
+    @SerializedName("Geo-Lat")
+    private String geoLat;
+    @SerializedName("Geo-Lng")
+    private String geoLng;
+    @SerializedName("Geo-Zoom")
+    private String geoZoom;
+
+
 
     public String getName() {
         return name;
@@ -53,14 +61,6 @@ public class Location {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getGeoKoordinates() {
-        return geoKoordinates;
-    }
-
-    public void setGeoKoordinates(String geoKoordinates) {
-        this.geoKoordinates = geoKoordinates;
     }
 
     public List<String> getFragen() {
@@ -103,11 +103,43 @@ public class Location {
         this.codeHintPhoto = codeHintPhoto;
     }
 
-    public String getEvents() {
-        return events;
+    public String getGeoLat() {
+        return geoLat;
     }
 
-    public void setEvents(String events) {
-        this.events = events;
+    public void setGeoLat(String geoLat) {
+        this.geoLat = geoLat;
+    }
+
+    public String getGeoLng() {
+        return geoLng;
+    }
+
+    public void setGeoLng(String geoLng) {
+        this.geoLng = geoLng;
+    }
+
+    public String getGeoZoom() {
+        return geoZoom;
+    }
+
+    public void setGeoZoom(String geoZoom) {
+        this.geoZoom = geoZoom;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

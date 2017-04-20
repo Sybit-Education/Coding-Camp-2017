@@ -1,4 +1,4 @@
-package com.sybit.projektname.database;
+package com.sybit.projektname.repository;
 
 
 import com.google.gson.annotations.SerializedName;
