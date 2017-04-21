@@ -69,21 +69,24 @@
                 for(var i = 0; i < response.length; i++){
                     console.log(response[i]["Geo-Lat"]);
                     console.log(response[i]["Geo-Lng"]);
+
                     markers.push(new google.maps.Marker({
                         position: {lat: parseFloat(response[i]['Geo-Lat']), lng: parseFloat(response[i]['Geo-Lng'])},
                         map: map,
                         title: response[i].Name,
-                        url:'http://www.sybit.de/'
+                        url: <c:url value="/location/"/>+response[i]["Slug"]
                     }));
+
+                    google.maps.event.addListener(markers[i], 'click', function() {
+                        window.location.href = this.url;
+                    });
                 }
 
                 console.log(markers);
 
             }
 
-/*            google.maps.event.addListener(marker, 'click', function() {
-                window.location.href = this.url;
-            });*/
+
 
 
         });

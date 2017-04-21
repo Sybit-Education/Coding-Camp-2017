@@ -27,27 +27,39 @@ public class LocationController {
     private LocationService locationService;
 
 
-    /**
+/*    *//**
      * Base Controller
      *
      * @param model
      * @return
-     */
-    @RequestMapping("/location")
+     *//*
+   @RequestMapping("/location")
     public String welcome(Map<String, Object> model) {
         model.put("locationName",location);
         model.put("locationImg", locatinImg);
         return "location";
-    }
+    }*/
 
     @ResponseBody
-    @RequestMapping(value = "location/{slug}", method = RequestMethod.GET)
+    @RequestMapping(value = "location/{slug}.json", method = RequestMethod.GET)
     public String getLocationData(@PathVariable("slug") String locationSlug){
 
         Location loc = locationService.getLocation(locationSlug);
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         return gson.toJson(loc);
+
+    }
+
+    @RequestMapping(value = "location/{slug}")
+    public String getLocation(@PathVariable("slug") String locationSlug,Map<String, Object> model){
+
+        Location loc = locationService.getLocation(locationSlug);
+
+        model.put("locationName",loc.getName());
+        model.put("locationBeschr",loc.getDescription());
+        model.put("locationImg", locatinImg);
+        return "location";
 
     }
 
