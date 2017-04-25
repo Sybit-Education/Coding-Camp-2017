@@ -17,7 +17,35 @@
 Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
 </p>
 
- <a href="<c:url value="location" />">Location...</a>
+<div class="row">
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="cafe connect" class="img-thumbnail"><br>cafe connect</a></div>
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="hoellturm" class="img-thumbnail"><br>Hoellturm</a></div>
+
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="cafe connect" class="img-thumbnail"><br>Jahrhundert Bau</a></div>
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="hoellturm" class="img-thumbnail"><br>Konzertsegel</a></div>
+
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="cafe connect" class="img-thumbnail"><br>Milchwerk</a></div>
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="hoellturm" class="img-thumbnail"><br>Münster</a></div>
+
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="cafe connect" class="img-thumbnail"><br>Narrenbrunnen</a></div>
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="hoellturm" class="img-thumbnail"><br>Rathaus</a></div>
+
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="cafe connect" class="img-thumbnail"><br>Seemaxx</a></div>
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="hoellturm" class="img-thumbnail"><br>El Nino</a></div>
+
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="cafe connect" class="img-thumbnail"><br>Stadt Museum</a></div>
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="hoellturm" class="img-thumbnail"><br>Stadtbibliothek</a></div>
+
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="cafe connect" class="img-thumbnail"><br>Stadtgarten</a></div>
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="hoellturm" class="img-thumbnail"><br>Stadttor</a></div>
+
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="cafe connect" class="img-thumbnail"><br>Villa Windschief</a></div>
+<div class="col-xs-6"><a href="#"><img src="resources/thumbnail_welcome.jpg" alt="hoellturm" class="img-thumbnail"><br>Wasserturm</a></div>
+</div>
+
+
+
+<a href="<c:url value="location" />">Location...</a>
 </div>
 
 

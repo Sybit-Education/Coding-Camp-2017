@@ -5,7 +5,7 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="<c:url value='/' />">
-                <img src="<c:url value="/resources/logo-rado.png"/>" class="img-responsive" alt="Responsive image">
+                <img src="<c:url value="..."/>" class="img-responsive" alt="Responsive image">
             </a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -18,7 +18,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value='/' />">Home</a></li>
-                <li><a href="<c:url value='../myscore' />">MyScore</a></li>
+                <li><a href="<c:url value='../myscore' />">MyScore<span class="badge">100</span></a></li>
                 <li><a href="#about">About</a></li>
             </ul>
         </div><!--/.nav-collapse -->

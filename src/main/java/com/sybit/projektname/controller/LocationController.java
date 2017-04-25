@@ -27,18 +27,13 @@ public class LocationController {
     private LocationService locationService;
 
 
-/*    *//**
-     * Base Controller
-     *
-     * @param model
-     * @return
-     *//*
+
    @RequestMapping("/location")
     public String welcome(Map<String, Object> model) {
         model.put("locationName",location);
         model.put("locationImg", locatinImg);
         return "location";
-    }*/
+    }
 
     @ResponseBody
     @RequestMapping(value = "location/{slug}.json", method = RequestMethod.GET)
