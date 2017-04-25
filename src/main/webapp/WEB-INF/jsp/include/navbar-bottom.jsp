@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-bottom">
+<div class="navbar navbar-default" id="navbar-bottom-margin">
     <div class="container">
           <a href="#" class="navbar-text">Impressum</a> 
           <a href="#" class="navbar-text">Datenschutz</a> 

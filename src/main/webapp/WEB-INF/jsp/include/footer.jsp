@@ -4,5 +4,3 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="resources/js/bootstrap.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
-<script src="resources/js/holder.js"></script>
-<script src="resources/js/holder.min.js"></script>

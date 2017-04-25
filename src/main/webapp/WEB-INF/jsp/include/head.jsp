@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css" />
     <link rel="stylesheet" href="resources/css/bootstrap-theme.css" />
     <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="resources/css/css-styles.css" />
+    <link rel="stylesheet" href="resources/css-styles.css" />
 
 <script
         src="https://code.jquery.com/jquery-3.2.1.min.js"

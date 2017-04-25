@@ -4,28 +4,17 @@
 <html lang="de">
 <head>
   <c:import url="include/head.jsp"/>
-    <style>
-        #map {
-            width: 100%;
-            height: 400px;
-            background-color: grey;
-        }
-    </style>
 </head>
 <body>
 <c:import url="include/navigation.jsp"/>
 
-      
-<div class="container"> 
-     
-    <div class="page-header">
-        <h1>Erleben-Wissen-Punkten</h1>
-    </div>
+<div class="map-big" id="map"></div>      
+<div class="container text-field"> 
 
-    <div id="map"></div>
+<h1>Erleben-Wissen-Punkten</h1>
 
-<b>Beschreibung</b><br> 
-<p>Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
+<p><b>Beschreibung</b><br> 
+Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
 </p>
 
  <a href="<c:url value="location" />">Location...</a>
