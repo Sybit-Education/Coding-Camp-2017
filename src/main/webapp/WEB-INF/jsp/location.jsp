@@ -11,7 +11,7 @@
 <body>
 <c:import url="include/navigation.jsp"/>
   
-<div class="map-smal" id="map">Hier entsteht eine schmale Map-Ansicht f�r die Location-Seiten</div>
+<div class="map-smal" id="map"></div>
 
 <div>
     <img src="${locationImg}" class="img-responsive header-img" alt="Responsive image">
