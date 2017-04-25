@@ -5,7 +5,7 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="<c:url value='/' />">
-                <img src="resources/logo.svg" class="img-responsive" alt="Responsive image">
+                <img src="<c:url value="/resources/logo-rado.png"/>" class="img-responsive" alt="Responsive image">
             </a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
