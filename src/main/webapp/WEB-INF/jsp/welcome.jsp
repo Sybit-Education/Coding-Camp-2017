@@ -85,12 +85,7 @@
                 console.log(markers);
 
             }
-
-
-
-
         });
-
     }
 
 
