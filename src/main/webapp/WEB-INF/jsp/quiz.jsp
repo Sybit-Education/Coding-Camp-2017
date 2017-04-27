@@ -11,8 +11,8 @@
 <body>
 <c:import url="include/navigation.jsp"/>
       
-<div class="container-fluid">
-    <img src=${locationImg} class="center-block img-responsive" alt="Responsive image">
+<div>
+    <img src=${locationImg} class="center-block img-responsive header-img" alt="Responsive image">
 </div>    
    
  <div class="container"> 
@@ -21,15 +21,13 @@
       <h1>${quizName}</h1>
     </div>
 
-    <div id="AntwortPruefenErklaerung"><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-    </div>
+    <p class="text-field">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
     
     
-    <b>Wähle eine richtige Antwort aus.</b>
+    <b class="text-field">Wähle eine richtige Antwort aus.</b>
     
-    <br>
      
-    <div id="AntwortButton">
+    <div class="text-field">
         <div class="alert alert-info" role="alert" >
             <a href="<c:url value="/quiz-check" />" class="alert-link">Antwortmöglichkeit 1</a>
         </div>
@@ -42,9 +40,8 @@
     </div>
     
     
-    <div id="AntwortPruefenErklaerung"><b>Prüfe deine ausgewählte Antwort!</b> 
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-    </div>
+        <p class="text-field"><b>Prüfe deine ausgewählte Antwort!</b><br> 
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
     
     
  </div>

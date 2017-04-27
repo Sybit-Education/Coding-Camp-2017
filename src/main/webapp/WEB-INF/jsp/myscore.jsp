@@ -19,12 +19,12 @@
         <h1>Dein Punktestand</h1>
     </div>
 
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+    <p class="text-field">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
     </p>
     
-    <img src="resources/score.jpg" class="center-block img-responsive" alt="Responsive image">
+    <img src="resources/score.jpg" class="center-block img-responsive text-field" alt="Responsive image">
     
-    <a href="<c:url value="/" />"><center><button type="button" class="btn btn-default">Location-�bersicht</button></center></a>
+    <center><a href="<c:url value="/" />"><button type="button" class="btn btn-default">Location-Uebersicht</button></a></center>
     
      
 </div> 

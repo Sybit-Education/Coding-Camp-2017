@@ -1,15 +1,3 @@
-#AntwortPrüfenErklärung {
-    margin-bottom: 15px
-}
-
-#AntwortButton {
-    margin: 15px
-}
-
-#FragenAuswahl {
-    margin-top: 15px
-}
-
 
 #AntwortRichtig {
     margin-bottom: 15px;
@@ -25,7 +13,8 @@
 }
 
 .text-field {
-    margin: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .header-img {
@@ -40,21 +29,11 @@
     width: 100%;
     height: 200px;
     background-color: grey;
-    margin-top: 50px
 }
 
 .map-big {
     width: 100%;
     height: 400px;
     background-color: grey;
-    margin-top: 50px
-}
-
-#navbar-bottom-margin {
-    margin-top: 50px;
-}
-
-.navbar-top-space {
-    margin-top: 50px;
 }
 
