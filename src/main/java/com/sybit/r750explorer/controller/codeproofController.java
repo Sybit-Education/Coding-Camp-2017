@@ -1,10 +1,10 @@
-package com.sybit.projektname.controller;
+package com.sybit.r750explorer.controller;
 
 /**
  * Created by fzr on 06.03.17.
  */
 
-import com.sybit.projektname.service.LocationService;
+import com.sybit.r750explorer.service.LocationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

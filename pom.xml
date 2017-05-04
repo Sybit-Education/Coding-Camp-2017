@@ -6,6 +6,8 @@
     http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
     <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>com.sybit</groupId>
     <artifactId>r750explorer</artifactId>
     <packaging>war</packaging>
     <name>R750explorer</name>
@@ -51,7 +53,7 @@
         </dependency>
 
         <!-- Need this to compile JSP,
-            tomcat-embed-jasper version is not working, no idea why -->
+        tomcat-embed-jasper version is not working, no idea why -->
         <dependency>
             <groupId>org.eclipse.jdt.core.compiler</groupId>
             <artifactId>ecj</artifactId>
@@ -87,16 +89,19 @@
             <!-- Package as an executable jar/war -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <artifactId>spring-boot-maven-plugin</artifactId>            
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
             </plugin>
         </plugins>
     </build>
     
     <repositories>
         <repository>
-          <id>bintray.com</id>
-          <name>bintray.com</name>
-          <url>https://dl.bintray.com/sybit-education/maven/</url>
+            <id>bintray.com</id>
+            <name>bintray.com</name>
+            <url>https://dl.bintray.com/sybit-education/maven/</url>
         </repository> 
-    </repositories>    
+    </repositories>
 </project>

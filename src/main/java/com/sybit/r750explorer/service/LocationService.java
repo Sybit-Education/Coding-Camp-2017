@@ -1,7 +1,7 @@
-package com.sybit.projektname.service;
+package com.sybit.r750explorer.service;
 
-import com.sybit.projektname.repository.Location;
-import com.sybit.projektname.repository.LocationRepository;
+import com.sybit.r750explorer.repository.Location;
+import com.sybit.r750explorer.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

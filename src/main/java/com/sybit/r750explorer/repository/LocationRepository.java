@@ -1,4 +1,4 @@
-package com.sybit.projektname.repository;
+package com.sybit.r750explorer.repository;
 
 
 import com.sybit.airtable.Query;
@@ -64,23 +64,28 @@ public class LocationRepository extends AirtableRepository {
             }
         };
 
-        List<Location> locationlist = null;
+        Location location;
 
         try {
-             locationlist = getAirtableBase().table("Location", Location.class).select(slugQuery);
+            List<Location> locationlist = getAirtableBase().table("Location", Location.class).select(slugQuery);
+            
+            if(locationlist.size() == 1){
+                location = locationlist.get(0);
+            } else if (locationlist.size() > 1) {
+                throw new IllegalArgumentException("slug [" + slug + "] is not unique. Number of results: " + locationlist.size());
+                
+            } else {
+                throw new IllegalArgumentException("no entry for slug  [" + slug + "]");
+            }
+            
+             
         } catch (AirtableException e) {
             e.printStackTrace();
+            location = null;
         }
+        
+        return location;
 
-        for(Location loc : locationlist){
-            System.out.println(loc.getName());
-        }
-
-        if(locationlist.size() <= 1 && locationlist != null){
-            return locationlist.get(0);
-        }
-
-        return null;
     }
 
 
