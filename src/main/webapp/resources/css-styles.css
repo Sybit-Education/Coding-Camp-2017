@@ -1,0 +1,34 @@
+#AntwortPrüfenErklärung {
+    margin-bottom: 15px
+}
+
+#AntwortButton {
+    margin: 15px
+}
+
+#FragenAuswahl {
+    margin-top: 15px
+}
+
+
+#AntwortRichtig {
+    margin-bottom: 15px;
+    color: #008744;
+    font-weight: bold;
+}
+
+
+#AntwortFalsch {
+    margin-bottom: 15px;
+    color: #e10c14;
+    font-weight: bold;
+}
+
+
+.header-img {
+    margin-top: 50px;
+}
+
+.iframeMap {
+    margin-top: 50px;
+}
