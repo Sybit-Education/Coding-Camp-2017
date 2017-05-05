@@ -6,9 +6,13 @@ package com.sybit.projektname.controller;
 
 
 import com.sybit.airtable.exception.AirtableException;
+import com.sybit.projektname.repository.Location;
+import com.sybit.projektname.service.LocationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -16,7 +20,8 @@ public class HomeController {
 
 
 
-
+    @Autowired
+    private LocationService locationService;
     private String message = "Hello World";
 
     /**
@@ -28,9 +33,10 @@ public class HomeController {
     @RequestMapping("/")
     public String welcome(Map<String, Object> model) throws AirtableException {
 
-
+        List<Location> locations = locationService.getLocations();
+        model.put("locations",locations);
         model.put("message", this.message);
-        return "welcome";
+        return "home";
     }
 
 }
