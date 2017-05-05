@@ -1,31 +1,7 @@
 <!DOCTYPE html>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<<<<<<< HEAD
-<html lang="en">
-<head>
 
-    <!-- Access the bootstrap Css like this,
-        Spring boot will handle the resource mapping automcatically -->
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-
-
-
-</head>
-<body>
-
-<!-- Navbar -->
-
-<div class="container">
-
-    <div>
-        <h2>${message}</h2>
-    </div>
-
-</div>
-
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-=======
 <html lang="de">
 <head>
   <c:import url="include/head.jsp"/>
@@ -122,7 +98,7 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJuUkhivatfWJONIXbqYPGhdJuqhOh_9M&callback=initMap"></script>
 
 <c:import url="include/footer.jsp"/>
->>>>>>> master
+
 
 </body>
 
