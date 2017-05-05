@@ -6,8 +6,8 @@ package com.sybit.r750explorer.controller;
 
 
 import com.sybit.airtable.exception.AirtableException;
-import com.sybit.projektname.repository.Location;
-import com.sybit.projektname.service.LocationService;
+import com.sybit.r750explorer.repository.Location;
+import com.sybit.r750explorer.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,8 @@ public class HomeController {
 
     @Autowired
     private LocationService locationService;
-    private String message = "Hello World";
+    private String message = "Hello Test";
+
 
     /**
      * Base Controller
@@ -36,6 +37,7 @@ public class HomeController {
         List<Location> locations = locationService.getLocations();
         model.put("locations",locations);
         model.put("message", this.message);
+
         return "home";
     }
 

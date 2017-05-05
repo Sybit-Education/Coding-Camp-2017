@@ -35,7 +35,7 @@ public class LocationRepository extends AirtableRepository {
         Query slugQuery = new Query() {
             @Override
             public String[] getFields() {
-                return null;
+                return new String[0];
             }
 
             @Override
@@ -60,9 +60,10 @@ public class LocationRepository extends AirtableRepository {
 
             @Override
             public String filterByFormula() {
-                return "({Slug} = '"+slug+"')";
+                return null;
             }
         };
+
 
         Location location;
 
