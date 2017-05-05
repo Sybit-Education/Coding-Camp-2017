@@ -1,7 +1,9 @@
-package com.sybit.projektname.controller;
+package com.sybit.r750explorer.repository;
 
-
-import com.sybit.projektname.Application;
+import com.sybit.r750explorer.repository.LocationRepository;
+import com.sybit.r750explorer.repository.Location;
+import com.sybit.r750explorer.Application;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +14,31 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Created by fzr on 19.04.17.
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
-public class HomeControllerTest {
+public class LocationRepositoryTest {
 
     @Autowired
     private MockMvc mvc;
 
-    //TODO Extend Test atm only checks Status
+    @Autowired
+    private LocationRepository locationRepository;
+
+
+    @Ignore
     @Test
-    public void getHello() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+    public void getLocationTest() {
+
+        Location loc = locationRepository.getLocation("hoellturm");
+        assertEquals(loc.getName(),"Höllturm");
+
     }
 }
+

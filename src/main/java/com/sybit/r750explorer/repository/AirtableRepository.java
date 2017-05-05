@@ -1,4 +1,4 @@
-package com.sybit.projektname.repository;
+package com.sybit.r750explorer.repository;
 
 import com.sybit.airtable.Airtable;
 import com.sybit.airtable.Base;
@@ -17,7 +17,7 @@ public class AirtableRepository {
 
         if(base == null) {
             Airtable airtable = new Airtable();
-            airtable.configure("keyrguODZpsZdrPRd");
+            airtable.configure("keyfb9Awkpq9G05BX");
             base = airtable.base("appDZ609ies85XW1D");
         }
         return base;

@@ -5,8 +5,8 @@
  */
 
 /*!
- * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=6aa1393e7e27cbf42bc9eb53003c70e0)
- * Config saved to config.json and https://gist.github.com/6aa1393e7e27cbf42bc9eb53003c70e0
+ * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=23927446c85ec54413bf3a5e80307b6c)
+ * Config saved to config.json and https://gist.github.com/23927446c85ec54413bf3a5e80307b6c
  */
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -1088,7 +1088,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
@@ -1416,7 +1416,7 @@ a.bg-danger:focus {
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid transparent;
 }
 ul,
 ol {
@@ -4707,7 +4707,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   display: inline-block;
 }
 .breadcrumb > li + li:before {
-  content: "/\00a0";
+  content: "›\00a0";
   padding: 0 5px;
   color: #ffffff;
 }
@@ -4966,7 +4966,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #ffffff;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -4978,7 +4978,7 @@ a.badge:focus {
   font-weight: 200;
 }
 .jumbotron > hr {
-  border-top-color: #d5d5d5;
+  border-top-color: #e6e6e6;
 }
 .container .jumbotron,
 .container-fluid .jumbotron {
@@ -5073,15 +5073,15 @@ a.thumbnail.active {
   color: #2b542c;
 }
 .alert-info {
-  background-color: #1c3f8d;
-  border-color: #254a9c;
-  color: #ffffff;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f;
 }
 .alert-info hr {
   border-top-color: #a6e1ec;
 }
 .alert-info .alert-link {
-  color: #ffffff;
+  color: #245269;
 }
 .alert-warning {
   background-color: #fcf8e3;
@@ -5819,9 +5819,6 @@ button.list-group-item-danger.active:focus {
 .embed-responsive-16by9 {
   padding-bottom: 56.25%;
 }
-.embed-responsive-smal {
-  padding-bottom: 36.25%;
-}
 .embed-responsive-4by3 {
   padding-bottom: 75%;
 }
@@ -5999,7 +5996,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6117,7 +6114,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;

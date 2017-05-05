@@ -10,29 +10,35 @@
 
 <body>
 <c:import url="include/navigation.jsp"/>
-      
-<div class="container-fluid">
-    <img src=${locationImg} class="center-block img-responsive alt="Responsive image">
+  
+<div class="map-small" id="map"></div>
+
+<div>
+    <img src="${locationImg}" class="img-responsive header-img" alt="Responsive image">
 </div>    
    
  <div class="container"> 
      
-     <div class="page-header">
-        <h1>${locationName}</h1>
-    </div>
+     
+        <center><a href="<c:url value="/codeproof" />"><button type="button" class="btn btn-default button-space">Quiz Starten</button></a></center>
+ 
 
+     
+     <div class="page-header text-field">
+         <center><h1>${locationName}</h1></center>
+    
       <p>${locationBeschr}</p>
 
        <div>
-           <a href="<c:url value="/quiz" />"><center><button type="button" class="btn btn-default">Quiz Starten</button></center></a>
+           <center><a href="<c:url value="/codeproof" />"><button type="button" class="btn btn-default button-space">Quiz Starten</button></a></center>
        </div>
        
-       <b>Jetzt Quiz starten, Punkte sammeln und Pr�mien erhalten</b> 
-       <p>Hier kommt die Beschreibung zum Gewinnspiel.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
+       <p class="text-field"><b>Jetzt Quiz starten, Punkte sammeln und Praemien erhalten</b> 
+       Hier kommt die Beschreibung zum Gewinnspiel.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
        </p>
        
        <div>
-           <a href="<c:url value="/datenschutz" />"><center><button type="button" class="btn btn-default">Location-�bersicht</button></center></a>
+           <center><a href="<c:url value="/datenschutz" />"><button type="button" class="btn btn-default button-space">Location-Uebersicht</button></a></center>
        </div>
 </div> 
     

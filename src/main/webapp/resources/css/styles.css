@@ -1,0 +1,39 @@
+
+#AntwortRichtig {
+    margin-bottom: 15px;
+    color: #008744;
+    font-weight: bold;
+}
+
+
+#AntwortFalsch {
+    margin-bottom: 15px;
+    color: #e10c14;
+    font-weight: bold;
+}
+
+.text-field {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.header-img {
+    margin-bottom: 15px;
+}
+
+.button-space {
+    margin: 15px;
+}
+
+.map-small {
+    width: 100%;
+    height: 200px;
+    background-color: grey;
+}
+
+.map-big {
+    width: 100%;
+    height: 400px;
+    background-color: grey;
+}
+
