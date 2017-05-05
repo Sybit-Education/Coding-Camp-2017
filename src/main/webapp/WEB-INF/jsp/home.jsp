@@ -4,31 +4,28 @@
 <html lang="de">
 <head>
   <c:import url="include/head.jsp"/>
-    <style>
-        #map {
-            width: 100%;
-            height: 400px;
-            background-color: grey;
-        }
-    </style>
 </head>
 <body>
 <c:import url="include/navigation.jsp"/>
 
-      
-<div class="container"> 
-     
-    <div class="page-header">
-        <h1>Erleben-Wissen-Punkten</h1>
-    </div>
+<div class="map-big" id="map"></div> 
 
-    <div id="map"></div>
+<div class="container text-field">
 
-<b>Beschreibung</b><br> 
-<p>Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.Hier entsteht ein Beschreibungstext.
-</p>
+    <h1>Erleben-Wissen-Punkten</h1>
+        <p><b>Beschreibung</b><br>
+        BeschreibungsText
+        </p>
 
- <a href="<c:url value="location" />">Location...</a>
+    <c:forEach items="${locations}" var="location" varStatus="loop">
+        <div class="col-xs-6">
+            <div class="text-field" >
+
+                <a href="<c:url value="/location/${location.slug}"/>"><img src="${location.photo[0].url}" class="img-thumbnail"><br>${location.name}</a>
+            </div>
+        </div>
+    </c:forEach>
+
 </div>
 
 
