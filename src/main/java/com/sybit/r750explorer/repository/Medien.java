@@ -1,4 +1,4 @@
-package com.sybit.projektname.repository;
+package com.sybit.r750explorer.repository;
 
 
 import com.google.gson.annotations.SerializedName;

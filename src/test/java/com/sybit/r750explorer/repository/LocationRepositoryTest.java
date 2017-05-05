@@ -1,6 +1,8 @@
-package com.sybit.projektname.repository;
+package com.sybit.r750explorer.repository;
 
-import com.sybit.projektname.Application;
+import com.sybit.r750explorer.repository.LocationRepository;
+import com.sybit.r750explorer.repository.Location;
+import com.sybit.r750explorer.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

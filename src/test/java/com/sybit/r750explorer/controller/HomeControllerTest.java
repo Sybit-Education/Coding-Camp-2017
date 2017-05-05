@@ -1,7 +1,7 @@
-package com.sybit.projektname.controller;
+package com.sybit.r750explorer.controller;
 
 
-import com.sybit.projektname.Application;
+import com.sybit.r750explorer.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.sybit.projektname.controller;
+package com.sybit.r750explorer.controller;
 
 /**
  * Created by fzr on 06.03.17.
