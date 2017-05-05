@@ -3,6 +3,7 @@ package com.sybit.r750explorer.repository;
 import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.Location;
 import com.sybit.r750explorer.Application;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class LocationRepositoryTest {
     private LocationRepository locationRepository;
 
 
+    @Ignore
     @Test
     public void getLocationTest() {
 
