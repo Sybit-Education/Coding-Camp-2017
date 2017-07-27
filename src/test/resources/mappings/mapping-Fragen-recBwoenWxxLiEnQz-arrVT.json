@@ -1,0 +1,23 @@
+{
+  "id" : "ff24f3df-1fe8-3da4-a59f-84cd5ac848ea",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Fragen/recBwoenWxxLiEnQz",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-Fragen-recBwoenWxxLiEnQz-arrVT.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:52:02 GMT",
+      "ETag" : "W/\"52b-+cD5Hs/jmCCqJ+f12mtWADQNisU\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "ff24f3df-1fe8-3da4-a59f-84cd5ac848ea"
+}

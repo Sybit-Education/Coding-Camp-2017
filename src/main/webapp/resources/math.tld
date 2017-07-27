@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+
+	<description>JSF Tools 0.3 Math functions library</description>
+	<display-name>Math functions</display-name>
+	<tlib-version>0.3</tlib-version>
+	<short-name>math</short-name>
+	<uri>http://jsftools.logikdev.com/math</uri>
+
+	<function>
+		<description>Returns the absolute value of the number.</description>
+		<name>abs</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number abs(java.lang.Object)
+		</function-signature>
+		<example>${math:abs(number)}</example>
+	</function>
+	
+	<function>
+		<description><![CDATA[
+			Returns the sum of the numbers.<br/>
+			<p></p>
+			<b>Other functions available:</b><br/>
+			<br/>
+			<code>java.lang.Number<b>&nbsp;add</b>(java.lang.Object, java.lang.Object)</code><br/>
+			<p></p>
+			<b>Examples:</b><br/>
+			<pre>
+				${math:add(numbers)<br/>
+				${math:add(number1, number2)}
+			</pre>
+		]]></description>
+		<name>add</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number add(java.lang.Object[])
+		</function-signature>
+	</function>
+
+	<function>
+		<description>Returns the smallest integer that is not less than the given number.</description>
+		<name>ceil</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Integer ceil(java.lang.Object)
+		</function-signature>
+		<example>${math:ceil(number)}</example>
+	</function>
+	
+	<function>
+		<description><![CDATA[
+			Returns the quotient of the numbers.<br/>
+			<p></p>
+			<b>Other functions available:</b><br/>
+			<br/>
+			<code>java.lang.Number<b>&nbsp;div</b>(java.lang.Object, java.lang.Object)</code><br/>
+			<p></p>
+			<b>Examples:</b><br/>
+			<pre>
+				${math:div(numbers)<br/>
+				${math:div(number1, number2)}
+			</pre>
+		]]></description>
+		<name>div</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number div(java.lang.Object[])
+		</function-signature>
+	</function>
+	
+	<function>
+		<description>Returns the integer portion of the number.</description>
+		<name>floor</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Integer floor(java.lang.Object)
+		</function-signature>
+		<example>${math:floor(number)}</example>
+	</function>
+	
+	<function>
+		<description><![CDATA[
+			Returns the average of the values.<br/>
+			<p></p>
+			<b>Other functions available:</b><br/>
+			<br/>
+			<code>java.lang.Number<b>&nbsp;getAverage</b>(java.util.Collection, java.lang.String)</code><br/>
+			<code>java.lang.Number<b>&nbsp;getAverage</b>(java.lang.Double[])</code><br/>
+			<code>java.lang.Number<b>&nbsp;getAverage</b>(java.lang.Long[])</code><br/>
+			<code>java.lang.Number<b>&nbsp;getAverage</b>(java.lang.Object[])</code><br/>
+			<code>java.lang.Number<b>&nbsp;getAverage</b>(java.lang.Object[], java.lang.String)</code><br/>
+			<p></p>
+			<b>Examples:</b><br/>
+			<pre>
+				${math:getAverage(collection)}<br/>
+				${math:getAverage(collection, field)}<br/>
+				${math:getAverage(values)}<br/>
+				${math:getAverage(values)}<br/>
+				${math:getAverage(array)}<br/>
+				${math:getAverage(array, field)}
+			</pre>
+		]]></description>
+		<name>getAverage</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number getAverage(java.util.Collection)
+		</function-signature>
+	</function>
+	
+	<function>
+		<description>Returns a pseudo-random <![CDATA[<code>]]>Double<![CDATA[</code>]]> greater than or equal to 0.0 and less than 1.0.</description>
+		<name>getRandom</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Double getRandom()
+		</function-signature>
+		<example>${math:getRandom()}</example>
+	</function>
+	
+	<function>
+		<description><![CDATA[
+			Returns the sum of the values.<br/>
+			<p></p>
+			<b>Other functions available:</b><br/>
+			<br/>
+			<code>java.lang.Number<b>&nbsp;getTotal</b>(java.util.Collection, java.lang.String)</code><br/>
+			<code>java.lang.Number<b>&nbsp;getTotal</b>(java.lang.Double[])</code><br/>
+			<code>java.lang.Number<b>&nbsp;getTotal</b>(java.lang.Long[])</code><br/>
+			<code>java.lang.Number<b>&nbsp;getTotal</b>(java.lang.Object[])</code><br/>
+			<code>java.lang.Number<b>&nbsp;getTotal</b>(java.lang.Object[], java.lang.String)</code><br/>
+			<p></p>
+			<b>Examples:</b><br/>
+			<pre>
+				${math:getTotal(collection)}<br/>
+				${math:getTotal(collection, field)}<br/>
+				${math:getTotal(values)}<br/>
+				${math:getTotal(values)}<br/>
+				${math:getTotal(array)}<br/>
+				${math:getTotal(array, field)}
+			</pre>
+		]]></description>
+		<name>getTotal</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number getTotal(java.util.Collection)
+		</function-signature>
+	</function>
+	
+	<function>
+		<description>Returns the result of performing integer division on the operands.</description>
+		<name>idiv</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number idiv(java.lang.Object, java.lang.Object)
+		</function-signature>
+		<example>${math:idiv(number1, number2)}</example>
+	</function>
+	
+	<function>
+		<description><![CDATA[
+			Returns the largest of the numbers.<br/>
+			<p></p>
+			<b>Other functions available:</b><br/>
+			<br/>
+			<code>java.lang.Number<b>&nbsp;max</b>(java.lang.Object, java.lang.Object)</code><br/>
+			<p></p>
+			<b>Examples:</b><br/>
+			<pre>
+				${math:max(numbers)<br/>
+				${math:max(number1, number2)}
+			</pre>
+		]]></description>
+		<name>max</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number max(java.lang.Object[])
+		</function-signature>
+	</function>
+	
+	<function>
+		<description><![CDATA[
+			Returns the smallest of the numbers.<br/>
+			<p></p>
+			<b>Other functions available:</b><br/>
+			<br/>
+			<code>java.lang.Number<b>&nbsp;min</b>(java.lang.Object, java.lang.Object)</code><br/>
+			<p></p>
+			<b>Examples:</b><br/>
+			<pre>
+				${math:min(numbers)<br/>
+				${math:min(number1, number2)}
+			</pre>
+		]]></description>
+		<name>min</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number min(java.lang.Object[])
+		</function-signature>
+	</function>
+	
+	<function>
+		<description>Returns the result of performing integer modulus on the operands.</description>
+		<name>mod</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Integer mod(java.lang.Object, java.lang.Object)
+		</function-signature>
+		<example>${math:mod(number1, number2)}</example>
+	</function>
+	
+	<function>
+		<description><![CDATA[
+			Returns the product of the numbers.<br/>
+			<p></p>
+			<b>Other functions available:</b><br/>
+			<br/>
+			<code>java.lang.Number<b>&nbsp;mul</b>(java.lang.Object, java.lang.Object)</code><br/>
+			<p></p>
+			<b>Examples:</b><br/>
+			<pre>
+				${math:mul(numbers)<br/>
+				${math:mul(number1, number2)}
+			</pre>
+		]]></description>
+		<name>mul</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number mul(java.lang.Object[])
+		</function-signature>
+	</function>
+	
+	<function>
+		<description>Returns the first number raised to the power of the second.</description>
+		<name>pow</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number pow(java.lang.Object, java.lang.Object)
+		</function-signature>
+		<example>${math:pow(number1, number2)}</example>
+	</function>
+	
+	<function>
+		<description>Returns a pseudo-random <![CDATA[<code>]]>Number<![CDATA[</code>]]> greater than or equal to the first number and less than the second.</description>
+		<name>random</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number random(java.lang.Object, java.lang.Object)
+		</function-signature>
+		<example>${math:random(number1, number2)}</example>
+	</function>
+	
+	<function>
+		<description>Returns the number rounded to the nearest whole Integer.</description>
+		<name>round</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Integer round(java.lang.Object)
+		</function-signature>
+		<example>${math:round(number)}</example>
+	</function>
+	
+	<function>
+		<description>Returns the value rounded to the specified number of decimal places.</description>
+		<name>roundTo</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Double roundTo(java.lang.Object, java.lang.Object)
+		</function-signature>
+		<example>${math:roundTo(decimals, number)}</example>
+	</function>
+	
+	<function>
+		<description><![CDATA[
+			Returns the difference of the numbers (subtracted in order).<br/>
+			<p></p>
+			<b>Other functions available:</b><br/>
+			<br/>
+			<code>java.lang.Number<b>&nbsp;sub</b>(java.lang.Object, java.lang.Object)</code><br/>
+			<p></p>
+			<b>Examples:</b><br/>
+			<pre>
+				${math:sub(numbers)<br/>
+				${math:sub(number1, number2)}
+			</pre>
+		]]></description>
+		<name>sub</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number sub(java.lang.Object[])
+		</function-signature>
+	</function>
+	
+	<function>
+		<description>Returns a <![CDATA[<code>]]>Double<![CDATA[</code>]]> representation of the number.</description>
+		<name>toDouble</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Double toDouble(java.lang.Object)
+		</function-signature>
+		<example>${math:toDouble(number)}</example>
+	</function>
+	
+	<function>
+		<description>Returns a <![CDATA[<code>]]>Integer<![CDATA[</code>]]> representation of the number.</description>
+		<name>toInteger</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Integer toInteger(java.lang.Object)
+		</function-signature>
+		<example>${math:toInteger(number)}</example>
+	</function>
+	
+	<function>
+		<description>Returns a <![CDATA[<code>]]>Number<![CDATA[</code>]]> representation of the number.</description>
+		<name>toNumber</name>
+		<function-class>com.logikdev.jsftools.StaticMathTool</function-class>
+		<function-signature>
+			java.lang.Number toNumber(java.lang.Object)
+		</function-signature>
+		<example>${math:toNumber(number)}</example>
+	</function>
+
+</taglib>

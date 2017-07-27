@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+   
+ 
+    <springProfile name="dev, staging">
+        <logger name="org.springframework" level="WARN" additivity="false">
+            <appender-ref ref="FILE" />
+        </logger>
+
+        <logger name="org.springframework.web" level="INFO" additivity="false">  
+            <appender-ref ref="FILE" />
+        </logger>  
+
+        <logger name="com.sybit.r750explorer" level="DEBUG" additivity="false">  
+            <appender-ref ref="FILE" />
+            <appender-ref ref="CONSOLE" />
+        </logger> 
+        
+        <logger name="de.codecentric" level="WARN" additivity="false">
+            <appender-ref ref="FILE" />
+        </logger>
+
+        <root level="WARN">
+            <appender-ref ref="CONSOLE" />
+        </root> 
+    </springProfile>    
+    
+    <springProfile name="production">
+        <root level="WARN">
+            <appender-ref ref="FILE" />
+        </root>
+    </springProfile>  
+      
+</configuration>

@@ -1,0 +1,144 @@
+
+
+
+#logo {
+    position: fixed;
+    right: 1.5em;
+    top: 1em;
+    width: 2.5em;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);    
+}
+
+#AntwortRichtig {
+    margin-bottom: 15px;
+    color: #008744;
+    font-weight: bold;
+}
+
+
+#AntwortFalsch {
+    margin-bottom: 15px;
+    color: #e10c14;
+    font-weight: bold;
+}
+
+.text-field {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.header-img {
+    margin-bottom: 15px;
+}
+
+.map-small {
+    width: 100%;
+    height: 200px;
+    background-color: grey;
+}
+
+.map-small .img-responsive {
+    margin: 0 auto;
+    display: block;
+    width: auto;
+    max-height: 100%;
+}
+
+
+#bottomNav {
+    padding:10px;
+}
+#bottomNav a {
+    /*    font-size:24pt;*/
+    color:#ddd;
+    text-decoration:none;
+}
+#bottomNav a:hover {
+    color:#fff;
+}
+
+.row.is-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+* And with max cross-browser enabled.
+* Nobody should ever write this by hand. 
+* Use a preprocesser with autoprefixing.
+*/
+.row.is-flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+
+body { 
+    padding-bottom: 60px; 
+}
+.map-big {
+    width: 100%;
+    height: 260px;
+    background-color: grey;
+}
+.cards {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+@media (min-width: 768px) {
+    body { 
+        padding-bottom: 120px; 
+    } 
+    .map-big {
+        height: 320px;
+    }    
+    .cards {
+        height: 320px;
+    }    
+}
+@media (min-width: 992px) {
+    body { 
+        padding-bottom: 120px; 
+    } 
+    .map-big {
+        height: 360px;
+    }     
+    .cards {
+        height: 360px;
+    }     
+}
+@media (min-width: 1200px) {
+    body { 
+        padding-bottom: 120px; 
+    } 
+    .map-big {
+        height: 400px;
+    }     
+    .cards {
+        height: 400px;
+    }     
+}

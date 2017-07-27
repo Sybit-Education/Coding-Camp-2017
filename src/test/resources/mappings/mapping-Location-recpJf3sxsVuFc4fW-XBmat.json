@@ -1,0 +1,23 @@
+{
+  "id" : "1e54f114-d6ef-3f7a-bd17-861e3c5d5b52",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Location/recpJf3sxsVuFc4fW",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-Location-recpJf3sxsVuFc4fW-XBmat.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:52:01 GMT",
+      "ETag" : "W/\"9d3-qD3aeVQ3BeoYKFnJ9NYX+wVgVYY\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "1e54f114-d6ef-3f7a-bd17-861e3c5d5b52"
+}

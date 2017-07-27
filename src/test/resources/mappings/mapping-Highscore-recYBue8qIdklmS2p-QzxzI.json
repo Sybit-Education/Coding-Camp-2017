@@ -1,0 +1,23 @@
+{
+  "id" : "95fdbc87-b72a-3f6a-89b4-10494d8d2c4b",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Highscore/recYBue8qIdklmS2p",
+    "method" : "DELETE"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-Highscore-recYBue8qIdklmS2p-QzxzI.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:52:04 GMT",
+      "ETag" : "W/\"29-dyDKTJHdd7wa1pu8px4SGWFfxzE\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "95fdbc87-b72a-3f6a-89b4-10494d8d2c4b"
+}
