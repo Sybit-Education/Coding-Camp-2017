@@ -63,7 +63,8 @@ public class LocationService {
 
         //Hole eine Location anhand ihres Slugs
         log.debug("--> getLocation: Slug: " + slug);
-        throw new MethodNotFoundException("Methode nicht implementiert!");
+        //throw new MethodNotFoundException("Methode nicht implementiert!");
+        return locationRepository.getLocationOfSlug(slug);
 
     }
     

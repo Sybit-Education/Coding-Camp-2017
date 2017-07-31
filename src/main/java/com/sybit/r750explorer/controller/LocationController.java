@@ -64,8 +64,8 @@ public class LocationController {
         
         //TODO: Wurde die Location schon besucht und Fragen beantwortet?
         //model.put("QuizAnswered", true|false);
-        
-        
+        List<Location> visited = locationService.getVisitedLocations(uuid);
+        //-----------------------List<String> Locationid = new Array 
         //TODO: welche Medien hat die Location zum Anzeigen? Diese sortiert übergeben.
         //List<Medien> medienList = medienService.getMedienOfLocationSlug(locationSlug);
        
