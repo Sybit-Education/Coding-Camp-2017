@@ -14,5 +14,7 @@ Schritt 2: Kommandozeile in entsprechendem Ordner öffnen
 
 Schritt 3: Browser öffnen [localhost:8080](http://localhost:8080)
 
+Viel Spass!
+
 
 
