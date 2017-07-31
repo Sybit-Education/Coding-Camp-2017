@@ -62,7 +62,7 @@ public class ScoreServiceTest {
 
         Spielstand update = new Spielstand();
         update.setUuid(testUUID);
-        update.setScore("10");
+        update.setScore(String.valueOf(Float.valueOf(10)));
         List<String> questionList = new ArrayList<>();
         questionList.add("1");
         update.setQuestionList(questionList);
@@ -72,7 +72,7 @@ public class ScoreServiceTest {
         update.setLocationList(locationIds);
 
         Mockito.when(spielstandRepository.newEntry(any())).thenReturn(update);
-        Spielstand response = scoreService.newSpielstandEntry(testUUID, testLoc, "1", "2", Float.valueOf("10"));
+        Spielstand response = scoreService.newSpielstandEntry(testUUID, testLoc, "1", "2", Float.valueOf(10));
 
         assertNotNull(response);
         assertEquals(response.getLocationList(), update.getLocationList());
