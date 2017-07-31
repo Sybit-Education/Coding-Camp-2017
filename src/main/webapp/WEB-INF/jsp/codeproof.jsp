@@ -11,13 +11,15 @@
 
     <body>
 
-
-
         <div class="container"> 
 
             <!-- Eingabe für den Code -->
 
-
+            <form method="POST" action="alwitr AÖWO hft">
+                <input type="text" name="code" />
+                <input  type="submit" value="Absenden" />
+            </form>
+            
             <!-- Code Hinweis behandeln -->
 
 

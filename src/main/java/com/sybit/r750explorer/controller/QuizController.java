@@ -35,7 +35,7 @@ public class QuizController {
     public boolean checkLocation(@CookieValue("UUID") String uuid, @PathVariable("slug") String slug) {
 
         log.debug("--> checkLocation");
-
+/*
         Location loc = locationService.getLocation(slug);
         List<Location> visited = locationService.getVisitedLocations(uuid);
 
@@ -44,7 +44,7 @@ public class QuizController {
                 return false;
             }
         }
-
+*/
         return true;
     }
 
@@ -58,18 +58,21 @@ public class QuizController {
      * @param attributes
      * @return
      */
-    @RequestMapping(value="/code")
-    public String code(@PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
+    @RequestMapping(value="/code/{code}")
+    public String code(@PathVariable("slug") String slug, @PathVariable("code") String code, Map<String, Object> model, RedirectAttributes attributes) {
 
-        log.debug("--> CodePage");
-
+        log.debug("--> CodePage: " + code);
+/*
         if (!(boolean) model.get("check")) {
             attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
             return "redirect:" + "/";
         }
+        */
 
         Location loc = locationService.getLocation(slug);
-
+        
+        
+        
         model.put("location", loc);
 
         return "codeproof";
@@ -86,7 +89,7 @@ public class QuizController {
      * @param attributes
      * @return
      */
-    @RequestMapping(value = "/code/check", method = RequestMethod.POST)
+    @RequestMapping(value = "/code-check", method = RequestMethod.POST)
     public String checkCode(@RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
 
         log.debug("--> CodeCheck. UserCode: " + code + ". LocationCode: " + locationService.getLocation(slug).getCode());
