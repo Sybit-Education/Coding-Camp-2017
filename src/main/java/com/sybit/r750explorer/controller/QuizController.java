@@ -58,10 +58,10 @@ public class QuizController {
      * @param attributes
      * @return
      */
-    @RequestMapping(value="/code/{code}")
-    public String code(@PathVariable("slug") String slug, @PathVariable("code") String code, Map<String, Object> model, RedirectAttributes attributes) {
+    @RequestMapping(value="/code")
+    public String code(@PathVariable("slug") String slug, @RequestParam(name = "code") String code, Map<String, Object> model, RedirectAttributes attributes) {
 
-        log.debug("--> CodePage: " + code);
+        log.debug("--> CodePage: code=" + code);
 /*
         if (!(boolean) model.get("check")) {
             attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");

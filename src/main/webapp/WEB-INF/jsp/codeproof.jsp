@@ -15,7 +15,7 @@
 
             <!-- Eingabe für den Code -->
 
-            <form method="POST" action="alwitr AÖWO hft">
+            <form method="POST" action="<c:url value="/location/${location.slug}/code" />">
                 <input type="text" name="code" />
                 <input  type="submit" value="Absenden" />
             </form>
