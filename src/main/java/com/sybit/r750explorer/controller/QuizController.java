@@ -3,6 +3,7 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
 import com.sybit.r750explorer.service.QuizService;
@@ -36,14 +37,14 @@ public class QuizController {
 
         log.debug("--> checkLocation");
 
-        Location loc = locationService.getLocation(slug);
-        List<Location> visited = locationService.getVisitedLocations(uuid);
-
-        for (Location l : visited) {
-            if (l.getName().equals(loc.getName())) {
-                return false;
-            }
-        }
+//        Location loc = locationService.getLocation(slug);
+//        List<Location> visited = locationService.getVisitedLocations(uuid);
+//
+//        for (Location l : visited) {
+//            if (l.getName().equals(loc.getName())) {
+//                return false;
+//            }
+//        }
 
         return true;
     }
@@ -67,9 +68,12 @@ public class QuizController {
             attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
             return "redirect:" + "/";
         }
+        
 
         Location loc = locationService.getLocation(slug);
-
+        
+        
+        
         model.put("location", loc);
 
         return "codeproof";
@@ -97,10 +101,25 @@ public class QuizController {
         }
 
         // TODO: Die Frage der Location anhand des Slugs holen und im Fehlerfall auf die Homepage umleiten
-
+        if ( code.equalsIgnoreCase(locationService.getLocation(slug).getCode()) )
+        {
+            log.debug("Code war korrekt! :D");
+            try
+            {
+                Fragen frage = quizService.getFrageOfLocation(slug);
+                model.put( "frage", frage );
+            } catch (Exception e)
+            {
+                log.error( e.getMessage(  ) );
+            }
+            model.put("location", locationService.getLocation(slug));
+            model.put("codeCheck", true);
+            
+            return "quiz";
+        }
         // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
-        // return "quiz";
-
+        
+        
         model.put("location", locationService.getLocation(slug));
         model.put("codeCheck", false);
         log.debug("Code war nicht korrekt!");
