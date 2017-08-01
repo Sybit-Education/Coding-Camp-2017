@@ -156,7 +156,7 @@ public class ScoreService {
         //Spielstand Löschen über spielstandRepository
         throw new MethodNotFoundException("Methode nicht implementiert");
 
-    }
+    } ////////////////////////////// TTTTTTTOOOOOOOOOOOOOODDDDDDDDDDDDDDOOOOOOOOOOOOOOOOOOOO: Außeinandersetzung mit Flo/Erik
 
     public Float hintRequested(String uuid) {
 
