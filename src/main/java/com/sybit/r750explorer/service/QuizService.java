@@ -3,11 +3,15 @@ package com.sybit.r750explorer.service;
 import com.sybit.r750explorer.exception.FrageException;
 import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.r750explorer.repository.QuizRepository;
+import java.util.List;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.el.MethodNotFoundException;
+//import javax.el.FrageNotFoundException;
+
+import java.util.Random;
 
 /**
  * Created by yms on 16.05.2017.
@@ -33,15 +37,29 @@ public class QuizService {
 
         log.debug("--> getFragenOfLocation: Slug: " + slug);
         //Fragenliste erstellen
-        
+        List<Fragen> fragenList=quizRepository.getFragenOfLocation(slug);
 
-        //zufällige Zahl wählen aus der Anzahl der Fragen in der Fragenliste
-       
-        //Fragenlisten, die nur eine Frage enthalten, sollen nur diese ausgeben
-       
-        //Fehlermeldung, wenn keine Fragen in der Fragenliste enthalten sind
         
-        throw new MethodNotFoundException("Methode nicht implementiert.");
+       int anzFragen=fragenList.size();
+       Fragen frage;
+       if (anzFragen==1){
+           //Fragenlisten, die nur eine Frage enthalten, sollen nur diese ausgeben
+           frage=fragenList.get(0);            
+       }
+       else if(anzFragen>1){
+           //zufällige Zahl wählen aus der Anzahl der Fragen in der Fragenliste
+           Random randGenerator=new Random();       
+           int zufall=randGenerator.nextInt(anzFragen-1);
+           frage=fragenList.get(zufall);         
+       }
+       else{
+           //Fehlermeldung, wenn keine Fragen in der Fragenliste enthalten sind
+           throw new MethodNotFoundException("Keine Fragen zu dieser Location vorhanden.");
+       }
+        
+       return frage;        
+        
+        
     }
 
     /**
