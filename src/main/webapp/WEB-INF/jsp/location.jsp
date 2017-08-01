@@ -13,7 +13,7 @@
 
     <body locationSlug="${locationSlug}"> 
         <div class="map">
-            <img src="${locationPhoto}" class="img-resposive"/>
+            <img src="${locationFoto}" class="img-resposive"/>
         </div>
         <div class="container">
 
@@ -24,10 +24,26 @@
         </div>
             </c:if>
  
-            <c:forEach items="${locationMedia}" var="media" varStatus="loop">
-            <c:if test="${media.type=='Foto'}">
-            <img src="${media.attachement[0].url}" class="img-resposive"/>
-            
+            <c:forEach items="${locationMedien}" var="media" varStatus="loop">
+                <c:if test="${media.type=='Foto'}">
+                    <img src="${media.attachements[0].url}" class="img-resposive"/>
+                </c:if>
+           
+                <c:if test="${media.type== 'Text'}">
+                    <div class="container">
+                        <p>${media.text}</p>
+                    </div>
+                </c:if>
+                <c:if test="${media.type== 'Link'}">
+                    <div class="container">
+                        <a href="${media.link}" target="_blanck">
+                            <i class="glyphicon glyphicon-link"></i>
+                        </a>
+                    </div>
+                </c:if>
+            </c:forEach>
+               
+        
         <c:import url="include/footer.jsp"/>
 
     </body>

@@ -35,9 +35,8 @@ public class MedienService {
 
         log.debug("--> getMedienOfLocationName: Name: " + name);
         
-        
+        return medienRepository.getMedienOfLocationName(name);
         //Hole dir die MedienDaten
-        throw new MethodNotFoundException("Methode nicht implementiert");
     }
 
     /**
