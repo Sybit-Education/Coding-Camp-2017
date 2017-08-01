@@ -7,6 +7,7 @@ package com.sybit.r750explorer.service;
 
 import com.sybit.r750explorer.repository.SponsorenRepository;
 import com.sybit.r750explorer.repository.tables.Sponsor;
+import java.util.ArrayList;
 import java.util.List;
 import javax.el.MethodNotFoundException;
 import org.slf4j.LoggerFactory;
@@ -18,21 +19,33 @@ import org.springframework.stereotype.Service;
  * @author fzr
  */
 @Service
-public class SponsorenService {
+public class SponsorenService
+{
 
-    private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
+    private final org.slf4j.Logger log = LoggerFactory.getLogger( this.getClass(  ) );
 
     @Autowired
     private SponsorenRepository sponsorenRepository;
 
     // Die Methode soll alle Sponsoren als Liste zurückgeben
-    public List<Sponsor> getSponsorenList() {
-
-        log.debug("--> getSponsorenList");
+    public List<Sponsor> getSponsorenList(  )
+    {
+        log.debug( "--> getSponsorenList" );
         
         // Es werden die Sponsoren aus dem Repository genommen
-        throw new MethodNotFoundException("Methode nicht implementiert");
-
+        
+        List<Sponsor> sponsoren = sponsorenRepository.getSponsoren(  );
+        List<Sponsor> sponsorenAktiv = new ArrayList<>(  );
+        
+        for ( Sponsor s : sponsoren )
+        {
+            log.debug( "desc: " + s.getDescription(  ) );
+            
+            log.debug( "test" );
+            sponsorenAktiv.add( s );
+        }
+        
+        //throw new MethodNotFoundException("Methode nicht implementiert");
+        return sponsorenAktiv;
     }
-
 }

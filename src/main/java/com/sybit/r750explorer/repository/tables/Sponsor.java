@@ -79,8 +79,4 @@ public class Sponsor {
     public void setLink(String link) {
         this.link = link;
     }
-    
-    
-    
-    
 }
