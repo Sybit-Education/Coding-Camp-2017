@@ -52,7 +52,7 @@ public class ScoreServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
+    
     @Test
     public void newSpielstandEntryTest() {
 
@@ -112,7 +112,7 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
+    
     @Test
     public void getScoreOfSpielstand() {
 
