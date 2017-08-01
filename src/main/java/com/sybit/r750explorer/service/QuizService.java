@@ -54,7 +54,7 @@ public class QuizService {
        }
        else{
            //Fehlermeldung, wenn keine Fragen in der Fragenliste enthalten sind
-           throw new MethodNotFoundException("Keine Fragen zu dieser Location vorhanden.");
+           throw new FrageException("Keine Fragen zu dieser Location vorhanden.");
        }
         
        return frage;        
@@ -69,13 +69,14 @@ public class QuizService {
      * @return Fragen
      */
     
-    public Fragen getFrageOfID(String id) {
+    public Fragen getFrageOfID(String id) throws FrageException {
 
         log.debug("--> getFrageOfID: ID: " + id);
         //Hole dir die Frage anhand ihrer ID
         Fragen frage=quizRepository.getFrageOfId(id);
-        if (frage)
-        throw new MethodNotFoundException("Methode nicht implementiert.");
+        if (frage==null){
+            throw new FrageException("Methode nicht implementiert.");
+        }
         return frage;
     }
 }
