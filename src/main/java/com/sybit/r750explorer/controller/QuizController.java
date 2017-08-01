@@ -36,14 +36,14 @@ public class QuizController {
 
         log.debug("--> checkLocation");
 
-        Location loc = locationService.getLocation(slug);
-        List<Location> visited = locationService.getVisitedLocations(uuid);
-
-        for (Location l : visited) {
-            if (l.getName().equals(loc.getName())) {
-                return false;
-            }
-        }
+//        Location loc = locationService.getLocation(slug);
+//        List<Location> visited = locationService.getVisitedLocations(uuid);
+//
+//        for (Location l : visited) {
+//            if (l.getName().equals(loc.getName())) {
+//                return false;
+//            }
+//        }
 
         return true;
     }
@@ -67,9 +67,12 @@ public class QuizController {
             attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
             return "redirect:" + "/";
         }
+        
 
         Location loc = locationService.getLocation(slug);
-
+        
+        
+        
         model.put("location", loc);
 
         return "codeproof";
@@ -86,7 +89,7 @@ public class QuizController {
      * @param attributes
      * @return
      */
-    @RequestMapping(value = "/code/check", method = RequestMethod.POST)
+    @RequestMapping(value = "/code-check", method = RequestMethod.POST)
     public String checkCode(@RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
 
         log.debug("--> CodeCheck. UserCode: " + code + ". LocationCode: " + locationService.getLocation(slug).getCode());
@@ -97,7 +100,10 @@ public class QuizController {
         }
 
         // TODO: Die Frage der Location anhand des Slugs holen und im Fehlerfall auf die Homepage umleiten
-
+        if ( code.equalsIgnoreCase(locationService.getLocation(slug).getCode()) )
+        {
+            return "quiz";
+        }
         // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
         // return "quiz";
 
