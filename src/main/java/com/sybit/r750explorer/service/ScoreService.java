@@ -47,15 +47,15 @@ public class ScoreService {
         log.debug("--> newSpielstandEntry. UUID: " + uuid);
 
         //Erstelle einen neuen Spielstand und befülle ihn mit den entsprechenden Werten
-        Spielstand spielstand=new Spielstand();
+        Spielstand spielstand = new Spielstand();
         spielstand.setUuid(uuid);
-        
-        List<String> location=new ArrayList<>();
-        if (loc != null){
+
+        List<String> location = new ArrayList<>();
+        if (loc != null) {
             location.add(loc.getId());
         }
-        List<String> fragen=new ArrayList<>();
-        if (questionId != null){
+        List<String> fragen = new ArrayList<>();
+        if (questionId != null) {
             fragen.add(questionId);
         }
         spielstand.setLocationList(location);
@@ -63,10 +63,10 @@ public class ScoreService {
         spielstand.setUserAnswerIndex(answerIndx);
         spielstand.setScore(String.valueOf(score));
         spielstand.setQuestionList(fragen);
-        
+
         //Dann übergib ihn an das Repository
-        spielstand=spielstandRepository.newEntry(spielstand);
-       
+        spielstand = spielstandRepository.newEntry(spielstand);
+
         return spielstand;
 
     }
@@ -83,19 +83,18 @@ public class ScoreService {
         log.debug("--> getScoreOfSpielstand. UUID: " + uuid);
 
         //Hole dir die Spielstände und rechne sie zusammen
-        List<Spielstand> spielstand=spielstandRepository.getEntrysOfUUID(uuid);
-        Float score=Float.valueOf(0);
-        for (Spielstand i:spielstand){
-            score+=Float.valueOf(i.getScore());
+        List<Spielstand> spielstand = spielstandRepository.getEntrysOfUUID(uuid);
+        Float score = Float.valueOf(0);
+        for (Spielstand i : spielstand) {
+            score += Float.valueOf(i.getScore());
         }
-        log.error("Methode nicht implementiert");
+
         return score;
 
     }
 
     /**
-     * Get the Highscore List. 
-     * Holt dir die Highscoreliste
+     * Get the Highscore List. Holt dir die Highscoreliste
      *
      * @return List of Higscores
      */
@@ -121,8 +120,8 @@ public class ScoreService {
     }
 
     /**
-     * Checks if a player already registered a Highscore. 
-     * Methode die Nachschaut ob ein Spieler existiert
+     * Checks if a player already registered a Highscore. Methode die Nachschaut
+     * ob ein Spieler existiert
      *
      * @param uuid
      * @return boolean
@@ -170,15 +169,13 @@ public class ScoreService {
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float
-        Float score=this.getScoreOfSpielstand(uuid);
-        if (score>=Float.valueOf(5)){
-            score=Float.valueOf(-5);
-        }
-        else{
-            score=Float.valueOf(0);
+        Float score = this.getScoreOfSpielstand(uuid);
+        if (score >= Float.valueOf(5)) {
+            score = Float.valueOf(-5);
+        } else {
+            score = Float.valueOf(0);
         }
         return score;
     }
 
 }
-

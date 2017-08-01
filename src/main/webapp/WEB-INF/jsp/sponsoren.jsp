@@ -14,9 +14,9 @@
 
         </div>
         <div class="container">
-            <div class="row">
-                <h1 class="col-xs-11">Unsere Sponsoren</h1>
-                <p class="col-xs-12">
+            <div class="page-header">
+                <h1>Unsere Sponsoren</h1>
+                <p>
                     Wir danken unseren Sponsoren für Ihre Unterstützung mit 
                     Sachpreisen und Materialien für das Projekt:
                 </p>
