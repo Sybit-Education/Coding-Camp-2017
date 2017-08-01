@@ -3,6 +3,7 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
 import com.sybit.r750explorer.service.QuizService;
@@ -95,7 +96,7 @@ public class QuizController {
             attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
             return "redirect:" + "/";
         }
-
+  
         // TODO: Die Frage der Location anhand des Slugs holen und im Fehlerfall auf die Homepage umleiten
 
         // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
@@ -130,7 +131,20 @@ public class QuizController {
             attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
             return "redirect:" + "/";
         }
-
+      
+         
+             Fragen fr = new Fragen();
+             fr = quizService.getFrageOfID(fragenID);
+             fr.getLoesung();
+             
+             if (antwort == fr.getLoesung().toString()){
+             
+                 scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, Float.valueOf(10));
+             }
+             else {
+                     scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, Float.valueOf(1));
+                     }
+             
         // TODO: Prüfen, ob die originale Lösung mit der eingegebenen Lösung übereinstimmt, Punkte vergeben und eine Rückmeldung an model übergeben
 
         //scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, score);
