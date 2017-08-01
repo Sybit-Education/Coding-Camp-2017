@@ -18,7 +18,7 @@
             </div>
 
 
-            <b>Das ist die Testfrage?</b>
+            <b>${location.Frage}</b>
 
             <p class="text-field">Wähle eine richtige Antwort aus.</p>
 
