@@ -159,15 +159,26 @@ public class QuizController {
     public String checkQuiz(@CookieValue("UUID") String scoreCookie, @RequestParam String antwort, @RequestParam String fragenID, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
 
         log.debug("--> QuizCheck");
-
+                
         if (!(boolean) model.get("check")) {
             attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
             return "redirect:" + "/";
         }
-
+        
         // TODO: Prüfen, ob die originale Lösung mit der eingegebenen Lösung übereinstimmt, Punkte vergeben und eine Rückmeldung an model übergeben
-
-        //scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, score);
+        Fragen frage=quizService.getFrageOfID(fragenID);
+        Float score=scoreService.getScoreOfSpielstand(scoreCookie);
+        if (frage.getLoesung().equals(Float.valueOf(antwort))){
+            model.put("loesung", true);
+            score=Float.valueOf(10);
+        }
+        else{
+            model.put("loesung", false);
+            model.put("loesungText", frage.getLoesungText());
+            score=Float.valueOf(1);
+        }
+        
+        scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, score);
         model.put("location", locationService.getLocation(slug));
 
         return "quiz-check";
