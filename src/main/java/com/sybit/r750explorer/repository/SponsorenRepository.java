@@ -25,14 +25,12 @@ public class SponsorenRepository extends AirtableRepository {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
 
-    public List<Sponsor> getSponsoren() throws AirtableException {
+    public List<Sponsor> getSponsoren() {
 
         log.debug("--> getSponsoren");
 
         List<Sponsor> sponsorenList = new ArrayList<>();
         Query activeQuery = getQueryWithFilter("Status", "aktiv");
-        
-
 
         try {
             sponsorenList = getAirtableBase().table("Sponsoren", Sponsor.class).select(activeQuery);
@@ -43,7 +41,6 @@ public class SponsorenRepository extends AirtableRepository {
             log.error("Error with Airtable: " + e);
 
             throw new SponsorenSyntaxException("Error. Could not retrieve Sponsoren!");
-
 
         }
 
