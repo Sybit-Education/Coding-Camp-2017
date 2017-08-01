@@ -83,8 +83,13 @@ public class ScoreService {
         log.debug("--> getScoreOfSpielstand. UUID: " + uuid);
 
         //Hole dir die Spielstände und rechne sie zusammen
+        List<Spielstand> spielstand=spielstandRepository.getEntrysOfUUID(uuid);
+        Float score=Float.valueOf(0);
+        for (Spielstand i:spielstand){
+            score+=Float.valueOf(i.getScore());
+        }
         log.error("Methode nicht implementiert");
-        return Float.valueOf(0);
+        return score;
 
     }
 
@@ -165,10 +170,14 @@ public class ScoreService {
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float
-        //Wenn Score größergleich 50, soll ein neuer Score mit einem Wert von -50 übergeben werden
-        //andernfalls 0
-        throw new MethodNotFoundException("Methode nicht implementiert");
-
+        Float score=this.getScoreOfSpielstand(uuid);
+        if (score>=Float.valueOf(5)){
+            score=Float.valueOf(-5);
+        }
+        else{
+            score=Float.valueOf(0);
+        }
+        return score;
     }
 
 }
