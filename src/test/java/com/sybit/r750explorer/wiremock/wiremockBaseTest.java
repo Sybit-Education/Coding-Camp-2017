@@ -24,15 +24,15 @@ public class wiremockBaseTest {
     @BeforeClass
     public static void startWiremock() {
 
-        //wireMockServer = new WireMockServer(options().port(8095)); //Comment out for record
-        //wireMockServer.start(); //Comment out for record
+        wireMockServer = new WireMockServer(options().port(8095)); //Comment out for record
+        wireMockServer.start(); //Comment out for record
 
     }
 
     @AfterClass
     public static void stopWiremock() {
 
-        //wireMockServer.stop(); //Comment out for record
+        wireMockServer.stop(); //Comment out for record
     }
 
 }
