@@ -18,26 +18,25 @@
             </div>
 
 
-            <b>Das ist die Testfrage?</b>
+            <b>${frage.getFrage()}</b>
 
-            <p class="text-field">Wähle eine richtige Antwort aus.</p>
+            <p>Wähle eine richtige Antwort aus.</p>
 
 
             <form action="<c:url value="/location/${location.slug}/quiz/check"/>" method="POST">
-                <input type="hidden" name="fragenID" value="${Frage.getId()}">
-                <div class="container-fluid">
-                    <div class="container-fluid">
-
-                        <button type="button" class="btn btn-default" aria-label="Left Align">
-                        a, b, c
-                        </button>
-
-                    </div>
-
+                <input type="hidden" name="fragenID" value="${frage.getId()}">
+                
+                <div class="row">
+                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " value="1">1 </button> <div class="col-xs-10">${frage.antwort1}</div>
                 </div>
-
+                <div class="row">
+                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " value="2">2 </button> <div class="col-xs-10">${frage.antwort2}</div>
+                </div>
+                <div class="row">                    
+                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " value="3">3 </button> <div class="col-xs-10">${frage.antwort3}</div>
+                  
+                </div>
             </form>
-
 
         </div>
 
