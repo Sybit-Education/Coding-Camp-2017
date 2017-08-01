@@ -5,6 +5,7 @@ import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.tables.Spielstand;
 import com.sybit.r750explorer.repository.SpielstandRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.el.MethodNotFoundException;
 import org.slf4j.LoggerFactory;
@@ -46,8 +47,27 @@ public class ScoreService {
         log.debug("--> newSpielstandEntry. UUID: " + uuid);
 
         //Erstelle einen neuen Spielstand und befülle ihn mit den entsprechenden Werten
+        Spielstand spielstand=new Spielstand();
+        spielstand.setUuid(uuid);
+        
+        List<String> location=new ArrayList<>();
+        if (loc != null){
+            location.add(loc.getId());
+        }
+        List<String> fragen=new ArrayList<>();
+        if (questionId != null){
+            fragen.add(questionId);
+        }
+        spielstand.setLocationList(location);
+        spielstand.setQuestionList(fragen);
+        spielstand.setUserAnswerIndex(answerIndx);
+        spielstand.setScore(String.valueOf(score));
+        spielstand.setQuestionList(fragen);
+        
         //Dann übergib ihn an das Repository
-        return new Spielstand();
+        spielstand=spielstandRepository.newEntry(spielstand);
+       
+        return spielstand;
 
     }
 
