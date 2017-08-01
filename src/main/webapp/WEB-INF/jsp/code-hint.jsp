@@ -18,8 +18,12 @@
         <div class="container">
 
             <!-- TODO: Code Hinweis für eine Location anzeigen -->
-
-            <!-- TODO: Button zur Codeeingabe bereitstellen und auf <c:url value="/location/${locationSlug}/code"/> verlinken -->
+            <h2>Der Code wurde nicht gefunden oder ist nicht mehr vorhanden.</h2>
+            <form acction="<c:url value="/location/${locationSlug}/code"/>" method="POST">
+                <input type="hidden" class="form-control" id="code" value="${code}">
+                <button type="submit" class="btn btn-default">Weiter zum Quiz</button>
+            </form>
+                <button data-toggle="modal" data-target="#myModal">Code fehlt oder ist unlesbar? Schreibe eine kurze Mail</button>           
 
             <!-- TODO: Formular auf "/location/${locationSlug}/code/check" abschicken, falls kein code vorhanden/gefunden -->
 

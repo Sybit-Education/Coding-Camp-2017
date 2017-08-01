@@ -13,29 +13,30 @@
         <div class="container"> 
 
             <div class="page-header">
-                //Name der Location
-                <h1></h1>
+                <h1>${location.name}</h1>
             </div>
 
-            //Die Frage sollte angezeigt werden
-            <h3></h3>
 
-            <b class="text-field">Wähle eine richtige Antwort aus.</b>
+
+            <b>${frage.getFrage()}</b>
+
+            <p>Wähle eine richtige Antwort aus.</p>
 
 
             <form action="<c:url value="/location/${location.slug}/quiz/check"/>" method="POST">
-                <input type="hidden" name="fragenID" value="${Frage.getId()}">
-                <div class="container-fluid">
-                    <div class="container-fluid">
-
-                        //Es sollte für jede Antwortmöglichkeit der Frage ein Button erzeugt werden!
-
-                    </div>
-
+                <input type="hidden" name="fragenID" value="${frage.getId()}">
+                
+                <div class="row">
+                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " name="antwort" value="1">1 </button> <div class="col-xs-10">${frage.antwort1}</div>
                 </div>
-
+                <div class="row">
+                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " name="antwort" value="2">2 </button> <div class="col-xs-10">${frage.antwort2}</div>
+                </div>
+                <div class="row">                    
+                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " name="antwort" value="3">3 </button> <div class="col-xs-10">${frage.antwort3}</div>
+                  
+                </div>
             </form>
-
 
         </div>
 

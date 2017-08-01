@@ -50,7 +50,6 @@ public class LocationServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
     @Test
     public void getLocationTest() {
 
@@ -98,6 +97,7 @@ public class LocationServiceTest {
         assertEquals(response.getCodeHintPhoto(), attList);
 
     }
+
 
     @Test
     public void getLocationsTest() {
@@ -177,7 +177,6 @@ public class LocationServiceTest {
 
     }
 
-    @Ignore
     @Test
     public void getVisitedLocationsOneLocation() {
 

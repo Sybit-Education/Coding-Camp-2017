@@ -5,6 +5,7 @@
  */
 package com.sybit.r750explorer.repository;
 
+import com.sybit.airtable.Query;
 import com.sybit.airtable.exception.AirtableException;
 import com.sybit.r750explorer.exception.SponsorenNotFoundException;
 import com.sybit.r750explorer.exception.SponsorenSyntaxException;
@@ -29,20 +30,17 @@ public class SponsorenRepository extends AirtableRepository {
         log.debug("--> getSponsoren");
 
         List<Sponsor> sponsorenList = new ArrayList<>();
-
-        
-
+        Query activeQuery = getQueryWithFilter("Status", "aktiv");
 
         try {
-            sponsorenList = getAirtableBase().table("Sponsoren", Sponsor.class).select();
+            sponsorenList = getAirtableBase().table("Sponsoren", Sponsor.class).select(activeQuery);
             if (sponsorenList.isEmpty()) {
                 throw new SponsorenNotFoundException("No Sponsoren found!");
             }
-        } catch (AirtableException | HttpResponseException e) {
+        } catch (AirtableException e) {
             log.error("Error with Airtable: " + e);
 
             throw new SponsorenSyntaxException("Error. Could not retrieve Sponsoren!");
-
 
         }
 

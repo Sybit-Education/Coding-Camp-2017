@@ -18,6 +18,12 @@
             <!-- Eingabe für den Code -->
 
 
+            <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz" />">
+                <input type="text" name="code" />
+                <input  type="submit" value="code" />
+            </form>
+            
+
             <!-- Code Hinweis behandeln -->
 
 
