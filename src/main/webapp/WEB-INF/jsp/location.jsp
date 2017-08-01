@@ -29,12 +29,12 @@
                     <img src="${media.attachements[0].url}" class="img-resposive"/>
                 </c:if>
            
-                <c:if test="${media.type== 'Text'}">
+                <c:if test="${media.type=='Text'}">
                     <div class="container">
                         <p>${media.text}</p>
                     </div>
                 </c:if>
-                <c:if test="${media.type== 'Link'}">
+                <c:if test="${media.type=='Link'}">
                     <div class="container">
                         <a href="${media.link}" target="_blanck">
                             <i class="glyphicon glyphicon-link"></i>
