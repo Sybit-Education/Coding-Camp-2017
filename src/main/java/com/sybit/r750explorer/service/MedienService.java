@@ -51,7 +51,10 @@ public class MedienService {
 
         log.debug("--> getMedienOfLocationSlug: Slug: " + slug);
         //Wenn ich den Name der Location hätte könnte ich die obere Methode wiederverwenden....
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        
+        String Name = locationRepository.getLocationNameOfSlug(slug);
+        return getMedienOfLocationName(Name);
+
     }
 
 }
