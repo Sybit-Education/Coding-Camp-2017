@@ -1,3 +1,4 @@
+ <<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -33,6 +34,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  * @author fzr
  */
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ScoreServiceTest {
 
@@ -94,7 +97,7 @@ public class ScoreServiceTest {
         update.setUuid(testUUID);
         update.setScore("100");
         List<String> questionList = new ArrayList<>();
- 
+
         update.setQuestionList(questionList);
         update.setUserAnswerIndex("Test");
         List<String> locationIds = new ArrayList<>();

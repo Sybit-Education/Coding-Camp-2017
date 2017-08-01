@@ -40,7 +40,7 @@ public class QuizServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
+
     @Test
     public void getFrageOfLocationTest() throws Exception {
 
@@ -82,7 +82,7 @@ public class QuizServiceTest {
 
     }
 
-    @Ignore
+ 
     @Test(expected = FrageException.class)
     public void getFrageOfLocationExceptionTest() throws Exception {
 
@@ -95,7 +95,7 @@ public class QuizServiceTest {
 
     }
 
-    @Ignore
+
     @Test
     public void getFrageOfLocationRandomTest() throws Exception {
 
@@ -146,7 +146,7 @@ public class QuizServiceTest {
 
     }
 
-    @Ignore
+
     @Test
     public void getFrageOfIDTest() {
 
