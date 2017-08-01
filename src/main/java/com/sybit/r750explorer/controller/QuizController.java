@@ -116,12 +116,32 @@ public class QuizController {
         else{
             model.put("codeCheck", false);
             log.debug("Code war nicht korrekt!");
-        }
-   
 
         return "codeproof";
+        }
+    }
+   
+
+    @RequestMapping(value="/quiz")
+    public String quiz(@PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
+
+        log.debug("--> CodePage");
+
+        if (!(boolean) model.get("check")) {
+            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
+            return "redirect:" + "/";
     }
     
+
+        Location loc = locationService.getLocation(slug);
+        
+        
+        
+        model.put("location", loc);
+
+        return "quiz";
+    }
+        
     /**
      * Quiz check
      *

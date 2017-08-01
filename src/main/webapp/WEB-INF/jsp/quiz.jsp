@@ -13,14 +13,14 @@
         <div class="container"> 
 
             <div class="page-header">
-                //Name der Location
-                <h1></h1>
+                
+                <h1>${location.name}</h1>
             </div>
 
-            //Die Frage sollte angezeigt werden
-            <h3></h3>
 
-            <b class="text-field">Wähle eine richtige Antwort aus.</b>
+            <b>Das ist die Testfrage?</b>
+
+            <p class="text-field">Wähle eine richtige Antwort aus.</p>
 
 
             <form action="<c:url value="/location/${location.slug}/quiz/check"/>" method="POST">
@@ -28,7 +28,9 @@
                 <div class="container-fluid">
                     <div class="container-fluid">
 
-                        //Es sollte für jede Antwortmöglichkeit der Frage ein Button erzeugt werden!
+                        <button type="button" class="btn btn-default" aria-label="Left Align">
+                        a, b, c
+                        </button>
 
                     </div>
 
