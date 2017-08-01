@@ -37,7 +37,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap-horizon.min.css" />"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/styles.css" />"/>
 
-<base id="curl-base" href="<c:url value="/" />" />
+<!-- base id="curl-base" href="<c:url value="/" />" / -->
 
 <script>
     // Mobile Safari in standalone mode: https://gist.github.com/irae/1042167
@@ -74,4 +74,6 @@
     ga('create', 'UA-3167320-22', 'r750explorer.me');
     ga('set', 'anonymizeIp', true);
     ga('send', 'pageview');
+    
+    var contextPath = "${pageContext.request.contextPath}"; //contextPath   of App
 </script>
