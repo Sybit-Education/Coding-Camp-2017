@@ -26,11 +26,11 @@
                 </div>
             </c:if>
             <p>
-                Entdecke Radolfzell und gewinne tolle Preise bei der monatlichen Auslosung!
+                Entdecke Radolfzell auf eine neue Weise, sammle Punkte und gewinne tolle Preise!
             </p>
 
             <h2>Alle Ziele</h2>
-            <div class="row row-horizon" style="background-color: #555; padding-top:0.5em;">
+            <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
                 <c:forEach items="${locations}" var="location" varStatus="loop">
                     <c:if test="${location.status == 'aktiv'}">
 
@@ -49,7 +49,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <p>Viel Spass beim Entdecken und Gewinnen.</p>
+                    <p style="padding-top:10px">Viel Spaﬂ beim Erforschen der Stadt Radolfzell.</p>
                 </div>
             </div>
 
