@@ -127,7 +127,7 @@ public class QuizController {
     }
 
     @RequestMapping(value = "/quiz")
-    public String quiz(@PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
+    public String quiz(@RequestParam String code,@PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
 
         log.debug("--> CodePage");
 
@@ -139,17 +139,32 @@ public class QuizController {
         Location loc = locationService.getLocation(slug);
 
         Fragen frage = null;
-        try {
-            frage = quizService.getFrageOfLocation(slug);
-        } catch (Exception e) {
-            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
-            return "redirect:" + "/";
+        if (code.equalsIgnoreCase(locationService.getLocation(slug).getCode())) {
+            log.debug("Code war korrekt! :D");
+            try {
+                frage = quizService.getFrageOfLocation(slug);
+                model.put("frage", frage);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+            }
+            model.put("location", locationService.getLocation(slug));
+            model.put("codeCheck", true);
+
+            return "quiz";
+
+        } // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
+        else {
+            model.put("codeCheck", false);
+            log.debug("Code war nicht korrekt!");
+
+            model.put("location", locationService.getLocation(slug));
+            model.put("codeCheck", false);
+            log.debug("Code war nicht korrekt!");
+
+            return "codeproof";
         }
 
-        model.put("location", loc);
-        model.put("frage", frage);
 
-        return "quiz";
     }
 
     /**
