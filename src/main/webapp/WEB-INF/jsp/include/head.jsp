@@ -37,8 +37,6 @@
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap-horizon.min.css" />"/>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/styles.css" />"/>
 
-<!-- base id="curl-base" href="<c:url value="/" />" / -->
-
 <script>
     // Mobile Safari in standalone mode: https://gist.github.com/irae/1042167
     (function (document, navigator, standalone) {
