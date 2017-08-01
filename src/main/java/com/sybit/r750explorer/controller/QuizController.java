@@ -135,9 +135,17 @@ public class QuizController {
 
         Location loc = locationService.getLocation(slug);
         
-        
+        Fragen frage=null;
+        try{
+            frage=quizService.getFrageOfLocation(slug);
+        }
+        catch(Exception e){
+            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
+            return "redirect:" + "/";
+        }
         
         model.put("location", loc);
+        model.put("frage", frage);
 
         return "quiz";
     }
