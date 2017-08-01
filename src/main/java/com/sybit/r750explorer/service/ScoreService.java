@@ -5,6 +5,7 @@ import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.tables.Spielstand;
 import com.sybit.r750explorer.repository.SpielstandRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.el.MethodNotFoundException;
 import org.slf4j.LoggerFactory;
@@ -44,10 +45,21 @@ public class ScoreService {
     public Spielstand newSpielstandEntry(String uuid, Location loc, String questionId, String answerIndx, Float score) {
 
         log.debug("--> newSpielstandEntry. UUID: " + uuid);
+        Spielstand sp = new Spielstand();
+
+        List<String> li = new ArrayList<>();
+        li.add(loc.getId());
+        List<String> qList = new ArrayList();
+        qList.add(questionId);
+        sp.setScore(String.valueOf(score));
+        sp.setUuid(uuid);
+        sp.setLocationList(li);
+        sp.setQuestionList(qList);
+        sp.setUserAnswerIndex(answerIndx);
 
         //Erstelle einen neuen Spielstand und befülle ihn mit den entsprechenden Werten
         //Dann übergib ihn an das Repository
-        return new Spielstand();
+        return sp;
 
     }
 
@@ -69,8 +81,7 @@ public class ScoreService {
     }
 
     /**
-     * Get the Highscore List. 
-     * Holt dir die Highscoreliste
+     * Get the Highscore List. Holt dir die Highscoreliste
      *
      * @return List of Higscores
      */
@@ -96,8 +107,8 @@ public class ScoreService {
     }
 
     /**
-     * Checks if a player already registered a Highscore. 
-     * Methode die Nachschaut ob ein Spieler existiert
+     * Checks if a player already registered a Highscore. Methode die Nachschaut
+     * ob ein Spieler existiert
      *
      * @param uuid
      * @return boolean

@@ -13,9 +13,9 @@
         <div class="container"> 
 
             <div class="page-header">
-                
                 <h1>${location.name}</h1>
             </div>
+
 
 
             <b>${frage.getFrage()}</b>
