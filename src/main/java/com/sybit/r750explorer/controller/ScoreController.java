@@ -3,6 +3,7 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.repository.tables.Highscore;
 import com.sybit.r750explorer.service.ScoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,16 +61,16 @@ public class ScoreController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
 
-        log.debug("--> Registering... UUID: " + uuid);
+        log.debug( "--> Registering... UUID: " + uuid );
 
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
+        scoreService.newHighscore( nickname , email, uuid );
         
 
-        model.put("nickname", nickname);
+        model.put( "nickname", nickname );
 
         return "registration";
-
     }
 
     /**
@@ -91,5 +92,4 @@ public class ScoreController {
 
         return String.valueOf(Math.round(score));
     }
-
 }

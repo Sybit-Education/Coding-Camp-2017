@@ -7,6 +7,7 @@ import com.sybit.r750explorer.repository.tables.Spielstand;
 import com.sybit.r750explorer.repository.SpielstandRepository;
 import java.util.List;
 import javax.el.MethodNotFoundException;
+import javax.swing.text.html.parser.DTDConstants;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -118,11 +119,26 @@ public class ScoreService {
      * @param uuid
      * @return the created Highscore
      */
-    public Highscore newHighscore(String nickname, String email, String uuid) {
+    public Highscore newHighscore( String nickname, String email, String uuid )
+    {
+        log.debug( "--> newHighscore. UUID: " + uuid );
 
-        log.debug("--> newHighscore. UUID: " + uuid);
-
-        //Erstelle einen neuen Highscore
+        Highscore highScore = new Highscore(  );
+        highScore.setNickname( nickname );
+        highScore.setEmail( email );
+        highScore.setUuid( uuid );
+        //highScore.setDate( date ); Wird automatisch erzeugt
+        highScore.setScore( getScoreOfSpielstand( uuid ) );
+        
+        if ( spielstandRepository.getHighscoreOfUUID( uuid ) == null )
+        {
+            spielstandRepository.registerScore( highScore );
+        }
+        else
+        {
+            
+        }
+        
         //Informationen zum Abspeichern des Highscores
         //Den Score registrieren
         throw new MethodNotFoundException("Methode nicht implementiert");
