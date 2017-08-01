@@ -3,6 +3,7 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
 import com.sybit.r750explorer.service.QuizService;
@@ -97,13 +98,26 @@ public class QuizController {
         }
 
         // TODO: Die Frage der Location anhand des Slugs holen und im Fehlerfall auf die Homepage umleiten
-
+        Fragen frage=null;
+        try{
+            frage=quizService.getFrageOfLocation(slug);
+        }
+        catch(Exception e){
+            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
+            return "redirect:" + "/";
+        }
+        
         // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
-        // return "quiz";
-
-        model.put("location", locationService.getLocation(slug));
-        model.put("codeCheck", false);
-        log.debug("Code war nicht korrekt!");
+        if (code.equals(locationService.getLocation(slug).getCode())){
+            model.put("location", locationService.getLocation(slug));
+            model.put("frage", frage);
+            return "quiz";
+        }
+        else{
+            model.put("codeCheck", false);
+            log.debug("Code war nicht korrekt!");
+        }
+   
 
         return "codeproof";
     }
