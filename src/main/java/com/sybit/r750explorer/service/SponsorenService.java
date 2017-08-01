@@ -9,7 +9,6 @@ import com.sybit.r750explorer.repository.SponsorenRepository;
 import com.sybit.r750explorer.repository.tables.Sponsor;
 import java.util.ArrayList;
 import java.util.List;
-import javax.el.MethodNotFoundException;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,9 +38,6 @@ public class SponsorenService
         
         for ( Sponsor s : sponsoren )
         {
-            log.debug( "desc: " + s.getDescription(  ) );
-            
-            log.debug( "test" );
             sponsorenAktiv.add( s );
         }
         
