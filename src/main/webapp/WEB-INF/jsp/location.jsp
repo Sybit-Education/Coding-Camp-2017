@@ -19,10 +19,9 @@
         <div class="container">
             <div class="page-header">
                 <h1>${locationName}</h1>
-                
+                <p>${locationDescription}</p>    
             </div>            
-            <p>${locationDescription}</p>
-            
+                       
             <c:if test="${QuizAnswered==false}">
                 <div class="text-center">
                     <a href="<c:url value="/location/${locationSlug}/code"/>">
