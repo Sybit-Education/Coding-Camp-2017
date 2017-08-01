@@ -119,7 +119,6 @@ public class LocationServiceTest {
     }
 
 
-    @Ignore
     @Test
     public void getVisitedLocations() {
 
