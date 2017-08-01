@@ -1,4 +1,4 @@
-package com.sybit.r750explorer.controller;
+                        package com.sybit.r750explorer.controller;
 
 /**
  * Created by fzr on 06.03.17.
@@ -78,6 +78,8 @@ public class QuizController {
         return "codeproof";
     }
     
+    
+    
     /**
      * Code check
      *
@@ -114,6 +116,26 @@ public class QuizController {
         return "codeproof";
     }
     
+    
+    @RequestMapping(value="/quiz")
+    public String quiz(@PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
+
+        log.debug("--> CodePage");
+
+        if (!(boolean) model.get("check")) {
+            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
+            return "redirect:" + "/";
+        }
+        
+
+        Location loc = locationService.getLocation(slug);
+        
+        
+        
+        model.put("location", loc);
+
+        return "quiz";
+        
     /**
      * Quiz check
      *
