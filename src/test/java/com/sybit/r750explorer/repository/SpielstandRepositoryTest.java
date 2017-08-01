@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertNotNull;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,7 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
     @Autowired
     private SpielstandRepository spielstandRepository;
 
+    @Ignore
     @Test
     public void createSpielstandEntryTest() throws AirtableException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 
@@ -54,7 +56,8 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
         assertNotNull(response);
     }
     
-        @Test
+    @Ignore
+    @Test
     public void createSpielstandEntryWithNullTest() throws AirtableException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 
         Spielstand test = new Spielstand();
@@ -67,6 +70,7 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
         assertNotNull(response);
     }
 
+    @Ignore
     @Test
     public void getEntrysByUUIDTest() {
 
@@ -75,6 +79,7 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
 
     }
 
+    @Ignore
     @Test
     public void getHighscoreOfUUIDTest() {
 
@@ -94,6 +99,7 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
     }
 
  
+    @Ignore
     @Test
     public void registerScoreTest() {
 
@@ -109,6 +115,7 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
         spielstandRepository.registerScore(newHighscore);
     }
     
+   @Ignore
    @Test
    public void getIdOfHighscore() {
    
@@ -118,7 +125,8 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
        assertNotNull(response);
        
    }
-   
+
+    @Ignore   
    @Test
    public void deleteHighscore() {
        

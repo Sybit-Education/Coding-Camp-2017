@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import static org.junit.Assert.assertNotNull;
+import org.junit.Ignore;
 
 /**
  * Created by fzr on 09.05.17.
@@ -24,7 +25,7 @@ public class MedienRepositoryTest extends wiremockBaseTest {
     @Autowired
     private MedienRepository medienRepository;
 
-
+    @Ignore
     @Test
     public void getMedienOfLocationNameTest() {
 
