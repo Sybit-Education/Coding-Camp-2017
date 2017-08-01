@@ -33,7 +33,7 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1>Datenschutzerklärung</h1>
+                <h1>Datenschutz&shy;erklärung</h1>
             </div>
 
             <p>Wir nehmen den Schutz Ihrer Privatsphäre und Ihrer persönlichen Daten, die Sie uns

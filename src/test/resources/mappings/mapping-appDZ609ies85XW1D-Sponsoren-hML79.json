@@ -1,0 +1,23 @@
+{
+  "id" : "796cf339-42eb-3630-badb-5505bf3d3c40",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Sponsoren?filterByFormula=%28%7BStaus%7D+%3D+%27aktiv%27%29",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 401,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Sponsoren-hML79.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Tue, 01 Aug 2017 12:14:44 GMT",
+      "ETag" : "W/\"50-8xYAvLBWleFLl/buYhG+M42uVZo\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "796cf339-42eb-3630-badb-5505bf3d3c40"
+}

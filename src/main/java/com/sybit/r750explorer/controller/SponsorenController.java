@@ -41,7 +41,9 @@ public class SponsorenController {
         // TODO: Liste aller Sponsoren erstellen (aus dem Service) 
         // Parameter wie name und die Liste dem Model übergeben
         
+        List<Sponsor> sponsoren = sponsorenService.getSponsorenList(  );
+        model.put( "sponsoren", sponsoren );
+        
         return "sponsoren";
     }
-
 }
