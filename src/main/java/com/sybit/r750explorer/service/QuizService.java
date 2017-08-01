@@ -73,6 +73,9 @@ public class QuizService {
 
         log.debug("--> getFrageOfID: ID: " + id);
         //Hole dir die Frage anhand ihrer ID
+        Fragen frage=quizRepository.getFrageOfId(id);
+        if (frage)
         throw new MethodNotFoundException("Methode nicht implementiert.");
+        return frage;
     }
 }
