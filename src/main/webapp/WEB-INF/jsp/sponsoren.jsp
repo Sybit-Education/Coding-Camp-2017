@@ -11,25 +11,37 @@
     </head>
     <body>
         <div>
-            <div class="text-center" >
-                <h1>Unsere Sponsoren</h1>
-            </div>
+
         </div>
         <div class="container">
-            <!-- TODO: Danksagung an die Sponsoren (Name, Beschreibung, Logo enzeigen lassen)  -->
+            <div class="row">
+                <h1 class="col-xs-11">Unsere Sponsoren</h1>
+                <p class="col-xs-12">
+                    Wir danken unseren Sponsoren für Ihre Unterstützung mit 
+                    Sachpreisen und Materialien für das Projekt:
+                </p>
+            </div>
+
             <c:forEach items="${sponsoren}" var="sponsor" varStatus="loop">
                 <div class="well well-sm">
                     <div class="row">
-                        <div class="col-xs-6">
-                            <h3>${sponsor.name}</h3>
+                        <div class="col-xs-9">
+                            <a href="${sponsor.link}" target="_blank" >
+                                <img class="img-thumbnail" src="${sponsor.logo[0].url}"/>
+                            </a>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-6">
-                            <a href="${sponsor.link}" target="_blank" ><img class="img-thumbnail" src="${sponsor.logo[0].url}" class="img-responsive cards"/></a>
-                        </div>
                         <div class="col-xs-12">
-                            ${sponsor.description}
+                            <h3><a href="${sponsor.link}" target="_blank" >${sponsor.name}</a></h3>
+                        </div>                        
+                        <div class="col-xs-12">
+                            <p>
+                                ${sponsor.description}
+                            </p>
+                            <p>
+                                <a href="${sponsor.link}" target="_blank" >${sponsor.link}</a>
+                            </p>
                         </div>
                     </div>
                 </div></br>
