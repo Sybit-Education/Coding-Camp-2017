@@ -45,6 +45,14 @@
     max-height: 100%;
 }
 
+.locationName {
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    background-color: #fff;
+    width: 100%;
+    padding: 5px 10px;
+}
 
 #bottomNav {
     padding:10px;
