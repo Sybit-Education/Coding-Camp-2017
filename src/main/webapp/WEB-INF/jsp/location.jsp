@@ -15,20 +15,20 @@
         <div class="container-fluid">
            <img src="${locationFoto}" alt="${locationName}" class="img-responsive img-rounded"/>
         </div>
-     
-        <div class="container">
+
+        <div class="container">          
             <div class="page-header">
                 <h1>${locationName}</h1>
-                <p>${locationDescription}</p>    
+                <p>${locationDescription}</p>                        
+                <c:if test="${QuizAnswered==false}">
+                    <div class="text-center">
+                        <a href="<c:url value="/location/${locationSlug}/code"/>">
+                            <button typ="button" class="btn btn-default">Quiz starten ...</button>
+                        </a>
+                    </div>
+                </c:if>                   
             </div>            
-                       
-            <c:if test="${QuizAnswered==false}">
-                <div class="text-center">
-                    <a href="<c:url value="/location/${locationSlug}/code"/>">
-                        <button typ="button" class="btn btn-default">Quiz starten ...</button>
-                    </a>
-                </div>
-            </c:if>
+
 
             <c:forEach items="${locationMedien}" var="media" varStatus="loop">
                 <div class="row">
@@ -53,9 +53,10 @@
                 </div>
                 
             </c:forEach>
+            <div class="row">&nbsp;</div>
         </div>    
             
-        <div class="row">&nbsp;</div>
+        
         
         <c:import url="include/footer.jsp"/>
 
