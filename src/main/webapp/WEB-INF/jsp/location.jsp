@@ -12,35 +12,43 @@
 
 
     <body locationSlug="${locationSlug}"> 
-        <div class="map">
-            <img src="${locationFoto}" class="img-resposive"/>
-        </div>
+     
         <div class="container">
-
+              <div class="map">
+                 <img src="${locationFoto}" class="img-responsive img-rounded"/>
+             </div>
             <div class="page-header"><h1>${locationName}</h1></div>
+            ${locationDescription}
             <c:if test="${QuizAnswered==false}">
                 <div class="text-field">
                     <center><a href="<c:url value="/location/${locationSlug}/code"/>"><button typ="button" class="btn btn-default">Quiz starten</button></a></center>
-        </div>
+                </div>
             </c:if>
  
             <c:forEach items="${locationMedien}" var="media" varStatus="loop">
-                <c:if test="${media.type=='Foto'}">
-                    <img src="${media.attachements[0].url}" class="img-resposive"/>
-                </c:if>
-           
-                <c:if test="${media.type== 'Text'}">
-                    <div class="container">
-                        <p>${media.text}</p>
-                    </div>
-                </c:if>
-                <c:if test="${media.type== 'Link'}">
-                    <div class="container">
-                        <a href="${media.link}" target="_blanck">
-                            <i class="glyphicon glyphicon-link"></i>
-                        </a>
-                    </div>
-                </c:if>
+                <div class="row">
+                    <c:if test="${media.type=='Foto'}">
+                        <div class="col-xs-12">
+                            <img src="${media.attachements[0].url}" class="img-responsive img-rounded">
+                            ${media.ueberschrift}
+                        </div>
+                    </c:if>
+
+                    <c:if test="${media.type== 'Text'}">
+                        <div class="col-xs-12">
+                            ${media.ueberschrift}
+                            <p>${media.text}</p>
+                        </div>
+                    </c:if> 
+                    <c:if test="${media.type== 'Link'}">
+                        <div class="col-xs-12">
+                            <a href="${media.link}" target="_blank">
+                            <i class="glyphicon glyphicon-link"></i> ${media.ueberschrift}
+                            </a>
+                        </div>
+                    </c:if>
+                </div>
+                <div class="row">&nbsp;</div>
             </c:forEach>
                
         
