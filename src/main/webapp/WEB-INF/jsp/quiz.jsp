@@ -27,13 +27,13 @@
                 <input type="hidden" name="fragenID" value="${frage.getId()}">
                 
                 <div class="row">
-                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " value="1">1 </button> <div class="col-xs-10">${frage.antwort1}</div>
+                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " name="antwort" value="1">1 </button> <div class="col-xs-10">${frage.antwort1}</div>
                 </div>
                 <div class="row">
-                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " value="2">2 </button> <div class="col-xs-10">${frage.antwort2}</div>
+                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " name="antwort" value="2">2 </button> <div class="col-xs-10">${frage.antwort2}</div>
                 </div>
                 <div class="row">                    
-                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " value="3">3 </button> <div class="col-xs-10">${frage.antwort3}</div>
+                    <button type="submit" class="col-xs-2 btn btn-primary btn-lg " name="antwort" value="3">3 </button> <div class="col-xs-10">${frage.antwort3}</div>
                   
                 </div>
             </form>

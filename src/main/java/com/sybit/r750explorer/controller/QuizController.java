@@ -191,10 +191,9 @@ public class QuizController {
             score = Float.valueOf(10);
         } else {
             model.put("loesung", false);
-            model.put("loesungText", frage.getLoesungText());
             score = Float.valueOf(1);
         }
-
+        model.put("loesungText", frage.getLoesungText());
         scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, score);
         model.put("location", locationService.getLocation(slug));
 
