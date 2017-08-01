@@ -13,12 +13,13 @@
         <div class="container"> 
 
             <div class="page-header">
-                //Name der Location
-                <h1></h1>
+                
+                <h1>${location.getName()}</h1>
             </div>
 
-            //Die Frage sollte angezeigt werden
-            <h3></h3>
+            //Die Frage sollte angezeigt werden</br>
+            Frage: ${frage.getFrage()}
+            <h3> </h3>
 
             <b class="text-field">Wähle eine richtige Antwort aus.</b>
 

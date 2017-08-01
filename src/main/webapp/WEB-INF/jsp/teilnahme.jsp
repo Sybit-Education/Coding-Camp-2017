@@ -16,7 +16,7 @@
         <div class="container">
 
             <div class="page-header">
-                <h1>Spielregeln und Teilnahmebedingung</h1>
+                <h1>Spielregeln und Teilnahme&shy;bedingung</h1>
             </div>
             <h2>Spielregeln</h2>
             <p>

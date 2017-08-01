@@ -3,9 +3,8 @@
  */
 $(document).ready(function () {
     
-    console.log("Base:" + document.getElementById("curl-base").getAttribute("href"));
-    base = document.getElementById("curl-base").getAttribute("href");
-    
+    console.log("contextPath = '" + contextPath + "'");
+  
     
         
     // update scores in navigation bar
@@ -39,10 +38,8 @@ $(document).ready(function () {
 
 function initMap() {
     
-    base = document.getElementById("curl-base").getAttribute("href");
-
     $.ajax({
-        url: base +'/location/all',
+        url: contextPath +'/location/all',
         type: 'GET',
         success: function (res) {
             response = $.parseJSON(res);
@@ -100,9 +97,7 @@ function createMarkers(allLocations, markers, infoWindows) {
 
             contentStringInfoWindow =
                     '<div id="content">' +
-                    '<a href=' + '/location/' + allLocations[i]["Slug"] + '><b>' + allLocations[i].Name + '</b></a>' +
-                    //Bilder brauchen länger zum laden
-                    //'<center><a href=' + '/location/' + allLocations[i]["Slug"] + '><img src=' + '' + allLocations[i]["Foto"][0].url + ' class="img-responsive" width="80%" /></a><center>' +
+                    '<a href=' + '/location/' + allLocations[i]["Slug"] + '><img src=' + '' + allLocations[i]["Foto"][0].url + ' class="img-responsive" width="100%" /><div class="locationName"><b>' + allLocations[i].Name + '</b></div></a>' +    
                     '</div>';
 
 
@@ -131,18 +126,18 @@ function createMarkers(allLocations, markers, infoWindows) {
 function getIcon(location) {
 
     var notVisitedIcon = {
-        url: base + '/resources/images/map-pin.svg',
-        size: new google.maps.Size(65, 60),
+        url: contextPath + '/resources/images/map-pin.svg',
+        size: new google.maps.Size(34, 60),
         origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(63, 60),
-        scaledSize: new google.maps.Size(65, 60)
+        anchor: new google.maps.Point(17, 60),
+        scaledSize: new google.maps.Size(34, 60)
     };
     var visitedIcon = {
-        url: base + '/resources/images/map-pin-visited.svg',
-        size: new google.maps.Size(65, 60),
+        url: contextPath + '/resources/images/map-pin-visited.svg',
+        size: new google.maps.Size(34, 60),
         origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(63, 60),
-        scaledSize: new google.maps.Size(65, 60)
+        anchor: new google.maps.Point(17, 60),
+        scaledSize: new google.maps.Size(34, 60)
     };
     if (location.visited) {
         return visitedIcon;
@@ -208,7 +203,7 @@ function requestAndSetScore() {
     var score;
 
     $.ajax({
-        url: base +'/score/' + uuid,
+        url: contextPath +'/score/' + uuid,
         type: 'GET',
         success: function (res) {
             score = $.parseJSON(res);

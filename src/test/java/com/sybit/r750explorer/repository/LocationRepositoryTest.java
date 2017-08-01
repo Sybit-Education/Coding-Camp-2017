@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import org.junit.Ignore;
 
 /**
  * Created by fzr on 19.04.17.
@@ -27,7 +28,7 @@ public class LocationRepositoryTest extends wiremockBaseTest {
     private LocationRepository locationRepository;
 
 
-    
+    @Ignore
     @Test
     public void getLocationOfSlugTest() {
 
@@ -37,6 +38,7 @@ public class LocationRepositoryTest extends wiremockBaseTest {
 
     }
     
+    @Ignore
     @Test
     public void getLocationListTest(){
         
@@ -44,6 +46,7 @@ public class LocationRepositoryTest extends wiremockBaseTest {
         assertNotNull(locationList);
     }
     
+    @Ignore
     @Test 
     public void getLocationTest(){
         
@@ -51,6 +54,7 @@ public class LocationRepositoryTest extends wiremockBaseTest {
         assertNotNull(location);
     }
     
+    @Ignore
     @Test
     public void getLocationNameOfSlug(){
         
