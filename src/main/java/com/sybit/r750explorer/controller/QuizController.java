@@ -90,7 +90,7 @@ public class QuizController {
      * @param attributes
      * @return
      */
-    @RequestMapping(value = "/code-check", method = RequestMethod.POST)
+    @RequestMapping(value = "/code/check", method = RequestMethod.POST)
     public String checkCode(@RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
 
         log.debug("--> CodeCheck. UserCode: " + code + ". LocationCode: " + locationService.getLocation(slug).getCode());
