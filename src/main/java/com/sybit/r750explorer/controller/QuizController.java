@@ -99,26 +99,19 @@ public class QuizController {
 
         // TODO: Die Frage der Location anhand des Slugs holen und im Fehlerfall auf die Homepage umleiten
         Fragen frage = null;
+        try {
+            frage = quizService.getFrageOfLocation(slug);
+        } catch (Exception e) {
+            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
+            return "redirect:" + "/";
+        }
 
-        if (code.equalsIgnoreCase(locationService.getLocation(slug).getCode())) {
-            log.debug("Code war korrekt! :D");
-            try {
-                frage = quizService.getFrageOfLocation(slug);
-                model.put("frage", frage);
-            } catch (Exception e) {
-                log.error(e.getMessage());
-            }
+        // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
+        if (code.equals(locationService.getLocation(slug).getCode())) {
             model.put("location", locationService.getLocation(slug));
-            model.put("codeCheck", true);
-
+            model.put("frage", frage);
             return "quiz";
-
-        } // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
-        else {
-            model.put("codeCheck", false);
-            log.debug("Code war nicht korrekt!");
-
-            model.put("location", locationService.getLocation(slug));
+        } else {
             model.put("codeCheck", false);
             log.debug("Code war nicht korrekt!");
 
@@ -127,7 +120,7 @@ public class QuizController {
     }
 
     @RequestMapping(value = "/quiz")
-    public String quiz(@RequestParam String code,@PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
+    public String quiz(@RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
 
         log.debug("--> CodePage");
 
@@ -164,7 +157,6 @@ public class QuizController {
             return "codeproof";
         }
 
-
     }
 
     /**
@@ -191,19 +183,19 @@ public class QuizController {
             return "redirect:" + "/";
         }
 
-        Fragen fr = new Fragen();
-        fr = quizService.getFrageOfID(fragenID);
-        fr.getLoesung();
-
-        if (antwort == fr.getLoesung().toString()) {
-
-            scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, Float.valueOf(10));
+        // TODO: Prüfen, ob die originale Lösung mit der eingegebenen Lösung übereinstimmt, Punkte vergeben und eine Rückmeldung an model übergeben
+        Fragen frage = quizService.getFrageOfID(fragenID);
+        Float score = scoreService.getScoreOfSpielstand(scoreCookie);
+        if (frage.getLoesung().equals(Float.valueOf(antwort))) {
+            model.put("loesung", true);
+            score = Float.valueOf(10);
         } else {
-            scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, Float.valueOf(1));
+            model.put("loesung", false);
+            model.put("loesungText", frage.getLoesungText());
+            score = Float.valueOf(1);
         }
 
-        // TODO: Prüfen, ob die originale Lösung mit der eingegebenen Lösung übereinstimmt, Punkte vergeben und eine Rückmeldung an model übergeben
-        //scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, score);
+        scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, score);
         model.put("location", locationService.getLocation(slug));
 
         return "quiz-check";
