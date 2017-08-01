@@ -69,7 +69,7 @@ public class QuizService {
      * @return Fragen
      */
     
-    public Fragen getFrageOfID(String id) throws FrageException {
+    public Fragen getFrageOfID(String id) {
 
         log.debug("--> getFrageOfID: ID: " + id);
         //Hole dir die Frage anhand ihrer ID
