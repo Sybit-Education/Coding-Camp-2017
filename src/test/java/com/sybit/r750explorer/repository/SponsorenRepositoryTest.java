@@ -42,11 +42,7 @@ public class SponsorenRepositoryTest extends wiremockBaseTest {
     public void getSponsorenTest() {
     
         List<Sponsor> sponsorenList = null;
-        try {
-            sponsorenList = sponsorenRepository.getSponsoren();
-        } catch (AirtableException ex) {
-            Logger.getLogger(SponsorenRepositoryTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        sponsorenList = sponsorenRepository.getSponsoren();
         assertNotNull(sponsorenList);
         log.info(sponsorenList.get(0).getName());
     }
