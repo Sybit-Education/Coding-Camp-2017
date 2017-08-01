@@ -25,12 +25,12 @@ public class SponsorenRepository extends AirtableRepository {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
 
-    public List<Sponsor> getSponsoren() {
+    public List<Sponsor> getSponsoren() throws AirtableException {
 
         log.debug("--> getSponsoren");
 
         List<Sponsor> sponsorenList = new ArrayList<>();
-        Query activeQuery = getQueryWithFilter("Staus", "aktiv");
+        Query activeQuery = getQueryWithFilter("Status", "aktiv");
         
 
 

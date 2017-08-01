@@ -1,0 +1,23 @@
+{
+  "id" : "e27256d0-a970-3768-b1ad-b074175c0903",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Sponsoren?filterByFormula=%28%7BStatus%7D+%3D+%27aktiv%27%29",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Sponsoren-JQeiJ.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Tue, 01 Aug 2017 12:44:27 GMT",
+      "ETag" : "W/\"17c5-2EbM9wZTmt43/GftIoKaX1XUClc\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "e27256d0-a970-3768-b1ad-b074175c0903"
+}

@@ -12,10 +12,13 @@ package com.sybit.r750explorer.repository;
 
 
 
+import com.sybit.airtable.exception.AirtableException;
 import com.sybit.r750explorer.Application;
 import com.sybit.r750explorer.repository.tables.Sponsor;
 import com.sybit.r750explorer.wiremock.wiremockBaseTest;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,7 +41,12 @@ public class SponsorenRepositoryTest extends wiremockBaseTest {
     @Test
     public void getSponsorenTest() {
     
-        List<Sponsor> sponsorenList = sponsorenRepository.getSponsoren();
+        List<Sponsor> sponsorenList = null;
+        try {
+            sponsorenList = sponsorenRepository.getSponsoren();
+        } catch (AirtableException ex) {
+            Logger.getLogger(SponsorenRepositoryTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         assertNotNull(sponsorenList);
         log.info(sponsorenList.get(0).getName());
     }

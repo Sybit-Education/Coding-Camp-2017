@@ -14,9 +14,11 @@ import java.util.List;
  * @author fzr
  */
 public class Sponsor {
-    
+
     @SerializedName("Name")
     private String name;
+    @SerializedName("Status")
+    private String status;
     @SerializedName("Beschreibung")
     private String description;
     @SerializedName("Logo")
@@ -78,5 +80,19 @@ public class Sponsor {
      */
     public void setLink(String link) {
         this.link = link;
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
