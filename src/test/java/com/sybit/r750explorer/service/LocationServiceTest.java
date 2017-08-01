@@ -50,7 +50,6 @@ public class LocationServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
     @Test
     public void getLocationTest() {
 
@@ -99,7 +98,7 @@ public class LocationServiceTest {
 
     }
 
-    @Ignore
+
     @Test
     public void getLocationsTest() {
 
@@ -162,7 +161,6 @@ public class LocationServiceTest {
 
     }
 
-    @Ignore
     @Test
     public void getVisitedLocationsKeinSpielstand() {
 
@@ -179,7 +177,6 @@ public class LocationServiceTest {
 
     }
 
-    @Ignore
     @Test
     public void getVisitedLocationsOneLocation() {
 

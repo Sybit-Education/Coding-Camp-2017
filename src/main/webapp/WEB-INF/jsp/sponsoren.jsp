@@ -19,7 +19,7 @@
                 <p>
                     Wir danken unseren Sponsoren für Ihre Unterstützung mit 
                     Sachpreisen und Materialien für das Projekt:
-                </p>
+                </p>               
             </div>
 
             <c:forEach items="${sponsoren}" var="sponsor" varStatus="loop">
