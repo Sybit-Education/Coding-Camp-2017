@@ -138,7 +138,6 @@ public class ScoreService {
         highScore.setNickname( nickname );
         highScore.setEmail( email );
         highScore.setUuid( uuid );
-        //highScore.setDate( date ); Wird automatisch erzeugt
         highScore.setScore( getScoreOfSpielstand( uuid ) );
         
         if ( spielstandRepository.getHighscoreOfUUID( uuid ) == null )

@@ -56,26 +56,14 @@
             <div class="col-md-12 col-xs-12">
                 <center>
                     <!-- Eine Tabelle der Highscores -->
+                    ${message}</br></br>
 
                     <a href="<c:url value="/" />"><button type="button" class="btn btn-default">Location-Uebersicht</button></a>
                     <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
 
                 </center>
             </div>
-
-
-
-
-
-
-
-
-
         </div> 
-
-
-
-
         <c:import url="include/footer.jsp"/>
     </body>
 

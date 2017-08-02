@@ -12,6 +12,7 @@
 
         <!-- Teile dem User mit das er jetzt registriert wurde -->
         
+        
         <c:import url="include/footer.jsp"/>
     </body>
 
