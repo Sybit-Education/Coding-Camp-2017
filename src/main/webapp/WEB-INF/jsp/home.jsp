@@ -47,7 +47,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <p style="padding-top:10px">Viel Spa√ü beim Erforschen der Stadt Radolfzell.</p>
+                    <p style="padding-top:10px">Viel Spaﬂ beim Erforschen der Stadt Radolfzell.</p>
                 </div>
             </div>
 
