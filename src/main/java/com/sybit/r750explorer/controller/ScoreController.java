@@ -79,12 +79,13 @@ public class ScoreController {
         }
 
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
-        //Erstelle den Highscore.
+        //Erstelle den Highscore
         Highscore hs = scoreService.newHighscore(nickname, email, uuid);
         if (hs != null) {
             model.put("message", "Du hast dich registriert.");
         } else {
-            model.put("message", "<b>Fehler: Du hast dich bereits eingetragen.</b>");
+            model.put("message", "<b>Fehler: Du hast deinen Score geupdated.</b>");
+
             return "myscore";
         }
 
