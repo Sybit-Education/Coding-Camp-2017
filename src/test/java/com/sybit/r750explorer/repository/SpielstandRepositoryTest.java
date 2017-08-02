@@ -85,7 +85,7 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
 
         String uuid = "111111";
 
-        Highscore response = spielstandRepository.getHighscoreOfUUID(uuid);
+        List<Highscore> response = spielstandRepository.getHighscoreOfUUID(uuid);
         assertNotNull(response);
         
     }
