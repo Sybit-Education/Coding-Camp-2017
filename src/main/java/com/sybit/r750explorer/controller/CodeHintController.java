@@ -9,6 +9,7 @@ import com.sybit.r750explorer.exception.MailException;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
 import com.sybit.r750explorer.service.MailService;
+import com.sybit.r750explorer.service.ScoreService;
 import java.util.Map;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class CodeHintController {
     
     @Autowired
     private MailService mailService;
+    
+    @Autowired
+    private ScoreService scoreService;
     
     /**
      * Send a message for given location if code is missing or damaged.
@@ -53,7 +57,9 @@ public class CodeHintController {
         } catch (MailException ex) {
             log.error(ex.toString());
         }
-
+        
+        scoreService.newSpielstandEntry(uuid, location, uuid, uuid, Float.valueOf(5));
+        
         model.put("locationSlug", locationSlug);
         model.put("code", location.getCode());
         model.put("locationName", location.getName());
