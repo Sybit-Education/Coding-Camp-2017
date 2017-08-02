@@ -18,7 +18,7 @@
         
         <div class ="row">
             <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz"/>">
-                <div class="col-xs-12">
+                <div class="col-xs-12" style="height:50px;">
                     <div class="input-group">
                         <input type="text" class="form-control" name="code" size="6" maxlength="6" placeholder="Code eingeben"/>
                         <span class="input-group-btn">
@@ -31,13 +31,14 @@
         </div>
         
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12 text-center" style="height:50px;">
                 <a href="<c:url value="/location/${location.getSlug()}/code/hint"/>"><button type="button" class="btn btn-default btn-md">Hinweis zum Code</button></a>
             </div>
         </div>
     </div>
-
-
+ 
+    <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="50%" class="img-responsive center-block" alt="Code Sticker" class="img-thumbnail pull-right">
+ 
 
     <!-- Code Hinweis behandeln -->
 
