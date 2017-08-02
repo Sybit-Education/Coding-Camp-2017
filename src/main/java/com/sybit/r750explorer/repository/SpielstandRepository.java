@@ -15,9 +15,10 @@ import com.sybit.r750explorer.exception.HighscoreSyntaxException;
 import com.sybit.r750explorer.exception.SpielstandCreationException;
 import com.sybit.r750explorer.exception.SpielstandSyntaxException;
 import java.lang.reflect.InvocationTargetException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import javax.el.MethodNotFoundException;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
@@ -212,7 +213,6 @@ public class SpielstandRepository extends AirtableRepository {
         }
 
         log.debug("<-- deleteHighscore. Highscore ID: " + id + " of UUID: " + uuid + " deleted.");
-
     }
 
     /**
@@ -225,10 +225,24 @@ public class SpielstandRepository extends AirtableRepository {
 
         log.debug("--> getIdOfHighscore. UUID: " + uuid);
 
-        throw new MethodNotFoundException("Methode nicht imnplementiert");
-//        log.debug("<-- getIdOfHighscore. Retrieved Highscore");
-//
-//        return highscore.getId();
-    }
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
 
+        List<Highscore> highscores = getHighscoreOfUUID(uuid);
+
+        for (Highscore hs : highscores) {
+            String date = hs.getDate();
+            date = date.substring(0, 7);
+
+            if (formatdate.equalsIgnoreCase(date)) {
+                return hs.getId();
+            }
+        }
+
+        log.debug("<-- getIdOfHighscore. Retrieved Highscore");
+
+        return null;
+    }
 }

@@ -127,16 +127,19 @@ public class LocationServiceTest {
         List<Spielstand> spielstandList = new ArrayList<>();
 
         Spielstand sp1 = new Spielstand();
+        sp1.setDate("2017-08-02");
         List<String> locSP1 = new ArrayList<>();
         locSP1.add("id1");
         sp1.setLocationList(locSP1);
 
         Spielstand sp2 = new Spielstand();
+        sp2.setDate("2017-08-02");
         List<String> locSP2 = new ArrayList<>();
         locSP2.add("id2");
         sp2.setLocationList(locSP2);
 
         Spielstand sp3 = new Spielstand();
+        sp3.setDate("2017-08-02");
         List<String> locSP3 = new ArrayList<>();
         locSP3.add("id3");
         sp3.setLocationList(locSP3);
@@ -185,6 +188,7 @@ public class LocationServiceTest {
         List<Spielstand> spielstandList = new ArrayList<>();
 
         Spielstand sp1 = new Spielstand();
+        sp1.setDate("2017-08-02");
         List<String> locSP1 = new ArrayList<>();
         locSP1.add("id1");
         sp1.setLocationList(locSP1);

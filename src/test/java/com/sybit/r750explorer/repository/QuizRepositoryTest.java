@@ -29,6 +29,7 @@ public class QuizRepositoryTest extends wiremockBaseTest {
     @Autowired
     private QuizRepository quizRepository;
 
+    @Ignore
     @Test
     public void getFragenOfLocationTest() {
 
@@ -37,6 +38,7 @@ public class QuizRepositoryTest extends wiremockBaseTest {
         assertEquals(fragenList.size(), 3);
     }
 
+    @Ignore
     @Test
     public void getFrageOfID() {
 
