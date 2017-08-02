@@ -13,6 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by fzr on 11.05.17.
  */
@@ -154,13 +158,27 @@ public class ScoreService {
         highScore.setUuid( uuid );
         //highScore.setDate( date ); Wird automatisch erzeugt
         highScore.setScore( getScoreOfSpielstand( uuid ) );
+        List<Highscore> highscoreList=spielstandRepository.getHighscoreOfUUID(uuid);
+        List<String> dateList=null;
+        for (Highscore highscore : highscoreList) {
+            dateList.add(highscore.getDate());
+        }
         
-        if ( spielstandRepository.getHighscoreOfUUID( uuid ) == null )
+        String date=spielstandRepository.getHighscoreOfUUID( uuid ).getDate();
+        date.substring(0, 7);
+        LocalDateTime currentdate=LocalDateTime.now();
+        DateTimeFormatter df=DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate=currentdate.format(df);
+        formatdate.substring(0, 7);
+            
+        if ( spielstandRepository.getHighscoreOfUUID( uuid ) == null)
         {
             spielstandRepository.registerScore( highScore );
         }
-        else
-        {
+        else if (!formatdate.equals(date)){
+            spielstandRepository.registerScore( highScore );
+        }
+        else {
             
         }
         
