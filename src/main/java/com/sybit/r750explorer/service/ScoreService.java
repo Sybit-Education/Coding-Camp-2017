@@ -132,12 +132,29 @@ public class ScoreService {
      * @param uuid
      * @return boolean
      */
-    public boolean checkIfPlayerExists(String uuid) {
-
+    public boolean checkIfPlayerExists( String uuid )
+    {
         log.debug("--> checkIfPlayerExists. UUID: " + uuid);
         //wenn UUID bereits einen Highscore eingetragen hat, false übergeben werden
-        throw new MethodNotFoundException("Methode nicht implementiert");
-
+        // Datum überprüfen
+            
+        LocalDateTime currentdate = LocalDateTime.now(  );
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format( df );
+            
+        for ( Highscore hs : spielstandRepository.getHighscoreOfUUID( uuid ) )
+        {
+            String date = hs.getDate(  );
+            date.substring( 0, 7 );
+            formatdate.substring( 0, 7 );
+                
+            if ( date.equalsIgnoreCase( formatdate ) )
+            {
+                return true;
+            }
+        }
+            
+        return false;
     }
 
     /**
