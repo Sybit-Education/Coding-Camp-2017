@@ -18,11 +18,12 @@
             <!-- Eingabe für den Code -->
 
 
-            <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz" />">
+            <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz"/>">
+                <input type="hidden" name="hint" value="false" />
                 <input type="text" name="code" />
                 <input  type="submit" value="code" />
             </form>
-            
+            <a href="<c:url value="/location/${location.getSlug()}/code/hint"/>"><button type="button" class="btn btn-default btn-xs">Hinweis zum Code</button></a>
 
             <!-- Code Hinweis behandeln -->
 
