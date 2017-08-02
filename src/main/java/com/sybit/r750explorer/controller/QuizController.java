@@ -146,7 +146,7 @@ public class QuizController {
 //                    log.error(ex.toString());
 //                }
 
-                scoreService.newSpielstandEntry(uuid, loc, null, "Hinweis", Float.valueOf(5));
+                scoreService.newSpielstandEntry(uuid, null, null, "Hinweis", Float.valueOf(5));
             }
 
             log.debug("Code war korrekt! :D");
@@ -194,10 +194,10 @@ public class QuizController {
 
         log.debug("--> QuizCheck");
 
-//        if (!(boolean) model.get("check")) {
-//            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
-//            return "redirect:" + "/";
-//        }
+        if (!(boolean) model.get("check")) {
+            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
+            return "redirect:" + "/";
+        }
 
         // TODO: Prüfen, ob die originale Lösung mit der eingegebenen Lösung übereinstimmt, Punkte vergeben und eine Rückmeldung an model übergeben
         Fragen frage = quizService.getFrageOfID(fragenID);
