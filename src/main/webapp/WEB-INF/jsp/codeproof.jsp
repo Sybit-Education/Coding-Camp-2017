@@ -13,31 +13,46 @@
 
     <div class="container">          
         <div class="page-header">
-            <h1>${location.getName()}</h1>
-        </div>
-        
-        <div class ="row">
-            <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz"/>">
-                <div class="col-xs-12" style="height:50px;">
+            <h1>${location.getName()}: Code prüfen</h1>
+
+            <div class ="row">
+
+                <div class="col-xs-12">
+                    <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz"/>">
                     <div class="input-group">
                         <input type="text" class="form-control" name="code" size="6" maxlength="6" placeholder="Code eingeben"/>
                         <span class="input-group-btn">
-                            <input  type="submit" class="btn btn-default btn-md" value="Code prüfen" />
+                            <input  type="submit" class="btn btn-default btn-md" value="prüfen" />
                         </span>
-                    </div><!-- /input-group -->
-                       
+                    </div><!-- /input-group -->      
+                    </form>
                 </div>
-            </form>
+            </div>
+        </div>
+        
+
+        <div class ="row">
+            <div class="col-xs-6">
+                Finde den Sticker und gib den sechsstelligen Code ein!
+            </div>
+            <div class="col-xs-6">
+                <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" class="img-thumbnail pull-right" alt="Code Sticker" />
+            </div> 
+ 
         </div>
         
         <div class="row">
-            <div class="col-lg-12 text-center" style="height:50px;">
+            <div class="col-xs-12"><h3>Sticker unauffindbar</h3></div>
+            <div class="col-xs-12">
+                Sticker mit dem Code nicht gefunden? Für <b>5&nbsp;Punkte Abzug</b> kannst du einen Hinweis bekommen:<br/>
+            </div>
+            <div class="col-xs-12 text-center">
+                
                 <a href="<c:url value="/location/${location.getSlug()}/code/hint"/>"><button type="button" class="btn btn-default btn-md">Hinweis zum Code</button></a>
             </div>
         </div>
     </div>
  
-    <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="50%" class="img-responsive center-block" alt="Code Sticker" class="img-thumbnail pull-right">
  
 
     <!-- Code Hinweis behandeln -->
