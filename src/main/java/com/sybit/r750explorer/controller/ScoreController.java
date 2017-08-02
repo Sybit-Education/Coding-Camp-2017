@@ -66,10 +66,13 @@ public class ScoreController {
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
+    public String register(@RequestParam String vorname, @RequestParam String nachname, @RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
 
         log.debug( "--> Registering... UUID: " + uuid );
-
+        
+        
+        
+                
         // Überprüfung der EMail
         Pattern pattern = Pattern.compile( EMAIL_PATTERN );
         Matcher matcher = pattern.matcher( email );
@@ -88,7 +91,7 @@ public class ScoreController {
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
         
-        Highscore hs = scoreService.newHighscore(nickname, email, uuid);
+        Highscore hs = scoreService.newHighscore(vorname, nachname, nickname, email, uuid);
         if ( hs != null )
         {
             model.put( "message", "Du hast dich registriert." );

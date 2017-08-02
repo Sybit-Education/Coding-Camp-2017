@@ -24,7 +24,10 @@ public class Highscore {
     private String date;
     @SerializedName("UUID")
     private String uuid;
-
+    @SerializedName("Vorname")
+    private String vorname;
+    @SerializedName("Nachname")
+    private String nachname;
     /**
      * @return the nickname
      */
@@ -107,6 +110,22 @@ public class Highscore {
      */
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+    
+    public String getNachname() {
+        return nachname;
+    }
+
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
     }
     
     
