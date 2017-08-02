@@ -265,7 +265,7 @@ public class ScoreServiceTest {
 
     
     @Test
-    public void hintRequestedUnder5() {
+    public void hintRequested0() {
         String testUUID = "1234";
         List<Spielstand> entrys = new ArrayList<>();
         Spielstand sp1 = new Spielstand();
@@ -283,5 +283,30 @@ public class ScoreServiceTest {
         Float response = scoreService.hintRequested("1234");
         assertEquals(Float.valueOf(0), response);
 
+    }
+    
+    @Test
+    public void hintBetween1and4(){
+
+        String testUUID = "1234";
+        List<Spielstand> entrys = new ArrayList<>();
+        Spielstand sp1 = new Spielstand();
+        sp1.setScore("10");
+        Spielstand sp2 = new Spielstand();
+        sp2.setScore("-5");
+        Spielstand sp3 = new Spielstand();
+        sp3.setScore("1");
+        Spielstand sp4 = new Spielstand();
+        sp4.setScore("-5");
+        
+        entrys.add(sp1);
+        entrys.add(sp2);
+        entrys.add(sp3);
+        entrys.add(sp4);
+        
+        Mockito.when(spielstandRepository.getEntrysOfUUID("1234")).thenReturn(entrys);
+        //Mockito.when(scoreService.getScoreOfSpielstand("1234")).thenReturn(Float.valueOf("0"));
+        Float response = scoreService.hintRequested("1234");
+        assertEquals(Float.valueOf(-1), response);
     }
 }
