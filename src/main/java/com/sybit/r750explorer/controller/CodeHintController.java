@@ -13,6 +13,7 @@ import com.sybit.r750explorer.service.ScoreService;
 import java.util.Map;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Controller for the Code Hints.
  * 
  */
+@Controller
+@RequestMapping("/location/{slug}")
 public class CodeHintController {
         
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
@@ -45,7 +48,7 @@ public class CodeHintController {
      * 
      * @return "code-hint". 
      */
-    @RequestMapping(value = "{slug}/code/hint/message")
+    @RequestMapping(value = "/code/hint/message")
     public String sendMessage(@CookieValue("UUID") String uuid, @PathVariable("slug") String locationSlug, Map<String, Object> model) {
 
         log.debug("--> sendMessage: Location Slug: " + locationSlug + ". UUID: " + uuid);

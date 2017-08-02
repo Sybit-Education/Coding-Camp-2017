@@ -107,16 +107,16 @@ public class QuizController {
         }
 
         // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
-        if (code.equals(locationService.getLocation(slug).getCode())&& frage != null) {
+        if (code.equals(locationService.getLocation(slug).getCode()) && frage != null) {
             model.put("location", locationService.getLocation(slug));
             model.put("Frage", frage);
             return "quiz";
-        } 
-            model.put("location", locationService.getLocation(slug));
-            model.put("codeCheck", false);
-            log.debug("Code war nicht korrekt!");
+        }
+        model.put("location", locationService.getLocation(slug));
+        model.put("codeCheck", false);
+        log.debug("Code war nicht korrekt!");
 
-            return "codeproof";
+        return "codeproof";
     }
 
     @RequestMapping(value = "/quiz")
@@ -200,5 +200,4 @@ public class QuizController {
         return "quiz-check";
     }
 
-  
 }
