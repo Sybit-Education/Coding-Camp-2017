@@ -66,5 +66,34 @@ public class CodeHintController {
         model.put("hint", location.getCodeHinweis());    
 
         return "code-hint";
-    }   
+    } 
+    
+      /**
+     * Code Hint Page
+     *
+     * Method to reduce current score of user for using a hint
+     *
+     * @param scoreCookie Cookie-ID of the user
+     * @param slug URL-Part of Location
+     * @param model Model to add data to web page
+     * @return
+     */
+    @RequestMapping(value = "/code/hint")
+    public String codeHint(@CookieValue("UUID") String scoreCookie, @PathVariable("slug") String slug, Map<String, Object> model) {
+
+        log.debug("--> CodeHint");
+
+        Location location = locationService.getLocation(slug);
+        log.info("Hinweis für LocationSlug: " + location.getName() + " wurde aufgerufen!");
+        scoreService.newSpielstandEntry(scoreCookie, null, null, "Hinweis", scoreService.hintRequested(scoreCookie));
+
+        // TODO: Einen neuen Spielstand speichern (Punkte abziehen) und Informationen an model übergeben
+        
+        model.put("locationSlug",slug );
+        model.put("code", location.getCode());
+        model.put("locationName", location.getName());
+        model.put("hint", location.getCodeHinweis());
+        return "code-hint";
+    }
+
 }

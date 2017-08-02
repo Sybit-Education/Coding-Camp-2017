@@ -25,19 +25,19 @@
             
             <div>
                 <p> Code gefunden?</p>
-                <a href="<c:url value="/location/${locationSlug}/code"/>">
-                <button  type="submit" class="btn btn-default">Code eingeben!</button>
-                
-                <p>Der Code wurde nicht gefunden oder ist nicht mehr vorhanden.</p>
-                <form acction="<c:url value="/location/${locationSlug}/code/check"/>" method="POST">
-                    <input type="hidden" class="form-control" id="code" value="${code}">
+                <a href="<c:url value="/location/${locationSlug}/code"/>"><button  type="button" class="btn btn-default">Code eingeben!</button></a>
+                    
+              <!-- TODO: Formular auf "/location/${locationSlug}/code/check" abschicken, falls kein code vorhanden/gefunden -->     
+                <p>Der Code wurde nicht gefunden oder ist nicht mehr vorhanden. ${code}</p>
+                <form action="<c:url value= "/location/${locationSlug}/quiz"/>" method="POST">
+                    <input type="hidden" class="form-control" id="code" value="${code}" name="code">
                     <button type="submit" class="btn btn-default">Weiter zum Quiz</button>
                 </form>             
                         
             </div>
             
                 
-            <!-- TODO: Formular auf "/location/${locationSlug}/code/check" abschicken, falls kein code vorhanden/gefunden -->
+         
         
             <!-- TODO: Modal zum Senden einer Nachricht anzeigen lassen, falls code nicht lesbar -->
 
