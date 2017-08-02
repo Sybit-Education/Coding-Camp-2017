@@ -3,9 +3,11 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.exception.MailException;
 import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
+import com.sybit.r750explorer.service.MailService;
 import com.sybit.r750explorer.service.QuizService;
 import com.sybit.r750explorer.service.ScoreService;
 import org.slf4j.LoggerFactory;
@@ -31,6 +33,9 @@ public class QuizController {
 
     @Autowired
     private ScoreService scoreService;
+
+    @Autowired
+    private MailService mailService;
 
     @ModelAttribute("check")
     public boolean checkLocation(@CookieValue("UUID") String uuid, @PathVariable("slug") String slug) {
@@ -120,7 +125,7 @@ public class QuizController {
     }
 
     @RequestMapping(value = "/quiz")
-    public String quiz(@RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
+    public String quiz(@CookieValue("UUID") String uuid, @RequestParam boolean hint, @RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
 
         log.debug("--> CodePage");
 
@@ -133,6 +138,17 @@ public class QuizController {
 
         Fragen frage = null;
         if (code.equalsIgnoreCase(locationService.getLocation(slug).getCode())) {
+
+            if (hint) {
+//                try {
+//                    mailService.sendMessage(loc.getName() + ": " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!", uuid);
+//                } catch (MailException ex) {
+//                    log.error(ex.toString());
+//                }
+
+                scoreService.newSpielstandEntry(uuid, loc, null, "Hinweis", Float.valueOf(5));
+            }
+
             log.debug("Code war korrekt! :D");
             try {
                 frage = quizService.getFrageOfLocation(slug);
@@ -178,10 +194,10 @@ public class QuizController {
 
         log.debug("--> QuizCheck");
 
-        if (!(boolean) model.get("check")) {
-            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
-            return "redirect:" + "/";
-        }
+//        if (!(boolean) model.get("check")) {
+//            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
+//            return "redirect:" + "/";
+//        }
 
         // TODO: Prüfen, ob die originale Lösung mit der eingegebenen Lösung übereinstimmt, Punkte vergeben und eine Rückmeldung an model übergeben
         Fragen frage = quizService.getFrageOfID(fragenID);

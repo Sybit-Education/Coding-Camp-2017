@@ -19,6 +19,7 @@
 
 
             <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz"/>">
+                <input type="hidden" name="hint" value="false" />
                 <input type="text" name="code" />
                 <input  type="submit" value="code" />
             </form>
