@@ -24,15 +24,15 @@
                <div class="row">
                     <p class="col-xs-12">${locationDescription}</p>                        
                     <c:if test="${QuizAnswered==false}">
-                        <div class="text-center">
+                        <div class="col-xs-12 text-center">
                             <a href="<c:url value="/location/${locationSlug}/code"/>">
                                 <button typ="button" class="btn btn-default">Quiz starten ...</button>
                             </a>
                         </div>
                     </c:if>                   
                     <c:if test="${QuizAnswered==true}">
-                        <div class="alert alert-info">
-                            <strong></strong> Dieses Quiz wurde schon absolviert!
+                        <div class="col-xs-12 alert alert-info">
+                            <strong>Du hast an diesem Ort schon eine Frage beantwortet.</strong>
                         </div>
                     </c:if>                    
                 </div>        
