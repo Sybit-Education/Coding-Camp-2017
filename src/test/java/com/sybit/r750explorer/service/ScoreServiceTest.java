@@ -241,17 +241,17 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
+    
     @Test
-    public void hintRequestedOver50() {
+    public void hintRequestedOver5() {
         String testUUID = "1234";
         List<Spielstand> entrys = new ArrayList<>();
         Spielstand sp1 = new Spielstand();
-        sp1.setScore("100");
+        sp1.setScore("10");
         Spielstand sp2 = new Spielstand();
-        sp2.setScore("100");
+        sp2.setScore("10");
         Spielstand sp3 = new Spielstand();
-        sp3.setScore("100");
+        sp3.setScore("10");
         entrys.add(sp1);
         entrys.add(sp2);
         entrys.add(sp3);
@@ -259,21 +259,21 @@ public class ScoreServiceTest {
         Mockito.when(spielstandRepository.getEntrysOfUUID("1234")).thenReturn(entrys);
         //Mockito.when(scoreService.getScoreOfSpielstand("1234")).thenReturn(Float.valueOf(100));
         Float response = scoreService.hintRequested("1234");
-        assertEquals(Float.valueOf(-50), response);
+        assertEquals(Float.valueOf(-5), response);
 
     }
 
-    @Ignore
+    
     @Test
-    public void hintRequestedUnder50() {
+    public void hintRequestedUnder5() {
         String testUUID = "1234";
         List<Spielstand> entrys = new ArrayList<>();
         Spielstand sp1 = new Spielstand();
-        sp1.setScore("100");
+        sp1.setScore("10");
         Spielstand sp2 = new Spielstand();
-        sp2.setScore("-50");
+        sp2.setScore("-5");
         Spielstand sp3 = new Spielstand();
-        sp3.setScore("-50");
+        sp3.setScore("-5");
         entrys.add(sp1);
         entrys.add(sp2);
         entrys.add(sp3);
