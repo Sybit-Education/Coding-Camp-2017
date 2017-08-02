@@ -6,16 +6,12 @@
 package com.sybit.r750explorer.service;
 
 import com.sybit.airtable.vo.Attachment;
-import com.sybit.r750explorer.repository.LocationRepository;
-import com.sybit.r750explorer.repository.tables.Medien;
-import com.sybit.r750explorer.repository.MedienRepository;
 import com.sybit.r750explorer.repository.SponsorenRepository;
 import com.sybit.r750explorer.repository.tables.Sponsor;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -42,11 +38,10 @@ public class SponsorenServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
     @Test
     public void getSponsorenListTest() {
 
-        List<Sponsor> testList = new ArrayList<Sponsor>();
+        List<Sponsor> testList = new ArrayList<>();
 
         Sponsor sp1 = new Sponsor();
         sp1.setName("Sponsor 1");

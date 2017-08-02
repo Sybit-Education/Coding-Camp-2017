@@ -42,7 +42,7 @@ public class LocationRepository extends AirtableRepository {
 
             locationList = getAirtableBase().table("Location", Location.class).select(activeQuery);
         } catch (AirtableException e) {
-            log.error("Error with Airtable: " + e);
+            log.error(e.getMessage(), e);
             throw new LocationSyntaxException("Error could not retrieve LocationList");
         }
 
@@ -65,7 +65,7 @@ public class LocationRepository extends AirtableRepository {
         try {
             location = (Location) getAirtableBase().table("Location", Location.class).find(id);
         } catch (AirtableException e) {
-            log.error("Error with Airtable: " + e);
+            log.error(e.getMessage(), e);
             throw new LocationSyntaxException("Error could not Retrieve Location of ID:" + id);
         }
 
@@ -135,7 +135,7 @@ public class LocationRepository extends AirtableRepository {
             }
 
         } catch (AirtableException | LocationException e) {
-            log.error("Error with Airtable: " + e);
+            log.error(e.getMessage(), e);
             throw new LocationSyntaxException("Error. Could not retrieve Location for Slug: " + slug);
         }
 
@@ -174,7 +174,7 @@ public class LocationRepository extends AirtableRepository {
             }
 
         } catch (AirtableException | LocationException e) {
-            log.error("Error with Airtable: " + e);
+            log.error(e.getMessage(), e);
             throw new LocationSyntaxException("Error. Coould not get Location Name for Slug: " + slug);
         }
 
