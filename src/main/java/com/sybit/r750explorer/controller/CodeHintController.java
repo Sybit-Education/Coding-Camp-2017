@@ -96,6 +96,9 @@ public class CodeHintController {
         model.put("code", location.getCode());
         model.put("locationName", location.getName());
         model.put("hint", location.getCodeHinweis());
+        model.put("Hinfoto", location.getCodeHintPhoto());
+        model.put("HinText", location.getCodeHinweis());
+       
         return "code-hint";
     }
 

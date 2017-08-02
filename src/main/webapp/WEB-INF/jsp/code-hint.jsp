@@ -22,6 +22,19 @@
             <h1>Code Hinweis.</h1>
             <h2>${locationName}</h2>
             </div>
+              <p>${HinText}</p>
+            <c:forEach items="${Hinfoto}" var="Foto" varStatus="loop">
+        
+                        <a  class="col-xs-6 col-md-4">
+                            <div class="panel panel-default bootcards-media" >
+                                <img src="${Foto.url}" class="img-responsive cards"/>
+                               
+                            </div>
+            </a>
+
+                   
+                </c:forEach>
+          
             
             <div>
                 <p> Code gefunden?</p>
