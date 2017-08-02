@@ -20,6 +20,7 @@
                 <div class="col-xs-12">
                     <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz"/>">
                     <div class="input-group">
+                        <input type="hidden" name="hint" value="false" />
                         <input type="text" class="form-control" name="code" size="6" maxlength="6" placeholder="Code eingeben"/>
                         <span class="input-group-btn">
                             <input  type="submit" class="btn btn-default btn-md" value="prüfen" />

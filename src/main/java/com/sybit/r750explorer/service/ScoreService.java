@@ -210,8 +210,10 @@ public class ScoreService {
         Float score = this.getScoreOfSpielstand(uuid);
         if (score >= Float.valueOf(5)) {
             score = Float.valueOf(-5);
-        } else {
+        } else if (score == Float.valueOf(0)) {
             score = Float.valueOf(0);
+        } else {
+            score = Float.valueOf(-score);
         }
         return score;
     }
