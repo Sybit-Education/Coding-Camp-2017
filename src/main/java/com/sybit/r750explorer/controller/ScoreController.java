@@ -29,7 +29,7 @@ public class ScoreController {
     private static final String EMAIL_PATTERN
             = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-    
+
     public static final String NICKNAME_PATTERN
             = "^[a-z0-9_-]{4,16}$";
 
@@ -72,8 +72,7 @@ public class ScoreController {
         // Überprüfung des Namens
         Pattern pattern = Pattern.compile(NICKNAME_PATTERN);
         Matcher matcher = pattern.matcher(nickname);
-        if (matcher.matches()) 
-        {
+        if (matcher.matches()) {
             model.put("message", "Bitte wähle einen Nickname von einer Länge zwischen 4 und 16 Zeichen.");
             return "myscore";
         }
@@ -81,6 +80,7 @@ public class ScoreController {
         // Überprüfung der EMail
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(email);
+
         if (matcher.matches()) {
             log.debug("<-- register(): EMail ist im richtigen Format");
             model.put("nickname", nickname);
@@ -96,7 +96,9 @@ public class ScoreController {
         if (hs != null) {
             model.put("message", "Du hast dich registriert.");
         } else {
-            model.put("message", "<b>Fehler: Du hast dich bereits eingetragen.</b>");
+
+            model.put("message", "<b>Fehler: Du hast deinen Score geupdated.</b>");
+
             return "myscore";
         }
 

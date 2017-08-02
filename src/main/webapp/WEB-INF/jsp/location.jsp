@@ -12,26 +12,30 @@
 
 
     <body locationSlug="${locationSlug}"> 
-        <div class="container-fluid">
-            <img src="${locationFoto}" alt="${locationName}" class="img-responsive img-rounded"/>
-        </div>
 
         <div class="container">          
             <div class="page-header">
-                <h1>${locationName}</h1>
-                <p>${locationDescription}</p>                        
-                <c:if test="${QuizAnswered==false}">
-                    <div class="text-center">
-                        <a href="<c:url value="/location/${locationSlug}/code"/>">
-                            <button typ="button" class="btn btn-default">Quiz starten ...</button>
-                        </a>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <img src="${locationFoto}" alt="${locationName}" class="img-responsive" />
+                        <h1 class="locationTitle">${locationName}</h1>
                     </div>
-                </c:if>    
-                <c:if test="${QuizAnswered==true}">
-                    <div class="alert alert-info">
-                        <strong></strong> Dieses Quiz wurde schon absolviert!
-                    </div>
-                </c:if>
+               </div>
+               <div class="row">
+                    <p class="col-xs-12">${locationDescription}</p>                        
+                    <c:if test="${QuizAnswered==false}">
+                        <div class="col-xs-12 text-center">
+                            <a href="<c:url value="/location/${locationSlug}/code"/>">
+                                <button typ="button" class="btn btn-default">Quiz starten ...</button>
+                            </a>
+                        </div>
+                    </c:if>                   
+                    <c:if test="${QuizAnswered==true}">
+                        <div class="col-xs-12 alert alert-info">
+                            <strong>Du hast an diesem Ort schon eine Frage beantwortet.</strong>
+                        </div>
+                    </c:if>                    
+                </div>        
             </div>            
 
 

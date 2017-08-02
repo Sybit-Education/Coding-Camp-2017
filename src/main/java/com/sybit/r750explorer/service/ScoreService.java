@@ -179,6 +179,11 @@ public class ScoreService {
         if (!checkIfPlayerExists(uuid)) {
             result = spielstandRepository.registerScore(highScore);
         }
+        else
+        {
+            removeHighscore(uuid);
+            result = spielstandRepository.registerScore(highScore);
+        }
 
         //Informationen zum Abspeichern des Highscores
         //Den Score registrieren
@@ -196,10 +201,9 @@ public class ScoreService {
         log.debug("--> removeHighscore. UUID: " + uuid);
 
         //Spielstand Löschen über spielstandRepository
-        throw new MethodNotFoundException("Methode nicht implementiert");
-
-    } ////////////////////////////// TTTTTTTOOOOOOOOOOOOOODDDDDDDDDDDDDDOOOOOOOOOOOOOOOOOOOO: Außeinandersetzung mit Flo/Erik
-
+        spielstandRepository.deleteHighscore( uuid );
+    }
+    
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float
