@@ -11,6 +11,7 @@
     <body>
 
         <!-- Teile dem User mit das er jetzt registriert wurde -->
+        ${message}
         
         <c:import url="include/footer.jsp"/>
     </body>

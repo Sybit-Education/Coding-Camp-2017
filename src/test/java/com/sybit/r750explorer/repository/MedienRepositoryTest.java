@@ -25,7 +25,6 @@ public class MedienRepositoryTest extends wiremockBaseTest {
     @Autowired
     private MedienRepository medienRepository;
 
-    @Ignore
     @Test
     public void getMedienOfLocationNameTest() {
 

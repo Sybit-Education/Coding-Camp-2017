@@ -8,9 +8,14 @@ import com.sybit.r750explorer.repository.SpielstandRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.el.MethodNotFoundException;
+import javax.swing.text.html.parser.DTDConstants;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by fzr on 11.05.17.
@@ -126,12 +131,30 @@ public class ScoreService {
      * @param uuid
      * @return boolean
      */
-    public boolean checkIfPlayerExists(String uuid) {
-
+    public boolean checkIfPlayerExists( String uuid )
+    {
         log.debug("--> checkIfPlayerExists. UUID: " + uuid);
         //wenn UUID bereits einen Highscore eingetragen hat, false übergeben werden
-        throw new MethodNotFoundException("Methode nicht implementiert");
-
+        // Datum überprüfen
+            
+        LocalDateTime currentdate = LocalDateTime.now(  );
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format( df );
+        formatdate = formatdate.substring( 0, 7 );
+        
+        
+        for ( Highscore hs : spielstandRepository.getHighscoreOfUUID( uuid ) )
+        {
+            String date = hs.getDate(  );
+            date = date.substring( 0, 7 );
+                
+            if ( date.equalsIgnoreCase( formatdate ) )
+            {
+                return true;
+            }
+        }
+            
+        return false;
     }
 
     /**
@@ -143,13 +166,29 @@ public class ScoreService {
      * @return the created Highscore
      */
     public Highscore newHighscore(String nickname, String email, String uuid) {
-
         log.debug("--> newHighscore. UUID: " + uuid);
 
-        //Erstelle einen neuen Highscore
+        Highscore highScore = new Highscore();
+        highScore.setNickname(nickname);
+        highScore.setEmail(email);
+        highScore.setUuid(uuid);
+        highScore.setScore(getScoreOfSpielstand(uuid));
+
+        Highscore result = null;
+
+        if (!checkIfPlayerExists(uuid)) {
+            result = spielstandRepository.registerScore(highScore);
+        }
+        else
+        {
+            removeHighscore(uuid);
+            result = spielstandRepository.registerScore(highScore);
+        }
+
         //Informationen zum Abspeichern des Highscores
         //Den Score registrieren
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        return result;
+
     }
 
     /**
@@ -162,10 +201,9 @@ public class ScoreService {
         log.debug("--> removeHighscore. UUID: " + uuid);
 
         //Spielstand Löschen über spielstandRepository
-        throw new MethodNotFoundException("Methode nicht implementiert");
-
+        spielstandRepository.deleteHighscore( uuid );
     }
-
+    
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float

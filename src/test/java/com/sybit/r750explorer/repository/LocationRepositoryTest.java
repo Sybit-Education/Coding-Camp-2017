@@ -28,7 +28,6 @@ public class LocationRepositoryTest extends wiremockBaseTest {
     private LocationRepository locationRepository;
 
 
-    @Ignore
     @Test
     public void getLocationOfSlugTest() {
 
@@ -38,7 +37,6 @@ public class LocationRepositoryTest extends wiremockBaseTest {
 
     }
     
-    @Ignore
     @Test
     public void getLocationListTest(){
         
@@ -46,7 +44,6 @@ public class LocationRepositoryTest extends wiremockBaseTest {
         assertNotNull(locationList);
     }
     
-    @Ignore
     @Test 
     public void getLocationTest(){
         
@@ -54,7 +51,6 @@ public class LocationRepositoryTest extends wiremockBaseTest {
         assertNotNull(location);
     }
     
-    @Ignore
     @Test
     public void getLocationNameOfSlug(){
         

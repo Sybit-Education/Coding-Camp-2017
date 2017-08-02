@@ -97,7 +97,10 @@ function createMarkers(allLocations, markers, infoWindows) {
 
             contentStringInfoWindow =
                     '<div id="content">' +
-                    '<a href=' + '/location/' + allLocations[i]["Slug"] + '><img src=' + '' + allLocations[i]["Foto"][0].url + ' class="img-responsive" width="100%" /><div class="locationName"><b>' + allLocations[i].Name + '</b></div></a>' +    
+                    '<a href=' + contextPath + '/location/' + allLocations[i]["Slug"] + '>\n\
+                        <img src=' + '' + allLocations[i]["Foto"][0].url + ' class="img-responsive" width="100%" />\n\
+                        <div class="locationName"><b>' + allLocations[i].Name + '</b></div>\n\
+                    </a>' +    
                     '</div>';
 
 
@@ -107,7 +110,7 @@ function createMarkers(allLocations, markers, infoWindows) {
                         map: map,
                         icon: getIcon(allLocations[i]),
                         title: allLocations[i].Name,
-                        url: '/location/' + allLocations[i]["Slug"]
+                        url: contextPath + '/location/' + allLocations[i]["Slug"]
                     })
                     );
 

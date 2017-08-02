@@ -3,11 +3,14 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.repository.tables.Highscore;
 import com.sybit.r750explorer.service.ScoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -22,12 +25,17 @@ public class ScoreController {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
 
+    // Regular Expression für eMail Validation
+    private static final String EMAIL_PATTERN
+            = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
     @Autowired
     ScoreService scoreService;
 
     /**
-     * Score Page
-     ** Hier soll der Score des Users sowie eine Liste mit den besten Highscores angezeigt werden
+     * Score Page * Hier soll der Score des Users sowie eine Liste mit den
+     * besten Highscores angezeigt werden
      *
      * @param uuid Cookie-UUID des Users
      * @param model Daten-Model für die Web-site
@@ -40,16 +48,12 @@ public class ScoreController {
         //Hole dir den Score des Users(UUID)
 
         //Hole dir alle Highscores
-
         //Vergiss nicht die Sachen dem Model zu übergeben
-
-
         return "myscore";
     }
 
     /**
-     * Registration Page
-     ** Der User möchte sich registrieren. Hierfür
+     * Registration Page * Der User möchte sich registrieren. Hierfür
      *
      * @param nickname Der Nickname den der user haben möchte
      * @param email Die E-Mail des Users
@@ -62,21 +66,38 @@ public class ScoreController {
 
         log.debug("--> Registering... UUID: " + uuid);
 
+        // Überprüfung der EMail
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        if (matcher.matches()) {
+            log.debug("<-- register(): EMail ist im richtigen Format");
+            model.put("nickname", nickname);
+        } else {
+            log.debug("<-- register(): EMail ist nicht im richtigen Format");
+            model.put("message", "<b>Fehler: Deine eMail-Addresse ist nicht richtig.</b>");
+            return "myscore";
+        }
+
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
-        //Erstelle den Highscore.
-        
+        //Erstelle den Highscore
+        Highscore hs = scoreService.newHighscore(nickname, email, uuid);
+        if (hs != null) {
+            model.put("message", "Du hast dich registriert.");
+        } else {
+            model.put("message", "<b>Fehler: Du hast deinen Score geupdated.</b>");
 
-        model.put("nickname", nickname);
+            return "myscore";
+        }
 
-        return "registration";
-
+        return "myscore";
     }
 
     /**
-     * Der Score auf der Nav-Bar
-     ** Damit auf der Navbar immer der aktuelle Score angezeigt wird müssen wir diesen abfragen.
+     * Der Score auf der Nav-Bar * Damit auf der Navbar immer der aktuelle Score
+     * angezeigt wird müssen wir diesen abfragen.
+     *
      * @param uuid
-     * @return 
+     * @return
      */
     @ResponseBody
     @RequestMapping(value = "/score/{uuid}", method = RequestMethod.GET)
@@ -86,10 +107,9 @@ public class ScoreController {
 
         //Der Score des User mithilfe der UUID abfragen.
         Float score = scoreService.getScoreOfSpielstand(uuid);
-        
+
         log.debug("<-- getScore: " + score);
 
         return String.valueOf(Math.round(score));
     }
-
 }
