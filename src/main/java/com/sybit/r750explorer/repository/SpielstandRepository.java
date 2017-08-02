@@ -17,6 +17,7 @@ import com.sybit.r750explorer.exception.SpielstandSyntaxException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.el.MethodNotFoundException;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
@@ -98,7 +99,6 @@ public class SpielstandRepository extends AirtableRepository {
             log.error("Error with Airtable: " + e);
             throw new HighscoreCreationException("Error creating Highscore of UUID: " + highscore.getUuid());
 
-
         }
 
         log.debug("<--registerScore. Highscore Registered in Airtable.");
@@ -168,12 +168,12 @@ public class SpielstandRepository extends AirtableRepository {
      * @param uuid
      * @return Highscore Object
      */
-    public Highscore getHighscoreOfUUID(String uuid) {
+    public List<Highscore> getHighscoreOfUUID(String uuid) {
 
         log.debug("--> getHighscoreOfUUID. UUID: " + uuid);
 
         Query uuidquery = getQueryWithFilter("UUID", uuid);
-        List<Highscore> response;
+        List<Highscore> response = new ArrayList<>();
 
         try {
             response = getAirtableBase().table("Highscore", Highscore.class).select(uuidquery);
@@ -185,14 +185,10 @@ public class SpielstandRepository extends AirtableRepository {
         if (response.isEmpty()) {
             String msg = "No Highscore of UUID: " + uuid + " found.";
             log.warn(msg);
-            return null;
-        } else if (response.size() > 1) {
-            String msg = "More than one Entry in Highscore found!";
-            log.error(msg);
-            throw new HighscoreSyntaxException(msg);
+            return response;
         } else {
             log.debug("<-- getHighscoreOfUUID. Retrieved Highscore of UUID: " + uuid);
-            return response.get(0);
+            return response;
         }
 
     }
@@ -229,10 +225,10 @@ public class SpielstandRepository extends AirtableRepository {
 
         log.debug("--> getIdOfHighscore. UUID: " + uuid);
 
-        Highscore highscore = getHighscoreOfUUID(uuid);
-        log.debug("<-- getIdOfHighscore. Retrieved Highscore");
-
-        return highscore.getId();
+        throw new MethodNotFoundException("Methode nicht imnplementiert");
+//        log.debug("<-- getIdOfHighscore. Retrieved Highscore");
+//
+//        return highscore.getId();
     }
 
 }

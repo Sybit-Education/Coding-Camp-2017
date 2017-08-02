@@ -54,7 +54,7 @@ public class ScoreServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
+    
     @Test
     public void newSpielstandEntryTest() {
 
@@ -114,7 +114,7 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
+    
     @Test
     public void getScoreOfSpielstand() {
 
@@ -163,19 +163,42 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
+    
+    /**
+     * Die Methode testet die Funktionalität der Methode checkIfPlayerExists
+     * Falls Monat sowie Jahr der Dati übereinstimmen gibt die Methode true zurück, da sich der Benutzer in diesem Monat bereits registriert hat.
+     * Falls Monat sowie Jahr nicht übereinstimmen gibt die Methode false zurück, da der Benutzer sich in dem Monat noch nicht registriert hat.
+     */
     @Test
     public void checkIfPlayerExistsTest() {
 
         String testUUID = "testuuid";
+        String testUUID2 = "testuuid2";
+        
+        List<Highscore> list = new ArrayList<>();
+        Highscore h1 = new Highscore();
+        h1.setUuid(testUUID);
+        h1.setDate("2018-02-08 16:15");       
+        list.add(h1);
+        
+        List<Highscore> list2 = new ArrayList<>();
+        Highscore h2 = new Highscore();
+        h2.setUuid(testUUID2);
+        h2.setDate("2017-08-02 13:12");
+        list2.add(h2);
 
-        Mockito.when(spielstandRepository.getHighscoreOfUUID(testUUID)).thenReturn(null);
+        Mockito.when(spielstandRepository.getHighscoreOfUUID(testUUID)).thenReturn(list);
         Boolean response = scoreService.checkIfPlayerExists(testUUID);
 
         assertEquals(response, false);
-    }
+        
+        Mockito.when(spielstandRepository.getHighscoreOfUUID(testUUID2)).thenReturn(list2);
+        Boolean response2 = scoreService.checkIfPlayerExists(testUUID2);
 
-    @Ignore
+        assertEquals(response2, true);
+    }
+    
+    
     @Test
     public void newHighscoreTest() {
 

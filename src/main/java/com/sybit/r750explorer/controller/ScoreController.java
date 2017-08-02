@@ -3,11 +3,14 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.repository.tables.Highscore;
 import com.sybit.r750explorer.service.ScoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -21,6 +24,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ScoreController {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
+    
+    // Regular Expression für eMail Validation
+    private static final String EMAIL_PATTERN =
+		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     @Autowired
     ScoreService scoreService;
@@ -60,16 +68,38 @@ public class ScoreController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
 
-        log.debug("--> Registering... UUID: " + uuid);
+        log.debug( "--> Registering... UUID: " + uuid );
 
+        // Überprüfung der EMail
+        Pattern pattern = Pattern.compile( EMAIL_PATTERN );
+        Matcher matcher = pattern.matcher( email );
+        if ( matcher.matches(  ) )
+        {
+            log.debug( "<-- register(): EMail ist im richtigen Format" );
+            model.put( "nickname", nickname );
+        }
+        else
+        {
+            log.debug( "<-- register(): EMail ist nicht im richtigen Format" );
+            model.put( "message", "<b>Fehler: Deine eMail-Addresse ist nicht richtig.</b>" );
+            return "myscore";
+        }
+        
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
         
-
-        model.put("nickname", nickname);
-
-        return "registration";
-
+        Highscore hs = scoreService.newHighscore(nickname, email, uuid);
+        if ( hs != null )
+        {
+            model.put( "message", "Du hast dich registriert." );
+        }
+        else
+        {
+            model.put( "message", "<b>Fehler: Du hast dich bereits eingetragen.</b>" );
+            return "myscore";
+        }
+        
+        return "myscore";
     }
 
     /**
@@ -91,5 +121,4 @@ public class ScoreController {
 
         return String.valueOf(Math.round(score));
     }
-
 }
