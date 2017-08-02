@@ -72,7 +72,7 @@ public class ScoreController {
         // Überprüfung des Namens
         Pattern pattern = Pattern.compile(NICKNAME_PATTERN);
         Matcher matcher = pattern.matcher(nickname);
-        if (matcher.matches()) {
+        if (!matcher.matches()) {
             model.put("message", "Bitte wähle einen Nickname von einer Länge zwischen 4 und 16 Zeichen.");
             return "myscore";
         }
@@ -93,10 +93,12 @@ public class ScoreController {
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
         Highscore hs = scoreService.newHighscore(nickname, email, uuid);
-        if (hs != null) {
+        if (hs != null)
+        {
             model.put("message", "Du hast dich registriert.");
-        } else {
-
+        }
+        else
+        {
             model.put("message", "<b>Fehler: Du hast deinen Score geupdated.</b>");
 
             return "myscore";
