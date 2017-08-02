@@ -29,6 +29,9 @@ public class ScoreController {
     private static final String EMAIL_PATTERN
             = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    
+    public static final String NICKNAME_PATTERN
+            = "^[a-z0-9_-]{4,16}$";
 
     @Autowired
     ScoreService scoreService;
@@ -67,15 +70,17 @@ public class ScoreController {
         log.debug("--> Registering... UUID: " + uuid);
 
         // Überprüfung des Namens
-        if (nickname.length() < 4 || nickname.length() > 16) 
+        Pattern pattern = Pattern.compile(NICKNAME_PATTERN);
+        Matcher matcher = pattern.matcher(nickname);
+        if (matcher.matches()) 
         {
             model.put("message", "Bitte wähle einen Nickname von einer Länge zwischen 4 und 16 Zeichen.");
             return "myscore";
         }
 
         // Überprüfung der EMail
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(email);
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
         if (matcher.matches()) {
             log.debug("<-- register(): EMail ist im richtigen Format");
             model.put("nickname", nickname);
