@@ -97,6 +97,7 @@ public class ScoreController {
         {
             model.put("message", "Du hast dich registriert.");
         }
+        // TODO: Unterscheiden zwischen registrierung & update fixen
         else
         {
             model.put("message", "<b>Fehler: Du hast deinen Score geupdated.</b>");
