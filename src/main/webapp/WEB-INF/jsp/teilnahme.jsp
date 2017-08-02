@@ -26,10 +26,12 @@
                 auf der Info Seite bei "Quiz starten" eingeben. Beim beantworten der Fragen kann man Punkte sammeln: für jede beantwortete Frage zehn Punkte, 
                 für falsche Antworten einen trost Punkt. Um die Code Sticker leichter zu finden, kann man bei der Codeeingabe den Knopf "Hinweis zum Code" betätigen. 
                 Dabei werden allerdings 5 Punkte vom aktuellen Punktestand abgzogen, 
-                da man durch die Hilfe den Sticker nicht mehr suchen muss und es dadurch einfacher hat die Frage zu beantworten. Dabei gibt es keine negativen Punkte.
+                da man durch die Hilfe den Sticker nicht mehr suchen muss und es so einfacher hat die Frage zu beantworten. Dabei gibt es keine negativen Punkte.
                 Damit man nicht unendlich viele Punkte sammeln kann, kann man an jedem Ort nur eine Frage pro Monat beantworten.
-                Um am monatlichen Gewinnspiel teilzunehmen, muss man sich mit seiner E-mail registrieren. So kann auch der Punktestand gespeichert werden. 
-                Unter den Personen mit den höchsten Punkteständen wird dann am Ende des Monats der Gewinn verlost. Der Gewinner wird per E-mail benachrichtigt.
+                Um am monatlichen Gewinnspiel teilzunehmen, muss man sich mit seiner E-mail registrieren. 
+                So kann auch der eigene aktuelle Highscore gespeichert werden. 
+                Unter den Personen mit den höchsten Punkteständen wird dann am Ende des Monats der Gewinn verlost. 
+                Der Gewinner wird dann per E-mail benachrichtigt.
             </p>
             <br>
             <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="50%" alt="Code Sticker">
