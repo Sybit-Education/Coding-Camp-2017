@@ -20,21 +20,41 @@
             </div>
             <h2>Spielregeln</h2>
             <p>
-                Das Ziel des Spiels ist es, an den verschiedenen Orten, die auf der Karte angepinnt sind, Fragen zu beantworten. 
-                Die Lösungen zu den Fragen erhält man über die zugehörigen Infotexte. 
-                Um die Fragen gestellt zu bekommen, muss man den Code, der an oder in der Nähe der jeweiligen Sehenswürdigkeit klebt,
-                auf der Info Seite bei "Quiz starten" eingeben. Beim beantworten der Fragen kann man Punkte sammeln: für jede beantwortete Frage zehn Punkte, 
-                für falsche Antworten einen trost Punkt. Um die Code Sticker leichter zu finden, kann man bei der Codeeingabe den Knopf "Hinweis zum Code" betätigen. 
-                Dabei werden allerdings 5 Punkte vom aktuellen Punktestand abgzogen, 
-                da man durch die Hilfe den Sticker nicht mehr suchen muss und es so einfacher hat die Frage zu beantworten. Dabei gibt es keine negativen Punkte.
-                Damit man nicht unendlich viele Punkte sammeln kann, kann man an jedem Ort nur eine Frage pro Monat beantworten.
-                Um am monatlichen Gewinnspiel teilzunehmen, muss man sich mit seiner E-mail registrieren. 
-                So kann auch der eigene aktuelle Highscore gespeichert werden. 
-                Unter den Personen mit den höchsten Punkteständen wird dann am Ende des Monats der Gewinn verlost. 
-                Der Gewinner wird dann per E-mail benachrichtigt.
+                Das Ziel des Spiels ist es, an verschiedenen historischen Orten Radolfzells Fragen zu beantworten. 
+                Die Lösungen zu den Fragen findet man in den zugehörigen Infotexten, welche teilweise aus Dokumenten des Stadtarchiv kommen. 
+            </p>
+            <p>
+                <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="50%" alt="Code Sticker" class="img-thumbnail pull-right">
+                Um die Fragen beantworten zu können, muss man mit <kbd>Quiz starten ...</kbd> einen Code eingeben.
+                Dieser Code ist in der Nähe der jeweiligen Sehenswürdigkeit als <b>Sticker</b> angebracht.
+            </p>
+            <p>
+                Beim Beantworten der Fragen kann man Punkte sammeln:
+            </p>
+            <ul>
+                <li>Für jede richtig beantwortete Frage erhält man <b>10 Punkte</b>, </li>
+                <li>für falsche Antworten erhält man einen Trostpunkt.</li>
+            </ul>
+            <p>
+                Man kann pro Ort nur eine Frage beantworten.
+            </p>
+            <h3>Code-Sticker unauffindbar</h3>
+            <p>
+                Wenn man den Sticker <b>nicht findet</b>, kann man sich mit <kbt>Hinweis zum Code</kbt> 
+                einen Hinweis mit Fotos geben lassen. <br>
+                Dabei werden allerdings <b>5 Punkte vom aktuellen Punktestand abgzogen!</b> 
+                Durch diese Hilfe muss man den Sticker nicht mehr suchen und hat es  einfacher die Frage zu beantworten.
+            </p>
+            <h3>Gewinnspiel teilnehmen</h3>
+            <p>
+                Damit man nicht unendlich viele Punkte sammeln kann, ist an jedem Ort nur eine Antwort pro Monat möglich.
+                Um am <b>monatlichen Gewinnspiel teilzunehmen</b>, muss man sich mit <b>E-Mail und Namen registrieren</b>. 
+                Damit wird der Punktestand auch in die öffentliche Highscore übernommen. 
+                Unter den Personen mit den höchsten Punkteständen wird am Ende des Monats der Gewinn verlost. 
+                Der Gewinner wird per E-Mail benachrichtigt. Es gilt die unten angeführte Teilnahmebedingung.
             </p>
             <br>
-            <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="50%" alt="Code Sticker">
+            
             <hr>
             <h2>Teilnahmebedingung</h2>
             <p>
