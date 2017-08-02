@@ -42,14 +42,14 @@ public class CodeHintController {
      * @return "code-hint". 
      */
     @RequestMapping(value = "{slug}/code/hint/message")
-    public String sendMessage(@CookieValue("UUID") String uuid, @PathVariable("slug") String locationSlug, @RequestParam String message, Map<String, Object> model) {
+    public String sendMessage(@CookieValue("UUID") String uuid, @PathVariable("slug") String locationSlug, Map<String, Object> model) {
 
         log.debug("--> sendMessage: Location Slug: " + locationSlug + ". UUID: " + uuid);
-        log.info("Message: " + message);
+        log.info("Message: " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!");
 
         Location location = locationService.getLocation(locationSlug);
         try {
-            mailService.sendMessage(location.getName() + ": " + message, uuid);
+            mailService.sendMessage(location.getName() + ": " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!", uuid);
         } catch (MailException ex) {
             log.error(ex.toString());
         }
