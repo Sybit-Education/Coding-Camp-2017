@@ -158,7 +158,7 @@ public class ScoreService {
 
         Highscore result = null;
 
-        if (checkIfPlayerExists(uuid)) {
+        if (!checkIfPlayerExists(uuid)) {
             result = spielstandRepository.registerScore(highScore);
         }
 
