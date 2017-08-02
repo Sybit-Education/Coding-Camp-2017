@@ -13,7 +13,7 @@
 
     <body locationSlug="${locationSlug}"> 
         <div class="container-fluid">
-           <img src="${locationFoto}" alt="${locationName}" class="img-responsive img-rounded"/>
+            <img src="${locationFoto}" alt="${locationName}" class="img-responsive img-rounded"/>
         </div>
 
         <div class="container">          
@@ -26,7 +26,12 @@
                             <button typ="button" class="btn btn-default">Quiz starten ...</button>
                         </a>
                     </div>
-                </c:if>                   
+                </c:if>    
+                <c:if test="${QuizAnswered==true}">
+                    <div class="alert alert-info">
+                        <strong></strong> Dieses Quiz wurde schon absolviert!
+                    </div>
+                </c:if>
             </div>            
 
 
@@ -51,13 +56,13 @@
                         </div>
                     </c:if>
                 </div>
-                
+
             </c:forEach>
             <div class="row">&nbsp;</div>
         </div>    
-            
-        
-        
+
+
+
         <c:import url="include/footer.jsp"/>
 
     </body>
