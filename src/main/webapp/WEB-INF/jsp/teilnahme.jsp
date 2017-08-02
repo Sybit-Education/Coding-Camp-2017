@@ -20,7 +20,8 @@
             </div>
             <h2>Spielregeln</h2>
             <p>
-                Das Spiel ...
+             Das Ziel des Spiels ist es, an den verschiedenen Orten, die auf der Karte angepinnt sind, Fragen zu beantworten. 
+             Die Lösungen zu den Fragen erhält man über die zugehörigen Infotexte 
             </p>
             <hr>
             <h2>Teilnahmebedingung</h2>
