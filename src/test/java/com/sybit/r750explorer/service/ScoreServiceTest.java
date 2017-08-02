@@ -54,7 +54,7 @@ public class ScoreServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
+    
     @Test
     public void newSpielstandEntryTest() {
 
@@ -114,7 +114,7 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
+    
     @Test
     public void getScoreOfSpielstand() {
 
@@ -163,7 +163,7 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
+    
     @Test
     public void checkIfPlayerExistsTest() {
 
@@ -175,7 +175,8 @@ public class ScoreServiceTest {
         assertEquals(response, false);
     }
 
-    @Ignore
+    
+    
     @Test
     public void newHighscoreTest() {
 

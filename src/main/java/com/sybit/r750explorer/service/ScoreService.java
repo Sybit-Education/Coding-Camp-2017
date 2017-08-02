@@ -52,15 +52,15 @@ public class ScoreService {
         log.debug("--> newSpielstandEntry. UUID: " + uuid);
 
         //Erstelle einen neuen Spielstand und befülle ihn mit den entsprechenden Werten
-        Spielstand spielstand=new Spielstand();
+        Spielstand spielstand = new Spielstand();
         spielstand.setUuid(uuid);
-        
-        List<String> location=new ArrayList<>();
-        if (loc != null){
+
+        List<String> location = new ArrayList<>();
+        if (loc != null) {
             location.add(loc.getId());
         }
-        List<String> fragen=new ArrayList<>();
-        if (questionId != null){
+        List<String> fragen = new ArrayList<>();
+        if (questionId != null) {
             fragen.add(questionId);
         }
         spielstand.setLocationList(location);
@@ -68,10 +68,10 @@ public class ScoreService {
         spielstand.setUserAnswerIndex(answerIndx);
         spielstand.setScore(String.valueOf(score));
         spielstand.setQuestionList(fragen);
-        
+
         //Dann übergib ihn an das Repository
-        spielstand=spielstandRepository.newEntry(spielstand);
-       
+        spielstand = spielstandRepository.newEntry(spielstand);
+
         return spielstand;
 
     }
@@ -88,10 +88,10 @@ public class ScoreService {
         log.debug("--> getScoreOfSpielstand. UUID: " + uuid);
 
         //Hole dir die Spielstände und rechne sie zusammen
-        List<Spielstand> spielstand=spielstandRepository.getEntrysOfUUID(uuid);
-        Float score=Float.valueOf(0);
-        for (Spielstand i:spielstand){
-            score+=Float.valueOf(i.getScore());
+        List<Spielstand> spielstand = spielstandRepository.getEntrysOfUUID(uuid);
+        Float score = Float.valueOf(0);
+        for (Spielstand i : spielstand) {
+            score += Float.valueOf(i.getScore());
         }
         log.error("Methode nicht implementiert");
         return score;
@@ -99,8 +99,7 @@ public class ScoreService {
     }
 
     /**
-     * Get the Highscore List. 
-     * Holt dir die Highscoreliste
+     * Get the Highscore List. Holt dir die Highscoreliste
      *
      * @return List of Higscores
      */
@@ -126,8 +125,8 @@ public class ScoreService {
     }
 
     /**
-     * Checks if a player already registered a Highscore. 
-     * Methode die Nachschaut ob ein Spieler existiert
+     * Checks if a player already registered a Highscore. Methode die Nachschaut
+     * ob ein Spieler existiert
      *
      * @param uuid
      * @return boolean
@@ -165,42 +164,25 @@ public class ScoreService {
      * @param uuid
      * @return the created Highscore
      */
-    public Highscore newHighscore( String nickname, String email, String uuid )
-    {
-        log.debug( "--> newHighscore. UUID: " + uuid );
+    public Highscore newHighscore(String nickname, String email, String uuid) {
+        log.debug("--> newHighscore. UUID: " + uuid);
 
-        Highscore highScore = new Highscore(  );
-        highScore.setNickname( nickname );
-        highScore.setEmail( email );
-        highScore.setUuid( uuid );
-        highScore.setScore( getScoreOfSpielstand( uuid ) );
-        List<Highscore> highscoreList=spielstandRepository.getHighscoreOfUUID(uuid);
-        List<String> dateList=null;
-        for (Highscore highscore : highscoreList) {
-            dateList.add(highscore.getDate());
+        Highscore highScore = new Highscore();
+        highScore.setNickname(nickname);
+        highScore.setEmail(email);
+        highScore.setUuid(uuid);
+        highScore.setScore(getScoreOfSpielstand(uuid));
+
+        Highscore result = null;
+
+        if (!checkIfPlayerExists(uuid)) {
+            result = spielstandRepository.registerScore(highScore);
         }
-        
-        String date=spielstandRepository.getHighscoreOfUUID( uuid ).getDate();
-        date.substring(0, 7);
-        LocalDateTime currentdate=LocalDateTime.now();
-        DateTimeFormatter df=DateTimeFormatter.ISO_LOCAL_DATE;
-        String formatdate=currentdate.format(df);
-        formatdate.substring(0, 7);
-            
-        if ( spielstandRepository.getHighscoreOfUUID( uuid ) == null)
-        {
-            spielstandRepository.registerScore( highScore );
-        }
-        else if (!formatdate.equals(date)){
-            spielstandRepository.registerScore( highScore );
-        }
-        else {
-            
-        }
-        
+
         //Informationen zum Abspeichern des Highscores
         //Den Score registrieren
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        return result;
+
     }
 
     /**
@@ -220,15 +202,13 @@ public class ScoreService {
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float
-        Float score=this.getScoreOfSpielstand(uuid);
-        if (score>=Float.valueOf(5)){
-            score=Float.valueOf(-5);
-        }
-        else{
-            score=Float.valueOf(0);
+        Float score = this.getScoreOfSpielstand(uuid);
+        if (score >= Float.valueOf(5)) {
+            score = Float.valueOf(-5);
+        } else {
+            score = Float.valueOf(0);
         }
         return score;
     }
 
 }
-
