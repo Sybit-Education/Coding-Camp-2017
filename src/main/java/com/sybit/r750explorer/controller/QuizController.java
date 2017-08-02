@@ -217,8 +217,14 @@ public class QuizController {
 
         Location location = locationService.getLocation(slug);
         log.info("Hinweis für LocationSlug: " + location.getName() + " wurde aufgerufen!");
+        scoreService.newSpielstandEntry(scoreCookie, null, null, "Hinweis", scoreService.hintRequested(scoreCookie));
 
         // TODO: Einen neuen Spielstand speichern (Punkte abziehen) und Informationen an model übergeben
+        
+        model.put("locationSlug",slug );
+        model.put("code", location.getCode());
+        model.put("locationName", location.getName());
+        model.put("hint", location.getCodeHinweis());
         return "code-hint";
     }
 
