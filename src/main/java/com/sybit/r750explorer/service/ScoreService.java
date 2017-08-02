@@ -13,6 +13,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * Created by fzr on 11.05.17.
  */
@@ -46,21 +50,29 @@ public class ScoreService {
     public Spielstand newSpielstandEntry(String uuid, Location loc, String questionId, String answerIndx, Float score) {
 
         log.debug("--> newSpielstandEntry. UUID: " + uuid);
-        Spielstand sp = new Spielstand();
-
-        List<String> li = new ArrayList<>();
-        li.add(loc.getId());
-        List<String> qList = new ArrayList();
-        qList.add(questionId);
-        sp.setScore(String.valueOf(score));
-        sp.setUuid(uuid);
-        sp.setLocationList(li);
-        sp.setQuestionList(qList);
-        sp.setUserAnswerIndex(answerIndx);
 
         //Erstelle einen neuen Spielstand und befülle ihn mit den entsprechenden Werten
+        Spielstand spielstand=new Spielstand();
+        spielstand.setUuid(uuid);
+        
+        List<String> location=new ArrayList<>();
+        if (loc != null){
+            location.add(loc.getId());
+        }
+        List<String> fragen=new ArrayList<>();
+        if (questionId != null){
+            fragen.add(questionId);
+        }
+        spielstand.setLocationList(location);
+        spielstand.setQuestionList(fragen);
+        spielstand.setUserAnswerIndex(answerIndx);
+        spielstand.setScore(String.valueOf(score));
+        spielstand.setQuestionList(fragen);
+        
         //Dann übergib ihn an das Repository
-        return sp;
+        spielstand=spielstandRepository.newEntry(spielstand);
+       
+        return spielstand;
 
     }
 
@@ -76,13 +88,19 @@ public class ScoreService {
         log.debug("--> getScoreOfSpielstand. UUID: " + uuid);
 
         //Hole dir die Spielstände und rechne sie zusammen
+        List<Spielstand> spielstand=spielstandRepository.getEntrysOfUUID(uuid);
+        Float score=Float.valueOf(0);
+        for (Spielstand i:spielstand){
+            score+=Float.valueOf(i.getScore());
+        }
         log.error("Methode nicht implementiert");
-        return Float.valueOf(0);
+        return score;
 
     }
 
     /**
-     * Get the Highscore List. Holt dir die Highscoreliste
+     * Get the Highscore List. 
+     * Holt dir die Highscoreliste
      *
      * @return List of Higscores
      */
@@ -108,8 +126,8 @@ public class ScoreService {
     }
 
     /**
-     * Checks if a player already registered a Highscore. Methode die Nachschaut
-     * ob ein Spieler existiert
+     * Checks if a player already registered a Highscore. 
+     * Methode die Nachschaut ob ein Spieler existiert
      *
      * @param uuid
      * @return boolean
@@ -139,13 +157,27 @@ public class ScoreService {
         highScore.setEmail( email );
         highScore.setUuid( uuid );
         highScore.setScore( getScoreOfSpielstand( uuid ) );
+        List<Highscore> highscoreList=spielstandRepository.getHighscoreOfUUID(uuid);
+        List<String> dateList=null;
+        for (Highscore highscore : highscoreList) {
+            dateList.add(highscore.getDate());
+        }
         
-        if ( spielstandRepository.getHighscoreOfUUID( uuid ) == null )
+        String date=spielstandRepository.getHighscoreOfUUID( uuid ).getDate();
+        date.substring(0, 7);
+        LocalDateTime currentdate=LocalDateTime.now();
+        DateTimeFormatter df=DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate=currentdate.format(df);
+        formatdate.substring(0, 7);
+            
+        if ( spielstandRepository.getHighscoreOfUUID( uuid ) == null)
         {
             spielstandRepository.registerScore( highScore );
         }
-        else
-        {
+        else if (!formatdate.equals(date)){
+            spielstandRepository.registerScore( highScore );
+        }
+        else {
             
         }
         
@@ -171,10 +203,15 @@ public class ScoreService {
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float
-        //Wenn Score größergleich 50, soll ein neuer Score mit einem Wert von -50 übergeben werden
-        //andernfalls 0
-        throw new MethodNotFoundException("Methode nicht implementiert");
-
+        Float score=this.getScoreOfSpielstand(uuid);
+        if (score>=Float.valueOf(5)){
+            score=Float.valueOf(-5);
+        }
+        else{
+            score=Float.valueOf(0);
+        }
+        return score;
     }
 
 }
+
