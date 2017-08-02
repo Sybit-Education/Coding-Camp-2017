@@ -24,18 +24,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ScoreController {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
-    
+
     // Regular Expression für eMail Validation
-    private static final String EMAIL_PATTERN =
-		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private static final String EMAIL_PATTERN
+            = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     @Autowired
     ScoreService scoreService;
 
     /**
-     * Score Page
-     ** Hier soll der Score des Users sowie eine Liste mit den besten Highscores angezeigt werden
+     * Score Page * Hier soll der Score des Users sowie eine Liste mit den
+     * besten Highscores angezeigt werden
      *
      * @param uuid Cookie-UUID des Users
      * @param model Daten-Model für die Web-site
@@ -48,17 +48,15 @@ public class ScoreController {
         //Hole dir den Score des Users(UUID)
 
         //Hole dir alle Highscores
-
         //Vergiss nicht die Sachen dem Model zu übergeben
-
-
         return "myscore";
     }
 
     /**
-     * Registration Page
-     ** Der User möchte sich registrieren. Hierfür
+     * Registration Page * Der User möchte sich registrieren. Hierfür
      *
+     * @param vorname
+     * @param nachname
      * @param nickname Der Nickname den der user haben möchte
      * @param email Die E-Mail des Users
      * @param uuid Die Cookie UUID des Users
@@ -68,48 +66,45 @@ public class ScoreController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@RequestParam String vorname, @RequestParam String nachname, @RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
 
-        log.debug( "--> Registering... UUID: " + uuid );
-        
-        
-        
-                
-        // Überprüfung der EMail
-        Pattern pattern = Pattern.compile( EMAIL_PATTERN );
-        Matcher matcher = pattern.matcher( email );
-        if ( matcher.matches(  ) )
-        {
-            log.debug( "<-- register(): EMail ist im richtigen Format" );
-            model.put( "nickname", nickname );
-        }
-        else
-        {
-            log.debug( "<-- register(): EMail ist nicht im richtigen Format" );
-            model.put( "message", "<b>Fehler: Deine eMail-Addresse ist nicht richtig.</b>" );
+        log.debug("--> Registering... UUID: " + uuid);
+
+        // Überprüfung des Namens
+        if (nickname.length() < 4 || nickname.length() > 16)  {
+            model.put("message", "Bitte wähle einen Nickname von einer Länge zwischen 4 und 16 Zeichen.");
             return "myscore";
         }
-        
+
+        // Überprüfung der EMail
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        if (matcher.matches()) {
+            log.debug("<-- register(): EMail ist im richtigen Format");
+            model.put("nickname", nickname);
+        } else {
+            log.debug("<-- register(): EMail ist nicht im richtigen Format");
+            model.put("message", "<b>Fehler: Deine eMail-Addresse ist nicht richtig.</b>");
+            return "myscore";
+        }
+
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
-        
+
         Highscore hs = scoreService.newHighscore(vorname, nachname, nickname, email, uuid);
-        if ( hs != null )
-        {
+        if ( hs != null ) {
             model.put( "message", "Du hast dich registriert." );
-        }
-        else
-        {
+        }  else {
             model.put( "message", "<b>Fehler: Du hast dich bereits eingetragen.</b>" );
-            return "myscore";
         }
-        
+
         return "myscore";
     }
 
     /**
-     * Der Score auf der Nav-Bar
-     ** Damit auf der Navbar immer der aktuelle Score angezeigt wird müssen wir diesen abfragen.
+     * Der Score auf der Nav-Bar * Damit auf der Navbar immer der aktuelle Score
+     * angezeigt wird müssen wir diesen abfragen.
+     *
      * @param uuid
-     * @return 
+     * @return
      */
     @ResponseBody
     @RequestMapping(value = "/score/{uuid}", method = RequestMethod.GET)
@@ -119,7 +114,7 @@ public class ScoreController {
 
         //Der Score des User mithilfe der UUID abfragen.
         Float score = scoreService.getScoreOfSpielstand(uuid);
-        
+
         log.debug("<-- getScore: " + score);
 
         return String.valueOf(Math.round(score));
