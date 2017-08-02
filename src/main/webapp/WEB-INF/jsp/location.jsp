@@ -30,7 +30,12 @@
                             </a>
                         </div>
                     </c:if>                   
-                </div>     
+                    <c:if test="${QuizAnswered==true}">
+                        <div class="alert alert-info">
+                            <strong></strong> Dieses Quiz wurde schon absolviert!
+                        </div>
+                    </c:if>                    
+                </div>        
             </div>            
 
 
@@ -55,13 +60,13 @@
                         </div>
                     </c:if>
                 </div>
-                
+
             </c:forEach>
             <div class="row">&nbsp;</div>
         </div>    
-            
-        
-        
+
+
+
         <c:import url="include/footer.jsp"/>
 
     </body>
