@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -49,7 +49,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <p style="padding-top:10px">Viel Spa� beim Erforschen der Stadt Radolfzell.</p>
+                    <p style="padding-top:10px">Viel Spaß beim Erforschen der Stadt Radolfzell.</p>
                 </div>
             </div>
 
@@ -71,5 +71,4 @@
                 });
             </script>
     </body>
-
 </html>
