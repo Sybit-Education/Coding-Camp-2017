@@ -18,6 +18,7 @@
         <div class="container">
 
             <!-- TODO: Code Hinweis für eine Location anzeigen -->
+            <h1>Code Hinweis.</h1>
             <h2>Der Code wurde nicht gefunden oder ist nicht mehr vorhanden.</h2>
             <form acction="<c:url value="/location/${locationSlug}/code"/>" method="POST">
                 <input type="hidden" class="form-control" id="code" value="${code}">
