@@ -22,7 +22,9 @@
                 <input type="text" name="code" />
                 <input  type="submit" value="code" />
             </form>
-            
+                <button type="button" class="btn btn-default btn-xs">
+                 Hinweis zum Code.
+                </button>
 
             <!-- Code Hinweis behandeln -->
 
