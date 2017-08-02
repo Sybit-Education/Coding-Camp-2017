@@ -5,9 +5,13 @@ package com.sybit.r750explorer.controller;
  */
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sybit.airtable.vo.Attachment;
 import com.sybit.r750explorer.repository.tables.Location;
+import com.sybit.r750explorer.repository.tables.Medien;
 import com.sybit.r750explorer.service.LocationService;
+import com.sybit.r750explorer.service.MedienService;
 import com.sybit.r750explorer.service.ScoreService;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,6 +44,9 @@ public class LocationController {
 
     @Autowired
     private ScoreService scoreService;
+    
+    @Autowired
+    private MedienService medienService;
 
     /**
      * Location page with all sorted media.
@@ -62,16 +69,33 @@ public class LocationController {
             return "redirect:" + "/";
         }
         
-        //TODO: Wurde die Location schon besucht und Fragen beantwortet?
-        //model.put("QuizAnswered", true|false);
+        //Wurde die Location schon besucht und Fragen beantwortet?     
+        List<Location> visited = locationService.getVisitedLocations(uuid);
+        List<String> Locationid = new ArrayList<>();
         
+        for (Location location : visited) {
+            Locationid.add(location.getId());
+        }
         
-        //TODO: welche Medien hat die Location zum Anzeigen? Diese sortiert übergeben.
-        //List<Medien> medienList = medienService.getMedienOfLocationSlug(locationSlug);
-       
+        if (Locationid.contains(loc.getId())) {
+            model.put("QuizAnswered", true);
+        } else {
+            model.put("QuizAnswered", false);
+        }
+        
+        List<Attachment> attList;
+                
+
+        List<Medien> medienList = medienService.getMedienOfLocationSlug(locationSlug);
+
         
         //TODO: Daten an das Model übergeben.
-        
+            model.put("locationDescription", loc.getDescription());
+            model.put("locationFoto", loc.getPhoto().get(0).getUrl());
+            model.put("locationMedien", medienList);
+            model.put("locationName", loc.getName());
+            model.put("locationSlug", loc.getSlug());
+            
         return "location";
 
     }

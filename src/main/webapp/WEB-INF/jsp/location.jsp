@@ -19,16 +19,16 @@
         <div class="container">          
             <div class="page-header">
                 <h1>${locationName}</h1>
-                   
+                <p>${locationDescription}</p>                        
+                <c:if test="${QuizAnswered==false}">
+                    <div class="text-center">
+                        <a href="<c:url value="/location/${locationSlug}/code"/>">
+                            <button typ="button" class="btn btn-default">Quiz starten ...</button>
+                        </a>
+                    </div>
+                </c:if>                   
             </div>            
-            <p>${locationDescription}</p>                        
-            <c:if test="${QuizAnswered==false}">
-                <div class="text-center">
-                    <a href="<c:url value="/location/${locationSlug}/code"/>">
-                        <button typ="button" class="btn btn-default">Quiz starten ...</button>
-                    </a>
-                </div>
-            </c:if>
+
 
             <c:forEach items="${locationMedien}" var="media" varStatus="loop">
                 <div class="row">

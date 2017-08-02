@@ -43,7 +43,6 @@ public class MedienServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
     @Test
     public void getMedienOfLocationNameTest() {
 
@@ -95,7 +94,6 @@ public class MedienServiceTest {
 
     }
 
-    @Ignore
     @Test
     public void getMedienOfLocationSlugTest() {
 

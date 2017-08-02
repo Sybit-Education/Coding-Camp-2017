@@ -83,9 +83,18 @@ public class LocationService {
         log.debug("--> getVisitedLocations. UUID: " + uuid);
         
         //Hole dir zuerst die Spielstände und ermittle anhand von diesen einträgen schon besuchte locations
-
+        List<Spielstand> Entrys = spielstandRepository.getEntrysOfUUID(uuid);
         List<Location> visited = new ArrayList<>();
-        log.error("Methode nicht implementiert!");
+        for (Spielstand Entry : Entrys) {
+            if (Entry.getLocationList() != null) {
+                for (String Locationid : Entry.getLocationList()) {
+                    visited.add(locationRepository.getLocation(Locationid));
+                }
+            } else {
+                log.debug(Entry + "Has no locations");
+            }
+        }
+        
         log.debug("<-- getVisitedLocations. size: " + visited.size());
         return visited;
     }
