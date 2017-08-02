@@ -69,9 +69,7 @@ public class LocationController {
             return "redirect:" + "/";
         }
         
-        //TODO: Wurde die Location schon besucht und Fragen beantwortet?
-        //model.put("QuizAnswered", true|false);
-        
+        //Wurde die Location schon besucht und Fragen beantwortet?     
         List<Location> visited = locationService.getVisitedLocations(uuid);
         List<String> Locationid = new ArrayList<>();
         
@@ -87,18 +85,9 @@ public class LocationController {
         
         List<Attachment> attList;
                 
-        //TODO: welche Medien hat die Location zum Anzeigen? Diese sortiert übergeben.
+
         List<Medien> medienList = medienService.getMedienOfLocationSlug(locationSlug);
 
-        for (Medien a : medienList) {
-            
-            try {
-                attList = a.getAttachements();
-            } catch (NullPointerException e) {
-                    redirectAttr.addFlashAttribute("message", "Sie wurden auf die Startseite umgeleitet!");
-                    return "redirect:" + "/";
-            }
-        }
         
         //TODO: Daten an das Model übergeben.
             model.put("locationDescription", loc.getDescription());
