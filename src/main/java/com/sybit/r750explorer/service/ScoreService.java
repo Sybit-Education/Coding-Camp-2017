@@ -140,12 +140,13 @@ public class ScoreService {
         LocalDateTime currentdate = LocalDateTime.now(  );
         DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
         String formatdate = currentdate.format( df );
-            
+        formatdate = formatdate.substring( 0, 7 );
+        
+        
         for ( Highscore hs : spielstandRepository.getHighscoreOfUUID( uuid ) )
         {
             String date = hs.getDate(  );
-            date.substring( 0, 7 );
-            formatdate.substring( 0, 7 );
+            date = date.substring( 0, 7 );
                 
             if ( date.equalsIgnoreCase( formatdate ) )
             {

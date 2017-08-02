@@ -173,7 +173,7 @@ public class SpielstandRepository extends AirtableRepository {
         log.debug("--> getHighscoreOfUUID. UUID: " + uuid);
 
         Query uuidquery = getQueryWithFilter("UUID", uuid);
-        List<Highscore> response;
+        List<Highscore> response = new ArrayList<>();
 
         try {
             response = getAirtableBase().table("Highscore", Highscore.class).select(uuidquery);
@@ -185,7 +185,7 @@ public class SpielstandRepository extends AirtableRepository {
         if (response.isEmpty()) {
             String msg = "No Highscore of UUID: " + uuid + " found.";
             log.warn(msg);
-            return null;
+            return response;
         } else {
             log.debug("<-- getHighscoreOfUUID. Retrieved Highscore of UUID: " + uuid);
             return response;
