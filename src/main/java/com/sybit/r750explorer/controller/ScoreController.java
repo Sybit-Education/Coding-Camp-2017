@@ -58,6 +58,8 @@ public class ScoreController {
     /**
      * Registration Page * Der User möchte sich registrieren. Hierfür
      *
+     * @param vorname
+     * @param nachname
      * @param nickname Der Nickname den der user haben möchte
      * @param email Die E-Mail des Users
      * @param uuid Die Cookie UUID des Users
@@ -65,11 +67,11 @@ public class ScoreController {
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
+    public String register(@RequestParam String vorname, @RequestParam String nachname, @RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
 
         log.debug("--> Registering... UUID: " + uuid);
 
-        // Überprüfung des Namens
+        // Überprüfung des Namens 
         Pattern pattern = Pattern.compile(NICKNAME_PATTERN);
         Matcher matcher = pattern.matcher(nickname);
         if (!matcher.matches()) {
@@ -92,17 +94,11 @@ public class ScoreController {
 
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
-        Highscore hs = scoreService.newHighscore(nickname, email, uuid);
-        if (hs != null)
-        {
-            model.put("message", "Du hast dich registriert.");
-        }
-        // TODO: Unterscheiden zwischen registrierung & update fixen
-        else
-        {
-            model.put("message", "<b>Fehler: Du hast deinen Score geupdated.</b>");
-
-            return "myscore";
+        Highscore hs = scoreService.newHighscore(vorname, nachname, nickname, email, uuid);
+        if ( hs != null ) {
+            model.put( "message", "Du hast dich registriert." );
+        }  else {
+            model.put( "message", "<b>Fehler: Du hast dich bereits eingetragen.</b>" );
         }
 
         return "myscore";

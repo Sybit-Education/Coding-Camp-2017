@@ -28,12 +28,25 @@
                         <div class="modal-body">
                             <!--Username(Nickname) and the email adress required-->
                             <div class="form-group">
-                                <label for="recipient-name" class="form-control-label">Nickname:</label>
-                                <input type="text" class="form-control" name="nickname">
+                                <label for="recipient-name" class="form-control-label">Vorname(nicht sichtbar):</label>
+                                <input type="text" class="form-control" name="vorname">
                             </div>
                             <div class="form-group">
-                                <label for="message-text" class="form-control-label">E-Mail:</label>
+                                <label for="recipient-name" class="form-control-label">Nachname(nicht sichtbar):</label>
+                                <input type="text" class="form-control" name="nachname">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label">Nickname*(sichtbar):</label>
+                                <input type="text" class="form-control" name="nickname">
+                            </div> 
+                            <div class="form-group">
+                                <label for="message-text" class="form-control-label">E-Mail*(nicht sichtbar):</label>
                                 <input type="email" class="form-control" name="email">
+                            </div>                             
+                            <div>
+                                <sup>
+                                    <p>* Pflichtfelder</p>
+                                </sup>
                             </div>
                             <!---button Submitt sends the User Values and registers, else Cancels-->
                         </div>
