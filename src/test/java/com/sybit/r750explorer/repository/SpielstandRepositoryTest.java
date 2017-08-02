@@ -115,11 +115,11 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
 
     @Ignore
     @Test
-
     public void getIdOfHighscore() {
 
         String response;
 
+        
         response = spielstandRepository.getIdOfHighscore("111111");
         assertNotNull(response);
 
