@@ -3,14 +3,12 @@ package com.sybit.r750explorer.repository;
 import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.airtable.Query;
 import com.sybit.airtable.exception.AirtableException;
-import com.sybit.r750explorer.exception.FrageException;
 import com.sybit.r750explorer.exception.FrageNotFoundException;
 import com.sybit.r750explorer.exception.FrageSyntaxException;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

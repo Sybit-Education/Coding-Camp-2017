@@ -32,9 +32,13 @@
                 <c:forEach items="${locations}" var="location" varStatus="loop">
                     <c:if test="${location.status == 'aktiv'}">
 
+
                         <a href="<c:url value="/location/${location.slug}"/>" class="col-xs-6 col-md-4">
                             <div class="panel panel-default bootcards-media" >
                                 <img src="${location.photo[0].thumbnails.large.url}" class="img-responsive cards"/>
+                                <c:if test="${location.visited==true}">
+                                    <div class="locationBadge"><b>Schon besucht!</b></div> 
+                                </c:if>
                                 <div class="panel-footer">
                                     <small>${location.name}</small>
                                 </div>
@@ -47,7 +51,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <p style="padding-top:10px">Viel Spa√ü beim Erforschen der Stadt Radolfzell.</p>
+                    <p style="padding-top:10px">Viel Spaﬂ beim Erforschen der Stadt Radolfzell.</p>
                 </div>
             </div>
 
