@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Schüler
  */
-public class Preis {
+public class Gewinn {
        
     @SerializedName("Name")
     private String name;

@@ -8,7 +8,7 @@ package com.sybit.r750explorer.repository;
 import com.sybit.airtable.Query;
 import com.sybit.airtable.exception.AirtableException;
 import com.sybit.r750explorer.exception.SpielstandSyntaxException;
-import com.sybit.r750explorer.repository.tables.Preis;
+import com.sybit.r750explorer.repository.tables.Gewinn;
 import java.util.List;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -22,23 +22,23 @@ public class GewinnRepository extends AirtableRepository {
     
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
     
-    public List<Preis> getAllPreise() {
+    public List<Gewinn> getAll() {
 
-        log.debug("--> getAllPreise");
+        log.debug("--> getAll");
 
-        Query preisQuery = getQueryWithFilter("Status", "aktiv");
-        List<Preis> response;
+        Query gewinnQuery = getQueryWithFilter("Status", "aktiv");
+        List<Gewinn> response;
 
         try {
-            response = getAirtableBase().table("Preise", Preis.class).select(preisQuery);
+            response = getAirtableBase().table("Gewinne", Gewinn.class).select(gewinnQuery);
         } catch (AirtableException e) {
 
             log.error("Error with Airtable: " + e);
-            throw new SpielstandSyntaxException("Error retrieving entrys of Preis: ");
+            throw new SpielstandSyntaxException("Error retrieving entrys of Gewinne");
 
         }
 
-        log.debug("<-- getEntrysOfUUID. Retrieved Spielstand List from Airtable");
+        log.debug("<-- getAll");
         return response;
     }
     
