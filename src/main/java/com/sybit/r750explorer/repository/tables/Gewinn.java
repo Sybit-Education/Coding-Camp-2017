@@ -111,6 +111,8 @@ public class Gewinn {
     public void setVerlosungsmonat(String verlosungsmonat) {
         this.verlosungsmonat = verlosungsmonat;
     }
+
+
     
     
     

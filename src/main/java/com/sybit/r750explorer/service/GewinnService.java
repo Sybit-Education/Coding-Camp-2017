@@ -31,7 +31,7 @@ public class GewinnService {
         return gewinnRepository.getAll();
     }
 
-    public List<Gewinn> getGewinnOfMonth() {
+    public Gewinn getGewinnOfMonth() {
 
         log.debug("--> getGewinnOfMonth");
         
@@ -39,7 +39,16 @@ public class GewinnService {
         DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
         String formatdate = currentdate.format(df);
         formatdate = formatdate.substring(0, 7);
-        return gewinnRepository.getAll();
+        
+        for (Gewinn gw : gewinnRepository.getAll()) {
+            String date = gw.getVerlosungsmonat();
+            date = date.substring(0, 7);
+
+            if (date.equalsIgnoreCase(formatdate)) {
+                return gw;
+            }
+        }
+        return null;
     }
 }
 
