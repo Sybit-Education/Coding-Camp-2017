@@ -13,7 +13,9 @@
 
     <div class="container">          
         <div class="page-header">
-            <h1>${location.getName()}: Code prüfen</h1>
+            <h1>${location.getName()}:</h1> 
+                
+                <h2>Code prüfen</h2>
 
             <div class ="row">
 
