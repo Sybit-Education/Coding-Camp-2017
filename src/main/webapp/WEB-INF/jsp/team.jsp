@@ -18,6 +18,7 @@
 
             <p>
                Platzhalter.....
+               Link auf Album: https://goo.gl/photos/txErvkKX3NjqWSFf9
             </p>
             
         </div>
