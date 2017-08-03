@@ -12,33 +12,29 @@
 
 
     <body locationSlug="${locationSlug}"> 
-
+        <div>
+            <img src="${locationFoto}" alt="${locationName}" class="img-responsive"/>
+            <h1 class="locationTitle"><small>${locationName}</small></h1>
+        </div>
         <div class="container">          
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <img src="${locationFoto}" alt="${locationName}" class="img-responsive" />
-                        <h1 class="locationTitle">${locationName}</h1>
-                    </div>
-               </div>
-               <div class="row">
-                    <p class="col-xs-12">${locationDescription}</p>                        
-                    <c:if test="${QuizAnswered==false}">
-                        <div class="col-xs-12 text-center">
-                            <a href="<c:url value="/location/${locationSlug}/code"/>">
-                                <button typ="button" class="btn btn-default">Quiz starten ...</button>
-                            </a>
-                        </div>
-                    </c:if>                   
-                    <c:if test="${QuizAnswered==true}">
-                        <div class="col-xs-12 alert alert-info">
-                            <strong>Du hast an diesem Ort schon eine Frage beantwortet.</strong>
-                        </div>
-                    </c:if>                    
-                </div>        
-            </div>            
-
-
+            <div class="row">
+                 <p class="col-xs-12">${locationDescription}</p>                        
+                 <c:if test="${QuizAnswered==false}">
+                     <div class="col-xs-12 text-center">
+                         <a href="<c:url value="/location/${locationSlug}/code"/>">
+                             <button typ="button" class="btn btn-default">Quiz starten ...</button>
+                         </a>
+                     </div>
+                 </c:if>                   
+                 <c:if test="${QuizAnswered==true}">
+                     <div class="col-xs-12 alert alert-info">
+                         <strong>Du hast an diesem Ort schon eine Frage beantwortet.</strong>
+                     </div>
+                 </c:if>                    
+            </div> 
+                 
+            <hr />
+         
             <c:forEach items="${locationMedien}" var="media" varStatus="loop">
                 <div class="row">
                     <c:if test="${media.type=='Foto'}">
@@ -62,6 +58,18 @@
                 </div>
 
             </c:forEach>
+            
+            <hr />
+
+            <div class="row">                      
+                 <c:if test="${QuizAnswered==false}">
+                     <div class="col-xs-12 text-center">
+                         <a href="<c:url value="/location/${locationSlug}/code"/>">
+                             <button typ="button" class="btn btn-default">Quiz starten ...</button>
+                         </a>
+                     </div>
+                 </c:if>                                  
+            </div>             
             <div class="row">&nbsp;</div>
         </div>    
 

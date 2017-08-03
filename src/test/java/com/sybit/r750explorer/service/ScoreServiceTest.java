@@ -198,11 +198,15 @@ public class ScoreServiceTest {
     @Test
     public void newHighscoreTest() {
 
+        String testVorname = "vorname";
+        String testNachname = "nachname";
         String testNickname = "nickname";
         String testEmail = "email";
         String testUUID = "uuid";
 
         Highscore newHighscore = new Highscore();
+        newHighscore.setVorname(testVorname);
+        newHighscore.setNachname(testNachname);
         newHighscore.setNickname(testNickname);
         newHighscore.setEmail(testEmail);
         newHighscore.setUuid(testUUID);
@@ -210,7 +214,7 @@ public class ScoreServiceTest {
         newHighscore.setDate("datum");
 
         Mockito.when(spielstandRepository.registerScore(any())).thenReturn(newHighscore);
-        Highscore response = scoreService.newHighscore(testNickname, testEmail, testUUID);
+        Highscore response = scoreService.newHighscore(testVorname, testNachname, testNickname, testEmail, testUUID);
 
         assertEquals(response, newHighscore);
     }
@@ -219,12 +223,14 @@ public class ScoreServiceTest {
     @Test
     public void newHighscoreFailedTest() {
 
+        String testVorname = "vorname";
+        String testNachname = "nachname";
         String testNickname = "nickname";
         String testEmail = "email";
         String testUUID = "uuid";
 
         Mockito.when(spielstandRepository.registerScore(any())).thenReturn(null);
-        Highscore response = scoreService.newHighscore(testNickname, testEmail, testUUID);
+        Highscore response = scoreService.newHighscore(testVorname, testNachname, testNickname, testEmail, testUUID);
 
         assertEquals(response, null);
     }
@@ -240,25 +246,6 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
-    @Test
-    public void formatHighscoreTest() {
-
-        List<Highscore> highscoreTestList = new ArrayList<>();
-
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-
-        Highscore h1 = new Highscore();
-        h1.setDate(dateFormat.format(date));
-
-        highscoreTestList.add(h1);
-
-        List<Highscore> response = scoreService.formatHighscoreList(highscoreTestList);
-
-        assertEquals(10, response.get(0).getDate().length());
-
-    }
 
     @Test
     public void hintRequestedOver5() {

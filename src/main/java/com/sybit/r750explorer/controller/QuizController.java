@@ -162,7 +162,7 @@ public class QuizController implements Serializable {
 
         } else {
             model.put("location", locationService.getLocation(slug));
-            
+            model.put("codeCheck", false);
             if(codeEntryCounter(slug, request)){
                 model.put("maxEntries", true);
             }
