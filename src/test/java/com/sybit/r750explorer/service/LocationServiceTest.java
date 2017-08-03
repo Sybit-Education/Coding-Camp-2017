@@ -9,16 +9,12 @@ import com.sybit.airtable.vo.Attachment;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.SpielstandRepository;
-import com.sybit.r750explorer.repository.tables.Medien;
 import com.sybit.r750explorer.repository.tables.Spielstand;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -98,7 +94,6 @@ public class LocationServiceTest {
 
     }
 
-
     @Test
     public void getLocationsTest() {
 
@@ -117,7 +112,6 @@ public class LocationServiceTest {
         assertEquals(response.size(), 3);
 
     }
-
 
     @Test
     public void getVisitedLocations() {
@@ -199,7 +193,7 @@ public class LocationServiceTest {
 
         Mockito.when(spielstandRepository.getEntrysOfUUID(testUUID)).thenReturn(spielstandList);
         Mockito.when(locationRepository.getLocation("id1")).thenReturn(loc1);
-        
+
         List<Location> response = locationService.getVisitedLocations(testUUID);
 
         assertNotNull(response);
