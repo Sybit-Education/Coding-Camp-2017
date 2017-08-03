@@ -3,6 +3,7 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.repository.tables.Gewinn;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.GewinnService;
 import com.sybit.r750explorer.service.LocationService;
@@ -111,7 +112,13 @@ public class HomeController {
     @RequestMapping("/gewinne")
     public String listGewinne(Map<String, Object> model) {
 
-        model.put("gewinne", gewinnService.getGewinnList());
+        model.put( "gewinne", gewinnService.getGewinnOfMonth());
+        
+        for(Gewinn g : gewinnService.getGewinnOfMonth())
+        {
+            log.debug(g.getName());
+        }
+        
         return "gewinne";
     }
 }
