@@ -17,7 +17,7 @@
                 <div class="well well-sm">
                     <div class="row">
                         <div class="col-xs-9">
-                            <a href="${sponsor.link}" target="_blank" >
+                            <a href="${gewinne}" target="_blank" >
                                 <img class="img-thumbnail" src="${sponsor.logo[0].url}"/>
                             </a>
                         </div>
