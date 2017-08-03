@@ -98,7 +98,7 @@ public class ScoreController {
         if ( hs != null ) {
             model.put( "message", "Du hast dich registriert." );
         }  else {
-            model.put( "message", "<b>Fehler: Du hast dich bereits eingetragen.</b>" );
+            model.put( "message", "<b>Du hast deinen Score aktualisiert.</b>" );
         }
 
         return "myscore";
