@@ -44,7 +44,7 @@ public class CookieInterceptor implements HandlerInterceptor {
             javax.servlet.http.Cookie ncookie = new javax.servlet.http.Cookie("UUID", uuid);
             response.addCookie(ncookie);
 
-            scoreService.newSpielstandEntry(uuid, null, null, "Startwert", Float.valueOf(100));
+            scoreService.newSpielstandEntry(uuid, null, null, "Startwert", Float.valueOf(10));
         }
 
     }
