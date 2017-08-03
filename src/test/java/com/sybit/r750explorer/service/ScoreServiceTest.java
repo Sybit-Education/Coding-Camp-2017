@@ -198,11 +198,15 @@ public class ScoreServiceTest {
     @Test
     public void newHighscoreTest() {
 
+        String testVorname = "vorname";
+        String testNachname = "nachname";
         String testNickname = "nickname";
         String testEmail = "email";
         String testUUID = "uuid";
 
         Highscore newHighscore = new Highscore();
+        newHighscore.setVorname(testVorname);
+        newHighscore.setNachname(testNachname);
         newHighscore.setNickname(testNickname);
         newHighscore.setEmail(testEmail);
         newHighscore.setUuid(testUUID);
@@ -210,7 +214,7 @@ public class ScoreServiceTest {
         newHighscore.setDate("datum");
 
         Mockito.when(spielstandRepository.registerScore(any())).thenReturn(newHighscore);
-        Highscore response = scoreService.newHighscore(testNickname, testEmail, testUUID);
+        Highscore response = scoreService.newHighscore(testVorname, testNachname, testNickname, testEmail, testUUID);
 
         assertEquals(response, newHighscore);
     }
@@ -219,12 +223,14 @@ public class ScoreServiceTest {
     @Test
     public void newHighscoreFailedTest() {
 
+        String testVorname = "vorname";
+        String testNachname = "nachname";
         String testNickname = "nickname";
         String testEmail = "email";
         String testUUID = "uuid";
 
         Mockito.when(spielstandRepository.registerScore(any())).thenReturn(null);
-        Highscore response = scoreService.newHighscore(testNickname, testEmail, testUUID);
+        Highscore response = scoreService.newHighscore(testVorname, testNachname, testNickname, testEmail, testUUID);
 
         assertEquals(response, null);
     }

@@ -166,10 +166,12 @@ public class ScoreService {
      * @param uuid
      * @return the created Highscore
      */
-    public Highscore newHighscore(String nickname, String email, String uuid) {
+    public Highscore newHighscore(String vorname,String nachname, String nickname, String email, String uuid) {
         log.debug("--> newHighscore. UUID: " + uuid);
 
         Highscore highScore = new Highscore();
+        highScore.setVorname(vorname);
+        highScore.setNachname(nachname);
         highScore.setNickname(nickname);
         highScore.setEmail(email);
         highScore.setUuid(uuid);
