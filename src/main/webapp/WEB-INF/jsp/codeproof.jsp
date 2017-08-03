@@ -34,7 +34,7 @@
 
         <div class ="row">
             <div class="col-xs-6">
-                Finde den Sticker und gib den sechsstelligen Code ein!
+                Finde den Sticker und gib den sechsstelligen Code ein! Groﬂ- und Kleinschreibung muss dabei nicht beachtet werden.
             </div>
             <div class="col-xs-6">
                 <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" class="img-thumbnail pull-right" alt="Code Sticker" />
