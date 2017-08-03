@@ -23,10 +23,12 @@
     <div id="navbar-footer" class="collapse navbar-collapse"  width="100%">
         
         <ul class="nav navbar-nav row" width="100%">
+            <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/gewinne'/>" >Gewinne</a> </li>
             <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/team'/>" >Das&nbsp;Team</a> </li>
             <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/sponsoren'/>">Sponsoren</a></li>
             <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/impressum'/>" >Impressum</a> </li>
-            <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/datenschutz'/>" >Datenschutz</a> </li>  
+            <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/datenschutz'/>" >Datenschutz</a> </li> 
+            <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/'/>" >test</a></li>
             <li class="col-xs-6 col-sm-1 text-center">
                 <a href="https://www.instagram.com/r750explorer" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="font-size: 1.5em"></i></a>
             </li>
