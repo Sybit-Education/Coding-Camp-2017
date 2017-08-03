@@ -3,9 +3,11 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.exception.MailException;
 import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
+import com.sybit.r750explorer.service.MailService;
 import com.sybit.r750explorer.service.QuizService;
 import com.sybit.r750explorer.service.ScoreService;
 import org.slf4j.LoggerFactory;
@@ -31,6 +33,9 @@ public class QuizController {
 
     @Autowired
     private ScoreService scoreService;
+
+    @Autowired
+    private MailService mailService;
 
     @ModelAttribute("check")
     public boolean checkLocation(@CookieValue("UUID") String uuid, @PathVariable("slug") String slug) {
@@ -107,20 +112,20 @@ public class QuizController {
         }
 
         // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
-        if (code.equals(locationService.getLocation(slug).getCode())) {
+        if (code.equals(locationService.getLocation(slug).getCode()) && frage != null) {
             model.put("location", locationService.getLocation(slug));
-            model.put("frage", frage);
+            model.put("Frage", frage);
             return "quiz";
-        } else {
-            model.put("codeCheck", false);
-            log.debug("Code war nicht korrekt!");
-
-            return "codeproof";
         }
+        model.put("location", locationService.getLocation(slug));
+        model.put("codeCheck", false);
+        log.debug("Code war nicht korrekt!");
+
+        return "codeproof";
     }
 
     @RequestMapping(value = "/quiz")
-    public String quiz(@RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
+    public String quiz(@CookieValue("UUID") String uuid, @RequestParam boolean hint, @RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
 
         log.debug("--> CodePage");
 
@@ -133,6 +138,17 @@ public class QuizController {
 
         Fragen frage = null;
         if (code.equalsIgnoreCase(locationService.getLocation(slug).getCode())) {
+
+            if (hint) {
+//                try {
+//                    mailService.sendMessage(loc.getName() + ": " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!", uuid);
+//                } catch (MailException ex) {
+//                    log.error(ex.toString());
+//                }
+
+                scoreService.newSpielstandEntry(uuid, null, null, "Hinweis", Float.valueOf(5));
+            }
+
             log.debug("Code war korrekt! :D");
             try {
                 frage = quizService.getFrageOfLocation(slug);
@@ -198,28 +214,6 @@ public class QuizController {
         model.put("location", locationService.getLocation(slug));
 
         return "quiz-check";
-    }
-
-    /**
-     * Code Hint Page
-     *
-     * Method to reduce current score of user for using a hint
-     *
-     * @param scoreCookie Cookie-ID of the user
-     * @param slug URL-Part of Location
-     * @param model Model to add data to web page
-     * @return
-     */
-    @RequestMapping(value = "/code/hint")
-    public String codeHint(@CookieValue("UUID") String scoreCookie, @PathVariable("slug") String slug, Map<String, Object> model) {
-
-        log.debug("--> CodeHint");
-
-        Location location = locationService.getLocation(slug);
-        log.info("Hinweis für LocationSlug: " + location.getName() + " wurde aufgerufen!");
-
-        // TODO: Einen neuen Spielstand speichern (Punkte abziehen) und Informationen an model übergeben
-        return "code-hint";
     }
 
 }

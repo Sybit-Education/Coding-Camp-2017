@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 /**
  * Created by fzr on 11.05.17.
@@ -183,10 +184,12 @@ public class ScoreService {
      * @param uuid
      * @return the created Highscore
      */
-    public Highscore newHighscore(String nickname, String email, String uuid) {
+    public Highscore newHighscore(String vorname, String nachname, String nickname, String email, String uuid) {
         log.debug("--> newHighscore. UUID: " + uuid);
 
         Highscore highScore = new Highscore();
+        highScore.setVorname(vorname);
+        highScore.setNachname(nachname);
         highScore.setNickname(nickname);
         highScore.setEmail(email);
         highScore.setUuid(uuid);
@@ -195,7 +198,13 @@ public class ScoreService {
         Highscore result = null;
 
         if (!checkIfPlayerExists(uuid)) {
+            log.info("Neuer Highscore angelegt! UUID: " + uuid);
             result = spielstandRepository.registerScore(highScore);
+        } else {
+            log.info("Highscore aktualisiert! UUID: " + uuid);
+            removeHighscore(uuid);
+            spielstandRepository.registerScore(highScore);
+            result = null;
         }
 
         //Informationen zum Abspeichern des Highscores
@@ -214,9 +223,8 @@ public class ScoreService {
         log.debug("--> removeHighscore. UUID: " + uuid);
 
         //Spielstand Löschen über spielstandRepository
-        throw new MethodNotFoundException("Methode nicht implementiert");
-
-    } ////////////////////////////// TTTTTTTOOOOOOOOOOOOOODDDDDDDDDDDDDDOOOOOOOOOOOOOOOOOOOO: Außeinandersetzung mit Flo/Erik
+        spielstandRepository.deleteHighscore(uuid);
+    }
 
     public Float hintRequested(String uuid) {
 
@@ -224,8 +232,10 @@ public class ScoreService {
         Float score = this.getScoreOfSpielstand(uuid);
         if (score >= Float.valueOf(5)) {
             score = Float.valueOf(-5);
-        } else {
+        } else if (Objects.equals(score, Float.valueOf(0))) {
             score = Float.valueOf(0);
+        } else {
+            score = Float.valueOf(-score);
         }
         return score;
     }

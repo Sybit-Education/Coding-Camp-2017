@@ -31,6 +31,9 @@ public class ScoreController {
             = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
+    public static final String NICKNAME_PATTERN
+            = "^[a-z0-9_-]{4,16}$";
+
     @Autowired
     ScoreService scoreService;
 
@@ -49,18 +52,21 @@ public class ScoreController {
         //Hole dir den Score des Users(UUID)
         Float s = scoreService.getScoreOfSpielstand(uuid);
         //Hole dir alle Highscores
+
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
         //Vergiss nicht die Sachen dem Model zu übergeben
 
         model.put("Punkte", s);
         model.put("Liste", lScore);
-        
+
         return "myscore";
     }
 
     /**
      * Registration Page * Der User möchte sich registrieren. Hierfür
      *
+     * @param vorname
+     * @param nachname
      * @param nickname Der Nickname den der user haben möchte
      * @param email Die E-Mail des Users
      * @param uuid Die Cookie UUID des Users
@@ -68,13 +74,22 @@ public class ScoreController {
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
+    public String register(@RequestParam String vorname, @RequestParam String nachname, @RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
 
         log.debug("--> Registering... UUID: " + uuid);
 
+        // Überprüfung des Namens 
+        Pattern pattern = Pattern.compile(NICKNAME_PATTERN);
+        Matcher matcher = pattern.matcher(nickname);
+        if (!matcher.matches()) {
+            model.put("message", "Bitte wähle einen Nickname von einer Länge zwischen 4 und 16 Zeichen.");
+            return "myscore";
+        }
+
         // Überprüfung der EMail
-        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-        Matcher matcher = pattern.matcher(email);
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+
         if (matcher.matches()) {
             log.debug("<-- register(): EMail ist im richtigen Format");
             model.put("nickname", nickname);
@@ -86,12 +101,12 @@ public class ScoreController {
 
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
-        Highscore hs = scoreService.newHighscore(nickname, email, uuid);
+        Highscore hs = scoreService.newHighscore(vorname, nachname, nickname, email, uuid);
         if (hs != null) {
             model.put("message", "Du hast dich registriert.");
         } else {
-            model.put("message", "<b>Fehler: Du hast dich bereits eingetragen.</b>");
-            return "myscore";
+            model.put("message", "<b>Du hast deinen Score aktualisiert.</b>");
+
         }
 
         return "myscore";
