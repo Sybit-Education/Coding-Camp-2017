@@ -1,6 +1,5 @@
 package com.sybit.r750explorer.repository;
 
-import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.Application;
 import com.sybit.r750explorer.wiremock.wiremockBaseTest;
@@ -14,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import org.junit.Ignore;
 
 /**
  * Created by fzr on 19.04.17.

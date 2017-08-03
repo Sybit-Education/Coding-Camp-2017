@@ -6,7 +6,9 @@
 package com.sybit.r750explorer.controller;
 
 import com.sybit.r750explorer.exception.MailException;
+import com.sybit.r750explorer.repository.GewinnRepository;
 import com.sybit.r750explorer.repository.tables.Location;
+import com.sybit.r750explorer.repository.tables.Gewinn;
 import com.sybit.r750explorer.service.LocationService;
 import com.sybit.r750explorer.service.MailService;
 import com.sybit.r750explorer.service.ScoreService;
@@ -50,7 +52,7 @@ public class CodeHintController {
      */
     @RequestMapping(value = "/code/hint/message")
     public String sendMessage(@CookieValue("UUID") String uuid, @PathVariable("slug") String locationSlug, Map<String, Object> model) {
-
+        
         log.debug("--> sendMessage: Location Slug: " + locationSlug + ". UUID: " + uuid);
         log.info("Message: " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!");
 

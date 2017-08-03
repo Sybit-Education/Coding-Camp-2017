@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import java.util.List;
-import org.junit.Ignore;
 
 /**
  * Created by yms on 15.05.2017.
@@ -29,7 +28,6 @@ public class QuizRepositoryTest extends wiremockBaseTest {
     @Autowired
     private QuizRepository quizRepository;
 
-    @Ignore
     @Test
     public void getFragenOfLocationTest() {
 
@@ -38,7 +36,6 @@ public class QuizRepositoryTest extends wiremockBaseTest {
         assertEquals(fragenList.size(), 3);
     }
 
-    @Ignore
     @Test
     public void getFrageOfID() {
 
