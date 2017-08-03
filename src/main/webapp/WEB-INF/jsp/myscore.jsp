@@ -26,15 +26,15 @@
                             <!--Username(Nickname) and the email adress required-->
                             <div class="form-group">
                                 <label for="recipient-name" class="form-control-label">Nickname<sup>*</sup>:</label>
-                                <input type="text" class="form-control" name="nickname" placeholder="Nickname für Highscore">
+                                <input type="text" class="form-control" name="nickname" placeholder="Nickname fuer Highscore">
                                 <p>Der Nickname wird in der Highscore angezeigt.</p>
                             </div> 
                             <div>
-                                Folgende Daten sind zur Gewinnermittlung notwendig und werden nicht veröffentlicht:
+                                Folgende Daten sind zur Gewinnermittlung notwendig und werden nicht ver&oumlffentlicht:
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="form-control-label">E-Mail<sup>*</sup>:</label>
-                                <input type="email" class="form-control" name="email" placeholder="E-Mail">
+                                <input type="text" class="form-control" name="email" placeholder="E-Mail">
                             </div>  
                             <div class="form-group">
                                 <label for="recipient-name" class="form-control-label">Vorname:</label>
@@ -65,7 +65,7 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1>Dein Highscore: <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
+                <h1 class = "text-center" >Dein Highscore: <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
                 
             </div>
             <div class="col-md-12 col-xs-12">
