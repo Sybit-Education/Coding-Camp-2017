@@ -1,6 +1,5 @@
 package com.sybit.r750explorer.repository;
 
-import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.Application;
 import com.sybit.r750explorer.wiremock.wiremockBaseTest;
