@@ -89,7 +89,7 @@
                 <th scope="row">${loop.index +1}</th>
                 <td>${score.getNickname()}</td>
                 
-                <td><fmt:formatNumber type = "number" value = "${score.getScore ()}"/></td>
+                <td><fmt:formatNumber type = "number" value = "${score.getScore()}"/></td>
 
             </tr>
         </c:forEach>

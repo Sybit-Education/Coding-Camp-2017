@@ -49,7 +49,7 @@ public class ScoreController {
         //Hole dir den Score des Users(UUID)
         Float s = scoreService.getScoreOfSpielstand(uuid);
         //Hole dir alle Highscores
-        List<Highscore> lScore = scoreService.getHighscoreList();
+        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
         //Vergiss nicht die Sachen dem Model zu übergeben
 
         model.put("Punkte", s);
