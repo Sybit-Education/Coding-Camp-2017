@@ -65,7 +65,7 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1>Dein Highscore: <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
+                <h1 class = "text-center" >Dein Highscore: <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
                 
             </div>
             <div class="col-md-12 col-xs-12">
