@@ -13,16 +13,15 @@
         <div class="container">
 
             <div class="page-header">
-                <h1>Team</h1>
+                <h1>Das Team</h1>
             </div>
-
-            <!--
-                Link auf Album: https://goo.gl/photos/txErvkKX3NjqWSFf9
-            -->
 
             <div class="row">
                 <div class="col-xs-12">
-                    Die App ist im Rahmen des <b>Coding-Camps 2017</b> vom 31.07.2017 - 04.08.2017 in Zusammenarbeit mit der Stadt Radolfzell entstanden. 
+                    Die App R750Explorer ist im Rahmen des 
+                    <b>Coding-Camps 2017</b> vom 31.07.2017 - 04.08.2017 
+                    in Zusammenarbeit mit der Stadt Radolfzell (Sommerferienprogramm) 
+                    entstanden. 
                 </div>
             </div>
 
@@ -37,7 +36,7 @@
             <div class="break" style="height:20px"></div>
 
             <h3>Developer & Coaches</h3>
-            
+
             <div class="row">
                 <div class="col-xs-12 col-md-6">
                     <table class="table table-hover table-responsive">
@@ -124,159 +123,110 @@
                     </table>
                 </div>
             </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h3>
-                            Ablauf
-                        </h3>
-                        <h5>
-                            Das erste Treffen war am Montag, den 31.07.2017, um 8:30 Uhr bei der Sybit GmbH in der Sankt-Johannis-Straße 5, 78315 Radolfzell. 
-                            Nach einer spannenden Einführung im Projekt R750Explorer von Herrn Strittmatter 
-                            begannen wir eine kleine Vorstellungsrunde. 
-                            <p>
-            
-                            </p>
-                            Nach einem gemeinsamen Essen haben wir unsere Arbeitsplätze aufgebaut und bekamen einen Einblick im Fachbereich Systemintegration.<br>
-                            Der zweite Tag begann wie jeder andere Tag um 8.30, selbe Stelle, selbe Welle.
-                            <p>
-            
-                            </p>
-                            Wir erstellten die <i>Userstories</i> und haben damit auch angefangen diese umzusetzten. Von Dienstag den 01.08.2017 bis Freitag den 04.08.2017 hieß es dann Coding, Coding und Coding.
-                            Am Freitag, dem letzten Tag, freuten wir uns auf das Ergebnis der harten Arbeit, welche wir in dieser Woche zusammen als Team geleistet haben.    
-                        </h5>
-                    </div>
-                </div>
-    
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h3>
-                            Vorkenntnisse    
-                        </h3>
-                        <h5>
-                            Das Spektrum der Vorkenntnisse im Thema Programmierung zog sich von 
-                            <i>nichts</i> zu <i>schon mal gehört</i> und von <i>schon mal probiert</i> zu <i>schon länger dabei</i>. 
-                            Im Laufe des Coding-Camps haben wir Einiges gelernt und jeder ist mit mehr Wissen nach Hause gekommen.
-                        </h5>
-                    </div>
-                </div>
-            
             <div class="row">
                 <div class="col-xs-12">
-                <h3>
-                    Fazit
-                </h3>
+                    <h3>
+                        Ablauf
+                    </h3>
+                    <p>
+                        Das erste Treffen war am Montag, den 31.07.2017, um 8:30 Uhr bei der Sybit GmbH in der 
+                        Sankt-Johannis-Straße 5, 78315 Radolfzell. 
+                        Nach einer spannenden Einführung im Projekt R750Explorer von Herrn Strittmatter 
+                        begannen wir eine kleine Vorstellungsrunde. 
+                    </p>
+
+                    <p>
+                        Nach einem gemeinsamen Essen haben wir unsere Arbeitsplätze aufgebaut 
+                        und bekamen einen Einblick im Fachbereich Systemintegration.<br>
+                        Der zweite Tag begann wie jeder andere Tag um 8.30, selbe Stelle, selbe Welle.
+                    </p>
+
+                    <p>
+                        Wir erstellten die <i>Userstories</i> und haben damit auch angefangen diese 
+                        umzusetzten. Von Dienstag den 01.08.2017 bis Freitag den 04.08.2017 
+                        hieß es dann Coding, Coding und Coding.
+                        Am Freitag, dem letzten Tag, freuten wir uns auf das Ergebnis der harten 
+                        Arbeit, welche wir in dieser Woche zusammen als Team geleistet haben.    
+                    </p>
                 </div>
             </div>
-            
-                <div class="row well well-sm">
-                    <div class="col-xs-3">
 
-                        <h5>
-                            <b>Meike</b>
-                        </h5>
-                    </div>
-                    <div class="col-xs-9">
-                        <h5>
-                            "<i>Es war eine sehr lehrreiche und interessante Woche.</i>"
-                        </h5>
-                    </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>
+                        Vorkenntnisse    
+                    </h3>
+                    <p>
+                        Das Spektrum der Vorkenntnisse im Thema Programmierung zog sich von 
+                        <i>nichts</i> zu <i>schon mal gehört</i> und von <i>schon mal probiert</i> zu <i>schon länger dabei</i>. 
+                        Im Laufe des Coding-Camps haben wir Einiges gelernt und jeder ist mit mehr Wissen nach Hause gekommen.
+                    </p>
                 </div>
-            
-                <div class="row well well-sm">
-                    <div class="col-xs-3">
+            </div>
 
-                        <h5>
-                            <b>Juri</b>
-                        </h5>
-                    </div>
-                    <div class="col-xs-9">
-                        <h5>
-                            "<i>Es hat Spaß gemacht!</i>"
-                        </h5>
-                    </div>
+            <div class="row">
+                <div>
+                    <h3 class="col-xs-12">Fazit</h3>
                 </div>
-            
-                <div class="row well well-sm">
-                    <div class="col-xs-3">
-                        <h5>
-                            <b>Timo</b>
-                        </h5>
-                    </div>
-                    <div class="col-xs-9">
-                        <h5>
-                            "<i>Eine interesnte und tolle Woche voller neuer Erfahrungen!</i>"
-                        </h5>
-                    </div>
-                </div>            
+            </div>
 
-                <div class="row well well-sm">
-                    <div class="col-xs-3">
-                        <h5>
-                            <b>Elias</b>
-                        </h5>
-                    </div>
-                    <div class="col-xs-9">
-                        <h5>
-                            "<i>Es war eine Woche voller neuer Erfahrungen, die mir bei meiner späteren Berufswahl helfen könnten.</i>"
-                        </h5>
-                    </div>
-                         
+            <div class="row">
+                <div  class="col-xs-12 col-md-4">
+                    <blockquote>
+                        <p>"Es war eine sehr lehrreiche und interessante Woche."</p>
+                        <footer class="text-right">Meike</footer>
+                    </blockquote>              
+                </div> 
+                <div class="col-xs-12 col-md-4">
+                    <blockquote>
+                        <p>"Es hat Spaß gemacht!"</p>
+                        <footer class="text-right">Juri</footer>
+                    </blockquote>                
+                </div> 
+                <div class="col-xs-12 col-md-4">
+                    <blockquote >
+                        <p>"Eine interessante und tolle Woche voller neuer Erfahrungen!"</p>
+                        <footer class="text-right">Timo</footer>
+                    </blockquote>             
+                </div> 
+                <div class="col-xs-12 col-md-4">                    
+                    <blockquote >
+                        <p>"Es war eine Woche voller neuer Erfahrungen, die mir bei meiner späteren Berufswahl helfen könnten."</p>
+                        <footer class="text-right">Elias</footer>
+                    </blockquote>                   
+                </div> 
+                <div class="col-xs-12 col-md-4">                    
+                    <blockquote>
+                        <p>"Es war interessant mal den "Workflow" eines größeren Software-Projektes kennenzulernen."</p>
+                        <footer class="text-right">Florian</footer>
+                    </blockquote> 
+                </div> 
+                <div class="col-xs-12 col-md-4">                    
+                    <blockquote >
+                        <p>Ich freue mich, dass dieses Projekt live geht und das Ergebnis wird 
+                            sich sehen lassen. ;)"</p>
+                        <footer class="text-right">Yulia</footer>
+                    </blockquote> 
+                </div> 
+                <div class="col-xs-12 col-md-4">                    
+                    <blockquote >
+                        <p>"Java war sehr kompliziert für mich. Umso mehr freue ich mich mit dem neuen Wissen 
+                            zuhause Weiteres mit Bootstrap auszuprobieren. :)"</p>
+                        <footer class="text-right">Maik</footer>
+                    </blockquote> 
+                </div> 
+                <div class="col-xs-12 col-md-4">                    
+                    <blockquote >
+                        <p>"Für mich war es eine sehr spannende, spaßige und lehrreiche Woche 
+                            mit dem Sybit Coding-Camp-Team. :)"</p>
+                        <footer class="text-right">Daniele</footer>
+                    </blockquote>
                 </div>
-            
-                <div class="row well well-sm">
-                    <div class="col-xs-3">
-                        <h5>
-                            <b>Florian</b>
-                        </h5>
-                    </div>
-                    <div class="col-xs-9">
-                        <h5>
-                            "<i>Es war interessant mal den "Workflow" eines größeren Software-Projektes kennenzulernen.</i>"
-                        </h5>
-                    </div>
-                </div>
-                <div class="row well well-sm">
-                    <div class="col-xs-3">
-                        <h5>
-                            <b>Yulia</b>
-                        </h5>
-                    </div>
-                    <div class="col-xs-9">
-                        <h5>
-                            "<i>Ich freue mich, dass dieses Projekt live geht und das Ergebnis wird sich sehen lassen. ;)</i>"
-                        </h5>
-                    </div>
-                </div>
-                <div class="row well well-sm">
-                    <div class="col-xs-3">
-                        <h5>
-                            <b>Maik</b>
-                        </h5>
-                    </div>
-                    <div class="col-xs-9">
-                        <h5>
-                            "<i>Java war sehr kompliziert für mich. Umso mehr freue ich mich mit dem neuen Wissen Zuhause Weiteres mit Bootstrap auszuprobieren. :)</i>"
-                        </h5>
-                    </div>
-                </div>
-                <div class="row well well-sm">
-                    <div class="col-xs-3">
-                        <h5>
-                            <b>Daniele</b>
-                        </h5>
-                    </div>
-                    <div class="col-xs-9">
-                        <h5>
-                            "<i>Für mich war es eine sehr spannende, spaßige und lehrreiche Woche mit dem Sybit Coding-Camp-Team. :)</i>"
-                        </h5>
-                    </div>
-                </div>
-            
- 
-                        
-            
-</div>
+            </div>
 
-<c:import url="include/footer.jsp"/>
-</body>
+
+        </div>
+
+        <c:import url="include/footer.jsp"/>
+    </body>
 </html>
