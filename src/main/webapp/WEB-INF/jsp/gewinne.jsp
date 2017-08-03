@@ -20,9 +20,9 @@
     </head>
     <body>
         <div class="container">
-        <h1 class="red-text text-center">Derzeit zu gewinnen...</h1>
-        <p class = "text-center">Alle Preise, die diesen Monat gewonnen werden können:</p>
-        
+            <h1 class="red-text text-center">Derzeit zu gewinnen...</h1>
+            <p class = "text-center">Alle Preise, die diesen Monat gewonnen werden können:</p>
+
             <c:forEach items="${gewinne}" var="gewinn" varStatus="loop">
                 <div class="well well-sm">
                     <div class="row">
@@ -35,13 +35,23 @@
                         <div class="col-xs-6">
                             ${gewinn.bemerkung}
                         </div>
-                        
+
                         <div class="col-xs-6">
                             <img class="img-thumbnail" src="${gewinn.foto[0].url}" />
                         </div>
                     </div>
                 </div>
+
             </c:forEach>
+            <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
+                <c:forEach items="${allGewinne}" var="weitererGewinn" varStatus="loop" >
+                    <div class="col-xs-6 col-md-4">
+                        <div class="panel panel-default bootcards-media" >
+                            <img src="${weitererGewinn.foto[0].url}" class="img-responsive cards"/>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
         </div>
 
 

@@ -114,10 +114,18 @@ public class HomeController {
 
         model.put( "gewinne", gewinnService.getGewinnOfMonth());
         
-        for(Gewinn g : gewinnService.getGewinnOfMonth())
+        List<Gewinn> allGewinne = gewinnService.getGewinnList();
+        List<Gewinn> allGewinneWithPic = new ArrayList<>();
+        
+        for( Gewinn gewinn : allGewinne )
         {
-            log.debug(g.getName());
+            if ( gewinn.getFoto() != null )
+            {
+                allGewinneWithPic.add(gewinn);
+            }
         }
+        
+        model.put( "allGewinne", allGewinneWithPic );
         
         return "gewinne";
     }
