@@ -36,101 +36,101 @@
 
             <div class="break" style="height:20px"></div>
 
-            <h3>Developer</h3>
-            <table class="table table-hover table-responsive">
-                <thead class="thead-default">
-                    <tr>
-                        <th>Name</th>
-                        <th>Alter</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <th class="col-xs-6">
-                        <tr>
-                            <td>Daniele Suppa</td>
-                            <td>17</td>
-                        </tr>
-                        <tr>
-                            <td>Elias Steiner</td>
-                            <td>17</td>
-                        </tr>
-                        <tr>
-                            <td>Florian Dritter</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Juri Nienhoff</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Maik Metzger</td>
-                            <td>17</td>
-                        </tr>
-                        <tr>
-                            <td>Meike Faller</td>
-                            <td>17</td>
-                        </tr>
-                        <tr>
-                            <td>Robin Hofmann</td>
-                            <td>17</td>
-                        </tr>
-                        <tr>
-                            <td>Silvan Zingrebe</td>
-                            <td>17</td>
-                        </tr>
-                        <tr>
-                            <td>Timo Wirtz</td>
-                            <td>15</td>
-                        </tr>
-                    </th>
-                </tbody>
-            </table>
+            <h4>Developer & Coaches</h4>
+            
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <table class="table table-hover table-responsive">
+                        <thead class="thead-default">
+                            <tr>
+                                <th>Name</th>
+                                <th>Alter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                                <tr>
+                                    <td>Daniele Suppa</td>
+                                    <td>17</td>
+                                </tr>
+                                <tr>
+                                    <td>Elias Steiner</td>
+                                    <td>17</td>
+                                </tr>
+                                <tr>
+                                    <td>Florian Dritter</td>
+                                    <td>15</td>
+                                </tr>
+                                <tr>
+                                    <td>Juri Nienhoff</td>
+                                    <td>15</td>
+                                </tr>
+                                <tr>
+                                    <td>Maik Metzger</td>
+                                    <td>17</td>
+                                </tr>
+                                <tr>
+                                    <td>Meike Faller</td>
+                                    <td>17</td>
+                                </tr>
+                                <tr>
+                                    <td>Robin Hofmann</td>
+                                    <td>17</td>
+                                </tr>
+                                <tr>
+                                    <td>Silvan Zingrebe</td>
+                                    <td>17</td>
+                                </tr>
+                                <tr>
+                                    <td>Timo Wirtz</td>
+                                    <td>15</td>
+                                </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <table class="table table-hover table-responsive">    
+                        <thead class="thead-default">
+                            <tr>
+                                <th width="50%">Name</th>
+                                <th width="50%">Alter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-            <h3>Coaches</h3>
-            <table class="table table-hover table-responsive">    
-                <thead class="thead-default">
-                    <tr>
-                        <th>Name</th>
-                        <th>Alter</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <th class="col-xs-6">
-                        <tr>
-                            <td>Yannik Mattes</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>Fabian Zeller</td>
-                            <td>20</td>
-                        </tr>
-                        <tr>
-                            <td>Sebastian Manz</td>
-                            <td>22</td>
-                        </tr>
-                        <tr>
-                            <td>Yulia Grel</td>
-                            <td>24</td>
-                        </tr>
-                        <tr>
-                            <td>Stephan Strittmatter</td>
-                            <td>45</td>
-                        </tr>
-                    </th>
-                </tbody>
-            </table>
+                                <tr>
+                                    <td>Yannik Mattes</td>
+                                    <td>20</td>
+                                </tr>
+                                <tr>
+                                    <td>Fabian Zeller</td>
+                                    <td>20</td>
+                                </tr>
+                                <tr>
+                                    <td>Sebastian Manz</td>
+                                    <td>22</td>
+                                </tr>
+                                <tr>
+                                    <td>Yulia Grel</td>
+                                    <td>24</td>
+                                </tr>
+                                <tr>
+                                    <td>Stephan Strittmatter</td>
+                                    <td>45</td>
+                                </tr>
 
-
-        </tbody>
-    </table>
-
+                        </tbody>
+                    </table>
+                </div>
+    </div>
     <div class="row">
         <div class="col-xs-12">
     <h4>
         Ablauf
     </h4>
     <h5>
-        Das erste Treffen war am Montag, den 31.07.2017, um 8:30 Uhr bei der Sybit GmbH. 
+        Das erste Treffen war am Montag, den 31.07.2017, um 8:30 Uhr bei der Sybit GmbH in der Sankt-Johannis-Straße 5, 78315 Radolfzell. 
         Nach einer spannenden Einführung im Projekt R750Explorer von Herrn Strittmatter 
         begannen wir eine kleine Vorstellungsrunde. 
         <p>
@@ -142,18 +142,33 @@
             
         </p>
         Wir erstellten die <i>Userstories</i> und haben damit auch angefangen diese umzusetzten. Von Dienstag den 01.08.2017 bis Freitag den 04.08.2017 hieß es dann Coding, Coding und Coding.
-        Am Freitag, dem letzten Tag, freuten wir uns auf das Ergebnis der harten Arbeit, welche wir in dieser Woche zusammen als Team geleistet haben.
-        
+        Am Freitag, dem letzten Tag, freuten wir uns auf das Ergebnis der harten Arbeit, welche wir in dieser Woche zusammen als Team geleistet haben.    
     </h5>
     </div>
     </div>
     
-    
-
-
-
-</div>
-
+     <div class="row">
+        <div class="col-xs-12">
+            <h4>
+            Vorkenntnisse    
+            </h4>
+            <h5>
+                Das Spektrum der Vorkenntnisse im Thema Programmierung zog sich von 
+                <i>nichts</i> zu <i>schon mal gehört</i> und von <i>schon mal probiert</i> zu <i>schon länger dabei</i>. 
+                Im Laufe des Coding-Camps haben wir Einiges gelernt und jeder ist mit mehr Wissen nach Hause gekommen.
+            </h5>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-xs-12">
+            <h4>
+            Fazit
+            </h4>
+            <h5>
+              Text
+            </h5>
+        </div>
+        </div>
 
 </div>
 
