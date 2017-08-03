@@ -17,7 +17,7 @@
             </div>
 
             <p>
-               Platzhalter....
+               Platzhalter.....
             </p>
             
         </div>
