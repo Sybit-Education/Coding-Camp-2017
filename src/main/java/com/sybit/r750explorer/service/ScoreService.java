@@ -132,29 +132,25 @@ public class ScoreService {
      * @param uuid
      * @return boolean
      */
-    public boolean checkIfPlayerExists( String uuid )
-    {
+    public boolean checkIfPlayerExists(String uuid) {
         log.debug("--> checkIfPlayerExists. UUID: " + uuid);
         //wenn UUID bereits einen Highscore eingetragen hat, false übergeben werden
         // Datum überprüfen
-            
-        LocalDateTime currentdate = LocalDateTime.now(  );
+
+        LocalDateTime currentdate = LocalDateTime.now();
         DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
-        String formatdate = currentdate.format( df );
-        formatdate = formatdate.substring( 0, 7 );
-        
-        
-        for ( Highscore hs : spielstandRepository.getHighscoreOfUUID( uuid ) )
-        {
-            String date = hs.getDate(  );
-            date = date.substring( 0, 7 );
-                
-            if ( date.equalsIgnoreCase( formatdate ) )
-            {
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+
+        for (Highscore hs : spielstandRepository.getHighscoreOfUUID(uuid)) {
+            String date = hs.getDate();
+            date = date.substring(0, 7);
+
+            if (date.equalsIgnoreCase(formatdate)) {
                 return true;
             }
         }
-            
+
         return false;
     }
 
@@ -166,10 +162,12 @@ public class ScoreService {
      * @param uuid
      * @return the created Highscore
      */
-    public Highscore newHighscore(String nickname, String email, String uuid) {
+    public Highscore newHighscore(String vorname, String nachname, String nickname, String email, String uuid) {
         log.debug("--> newHighscore. UUID: " + uuid);
 
         Highscore highScore = new Highscore();
+        highScore.setVorname(vorname);
+        highScore.setNachname(nachname);
         highScore.setNickname(nickname);
         highScore.setEmail(email);
         highScore.setUuid(uuid);
@@ -178,12 +176,13 @@ public class ScoreService {
         Highscore result = null;
 
         if (!checkIfPlayerExists(uuid)) {
+            log.info("Neuer Highscore angelegt! UUID: " + uuid);
             result = spielstandRepository.registerScore(highScore);
-        }
-        else
-        {
+        } else {
+            log.info("Highscore aktualisiert! UUID: " + uuid);
             removeHighscore(uuid);
-            result = spielstandRepository.registerScore(highScore);
+            spielstandRepository.registerScore(highScore);
+            result = null;
         }
 
         //Informationen zum Abspeichern des Highscores
@@ -202,9 +201,9 @@ public class ScoreService {
         log.debug("--> removeHighscore. UUID: " + uuid);
 
         //Spielstand Löschen über spielstandRepository
-        spielstandRepository.deleteHighscore( uuid );
+        spielstandRepository.deleteHighscore(uuid);
     }
-    
+
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float
