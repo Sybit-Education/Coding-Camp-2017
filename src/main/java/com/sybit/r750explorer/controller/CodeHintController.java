@@ -8,6 +8,7 @@ package com.sybit.r750explorer.controller;
 import com.sybit.r750explorer.exception.MailException;
 import com.sybit.r750explorer.repository.GewinnRepository;
 import com.sybit.r750explorer.repository.tables.Location;
+import com.sybit.r750explorer.repository.tables.Gewinn;
 import com.sybit.r750explorer.service.LocationService;
 import com.sybit.r750explorer.service.MailService;
 import com.sybit.r750explorer.service.ScoreService;

@@ -9,6 +9,7 @@ import com.sybit.r750explorer.repository.GewinnRepository;
 import com.sybit.r750explorer.repository.tables.Gewinn;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,11 @@ public class GewinnService {
         return gewinnRepository.getAll();
     }
 
-    public Gewinn getGewinnOfMonth() {
+    public List<Gewinn> getGewinnOfMonth() {
 
         log.debug("--> getGewinnOfMonth");
+        
+        List<Gewinn> gewOfMonth=new ArrayList<>();
         
         LocalDateTime currentdate = LocalDateTime.now();
         DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
@@ -45,10 +48,10 @@ public class GewinnService {
             date = date.substring(0, 7);
 
             if (date.equalsIgnoreCase(formatdate)) {
-                return gw;
+                gewOfMonth.add(gw);
             }
         }
-        return null;
+        return gewOfMonth;
     }
 }
 
