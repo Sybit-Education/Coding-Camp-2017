@@ -51,7 +51,8 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1>Dein Highscore: ${Score}</h1>
+                <h1>Dein Highscore: <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
+                
             </div>
             <div class="col-md-12 col-xs-12">
                 <center>
@@ -87,7 +88,8 @@
             <tr>
                 <th scope="row">${loop.index +1}</th>
                 <td>${score.getNickname()}</td>
-                <td>${score.getScore()}</td>
+                
+                <td><fmt:formatNumber type = "number" value = "${score.getScore ()}"/></td>
 
             </tr>
         </c:forEach>
