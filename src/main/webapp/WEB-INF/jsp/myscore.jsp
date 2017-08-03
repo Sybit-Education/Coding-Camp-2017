@@ -7,11 +7,9 @@
 
     <head>
         <c:import url="include/head.jsp"/>
+        <title>Highscore | R750Explorer</title>
     </head>
-
-
     <body>
-
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -28,11 +26,11 @@
                             <!--Username(Nickname) and the email adress required-->
                             <div class="form-group">
                                 <label for="recipient-name" class="form-control-label">Nickname<sup>*</sup>:</label>
-                                <input type="text" class="form-control" name="nickname" placeholder="Nickname für Highscore">
+                                <input type="text" class="form-control" name="nickname" placeholder="Nickname fÃ¼r Highscore">
                                 <p>Der Nickname wird in der Highscore angezeigt.</p>
                             </div> 
                             <div>
-                                Folgende Daten sind zur Gewinnermittlung notwendig und werden nicht veröffentlicht:
+                                Folgende Daten sind zur Gewinnermittlung notwendig und werden nicht verÃ¶ffentlicht:
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="form-control-label">E-Mail<sup>*</sup>:</label>

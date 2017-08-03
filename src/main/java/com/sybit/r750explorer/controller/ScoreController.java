@@ -45,7 +45,7 @@ public class ScoreController {
      * @return
      */
     @RequestMapping("/myscore")
-    public String score(@CookieValue("UUID") String uuid, Map<String, Object> model) {
+    public String score(@CookieValue(name="UUID", required = false) String uuid, Map<String, Object> model) {
 
         log.debug("--> MyScore");
         //Hole dir den Score des Users(UUID)
@@ -67,7 +67,7 @@ public class ScoreController {
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@RequestParam String vorname, @RequestParam String nachname, @RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
+    public String register(@RequestParam String vorname, @RequestParam String nachname, @RequestParam String nickname, @RequestParam String email, @CookieValue(name="UUID") String uuid, Map<String, Object> model) {
 
         log.debug("--> Registering... UUID: " + uuid);
 
