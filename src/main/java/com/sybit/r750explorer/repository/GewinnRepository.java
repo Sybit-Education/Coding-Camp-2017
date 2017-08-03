@@ -19,9 +19,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class GewinnRepository extends AirtableRepository {
-    
+
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
-    
+
     public List<Gewinn> getAll() {
 
         log.debug("--> getAll");
@@ -41,5 +41,5 @@ public class GewinnRepository extends AirtableRepository {
         log.debug("<-- getAll");
         return response;
     }
-    
+
 }

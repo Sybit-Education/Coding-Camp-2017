@@ -23,7 +23,7 @@ public class GewinnService {
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    GewinnRepository gewinnRepository;
+    private GewinnRepository gewinnRepository;
 
     public List<Gewinn> getGewinnList() {
 
@@ -35,14 +35,14 @@ public class GewinnService {
     public List<Gewinn> getGewinnOfMonth() {
 
         log.debug("--> getGewinnOfMonth");
-        
-        List<Gewinn> gewOfMonth=new ArrayList<>();
-        
+
+        List<Gewinn> gewOfMonth = new ArrayList<>();
+
         LocalDateTime currentdate = LocalDateTime.now();
         DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
         String formatdate = currentdate.format(df);
         formatdate = formatdate.substring(0, 7);
-        
+
         for (Gewinn gw : gewinnRepository.getAll()) {
             String date = gw.getVerlosungsmonat();
             date = date.substring(0, 7);
@@ -54,4 +54,3 @@ public class GewinnService {
         return gewOfMonth;
     }
 }
-
