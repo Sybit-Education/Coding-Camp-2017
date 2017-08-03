@@ -107,23 +107,45 @@ public class ScoreService {
     public List<Highscore> getHighscoreList() {
 
         log.debug("--> getHighscoreList");
-        throw new MethodNotFoundException("Methode nicht implementiert");
+
+        return spielstandRepository.getHighscore();
 
     }
-
-    /**
-     * Format the Highscore List. Date gets shorter. * Damit die Highscoreliste
-     * schöner aussieht
+    
+        /**
+     * Get the Highscore List. Holt dir die Highscoreliste des aktuellen Monats
      *
-     * @param list
-     * @return formatted Highscore List
+     * @return List of Higscores
      */
-    public List<Highscore> formatHighscoreList(List<Highscore> list) {
+    public List<Highscore> getHighscoreListForMonth() {
+        List<Highscore> currentMonth = new ArrayList<>();
+        List<Highscore> listMonth = spielstandRepository.getHighscore();
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+        
+        for (Highscore hs : listMonth) {
+            String date = hs.getDate();
+            date = date.substring(0, 7);
+            
+            if (date.equalsIgnoreCase(formatdate)){
+                currentMonth.add(hs);
+            }
+             
+         }
 
-        log.debug("--> formatHighscoreList");
-        //Formatiere die Liste
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        
+       return currentMonth;
     }
+
+    
+  
+    
+        
+
+    
+
 
     /**
      * Checks if a player already registered a Highscore. Methode die Nachschaut

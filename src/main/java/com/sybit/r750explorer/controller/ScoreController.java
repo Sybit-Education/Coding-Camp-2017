@@ -5,6 +5,7 @@ package com.sybit.r750explorer.controller;
  */
 import com.sybit.r750explorer.repository.tables.Highscore;
 import com.sybit.r750explorer.service.ScoreService;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -49,9 +50,15 @@ public class ScoreController {
 
         log.debug("--> MyScore");
         //Hole dir den Score des Users(UUID)
-
+        Float s = scoreService.getScoreOfSpielstand(uuid);
         //Hole dir alle Highscores
+
+        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
         //Vergiss nicht die Sachen dem Model zu übergeben
+
+        model.put("Punkte", s);
+        model.put("Liste", lScore);
+
         return "myscore";
     }
 
@@ -95,10 +102,11 @@ public class ScoreController {
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
         Highscore hs = scoreService.newHighscore(vorname, nachname, nickname, email, uuid);
-        if ( hs != null ) {
-            model.put( "message", "Du hast dich registriert." );
-        }  else {
-            model.put( "message", "<b>Du hast deinen Score aktualisiert.</b>" );
+        if (hs != null) {
+            model.put("message", "Du hast dich registriert.");
+        } else {
+            model.put("message", "<b>Du hast deinen Score aktualisiert.</b>");
+
         }
 
         return "myscore";

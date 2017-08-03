@@ -65,14 +65,15 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1>Dein Highscore: ${Score}</h1>
+                <h1>Dein Highscore: <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
+                
             </div>
             <div class="col-md-12 col-xs-12">
                 <center>
                     <!-- Eine Tabelle der Highscores -->
                     ${message}</br></br>
 
-                    <a href="<c:url value="/" />"><button type="button" class="btn btn-default">Location-Uebersicht</button></a>
+
                     <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
 
                 </center>
@@ -82,3 +83,29 @@
     </body>
 
 </html>
+
+
+
+
+<table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>Platzierung</th>
+            <th>Nickname</th>
+            <th>Punkte</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach items="${Liste}" var="score" varStatus="loop">
+
+            <tr>
+                <th scope="row">${loop.index +1}</th>
+                <td>${score.getNickname()}</td>
+                
+                <td><fmt:formatNumber type = "number" value = "${score.getScore()}"/></td>
+
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
