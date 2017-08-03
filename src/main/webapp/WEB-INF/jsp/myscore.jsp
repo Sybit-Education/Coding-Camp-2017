@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="form-control-label">E-Mail<sup>*</sup>:</label>
-                                <input type="email" class="form-control" name="email" placeholder="E-Mail">
+                                <input type="text" class="form-control" name="email" placeholder="E-Mail">
                             </div>  
                             <div class="form-group">
                                 <label for="recipient-name" class="form-control-label">Vorname:</label>
