@@ -30,6 +30,8 @@ import org.springframework.stereotype.Repository;
 public class SpielstandRepository extends AirtableRepository {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
+    
+    private static final String TABLE_NAME = "Highscore";
 
     /**
      * Creates a new Entry in the Spielstand Table.
@@ -94,7 +96,7 @@ public class SpielstandRepository extends AirtableRepository {
         Highscore response;
 
         try {
-            response = (Highscore) getAirtableBase().table("Highscore", Highscore.class).create(highscore);
+            response = (Highscore) getAirtableBase().table(TABLE_NAME, Highscore.class).create(highscore);
 
         } catch (AirtableException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             log.error("Error with Airtable: " + e);
@@ -152,7 +154,7 @@ public class SpielstandRepository extends AirtableRepository {
         };
 
         try {
-            response = getAirtableBase().table("Highscore", Highscore.class).select(query);
+            response = getAirtableBase().table(TABLE_NAME, Highscore.class).select(query);
         } catch (AirtableException e) {
             log.error("Error with Airtable: " + e);
             response = new ArrayList<>();
@@ -177,7 +179,7 @@ public class SpielstandRepository extends AirtableRepository {
         List<Highscore> response = new ArrayList<>();
 
         try {
-            response = getAirtableBase().table("Highscore", Highscore.class).select(uuidquery);
+            response = getAirtableBase().table(TABLE_NAME, Highscore.class).select(uuidquery);
         } catch (AirtableException e) {
             log.error("Error with Airtable: " + e);
             throw new HighscoreSyntaxException("Error. Could not retrieve Highscore of UUID: " + uuid);
@@ -206,7 +208,7 @@ public class SpielstandRepository extends AirtableRepository {
         String id = getIdOfHighscore(uuid);
 
         try {
-            getAirtableBase().table("Highscore", Highscore.class).destroy(id);
+            getAirtableBase().table(TABLE_NAME, Highscore.class).destroy(id);
         } catch (AirtableException e) {
             log.error("Error with Airtable: " + e);
             throw new HighscoreSyntaxException("Could not destroy Highscore of UUID: " + uuid);
