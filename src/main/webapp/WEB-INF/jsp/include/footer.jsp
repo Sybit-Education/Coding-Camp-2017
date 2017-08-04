@@ -3,6 +3,7 @@
 <a href="<c:url value="/" />">
     <img src="<c:url value="/resources/images/icon.svg" />" id="logo"/>
 </a>
+<img src="" id="badge">
 
 <footer>      
     <c:import url="include/navigation.jsp"/>   
