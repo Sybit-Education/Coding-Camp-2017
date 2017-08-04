@@ -58,12 +58,16 @@ public class AirtableRepository {
                     configuration.setProxy(prop.getProperty("PROXY"));
                 }
                 airtable.configure(configuration);
+                if (prop.getProperty("AIRTABLE_BASE") != null) {
+                    base = airtable.base(prop.getProperty("AIRTABLE_BASE"));
+                }
                 log.info("Airtable configured with Properties!");
             } else {
                 airtable.configure();
+                base = airtable.base("appDZ609ies85XW1D");
                 log.info("Airtable configured manually.");
             }
-            base = airtable.base("appDZ609ies85XW1D");
+
         }
         return base;
     }
@@ -135,6 +139,7 @@ public class AirtableRepository {
 
             exists = prop.getProperty("AIRTABLE_API_KEY") != null
                     && prop.getProperty("ENDPOINT_URL") != null
+                    && prop.getProperty("AIRTABLE_BASE") != null
                     && !prop.getProperty("PROXY").isEmpty();
             if (exists) {
                 this.prop = prop;
