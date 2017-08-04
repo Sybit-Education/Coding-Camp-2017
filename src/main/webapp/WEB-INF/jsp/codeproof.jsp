@@ -37,6 +37,7 @@
                         <c:if test="${codeCheck==false}">
                             <c:set var="message" value="'Code war falsch'"></c:set>
                         </c:if>
+
                         <div class="row">
                             <div class="col-xs-12">
                                 <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz"/>">
@@ -51,15 +52,17 @@
                             </div>
                         </div>
   
-                        <div class ="row">
-                            <div class="col-xs-6">
-                                Finde den Sticker und gib den sechsstelligen Code ein!
-                            </div>
-                            <div class="col-xs-6">
-                                <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" class="img-thumbnail pull-right" alt="Code Sticker" />
-                            </div> 
+            <div class="container">
+                <div class ="row well well-sm">
+                    <div class="col-xs-6">
+                        Finde den Sticker und gib den sechsstelligen Code ein!
+                    </div>
+                    <div class="col-xs-6">
+                        <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" class="img-thumbnail pull-right" alt="Code Sticker" />
+                    </div> 
+                </div>
 
-                        </div>
+            </div>
 
                         <div class="row">
                             <div class="col-xs-12"><h3>Sticker unauffindbar</h3></div>
@@ -74,6 +77,7 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
+
             </div>
     <c:import url="include/footer.jsp"/>
 </body>
