@@ -46,11 +46,11 @@
             <p> Diese Ränge sind:</p>
             <ul>
                 <li>Bronze (22-70 Punkte):
-                 <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="20%" alt="Code Sticker" class="img-thumbnail center-block"></li>
+                 <img src="<c:url value="/resources/images/bronze128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li>
                 <li>Silber (71-120 Punkte):
-                 <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="20%" alt="Code Sticker" class="img-thumbnail center-block"></li></li>
+                 <img src="<c:url value="/resources/images/silber128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li></li>
                 <li>Gold (<120 Punkte):
-                 <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="20%" alt="Code Sticker" class="img-thumbnail center-block"></li></li>
+                 <img src="<c:url value="/resources/images/gold128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li></li>
             </ul>
             <p>
                 Diese Rangabzeichen werden auf der Highscoreliste angezeigt.

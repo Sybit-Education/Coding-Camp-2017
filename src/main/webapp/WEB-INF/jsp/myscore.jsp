@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="form-control-label">Nickname<sup>*</sup>:</label>
                                 <input type="text" class="form-control" name="nickname" placeholder="Nickname fuer Highscore" min="4" max="16" maxlength="16">
-                                <p>Der Nickname wird in der Highscore angezeigt.</p>
+                                <p>Der Nickname wird in der Highscoretabelle angezeigt.</p>
                             </div> 
                             <div>
                                 Folgende Daten sind zur Gewinnermittlung notwendig und werden nicht ver&oumlffentlicht:
@@ -67,6 +67,18 @@
             <div class="page-header">
                 <h1 class = "text-center" >Dein Highscore: </br> <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
                 <center>
+                    <c:choose>
+                        <c:when test = "${Badge == 1}">
+                            <img src="<c:url value="/resources/images/bronze128x128.png" />" width="25%">
+                        </c:when>
+                        <c:when test = "${Badge == 2}">
+                            <img src="<c:url value="/resources/images/silber128x128.png" />" width="25%">
+                        </c:when>
+                        <c:when test = "${Badge == 3}">
+                            <img src="<c:url value="/resources/images/gold128x128.png" />" width="25%">
+                        </c:when>
+                        <c:when test = "${Badge == 0}"></c:when>
+                    </c:choose>
                     <!-- Benachrichtigungen an den User bei registrierungsproblemen -->
                     ${message}</br></br>
                     <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>

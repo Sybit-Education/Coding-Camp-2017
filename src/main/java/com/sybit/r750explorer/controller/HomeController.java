@@ -52,6 +52,7 @@ public class HomeController {
         List<Location> locations = locationService.getLocations(uuid);
 
         model.put("locations", locations);
+        model.put("gewinne", gewinnService.getGewinnOfMonth());
 
         return "home";
     }
