@@ -29,7 +29,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <img src="https://lh3.googleusercontent.com/tx3N6nY9LEl_fQ8x6FvnUaSdQtmiFP94kubsdj_oTcnKGpyxeeJUHv8ucDFVsxQkee5Lo64DQxo_zqIg_-WZ6LaeAzFU7dD1sCdoE8UFDk2d0UQ_HJBmd7BbB1OgfsnOihTJHth7okg=w904-h678-no" class="img-responsive center-block" alt="Team"/>
+                    <img src="https://lh3.googleusercontent.com/6vZCN2w_pglajY1ll75oMIUat52u5pGiq3jQuo9qS2y5jRrPcSE6ABJT-MYRX47HkNQsnNnBMk-lQWuF3lJF7WduDGm4WlPTvZwVwAdryOxi7PyDMF9nkV9gDoEzAe5bfUPORSCkyMs=w1427-h1070-no" class="img-responsive center-block" alt="Team"/>
                 </div> 
             </div>
 
@@ -203,7 +203,7 @@
                 </div> 
                 <div class="col-xs-12 col-md-4">                    
                     <blockquote >
-                        <p>Ich freue mich, dass dieses Projekt live geht und das Ergebnis wird 
+                        <p>"Ich freue mich, dass dieses Projekt live geht und das Ergebnis wird 
                             sich sehen lassen. ;)"</p>
                         <footer class="text-right">Yulia</footer>
                     </blockquote> 
@@ -220,6 +220,12 @@
                         <p>"Für mich war es eine sehr spannende, spaßige und lehrreiche Woche 
                             mit dem Sybit Coding-Camp-Team. :)"</p>
                         <footer class="text-right">Daniele</footer>
+                    </blockquote>
+                </div>
+                 <div class="col-xs-12 col-md-4">                    
+                    <blockquote >
+                        <p>"Die Woche war sehr informativ und interessant, da wir viel selbstständig machen durften."</p>
+                        <footer class="text-right">Robin</footer>
                     </blockquote>
                 </div>
             </div>
