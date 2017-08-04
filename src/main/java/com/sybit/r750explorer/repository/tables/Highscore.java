@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  * @author fzr
  */
 public class Highscore {
-        
+
     private String id;
     @SerializedName("Name")
     private String nickname;
@@ -28,6 +28,12 @@ public class Highscore {
     private String vorname;
     @SerializedName("Nachname")
     private String nachname;
+    
+    private String badge;
+    
+    
+    
+
     /**
      * @return the nickname
      */
@@ -119,7 +125,7 @@ public class Highscore {
     public void setVorname(String vorname) {
         this.vorname = vorname;
     }
-    
+
     public String getNachname() {
         return nachname;
     }
@@ -127,8 +133,19 @@ public class Highscore {
     public void setNachname(String nachname) {
         this.nachname = nachname;
     }
-    
-    
-    
-    
+
+    /**
+     * @return the badge
+     */
+    public String getBadge() {
+        return badge;
+    }
+
+    /**
+     * @param badge the badge to set
+     */
+    public void setBadge(String badge) {
+        this.badge = badge;
+    }
+
 }

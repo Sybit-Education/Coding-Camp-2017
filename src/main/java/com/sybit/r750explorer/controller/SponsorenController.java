@@ -22,10 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SponsorenController {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
-    
+
     @Autowired
     SponsorenService sponsorenService;
-    
 
     /**
      * Controller method to get 'impressum' page.
@@ -37,13 +36,12 @@ public class SponsorenController {
     public String sponsoren(Map<String, Object> model) {
 
         log.debug("--> Sponsoren");
-        
+
         // TODO: Liste aller Sponsoren erstellen (aus dem Service) 
         // Parameter wie name und die Liste dem Model übergeben
-        
-        List<Sponsor> sponsoren = sponsorenService.getSponsorenList(  );
-        model.put( "sponsoren", sponsoren );
-        
+        List<Sponsor> sponsoren = sponsorenService.getSponsorenList();
+        model.put("sponsoren", sponsoren);
+
         return "sponsoren";
     }
 }

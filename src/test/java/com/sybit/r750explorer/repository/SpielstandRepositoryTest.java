@@ -37,7 +37,7 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
     @Autowired
     private SpielstandRepository spielstandRepository;
 
-    @Ignore
+
     @Test
     public void createSpielstandEntryTest() throws AirtableException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 
@@ -56,7 +56,6 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
         assertNotNull(response);
     }
 
-    @Ignore
     @Test
     public void createSpielstandEntryWithNullTest() throws AirtableException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 
@@ -70,7 +69,6 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
         assertNotNull(response);
     }
 
-    @Ignore
     @Test
     public void getEntrysByUUIDTest() {
 
@@ -79,7 +77,6 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
 
     }
 
-    @Ignore
     @Test
     public void getHighscoreOfUUIDTest() {
 
@@ -108,7 +105,6 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
         newHighscore.setUuid("uuid");
         newHighscore.setScore(Float.valueOf(10));
 
-        newHighscore.setDate("2017-05-19 11:32:31");
 
         spielstandRepository.registerScore(newHighscore);
     }

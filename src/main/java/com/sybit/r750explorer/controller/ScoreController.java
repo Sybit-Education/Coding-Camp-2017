@@ -5,6 +5,7 @@ package com.sybit.r750explorer.controller;
  */
 import com.sybit.r750explorer.repository.tables.Highscore;
 import com.sybit.r750explorer.service.ScoreService;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -31,7 +32,7 @@ public class ScoreController {
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     public static final String NICKNAME_PATTERN
-            = "^[a-z0-9_-]{4,16}$";
+            = "^[A-Za-z0-9-]{4,16}$";
 
     @Autowired
     ScoreService scoreService;
@@ -45,13 +46,16 @@ public class ScoreController {
      * @return
      */
     @RequestMapping("/myscore")
-    public String score(@CookieValue("UUID") String uuid, Map<String, Object> model) {
+    public String score(@CookieValue(name = "UUID", required = false) String uuid, Map<String, Object> model) {
 
         log.debug("--> MyScore");
-        //Hole dir den Score des Users(UUID)
 
-        //Hole dir alle Highscores
-        //Vergiss nicht die Sachen dem Model zu übergeben
+        Float s = scoreService.getScoreOfSpielstand(uuid);
+        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
+
+        model.put("Punkte", s);
+        model.put("Liste", lScore);
+
         return "myscore";
     }
 
@@ -67,15 +71,21 @@ public class ScoreController {
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@RequestParam String vorname, @RequestParam String nachname, @RequestParam String nickname, @RequestParam String email, @CookieValue("UUID") String uuid, Map<String, Object> model) {
+    public String register(@RequestParam String vorname, @RequestParam String nachname, @RequestParam String nickname, @RequestParam String email, @CookieValue(name = "UUID") String uuid, Map<String, Object> model) {
 
         log.debug("--> Registering... UUID: " + uuid);
+
+        Float s = scoreService.getScoreOfSpielstand(uuid);
+        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
+
+        model.put("Punkte", s);
+        model.put("Liste", lScore);
 
         // Überprüfung des Namens 
         Pattern pattern = Pattern.compile(NICKNAME_PATTERN);
         Matcher matcher = pattern.matcher(nickname);
         if (!matcher.matches()) {
-            model.put("message", "Bitte wähle einen Nickname von einer Länge zwischen 4 und 16 Zeichen.");
+            model.put("message", "Bitte wähle einen Nickname von einer Länge zwischen 4 und 16 Zeichen. Sonderzeichen sind nicht erlaubt.");
             return "myscore";
         }
 
@@ -95,10 +105,11 @@ public class ScoreController {
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
         Highscore hs = scoreService.newHighscore(vorname, nachname, nickname, email, uuid);
-        if ( hs != null ) {
-            model.put( "message", "Du hast dich registriert." );
-        }  else {
-            model.put( "message", "<b>Du hast deinen Score aktualisiert.</b>" );
+        if (hs != null) {
+            model.put("message", "Du hast dich registriert.");
+        } else {
+            model.put("message", "<b>Du hast deinen Score aktualisiert.</b>");
+
         }
 
         return "myscore";

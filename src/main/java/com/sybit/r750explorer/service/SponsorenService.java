@@ -25,7 +25,6 @@ public class SponsorenService {
     @Autowired
     private SponsorenRepository sponsorenRepository;
 
-    // Die Methode soll alle Sponsoren als Liste zurückgeben
     public List<Sponsor> getSponsorenList() {
         log.debug("--> getSponsorenList");
 
@@ -36,8 +35,7 @@ public class SponsorenService {
         for (Sponsor s : sponsoren) {
             sponsorenAktiv.add(s);
         }
-
-        //throw new MethodNotFoundException("Methode nicht implementiert");
+        log.debug("<-- getSponsorenList");
         return sponsorenAktiv;
     }
 }
