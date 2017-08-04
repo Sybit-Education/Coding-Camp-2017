@@ -3,10 +3,6 @@
  */
 $(document).ready(function () {
 
-    console.log("contextPath = '" + contextPath + "'");
-
-
-
     // update scores in navigation bar
     requestAndSetScore();
 
@@ -226,12 +222,10 @@ function requestAndSetScore() {
 function requestAndSetBadge() {
     var uuid = getCookieUUID();
     var badge;
-    console.log(contextPath + '/score/badge/' + uuid);
     $.ajax({
         url: contextPath + '/score/badge/' + uuid,
         type: 'GET',
         success: function (res) {
-            console.log("getBadge")
             badge = res;
             document.getElementById('badge').src = contextPath + '/resources/images/' + badge;
         },
