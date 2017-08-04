@@ -166,7 +166,7 @@ public class ScoreController {
                 returnvalue = "bronze128x128.png";
                 break;
             default:
-                returnvalue = " ";
+                returnvalue = "empty128x128.png";
                 break;
         }
 

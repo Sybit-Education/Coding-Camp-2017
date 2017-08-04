@@ -236,7 +236,7 @@ function requestAndSetBadge() {
             document.getElementById('badge').src = contextPath + '/resources/images/' + badge;
         },
         error: function () {
-            badge = "bronze128x128.png";
+            badge = "empty128x128.png";
             document.getElementById('badge').src = contextPath + '/resources/images/' + badge;
             console.log("Error loading Badge!");
         }
