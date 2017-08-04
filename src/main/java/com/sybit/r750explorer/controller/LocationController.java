@@ -104,6 +104,15 @@ public class LocationController {
         log.debug("--> getAllLocationsData");
 
         List<Location> locations = locationService.getLocations(uuid);
+        for (Location location : locations) {
+            //unused data 
+            location.setCode("");
+            location.setCodeHintPhoto(null);
+            location.setCodeHinweis(null);
+            location.setFragen(null);
+            location.setMedien(null);
+            
+        }
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         final String json = gson.toJson(locations);
