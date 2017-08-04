@@ -51,4 +51,24 @@
             <exec.executable>java</exec.executable>
         </properties>
     </action>
+    <action>
+            <actionName>CUSTOM-install skip-tests</actionName>
+            <displayName>install skip-tests</displayName>
+            <goals>
+                <goal>install:install</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </action>
+    <action>
+            <actionName>CUSTOM-package skipTests</actionName>
+            <displayName>package skipTests</displayName>
+            <goals>
+                <goal>package</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </action>
 </actions>
