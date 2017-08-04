@@ -30,7 +30,7 @@ import org.springframework.stereotype.Repository;
 public class SpielstandRepository extends AirtableRepository {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
-    
+
     private static final String TABLE_NAME = "Highscore";
 
     /**

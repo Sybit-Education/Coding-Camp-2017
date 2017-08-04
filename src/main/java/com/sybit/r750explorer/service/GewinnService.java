@@ -5,6 +5,7 @@
  */
 package com.sybit.r750explorer.service;
 
+import com.sybit.r750explorer.exception.GewinnException;
 import com.sybit.r750explorer.repository.GewinnRepository;
 import com.sybit.r750explorer.repository.tables.Gewinn;
 import java.time.LocalDateTime;
@@ -35,9 +36,11 @@ public class GewinnService {
     }
 
     public List<Gewinn> getGewinnOfMonth() {
-        List<Gewinn> gewOfMonth = new ArrayList<>();;
+
+        log.debug("--> getGewinnOfMonth");
+        List<Gewinn> gewOfMonth = new ArrayList<>();
+
         try {
-            log.debug("--> getGewinnOfMonth");
 
             LocalDateTime currentdate = LocalDateTime.now();
             DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
@@ -53,8 +56,11 @@ public class GewinnService {
                 }
             }
         } catch (NullPointerException e) {
-            e.printStackTrace(  );
+            log.error("Exception in Gewinn of Month: " + e);
+            throw new GewinnException("Exception in GewinnOfMonth");
         }
+
+        log.debug("<-- getGewinnOfMonth");
         return gewOfMonth;
     }
 }
