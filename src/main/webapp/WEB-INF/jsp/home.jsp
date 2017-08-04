@@ -49,7 +49,7 @@
                 </c:forEach>
             </div>
             </br></br><h2>Gewinne des Monats</h2>
-            <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
+            <div class="row row-horizon">
                 <c:forEach items="${gewinne}" var="gewinn" varStatus="loop">
                     <div  class="col-xs-6 col-md-4" >
                         <div class="panel panel-default bootcards-media" >
@@ -65,7 +65,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <p style="padding-top:10px">Viel Spa√ü beim Erforschen der Stadt Radolfzell.</p>
+                    <p style="padding-top:10px">Viel Spaﬂ beim Erforschen der Stadt Radolfzell.</p>
                 </div>
             </div>
 
