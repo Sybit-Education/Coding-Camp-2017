@@ -43,14 +43,18 @@
                     </div>
                 </div>
             </c:forEach>
-            
+
             <!-- Gewinne über das ganze Jahr -->
-            <p>Dies sind alle Gewinne, die in den folgenden Monaten noch gewonnen werden können.</p>
+            <p>Dies sind alle Gewinne, die in den folgenden Monaten noch zu gewinnen sind.</p>
             <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
                 <c:forEach items="${allGewinne}" var="weitererGewinn" varStatus="loop" >
-                    <div class="col-xs-6 col-md-4">
+                    <div  class="col-xs-6 col-md-4" >
                         <div class="panel panel-default bootcards-media" >
                             <img src="${weitererGewinn.foto[0].url}" class="img-responsive cards"/>
+
+                            <div class="panel-footer">
+                                <small>${weitererGewinn.name}</small>
+                            </div>
                         </div>
                     </div>
                 </c:forEach>
