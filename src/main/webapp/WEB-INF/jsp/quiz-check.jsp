@@ -35,8 +35,8 @@
             <!-- TODO: Korrekte Antwort der Location in einem Alert ausgeben -->
 
             <!-- TODO: Onclick-Funktionen bei den Buttons einbinden und die Links zu den Ãœbersichten eintragen -->
-            <div class="col-xs-6 col-md-4"><a href="#"><button type="button" class="btn btn-default text-field">Location-Übersicht</button></a></div>
-            <div class="col-xs-6 col-md-4"><a href="#"><button type="button" class="btn btn-default text-field">MyScore-Übersicht</button></a></div>
+            <div class="col-xs-6 col-md-4"><a href="<c:url value="/"/>"><button type="button" class="btn btn-default text-field">Location-Übersicht</button></a></div>
+            <div class="col-xs-6 col-md-4"><a href="<c:url value="/myscore"/>"><button type="button" class="btn btn-default text-field">MyScore-Übersicht</button></a></div>
 
         </div>
 
