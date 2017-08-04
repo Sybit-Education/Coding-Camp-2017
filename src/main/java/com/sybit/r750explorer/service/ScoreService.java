@@ -7,10 +7,13 @@ import com.sybit.r750explorer.repository.tables.Spielstand;
 import com.sybit.r750explorer.repository.SpielstandRepository;
 import java.util.ArrayList;
 import java.util.List;
-import javax.el.MethodNotFoundException;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 /**
  * Created by fzr on 11.05.17.
@@ -45,21 +48,30 @@ public class ScoreService {
     public Spielstand newSpielstandEntry(String uuid, Location loc, String questionId, String answerIndx, Float score) {
 
         log.debug("--> newSpielstandEntry. UUID: " + uuid);
-        Spielstand sp = new Spielstand();
-
-        List<String> li = new ArrayList<>();
-        li.add(loc.getId());
-        List<String> qList = new ArrayList();
-        qList.add(questionId);
-        sp.setScore(String.valueOf(score));
-        sp.setUuid(uuid);
-        sp.setLocationList(li);
-        sp.setQuestionList(qList);
-        sp.setUserAnswerIndex(answerIndx);
 
         //Erstelle einen neuen Spielstand und befülle ihn mit den entsprechenden Werten
+        Spielstand spielstand = new Spielstand();
+        spielstand.setUuid(uuid);
+
+        List<String> location = new ArrayList<>();
+        if (loc != null) {
+            location.add(loc.getId());
+        }
+        List<String> fragen = new ArrayList<>();
+        if (questionId != null) {
+            fragen.add(questionId);
+        }
+        spielstand.setLocationList(location);
+        spielstand.setQuestionList(fragen);
+        spielstand.setUserAnswerIndex(answerIndx);
+        spielstand.setScore(String.valueOf(score));
+        spielstand.setQuestionList(fragen);
+
         //Dann übergib ihn an das Repository
-        return sp;
+        spielstand = spielstandRepository.newEntry(spielstand);
+
+        log.debug("<-- newSpielstandEntry");
+        return spielstand;
 
     }
 
@@ -75,8 +87,14 @@ public class ScoreService {
         log.debug("--> getScoreOfSpielstand. UUID: " + uuid);
 
         //Hole dir die Spielstände und rechne sie zusammen
-        log.error("Methode nicht implementiert");
-        return Float.valueOf(0);
+        List<Spielstand> spielstand = spielstandRepository.getEntrysOfUUID(uuid);
+        Float score = Float.valueOf(0);
+        for (Spielstand i : spielstand) {
+            score += Float.valueOf(i.getScore());
+        }
+
+        log.debug("<-- getScoreOfSpielstand");
+        return score;
 
     }
 
@@ -88,55 +106,106 @@ public class ScoreService {
     public List<Highscore> getHighscoreList() {
 
         log.debug("--> getHighscoreList");
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        return spielstandRepository.getHighscore();
 
     }
 
     /**
-     * Format the Highscore List. Date gets shorter. * Damit die Highscoreliste
-     * schöner aussieht
+     * Get the Highscore List. Holt dir die Highscoreliste des aktuellen Monats
      *
-     * @param list
-     * @return formatted Highscore List
+     * @return List of Higscores
      */
-    public List<Highscore> formatHighscoreList(List<Highscore> list) {
+    public List<Highscore> getHighscoreListForMonth() {
+        log.debug("--> getHighscoreListForMonth");
 
-        log.debug("--> formatHighscoreList");
-        //Formatiere die Liste
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        List<Highscore> currentMonth = new ArrayList<>();
+        List<Highscore> listMonth = spielstandRepository.getHighscore();
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+
+        for (Highscore hs : listMonth) {
+            String date = hs.getDate();
+            date = date.substring(0, 7);
+
+            if (date.equalsIgnoreCase(formatdate)) {
+                currentMonth.add(hs);
+            }
+
+        }
+
+        log.debug("<-- getHighscoreListForMonth");
+        return currentMonth;
     }
 
     /**
-     * Checks if a player already registered a Highscore. Methode die Nachschaut
-     * ob ein Spieler existiert
+     * Iterates over all highscores of a specified UUID. Returns false if there
+     * is none or if the Month isnt equal to the current month
      *
      * @param uuid
      * @return boolean
      */
     public boolean checkIfPlayerExists(String uuid) {
-
         log.debug("--> checkIfPlayerExists. UUID: " + uuid);
         //wenn UUID bereits einen Highscore eingetragen hat, false übergeben werden
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        // Datum überprüfen
 
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+
+        for (Highscore hs : spielstandRepository.getHighscoreOfUUID(uuid)) {
+            String date = hs.getDate();
+            date = date.substring(0, 7);
+
+            if (date.equalsIgnoreCase(formatdate)) {
+                log.debug("<-- checkIfPlayerExists");
+                return true;
+            }
+        }
+
+        log.debug("<-- checkIfPlayerExists");
+        return false;
     }
 
     /**
      * Creates a new Highscore and writes it in the Highscore Table.
      *
+     * @param vorname
+     * @param nachname
      * @param nickname
      * @param email
      * @param uuid
      * @return the created Highscore
      */
-    public Highscore newHighscore(String nickname, String email, String uuid) {
-
+    public Highscore newHighscore(String vorname, String nachname, String nickname, String email, String uuid) {
         log.debug("--> newHighscore. UUID: " + uuid);
 
-        //Erstelle einen neuen Highscore
-        //Informationen zum Abspeichern des Highscores
-        //Den Score registrieren
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        Highscore highScore = new Highscore();
+        highScore.setVorname(vorname);
+        highScore.setNachname(nachname);
+        highScore.setNickname(nickname);
+        highScore.setEmail(email);
+        highScore.setUuid(uuid);
+        highScore.setScore(getScoreOfSpielstand(uuid));
+
+        Highscore result = null;
+
+        if (!checkIfPlayerExists(uuid)) {
+            log.info("Neuer Highscore angelegt! UUID: " + uuid);
+            result = spielstandRepository.registerScore(highScore);
+        } else {
+            log.info("Highscore aktualisiert! UUID: " + uuid);
+            removeHighscore(uuid);
+            spielstandRepository.registerScore(highScore);
+            result = null;
+        }
+
+        log.debug("<-- newHighscore");
+        return result;
+
     }
 
     /**
@@ -147,19 +216,36 @@ public class ScoreService {
     public void removeHighscore(String uuid) {
 
         log.debug("--> removeHighscore. UUID: " + uuid);
-
-        //Spielstand Löschen über spielstandRepository
-        throw new MethodNotFoundException("Methode nicht implementiert");
-
+        spielstandRepository.deleteHighscore(uuid);
     }
 
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float
-        //Wenn Score größergleich 50, soll ein neuer Score mit einem Wert von -50 übergeben werden
-        //andernfalls 0
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        Float score = this.getScoreOfSpielstand(uuid);
+        if (score >= Float.valueOf(5)) {
+            score = Float.valueOf(-5);
+        } else if (Objects.equals(score, Float.valueOf(0))) {
+            score = Float.valueOf(0);
+        } else {
+            score = Float.valueOf(-score);
+        }
+        return score;
+    }
 
+    public int getRang(String uuid) {
+        Float spielstand = getScoreOfSpielstand(uuid);        
+        int rang=0;
+        if (spielstand<=22){
+            rang=0;
+        } else if (spielstand<=70){
+            rang=1;            
+        } else if (spielstand<=120){
+            rang=2;            
+        } else {
+            rang=3;            
+        }
+        return rang;
     }
 
 }

@@ -16,12 +16,63 @@
         <div class="container">
 
             <div class="page-header">
-                <h1>Spielregeln und Teilnahmebedingung</h1>
+                <h1>Spielregeln und Teilnahme&shy;bedingung</h1>
             </div>
             <h2>Spielregeln</h2>
             <p>
-                Das Spiel ...
+                Das Ziel des Spiels ist es, an verschiedenen historischen Orten Radolfzells Fragen zu beantworten. 
+                Die Lösungen zu den Fragen findet man in den zugehörigen Infotexten, welche teilweise aus Dokumenten des Stadtarchiv kommen. 
             </p>
+            <p>
+                <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="50%" alt="Code Sticker" class="img-thumbnail pull-right">
+                Um die Fragen beantworten zu können, muss man mit <kbd>Quiz starten ...</kbd> einen Code eingeben.
+                Dieser Code ist in der Nähe der jeweiligen Sehenswürdigkeit als <b>Sticker</b> angebracht.
+            </p>
+            <p>
+                Beim Beantworten der Fragen kann man Punkte sammeln:
+            </p>
+            <ul>
+                <li>Für jede richtig beantwortete Frage erhält man <b>10 Punkte</b>, </li>
+                <li>für falsche Antworten erhält man einen Trostpunkt.</li>
+            </ul>
+            <p>
+                Man kann pro Ort nur eine Frage beantworten.
+            </p>
+            
+            <p>
+                Ab einer bestimmten Punktzahl erreicht man verschiedene Ränge. 
+               
+            </p>
+            <p> Diese Ränge sind:</p>
+            <ul>
+                <li>Bronze (22-70 Punkte):
+                 <img src="<c:url value="/resources/images/bronze128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li>
+                <li>Silber (71-120 Punkte):
+                 <img src="<c:url value="/resources/images/silber128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li></li>
+                <li>Gold (<120 Punkte):
+                 <img src="<c:url value="/resources/images/gold128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li></li>
+            </ul>
+            <p>
+                Diese Rangabzeichen werden auf der Highscoreliste angezeigt.
+            </p>
+                
+            <h3>Code-Sticker unauffindbar</h3>
+            <p>
+                Wenn man den Sticker <b>nicht findet</b>, kann man sich mit <kbt>Hinweis zum Code</kbt> 
+                einen Hinweis mit Fotos geben lassen. <br>
+                Dabei werden allerdings <b>5 Punkte vom aktuellen Punktestand abgzogen!</b> 
+                Durch diese Hilfe muss man den Sticker nicht mehr suchen und hat es  einfacher die Frage zu beantworten.
+            </p>
+            <h3>Gewinnspiel teilnehmen</h3>
+            <p>
+                Damit man nicht unendlich viele Punkte sammeln kann, ist an jedem Ort nur eine Antwort pro Monat möglich.
+                Um am <b>monatlichen Gewinnspiel teilzunehmen</b>, muss man sich mit <b>E-Mail und Namen registrieren</b>. 
+                Damit wird der Punktestand auch in die öffentliche Highscore übernommen. 
+                Unter den Personen mit den höchsten Punkteständen wird am Ende des Monats der Gewinn verlost. 
+                Der Gewinner wird per E-Mail benachrichtigt. Es gilt die unten angeführte Teilnahmebedingung.
+            </p>
+            <br>
+            
             <hr>
             <h2>Teilnahmebedingung</h2>
             <p>

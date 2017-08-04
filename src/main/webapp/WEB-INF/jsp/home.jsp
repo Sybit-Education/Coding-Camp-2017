@@ -13,11 +13,9 @@
     </head>
 
     <body>
-
         <div class="map-big" id="map"></div> 
 
         <div class="container">
-
             <h1>R750Explorer - Entdecke Radolfzell!</h1>
             <c:if test="${not empty message}">
                 <div class="alert alert-info alert-dismissable">
@@ -34,9 +32,13 @@
                 <c:forEach items="${locations}" var="location" varStatus="loop">
                     <c:if test="${location.status == 'aktiv'}">
 
+
                         <a href="<c:url value="/location/${location.slug}"/>" class="col-xs-6 col-md-4">
                             <div class="panel panel-default bootcards-media" >
                                 <img src="${location.photo[0].thumbnails.large.url}" class="img-responsive cards"/>
+                                <c:if test="${location.visited==true}">
+                                    <div class="locationBadge"><b>Schon besucht!</b></div> 
+                                </c:if>
                                 <div class="panel-footer">
                                     <small>${location.name}</small>
                                 </div>
@@ -44,6 +46,20 @@
                         </a>
 
                     </c:if>
+                </c:forEach>
+            </div>
+            </br></br><h2>Gewinne des Monats</h2>
+            <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
+                <c:forEach items="${gewinne}" var="gewinn" varStatus="loop">
+                    <div  class="col-xs-6 col-md-4" >
+                        <div class="panel panel-default bootcards-media" >
+                            <img src="${gewinn.foto[0].url}" class="img-responsive cards"/>
+
+                            <div class="panel-footer">
+                                <small>${gewinn.name}</small>
+                            </div>
+                        </div>
+                    </div>
                 </c:forEach>
             </div>
 
@@ -71,5 +87,4 @@
                 });
             </script>
     </body>
-
 </html>

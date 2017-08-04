@@ -6,8 +6,10 @@ package com.sybit.r750explorer.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sybit.r750explorer.repository.tables.Location;
+import com.sybit.r750explorer.repository.tables.Medien;
 import com.sybit.r750explorer.service.LocationService;
-import com.sybit.r750explorer.service.ScoreService;
+import com.sybit.r750explorer.service.MedienService;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,11 +24,9 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
- * Controller to manage Locations.
- * * Overview
- * * JSON-Calls for AJAX requests
- * * detail page
- * 
+ * Controller to manage Locations. * Overview * JSON-Calls for AJAX requests *
+ * detail page
+ *
  * @author ssr
  */
 @Controller
@@ -39,7 +39,7 @@ public class LocationController {
     private LocationService locationService;
 
     @Autowired
-    private ScoreService scoreService;
+    private MedienService medienService;
 
     /**
      * Location page with all sorted media.
@@ -48,11 +48,13 @@ public class LocationController {
      * @param locationSlug URL part of Location
      * @param model Data-Model of HTML page
      * @param redirectAttr Attribute für Redirect.
-     * 
+     *
      * @return location page will be called.
      */
     @RequestMapping(value = "/{slug}")
-    public String getLocation(@CookieValue(value = "UUID",required = false) String uuid, @PathVariable("slug") String locationSlug, Map<String, Object> model, RedirectAttributes redirectAttr) {
+    public String getLocation(@CookieValue(value = "UUID", required = false) String uuid, @PathVariable("slug") String locationSlug, Map<String, Object> model, RedirectAttributes redirectAttr) {
+
+        log.debug("--> /{slug} of LocationSlug: " + locationSlug);
 
         Location loc = locationService.getLocation(locationSlug);
 
@@ -61,24 +63,35 @@ public class LocationController {
             redirectAttr.addFlashAttribute("message", "Ort leider nicht gefunden. Sie wurden auf die Startseite umgeleitet!");
             return "redirect:" + "/";
         }
-        
-        //TODO: Wurde die Location schon besucht und Fragen beantwortet?
-        //model.put("QuizAnswered", true|false);
-        
-        
-        //TODO: welche Medien hat die Location zum Anzeigen? Diese sortiert übergeben.
-        //List<Medien> medienList = medienService.getMedienOfLocationSlug(locationSlug);
-       
-        
-        //TODO: Daten an das Model übergeben.
-        
+
+        List<Location> visited = locationService.getVisitedLocations(uuid);
+        List<String> Locationid = new ArrayList<>();
+
+        for (Location location : visited) {
+            Locationid.add(location.getId());
+        }
+
+        if (Locationid.contains(loc.getId())) {
+            model.put("QuizAnswered", true);
+        } else {
+            model.put("QuizAnswered", false);
+        }
+
+        List<Medien> medienList = medienService.getMedienOfLocationSlug(locationSlug);
+
+        model.put("locationDescription", loc.getDescription());
+        model.put("locationFoto", loc.getPhoto().get(0).getUrl());
+        model.put("locationMedien", medienList);
+        model.put("locationName", loc.getName());
+        model.put("locationSlug", loc.getSlug());
+
         return "location";
 
     }
 
     /**
      * JSON formatted response for all Locations.
-     * 
+     *
      * This method is called by JavaScript to fill Google Map.
      *
      * @param uuid Cookie-ID of the user
@@ -94,7 +107,7 @@ public class LocationController {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         final String json = gson.toJson(locations);
-        
+
         log.debug("<-- getAllLocationsData: " + json);
         return json;
     }

@@ -31,13 +31,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = Application.class)
 @AutoConfigureMockMvc
 public class SpielstandRepositoryTest extends wiremockBaseTest {
-    
+
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private SpielstandRepository spielstandRepository;
 
-    @Ignore
+
     @Test
     public void createSpielstandEntryTest() throws AirtableException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 
@@ -55,8 +55,7 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
 
         assertNotNull(response);
     }
-    
-    @Ignore
+
     @Test
     public void createSpielstandEntryWithNullTest() throws AirtableException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
 
@@ -70,7 +69,6 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
         assertNotNull(response);
     }
 
-    @Ignore
     @Test
     public void getEntrysByUUIDTest() {
 
@@ -79,26 +77,24 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
 
     }
 
-    @Ignore
     @Test
     public void getHighscoreOfUUIDTest() {
 
         String uuid = "111111";
 
-        Highscore response = spielstandRepository.getHighscoreOfUUID(uuid);
+        List<Highscore> response = spielstandRepository.getHighscoreOfUUID(uuid);
         assertNotNull(response);
-        
-    }
-    
-    @Test
-    public void getHighscoreTest() {
-    
-        List<Highscore> highscoreList = spielstandRepository.getHighscore();
-        assertNotNull(highscoreList);
-    
+
     }
 
- 
+    @Test
+    public void getHighscoreTest() {
+
+        List<Highscore> highscoreList = spielstandRepository.getHighscore();
+        assertNotNull(highscoreList);
+
+    }
+
     @Ignore
     @Test
     public void registerScoreTest() {
@@ -110,27 +106,26 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
         newHighscore.setScore(Float.valueOf(10));
 
 
-        newHighscore.setDate("2017-05-19 11:32:31");
-
         spielstandRepository.registerScore(newHighscore);
     }
-    
-   @Ignore
-   @Test
-   public void getIdOfHighscore() {
-   
-       String response;
-       
-       response = spielstandRepository.getIdOfHighscore("111111");
-       assertNotNull(response);
-       
-   }
 
-    @Ignore   
-   @Test
-   public void deleteHighscore() {
-       
-       spielstandRepository.deleteHighscore("uuid");
-       
-   }
+    @Ignore
+    @Test
+    public void getIdOfHighscore() {
+
+        String response;
+
+        
+        response = spielstandRepository.getIdOfHighscore("111111");
+        assertNotNull(response);
+
+    }
+
+    @Ignore
+    @Test
+    public void deleteHighscore() {
+
+        spielstandRepository.deleteHighscore("uuid");
+
+    }
 }

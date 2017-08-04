@@ -4,12 +4,13 @@ import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.SpielstandRepository;
 import com.sybit.r750explorer.repository.tables.Spielstand;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import javax.el.MethodNotFoundException;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -63,11 +64,11 @@ public class LocationService {
 
         //Hole eine Location anhand ihres Slugs
         log.debug("--> getLocation: Slug: " + slug);
-        throw new MethodNotFoundException("Methode nicht implementiert!");
 
+        Location loc = locationRepository.getLocationOfSlug(slug);
+
+        return loc;
     }
-    
-    
 
     /**
      * Return a List with all visited Location. Gets spielstand Entrys and
@@ -79,11 +80,29 @@ public class LocationService {
     public List<Location> getVisitedLocations(String uuid) {
 
         log.debug("--> getVisitedLocations. UUID: " + uuid);
-        
-        //Hole dir zuerst die Spielstände und ermittle anhand von diesen einträgen schon besuchte locations
 
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+
+        //Hole dir zuerst die Spielstände und ermittle anhand von diesen einträgen schon besuchte locations
+        List<Spielstand> Entrys = spielstandRepository.getEntrysOfUUID(uuid);
         List<Location> visited = new ArrayList<>();
-        log.error("Methode nicht implementiert!");
+        for (Spielstand Entry : Entrys) {
+            if (Entry.getLocationList() != null) {
+                for (String Locationid : Entry.getLocationList()) {
+                    String date = Entry.getDate();
+                    date = date.substring(0, 7);
+                    if (date.equalsIgnoreCase(formatdate)) {
+                        visited.add(locationRepository.getLocation(Locationid));
+                    }
+                }
+            } else {
+                log.debug(Entry + "Has no locations");
+            }
+        }
+
         log.debug("<-- getVisitedLocations. size: " + visited.size());
         return visited;
     }

@@ -38,15 +38,15 @@ public class AirtableRepository {
         if (base == null) {
 
             Airtable airtable = new Airtable();
-            ClassLoader classLoader = getClass().getClassLoader();
-            File propertiesFile = null;
-            try {
-                propertiesFile = new File(classLoader.getResource("airtable.properties").getFile());
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream is = null;
+            try {                
+                is =  classLoader.getResourceAsStream("airtable.properties");
             } catch (NullPointerException e) {
                 log.warn("No Propertie File found!");
             }
 
-            if (propertiesFile != null && propertiesExist(propertiesFile)) {
+            if (is != null && propertiesExist(is)) {
                 final Configuration configuration = new Configuration(null);
                 if (prop.getProperty("AIRTABLE_API_KEY") != null) {
                     configuration.setApiKey(prop.getProperty("AIRTABLE_API_KEY"));
@@ -58,12 +58,16 @@ public class AirtableRepository {
                     configuration.setProxy(prop.getProperty("PROXY"));
                 }
                 airtable.configure(configuration);
+                if (prop.getProperty("AIRTABLE_BASE") != null) {
+                    base = airtable.base(prop.getProperty("AIRTABLE_BASE"));
+                }
                 log.info("Airtable configured with Properties!");
             } else {
                 airtable.configure();
+                base = airtable.base("appDZ609ies85XW1D");
                 log.info("Airtable configured manually.");
             }
-            base = airtable.base("appDZ609ies85XW1D");
+
         }
         return base;
     }
@@ -120,24 +124,24 @@ public class AirtableRepository {
      * @param propertiesFile
      * @return boolean
      */
-    private boolean propertiesExist(File propertiesFile) {
+    private boolean propertiesExist(InputStream is) {
 
         log.debug("--> propertiesExist");
 
-        Properties prop = new Properties();
+        Properties propl = new Properties();
         InputStream input = null;
         boolean exists = false;
 
         try {
-            input = new FileInputStream(propertiesFile);
 
-            prop.load(input);
 
-            exists = prop.getProperty("AIRTABLE_API_KEY") != null
-                    && prop.getProperty("ENDPOINT_URL") != null
-                    && !prop.getProperty("PROXY").isEmpty();
+            propl.load(is);
+
+            exists = propl.getProperty("AIRTABLE_API_KEY") != null
+                    && propl.getProperty("ENDPOINT_URL") != null
+                    && propl.getProperty("AIRTABLE_BASE") != null;
             if (exists) {
-                this.prop = prop;
+                this.prop = propl;
             }
 
         } catch (IOException ex) {

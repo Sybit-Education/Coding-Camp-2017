@@ -15,6 +15,8 @@ import com.sybit.r750explorer.exception.HighscoreSyntaxException;
 import com.sybit.r750explorer.exception.SpielstandCreationException;
 import com.sybit.r750explorer.exception.SpielstandSyntaxException;
 import java.lang.reflect.InvocationTargetException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.LoggerFactory;
@@ -28,6 +30,8 @@ import org.springframework.stereotype.Repository;
 public class SpielstandRepository extends AirtableRepository {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
+
+    private static final String TABLE_NAME = "Highscore";
 
     /**
      * Creates a new Entry in the Spielstand Table.
@@ -92,12 +96,11 @@ public class SpielstandRepository extends AirtableRepository {
         Highscore response;
 
         try {
-            response = (Highscore) getAirtableBase().table("Highscore", Highscore.class).create(highscore);
+            response = (Highscore) getAirtableBase().table(TABLE_NAME, Highscore.class).create(highscore);
 
         } catch (AirtableException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             log.error("Error with Airtable: " + e);
             throw new HighscoreCreationException("Error creating Highscore of UUID: " + highscore.getUuid());
-
 
         }
 
@@ -151,7 +154,7 @@ public class SpielstandRepository extends AirtableRepository {
         };
 
         try {
-            response = getAirtableBase().table("Highscore", Highscore.class).select(query);
+            response = getAirtableBase().table(TABLE_NAME, Highscore.class).select(query);
         } catch (AirtableException e) {
             log.error("Error with Airtable: " + e);
             response = new ArrayList<>();
@@ -168,15 +171,15 @@ public class SpielstandRepository extends AirtableRepository {
      * @param uuid
      * @return Highscore Object
      */
-    public Highscore getHighscoreOfUUID(String uuid) {
+    public List<Highscore> getHighscoreOfUUID(String uuid) {
 
         log.debug("--> getHighscoreOfUUID. UUID: " + uuid);
 
         Query uuidquery = getQueryWithFilter("UUID", uuid);
-        List<Highscore> response;
+        List<Highscore> response = new ArrayList<>();
 
         try {
-            response = getAirtableBase().table("Highscore", Highscore.class).select(uuidquery);
+            response = getAirtableBase().table(TABLE_NAME, Highscore.class).select(uuidquery);
         } catch (AirtableException e) {
             log.error("Error with Airtable: " + e);
             throw new HighscoreSyntaxException("Error. Could not retrieve Highscore of UUID: " + uuid);
@@ -185,14 +188,10 @@ public class SpielstandRepository extends AirtableRepository {
         if (response.isEmpty()) {
             String msg = "No Highscore of UUID: " + uuid + " found.";
             log.warn(msg);
-            return null;
-        } else if (response.size() > 1) {
-            String msg = "More than one Entry in Highscore found!";
-            log.error(msg);
-            throw new HighscoreSyntaxException(msg);
+            return response;
         } else {
             log.debug("<-- getHighscoreOfUUID. Retrieved Highscore of UUID: " + uuid);
-            return response.get(0);
+            return response;
         }
 
     }
@@ -209,14 +208,13 @@ public class SpielstandRepository extends AirtableRepository {
         String id = getIdOfHighscore(uuid);
 
         try {
-            getAirtableBase().table("Highscore", Highscore.class).destroy(id);
+            getAirtableBase().table(TABLE_NAME, Highscore.class).destroy(id);
         } catch (AirtableException e) {
             log.error("Error with Airtable: " + e);
             throw new HighscoreSyntaxException("Could not destroy Highscore of UUID: " + uuid);
         }
 
         log.debug("<-- deleteHighscore. Highscore ID: " + id + " of UUID: " + uuid + " deleted.");
-
     }
 
     /**
@@ -229,10 +227,24 @@ public class SpielstandRepository extends AirtableRepository {
 
         log.debug("--> getIdOfHighscore. UUID: " + uuid);
 
-        Highscore highscore = getHighscoreOfUUID(uuid);
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+
+        List<Highscore> highscores = getHighscoreOfUUID(uuid);
+
+        for (Highscore hs : highscores) {
+            String date = hs.getDate();
+            date = date.substring(0, 7);
+
+            if (formatdate.equalsIgnoreCase(date)) {
+                return hs.getId();
+            }
+        }
+
         log.debug("<-- getIdOfHighscore. Retrieved Highscore");
 
-        return highscore.getId();
+        return null;
     }
-
 }

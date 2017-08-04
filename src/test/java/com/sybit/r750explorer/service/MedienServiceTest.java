@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -43,7 +42,6 @@ public class MedienServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
     @Test
     public void getMedienOfLocationNameTest() {
 
@@ -95,7 +93,6 @@ public class MedienServiceTest {
 
     }
 
-    @Ignore
     @Test
     public void getMedienOfLocationSlugTest() {
 

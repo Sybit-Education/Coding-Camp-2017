@@ -10,10 +10,7 @@ import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.tables.Spielstand;
 import com.sybit.r750explorer.repository.SpielstandRepository;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -52,7 +49,6 @@ public class ScoreServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Ignore
     @Test
     public void newSpielstandEntryTest() {
 
@@ -94,7 +90,7 @@ public class ScoreServiceTest {
         update.setUuid(testUUID);
         update.setScore("100");
         List<String> questionList = new ArrayList<>();
- 
+
         update.setQuestionList(questionList);
         update.setUserAnswerIndex("Test");
         List<String> locationIds = new ArrayList<>();
@@ -112,7 +108,6 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
     @Test
     public void getScoreOfSpielstand() {
 
@@ -161,27 +156,54 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
+    /**
+     * Die Methode testet die Funktionalität der Methode checkIfPlayerExists
+     * Falls Monat sowie Jahr der Dati übereinstimmen gibt die Methode true
+     * zurück, da sich der Benutzer in diesem Monat bereits registriert hat.
+     * Falls Monat sowie Jahr nicht übereinstimmen gibt die Methode false
+     * zurück, da der Benutzer sich in dem Monat noch nicht registriert hat.
+     */
     @Test
     public void checkIfPlayerExistsTest() {
 
         String testUUID = "testuuid";
+        String testUUID2 = "testuuid2";
 
-        Mockito.when(spielstandRepository.getHighscoreOfUUID(testUUID)).thenReturn(null);
+        List<Highscore> list = new ArrayList<>();
+        Highscore h1 = new Highscore();
+        h1.setUuid(testUUID);
+        h1.setDate("2018-02-08 16:15");
+        list.add(h1);
+
+        List<Highscore> list2 = new ArrayList<>();
+        Highscore h2 = new Highscore();
+        h2.setUuid(testUUID2);
+        h2.setDate("2017-08-02 13:12");
+        list2.add(h2);
+
+        Mockito.when(spielstandRepository.getHighscoreOfUUID(testUUID)).thenReturn(list);
         Boolean response = scoreService.checkIfPlayerExists(testUUID);
 
         assertEquals(response, false);
+
+        Mockito.when(spielstandRepository.getHighscoreOfUUID(testUUID2)).thenReturn(list2);
+        Boolean response2 = scoreService.checkIfPlayerExists(testUUID2);
+
+        assertEquals(response2, true);
     }
 
-    @Ignore
     @Test
     public void newHighscoreTest() {
 
+        String testVorname = "vorname";
+        String testNachname = "nachname";
         String testNickname = "nickname";
         String testEmail = "email";
         String testUUID = "uuid";
 
         Highscore newHighscore = new Highscore();
+        newHighscore.setVorname(testVorname);
+        newHighscore.setNachname(testNachname);
         newHighscore.setNickname(testNickname);
         newHighscore.setEmail(testEmail);
         newHighscore.setUuid(testUUID);
@@ -189,7 +211,7 @@ public class ScoreServiceTest {
         newHighscore.setDate("datum");
 
         Mockito.when(spielstandRepository.registerScore(any())).thenReturn(newHighscore);
-        Highscore response = scoreService.newHighscore(testNickname, testEmail, testUUID);
+        Highscore response = scoreService.newHighscore(testVorname, testNachname, testNickname, testEmail, testUUID);
 
         assertEquals(response, newHighscore);
     }
@@ -198,12 +220,14 @@ public class ScoreServiceTest {
     @Test
     public void newHighscoreFailedTest() {
 
+        String testVorname = "vorname";
+        String testNachname = "nachname";
         String testNickname = "nickname";
         String testEmail = "email";
         String testUUID = "uuid";
 
         Mockito.when(spielstandRepository.registerScore(any())).thenReturn(null);
-        Highscore response = scoreService.newHighscore(testNickname, testEmail, testUUID);
+        Highscore response = scoreService.newHighscore(testVorname, testNachname, testNickname, testEmail, testUUID);
 
         assertEquals(response, null);
     }
@@ -219,37 +243,17 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
+
     @Test
-    public void formatHighscoreTest() {
-
-        List<Highscore> highscoreTestList = new ArrayList<>();
-
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-
-        Highscore h1 = new Highscore();
-        h1.setDate(dateFormat.format(date));
-
-        highscoreTestList.add(h1);
-
-        List<Highscore> response = scoreService.formatHighscoreList(highscoreTestList);
-
-        assertEquals(10, response.get(0).getDate().length());
-
-    }
-
-    @Ignore
-    @Test
-    public void hintRequestedOver50() {
+    public void hintRequestedOver5() {
         String testUUID = "1234";
         List<Spielstand> entrys = new ArrayList<>();
         Spielstand sp1 = new Spielstand();
-        sp1.setScore("100");
+        sp1.setScore("10");
         Spielstand sp2 = new Spielstand();
-        sp2.setScore("100");
+        sp2.setScore("10");
         Spielstand sp3 = new Spielstand();
-        sp3.setScore("100");
+        sp3.setScore("10");
         entrys.add(sp1);
         entrys.add(sp2);
         entrys.add(sp3);
@@ -257,21 +261,22 @@ public class ScoreServiceTest {
         Mockito.when(spielstandRepository.getEntrysOfUUID("1234")).thenReturn(entrys);
         //Mockito.when(scoreService.getScoreOfSpielstand("1234")).thenReturn(Float.valueOf(100));
         Float response = scoreService.hintRequested("1234");
-        assertEquals(Float.valueOf(-50), response);
+        assertEquals(Float.valueOf(-5), response);
 
     }
 
-    @Ignore
     @Test
-    public void hintRequestedUnder50() {
+
+    public void hintRequested0() {
+
         String testUUID = "1234";
         List<Spielstand> entrys = new ArrayList<>();
         Spielstand sp1 = new Spielstand();
-        sp1.setScore("100");
+        sp1.setScore("10");
         Spielstand sp2 = new Spielstand();
-        sp2.setScore("-50");
+        sp2.setScore("-5");
         Spielstand sp3 = new Spielstand();
-        sp3.setScore("-50");
+        sp3.setScore("-5");
         entrys.add(sp1);
         entrys.add(sp2);
         entrys.add(sp3);
@@ -281,5 +286,40 @@ public class ScoreServiceTest {
         Float response = scoreService.hintRequested("1234");
         assertEquals(Float.valueOf(0), response);
 
+    }
+
+    @Test
+    public void hintBetween1and4() {
+
+        String testUUID = "1234";
+        List<Spielstand> entrys = new ArrayList<>();
+        Spielstand sp1 = new Spielstand();
+        sp1.setScore("10");
+        Spielstand sp2 = new Spielstand();
+        sp2.setScore("-5");
+        Spielstand sp3 = new Spielstand();
+        sp3.setScore("1");
+        Spielstand sp4 = new Spielstand();
+        sp4.setScore("-5");
+
+        entrys.add(sp1);
+        entrys.add(sp2);
+        entrys.add(sp3);
+        entrys.add(sp4);
+
+        Mockito.when(spielstandRepository.getEntrysOfUUID("1234")).thenReturn(entrys);
+        //Mockito.when(scoreService.getScoreOfSpielstand("1234")).thenReturn(Float.valueOf("0"));
+        Float response = scoreService.hintRequested("1234");
+        assertEquals(Float.valueOf(-1), response);
+    }
+    
+    @Ignore
+    @Test
+    public void rangMitScore20Test() {
+        String testUUID = "1234";
+        Float testZahl=Float.valueOf(20);
+        Mockito.when(scoreService.getScoreOfSpielstand(testUUID)).thenReturn(testZahl);
+        int rang=scoreService.getRang(testUUID);
+        assertEquals(rang, 3);
     }
 }

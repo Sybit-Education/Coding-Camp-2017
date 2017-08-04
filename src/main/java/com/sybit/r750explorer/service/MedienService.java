@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import javax.el.MethodNotFoundException;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -35,9 +34,8 @@ public class MedienService {
 
         log.debug("--> getMedienOfLocationName: Name: " + name);
         
-        
+        return medienRepository.getMedienOfLocationName(name);
         //Hole dir die MedienDaten
-        throw new MethodNotFoundException("Methode nicht implementiert");
     }
 
     /**
@@ -51,7 +49,10 @@ public class MedienService {
 
         log.debug("--> getMedienOfLocationSlug: Slug: " + slug);
         //Wenn ich den Name der Location hätte könnte ich die obere Methode wiederverwenden....
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        
+        String Name = locationRepository.getLocationNameOfSlug(slug);
+        return getMedienOfLocationName(Name);
+
     }
 
 }
