@@ -138,13 +138,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>4.3.9.RELEASE</version>
             <type>jar</type>
         </dependency>
     </dependencies>
     
     <build>
-            <finalName>githubr750</finalName>
+        <finalName>r750explorer</finalName>
         <plugins>
             <!-- Package as an executable jar/war -->
             <plugin>
