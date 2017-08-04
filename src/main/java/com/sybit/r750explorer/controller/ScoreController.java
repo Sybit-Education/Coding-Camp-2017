@@ -50,9 +50,12 @@ public class ScoreController {
 
         log.debug("--> MyScore");
 
+        int badge=scoreService.getRang(uuid);
+        
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
 
+        model.put("Badge", badge);
         model.put("Punkte", s);
         model.put("Liste", lScore);
 
@@ -75,9 +78,11 @@ public class ScoreController {
 
         log.debug("--> Registering... UUID: " + uuid);
 
+        int badge=scoreService.getRang(uuid);
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
 
+        model.put("Badge", badge);
         model.put("Punkte", s);
         model.put("Liste", lScore);
 
@@ -135,4 +140,5 @@ public class ScoreController {
 
         return String.valueOf(Math.round(score));
     }
+    
 }
