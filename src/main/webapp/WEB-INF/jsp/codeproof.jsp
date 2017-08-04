@@ -1,10 +1,12 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<meta http-equiv="Content-Type" charset=utf-8"/>
 
 <html lang="de">
+    
 
     <head>
         <c:import url="include/head.jsp"/>
@@ -15,7 +17,7 @@
 
         <div class="container"> 
             <div class="page-header">
-                <h1>${location.getName()}:<br/> Code prüfen</h1>
+                <h1>${location.getName()}:<br/> Code pr�fen</h1>
             
                 <c:choose>
                     <c:when test="${maxEntries == 'true'}">
@@ -45,7 +47,7 @@
                                         <input type="hidden" name="mail" value="false"/>
                                         <input type="text" class="form-control" name="code" size="6" maxlength="6"  placeholder=${message}/>
                                         <span class="input-group-btn">
-                                            <input  type="submit" class="btn btn-default btn-md" value="pr?fen" />
+                                            <input  type="submit" class="btn btn-default btn-md" value="pr�fen" />
                                         </span>
                                     </div>
                                </form>

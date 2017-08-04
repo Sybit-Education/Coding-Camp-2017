@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="form-control-label">Nickname<sup>*</sup>:</label>
                                 <input type="text" class="form-control" name="nickname" placeholder="Nickname fuer Highscore" min="4" max="16" maxlength="16">
-                                <p>Der Nickname wird in der Highscore angezeigt.</p>
+                                <p>Der Nickname wird in der Highscoretabelle angezeigt.</p>
                             </div> 
                             <div>
                                 Folgende Daten sind zur Gewinnermittlung notwendig und werden nicht ver&oumlffentlicht:
