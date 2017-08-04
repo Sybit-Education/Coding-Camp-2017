@@ -96,16 +96,17 @@ public class QuizController implements Serializable {
         }
 
         Location loc = locationService.getLocation(slug);
-
+        HttpSession session = request.getSession();
         Fragen frage = null;
         if (code.equalsIgnoreCase(locationService.getLocation(slug).getCode())) {
 //TODO Mail auskommentieren
-            if (mail) {
+            if (mail && session.getAttribute("Location_Hint_report_" + slug) == null) {
 //                try {
 //                    mailService.sendMessage(loc.getName() + ": " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!", uuid);
 //                } catch (MailException ex) {
 //                    log.error(ex.toString());
 //                }
+                session.setAttribute("Location_Hint_report_" + slug, true);
                 scoreService.newSpielstandEntry(uuid, null, null, "Hinweis", Float.valueOf(5));
             }
 
