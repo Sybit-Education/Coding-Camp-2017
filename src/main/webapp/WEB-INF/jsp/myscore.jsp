@@ -67,6 +67,18 @@
             <div class="page-header">
                 <h1 class = "text-center" >Dein Highscore: </br> <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
                 <center>
+                    <c:choose>
+                        <c:when test = "${Badge == 1}">
+                            <img src="<c:url value="/resources/images/bronze128x128.png" />" width="25%">
+                        </c:when>
+                        <c:when test = "${Badge == 2}">
+                            <img src="<c:url value="/resources/images/silber128x128.png" />" width="25%">
+                        </c:when>
+                        <c:when test = "${Badge == 3}">
+                            <img src="<c:url value="/resources/images/gold128x128.png" />" width="25%">
+                        </c:when>
+                        <c:when test = "${Badge == 0}"></c:when>
+                    </c:choose>
                     <!-- Benachrichtigungen an den User bei registrierungsproblemen -->
                     ${message}</br></br>
                     <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
