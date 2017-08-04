@@ -14,6 +14,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,6 +39,9 @@ public class ScoreController {
     @Autowired
     ScoreService scoreService;
 
+    @Autowired
+    private ApplicationContext appContext;
+
     /**
      * Score Page * Hier soll der Score des Users sowie eine Liste mit den
      * besten Highscores angezeigt werden
@@ -50,8 +55,8 @@ public class ScoreController {
 
         log.debug("--> MyScore");
 
-        int badge=scoreService.getRang(uuid);
-        
+        int badge = scoreService.getRang(uuid);
+
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
 
@@ -78,7 +83,7 @@ public class ScoreController {
 
         log.debug("--> Registering... UUID: " + uuid);
 
-        int badge=scoreService.getRang(uuid);
+        int badge = scoreService.getRang(uuid);
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
 
@@ -140,5 +145,34 @@ public class ScoreController {
 
         return String.valueOf(Math.round(score));
     }
-    
+
+    @ResponseBody
+    @RequestMapping(value = "/score/badge/{uuid}", method = RequestMethod.GET)
+    public String getBadge(@PathVariable("uuid") String uuid) {
+
+        log.debug("--> getBadge");
+
+        //Der Score des User mithilfe der UUID abfragen.
+        int rang = scoreService.getRang(uuid);
+        String returnvalue;
+        switch (rang) {
+            case 3:
+                returnvalue = "gold128x128.png";
+                break;
+            case 2:
+                returnvalue = "silber128x128.png";
+                break;
+            case 1:
+                returnvalue = "bronze128x128.png";
+                break;
+            default:
+                returnvalue = "empty128x128.png";
+                break;
+        }
+
+        log.debug("<-- getBadge");
+
+        return returnvalue;
+    }
+
 }

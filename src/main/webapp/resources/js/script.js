@@ -2,13 +2,12 @@
  * General call if page is completly loaded.
  */
 $(document).ready(function () {
-    
-    console.log("contextPath = '" + contextPath + "'");
-  
-    
-        
+
     // update scores in navigation bar
     requestAndSetScore();
+
+    //get Badge for UUID
+    requestAndSetBadge();
 
     // Set a timeout...
     setTimeout(function () {
@@ -37,9 +36,9 @@ $(document).ready(function () {
 
 
 function initMap() {
-    
+
     $.ajax({
-        url: contextPath +'/location/all',
+        url: contextPath + '/location/all',
         type: 'GET',
         success: function (res) {
             response = $.parseJSON(res);
@@ -100,7 +99,7 @@ function createMarkers(allLocations, markers, infoWindows) {
                     '<a href=' + contextPath + '/location/' + allLocations[i]["Slug"] + '>\n\
                         <img src=' + '' + allLocations[i]["Foto"][0].url + ' class="img-responsive" width="100%" />\n\
                         <div class="locationName"><b>' + allLocations[i].Name + '</b></div>\n\
-                    </a>' +    
+                    </a>' +
                     '</div>';
 
 
@@ -206,7 +205,7 @@ function requestAndSetScore() {
     var score;
 
     $.ajax({
-        url: contextPath +'/score/' + uuid,
+        url: contextPath + '/score/' + uuid,
         type: 'GET',
         success: function (res) {
             score = $.parseJSON(res);
@@ -215,6 +214,25 @@ function requestAndSetScore() {
         error: function () {
             score = null;
             console.log("Error loading Score!");
+        }
+    });
+
+}
+
+function requestAndSetBadge() {
+    var uuid = getCookieUUID();
+    var badge;
+    $.ajax({
+        url: contextPath + '/score/badge/' + uuid,
+        type: 'GET',
+        success: function (res) {
+            badge = res;
+            document.getElementById('badge').src = contextPath + '/resources/images/' + badge;
+        },
+        error: function () {
+            badge = "empty128x128.png";
+            document.getElementById('badge').src = contextPath + '/resources/images/' + badge;
+            console.log("Error loading Badge!");
         }
     });
 

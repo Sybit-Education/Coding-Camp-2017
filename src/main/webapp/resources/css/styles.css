@@ -10,6 +10,15 @@
     filter: drop-shadow(5px 5px 5px #222);    
 }
 
+#badge {
+    position: fixed;
+    left: 1.5em;
+    top: 1em;
+    width: 2.5em;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);    
+}
+
 #AntwortRichtig {
     margin-bottom: 15px;
     color: #008744;
