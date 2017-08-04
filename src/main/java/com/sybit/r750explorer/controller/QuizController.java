@@ -3,8 +3,8 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
-import com.sybit.r750explorer.config.CookieInterceptor;
-import com.sybit.r750explorer.exception.MailException;
+import com.sybit.r750explorer.exception.FrageException;
+import com.sybit.r750explorer.exception.FrageNotFoundException;
 import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.springframework.context.annotation.Scope;
 
 @Controller
 @RequestMapping("/location/{slug}")
@@ -86,48 +85,11 @@ public class QuizController implements Serializable {
         return "codeproof";
     }
 
-    /**
-     * Code counter
-     *
-     * Method to count entered code of location
-     *
-     * @param slug URL-Part of Location
-     * @param request
-     * @return
-     */
-    
-    private boolean codeEntryCounter(String slug, HttpServletRequest request) {
-        
-        boolean entriesFull = false;
-        HttpSession session = request.getSession();
-        
-        if(session != null) {
-            if(session.getAttribute("Location_"+slug) != null) {
-                String value = session.getAttribute("Location_"+slug).toString();
-                Integer counter = Integer.valueOf(value);    
-                log.debug("--> CodeEntryCounter. LocationCode: " + locationService.getLocation(slug).getCode() + ". Entries: " + counter); 
-                counter++;
-                log.debug(counter + " Mal falsch eingegeben");
-
-                if(counter >= 10){
-                    log.debug("CODE SEITE GESPERRT");
-                    entriesFull = true;
-                }
-                session.setAttribute("Location_"+slug, counter);
-
-            } else {
-                session.setAttribute("Location_"+slug, "0");
-            }
-        }
-        return entriesFull;
-    }
-
     @RequestMapping(value = "/quiz")
-    public String quiz(@CookieValue("UUID") String uuid, HttpServletRequest request, @RequestParam boolean hint, @RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
-        
+    public String quiz(@CookieValue("UUID") String uuid, HttpServletRequest request, @RequestParam boolean mail, @RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
+
         log.debug("--> CodePage");
-        
-        
+
         if (!(boolean) model.get("check")) {
             attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
             return "redirect:" + "/";
@@ -137,23 +99,22 @@ public class QuizController implements Serializable {
 
         Fragen frage = null;
         if (code.equalsIgnoreCase(locationService.getLocation(slug).getCode())) {
-
-            if (hint) {
+//TODO Mail auskommentieren
+            if (mail) {
 //                try {
 //                    mailService.sendMessage(loc.getName() + ": " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!", uuid);
 //                } catch (MailException ex) {
 //                    log.error(ex.toString());
 //                }
-
                 scoreService.newSpielstandEntry(uuid, null, null, "Hinweis", Float.valueOf(5));
             }
 
-            log.debug("Code war korrekt! :D");
             try {
                 frage = quizService.getFrageOfLocation(slug);
                 model.put("frage", frage);
-            } catch (Exception e) {
+            } catch (FrageException e) {
                 log.error(e.getMessage());
+                throw new FrageNotFoundException("Keine Frage zu LocationSlug: " + slug + "gefunden!");
             }
             model.put("location", locationService.getLocation(slug));
             model.put("codeCheck", true);
@@ -163,11 +124,48 @@ public class QuizController implements Serializable {
         } else {
             model.put("location", locationService.getLocation(slug));
             model.put("codeCheck", false);
-            if(codeEntryCounter(slug, request)){
+            if (codeEntryCounter(slug, request, uuid)) {
                 model.put("maxEntries", true);
             }
             return "codeproof";
         }
+    }
+
+    /**
+     * Code counter
+     *
+     * Method to count entered code of location
+     *
+     * @param slug URL-Part of Location
+     * @param request
+     * @return
+     */
+    private boolean codeEntryCounter(String slug, HttpServletRequest request, String uuid) {
+
+        log.debug("--> codeEntryCounter");
+
+        boolean entriesFull = false;
+        HttpSession session = request.getSession();
+
+        if (session != null) {
+            if (session.getAttribute("Location_" + slug) != null) {
+                String value = session.getAttribute("Location_" + slug).toString();
+                Integer counter = Integer.valueOf(value);
+                log.debug("LocationCode: " + locationService.getLocation(slug).getCode() + ". Entries: " + counter);
+                counter++;
+                log.debug(counter + " Mal falsch eingegeben");
+
+                if (counter >= 10) {
+                    log.info("Code Eingabe gesperrt! UUID: " + uuid);
+                    entriesFull = true;
+                }
+                session.setAttribute("Location_" + slug, counter);
+
+            } else {
+                session.setAttribute("Location_" + slug, "0");
+            }
+        }
+        return entriesFull;
     }
 
     /**
@@ -194,9 +192,8 @@ public class QuizController implements Serializable {
             return "redirect:" + "/";
         }
 
-        // TODO: Prüfen, ob die originale Lösung mit der eingegebenen Lösung übereinstimmt, Punkte vergeben und eine Rückmeldung an model übergeben
         Fragen frage = quizService.getFrageOfID(fragenID);
-        Float score = scoreService.getScoreOfSpielstand(scoreCookie);
+        Float score;
         if (frage.getLoesung().equals(Float.valueOf(antwort))) {
             model.put("loesung", true);
             score = Float.valueOf(10);
@@ -204,8 +201,10 @@ public class QuizController implements Serializable {
             model.put("loesung", false);
             score = Float.valueOf(1);
         }
-        model.put("loesungText", frage.getLoesungText());
+
         scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, score);
+
+        model.put("loesungText", frage.getLoesungText());
         model.put("location", locationService.getLocation(slug));
 
         return "quiz-check";

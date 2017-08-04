@@ -65,21 +65,35 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1 class = "text-center" >Highscore</h1>
+                <h1 class = "text-center" >Dein Highscore: </br> <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
+                <center>
+                    <!-- Benachrichtigungen an den User bei registrierungsproblemen -->
+                    ${message}</br></br>
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
+
+                </center>
 
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <p>Deine aktuellen Punkte: <fmt:formatNumber type = "number" value = "${Punkte}"/></p>
-                    <p>Deine Punkte in der Highscore: </p>
-                    <center>
-                        ${message}
-                        </br></br>
-
-                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
-
-                    </center>
-                </div>
+            <div class="col-md-12 col-xs-12">
+                <!-- Die Highscoretabelle -->
+                <table class="table">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Platzierung</th>
+                            <th>Nickname</th>
+                            <th>Punkte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${Liste}" var="score" varStatus="loop">
+                            <tr>
+                                <th scope="row">${loop.index +1}</th>
+                                <td>${score.getNickname()}</td>
+                                <td><fmt:formatNumber type = "number" value = "${score.getScore()}"/></td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
             </div>
             <table class="table table-striped">
                 <thead>
@@ -105,4 +119,3 @@
         <c:import url="include/footer.jsp"/>
     </body>
 </html>
-
