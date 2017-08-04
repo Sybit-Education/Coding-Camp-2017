@@ -233,4 +233,19 @@ public class ScoreService {
         return score;
     }
 
+    public int getRang(String uuid) {
+        Float spielstand = getScoreOfSpielstand(uuid);        
+        int rang=0;
+        if (spielstand<=22){
+            rang=0;
+        } else if (spielstand<=70){
+            rang=1;            
+        } else if (spielstand<=120){
+            rang=2;            
+        } else {
+            rang=3;            
+        }
+        return rang;
+    }
+
 }
