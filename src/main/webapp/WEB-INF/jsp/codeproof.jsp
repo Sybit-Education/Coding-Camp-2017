@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,7 +15,7 @@
 
         <div class="container"> 
             <div class="page-header">
-                <h1>${location.getName()}:<br/> Code pr�fen</h1>
+                <h1>${location.getName()}:<br/> Code prüfen</h1>
             
                 <c:choose>
                     <c:when test="${maxEntries == 'true'}">
@@ -41,8 +41,7 @@
                             <div class="col-xs-12">
                                 <form method="POST" action="<c:url value="/location/${location.getSlug()}/quiz"/>">
                                     <div class="input-group">
-                                        <input type="hidden" name="hint" value="false" />
-                                        <input type="hidden" name="mail" value="true"/>
+                                        <input type="hidden" name="mail" value="false"/>
                                         <input type="text" class="form-control" name="code" size="6" maxlength="6"  placeholder=${message}/>
                                         <span class="input-group-btn">
                                             <input  type="submit" class="btn btn-default btn-md" value="pr?fen" />
