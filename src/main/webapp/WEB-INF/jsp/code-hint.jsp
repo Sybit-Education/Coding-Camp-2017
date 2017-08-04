@@ -19,7 +19,7 @@
 
             <div>
                 <!-- TODO: Code Hinweis für eine Location anzeigen -->
-                <h1>Code Hinweis.</h1>
+                <h1>Code Hinweis</h1>
                 <h2>${locationName}</h2>
             </div>
             <p>${HinText}</p>
@@ -39,7 +39,8 @@
             <div>
                 <p> Code gefunden?</p>
                 <a href="<c:url value="/location/${locationSlug}/code"/>"><button  type="button" class="btn btn-default">Code eingeben!</button></a>
-
+                <br>
+                <br>
 <!-- TODO: Formular auf "/location/${locationSlug}/code/check" abschicken, falls kein code vorhanden/gefunden -->     
                 <p>Der Code wurde nicht gefunden oder ist nicht mehr vorhanden.</p>
                 <form action="<c:url value= "/location/${locationSlug}/quiz"/>" method="POST">
@@ -47,7 +48,7 @@
                     <input type="hidden" class="form-control" id="mail" value="true" name="mail">
                     <button type="submit" class="btn btn-default">Weiter zum Quiz</button>
                 </form>             
-
+                <br>
             </div>
 
 

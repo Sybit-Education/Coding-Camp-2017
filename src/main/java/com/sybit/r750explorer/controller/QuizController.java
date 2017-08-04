@@ -97,17 +97,20 @@ public class QuizController implements Serializable {
 
         Location loc = locationService.getLocation(slug);
 
+        HttpSession session = request.getSession();
+        Fragen frage = null;
         if (code.equalsIgnoreCase(locationService.getLocation(slug).getCode())) {
 //TODO Mail auskommentieren
-            if (mail) {
+            if (mail && session.getAttribute("Location_Hint_report_" + slug) == null) {
 //                try {
 //                    mailService.sendMessage(loc.getName() + ": " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!", uuid);
 //                } catch (MailException ex) {
 //                    log.error(ex.toString());
 //                }
+                session.setAttribute("Location_Hint_report_" + slug, true);
                 scoreService.newSpielstandEntry(uuid, null, null, "Hinweis", Float.valueOf(5));
             }
-            
+
             model.put("frage", questionInSession(slug, request));
             model.put("location", locationService.getLocation(slug));
             model.put("codeCheck", true);
@@ -160,25 +163,25 @@ public class QuizController implements Serializable {
         }
         return entriesFull;
     }
-    
-    public Fragen questionInSession(String slug, HttpServletRequest request){
-        
+
+    public Fragen questionInSession(String slug, HttpServletRequest request) {
+
         HttpSession session = request.getSession();
-       
+
         Fragen frage;
-            try {
-                frage = quizService.getFrageOfLocation(slug);
-                if (session.getAttribute("Location_Quiz_" + slug) != null) {
-                    frage = quizService.getFrageOfID(session.getAttribute("Location_Quiz_" + slug).toString());
-                } else {
-                    session.setAttribute("Location_Quiz_" + slug, frage.getId());
-                }
-            } catch (FrageException e) {
-                frage=null;
-                log.error(e.getMessage());
-                throw new FrageNotFoundException("Keine Frage zu LocationSlug: " + slug + "gefunden!");
-            }        
-        
+        try {
+            frage = quizService.getFrageOfLocation(slug);
+            if (session.getAttribute("Location_Quiz_" + slug) != null) {
+                frage = quizService.getFrageOfID(session.getAttribute("Location_Quiz_" + slug).toString());
+            } else {
+                session.setAttribute("Location_Quiz_" + slug, frage.getId());
+            }
+        } catch (FrageException e) {
+            frage = null;
+            log.error(e.getMessage());
+            throw new FrageNotFoundException("Keine Frage zu LocationSlug: " + slug + "gefunden!");
+        }
+
         return frage;
     }
 
