@@ -60,7 +60,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-12"><h3>Sticker unauffindbar</h3></div>
+                            <div class="col-xs-12"><h3>Sticker unauffindbar?</h3></div>
                             <div class="col-xs-12">
                                 Sticker mit dem Code nicht gefunden? Für <b>5&nbsp;Punkte Abzug</b> kannst du einen Hinweis bekommen:<br/>
                             </div>
