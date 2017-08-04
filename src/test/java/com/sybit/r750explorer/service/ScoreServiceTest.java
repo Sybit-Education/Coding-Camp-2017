@@ -312,4 +312,14 @@ public class ScoreServiceTest {
         Float response = scoreService.hintRequested("1234");
         assertEquals(Float.valueOf(-1), response);
     }
+    
+    @Ignore
+    @Test
+    public void rangMitScore20Test() {
+        String testUUID = "1234";
+        Float testZahl=Float.valueOf(20);
+        Mockito.when(scoreService.getScoreOfSpielstand(testUUID)).thenReturn(testZahl);
+        int rang=scoreService.getRang(testUUID);
+        assertEquals(rang, 3);
+    }
 }
