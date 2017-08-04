@@ -95,27 +95,9 @@
                     </tbody>
                 </table>
             </div>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Platzierung</th>
-                        <th>Nickname</th>
-                        <th>Punkte</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${Liste}" var="score" varStatus="loop">
-                        <tr>
-                            <th scope="row">${loop.index +1}</th>
-                            <td>${score.getNickname()}</td>
-                            <td><fmt:formatNumber type = "number" value = "${score.getScore()}"/></td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
         </div> 
-                    
+
         <c:import url="include/footer.jsp"/>
     </body>
 </html>
