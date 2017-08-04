@@ -105,7 +105,6 @@ public class SpielstandRepositoryTest extends wiremockBaseTest {
         newHighscore.setUuid("uuid");
         newHighscore.setScore(Float.valueOf(10));
 
-        newHighscore.setDate("2017-05-19 11:32:31");
 
         spielstandRepository.registerScore(newHighscore);
     }

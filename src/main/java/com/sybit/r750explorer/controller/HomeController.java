@@ -110,15 +110,21 @@ public class HomeController {
 
     @RequestMapping("/gewinne")
     public String listGewinne(Map<String, Object> model) {
-        
+
         log.debug("--> Gewinne");
 
         List<Gewinn> allGewinne = gewinnService.getGewinnList();
         List<Gewinn> allGewinneWithPic = new ArrayList<>();
 
+        // Aussortieren der Gewinne der letzten Monate
         for (Gewinn gewinn : allGewinne) {
             if (gewinn.getFoto() != null) {
-                allGewinneWithPic.add(gewinn);
+                byte gewinnDate = Byte.valueOf(gewinn.getVerlosungsmonat().substring(5, 7));
+                byte currentDate = Byte.valueOf(gewinnService.getGewinnOfMonth().get(0).getVerlosungsmonat().substring(5, 7));
+
+                if (gewinnDate > currentDate) {
+                    allGewinneWithPic.add(gewinn);
+                }
             }
         }
 
