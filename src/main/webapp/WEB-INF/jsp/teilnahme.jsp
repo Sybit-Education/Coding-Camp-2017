@@ -38,6 +38,24 @@
             <p>
                 Man kann pro Ort nur eine Frage beantworten.
             </p>
+            
+            <p>
+                Ab einer bestimmten Punktzahl erreicht man verschiedene Ränge. 
+               
+            </p>
+            <p> Diese Ränge sind:</p>
+            <ul>
+                <li>Bronze (22-70 Punkte):
+                 <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="20%" alt="Code Sticker" class="img-thumbnail center-block"></li>
+                <li>Silber (71-120 Punkte):
+                 <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="20%" alt="Code Sticker" class="img-thumbnail center-block"></li></li>
+                <li>Gold (<120 Punkte):
+                 <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="20%" alt="Code Sticker" class="img-thumbnail center-block"></li></li>
+            </ul>
+            <p>
+                Diese Rangabzeichen werden auf der Highscoreliste angezeigt.
+            </p>
+                
             <h3>Code-Sticker unauffindbar</h3>
             <p>
                 Wenn man den Sticker <b>nicht findet</b>, kann man sich mit <kbt>Hinweis zum Code</kbt> 
