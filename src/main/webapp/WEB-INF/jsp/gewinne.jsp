@@ -23,11 +23,12 @@
             <h1 class="red-text text-center">Derzeit zu gewinnen...</h1>
             <p class = "text-center">Alle Preise, die diesen Monat gewonnen werden können:</p>
 
+            <!-- Gewinne des aktuellen Monats -->
             <c:forEach items="${gewinne}" var="gewinn" varStatus="loop">
                 <div class="well well-sm">
                     <div class="row">
                         <div class="col-xs-12">
-                            <h2>${gewinn.getName()}</h2>
+                            <h2>${gewinn.name}</h2>
                         </div>
                     </div></br>
 
@@ -41,19 +42,24 @@
                         </div>
                     </div>
                 </div>
-
             </c:forEach>
+
+            <!-- Gewinne über das ganze Jahr -->
+            <p>Dies sind alle Gewinne, die in den folgenden Monaten noch zu gewinnen sind.</p>
             <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
                 <c:forEach items="${allGewinne}" var="weitererGewinn" varStatus="loop" >
-                    <div class="col-xs-6 col-md-4">
+                    <div  class="col-xs-6 col-md-4" >
                         <div class="panel panel-default bootcards-media" >
                             <img src="${weitererGewinn.foto[0].url}" class="img-responsive cards"/>
+
+                            <div class="panel-footer">
+                                <small>${weitererGewinn.name}</small>
+                            </div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
         </div>
-
 
         <c:import url="include/footer.jsp"/>
     </body>
