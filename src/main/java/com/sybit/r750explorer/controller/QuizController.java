@@ -3,13 +3,15 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
-import com.sybit.r750explorer.exception.MailException;
+import com.sybit.r750explorer.exception.FrageException;
+import com.sybit.r750explorer.exception.FrageNotFoundException;
 import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
 import com.sybit.r750explorer.service.MailService;
 import com.sybit.r750explorer.service.QuizService;
 import com.sybit.r750explorer.service.ScoreService;
+import java.io.Serializable;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +20,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/location/{slug}")
-public class QuizController {
+public class QuizController implements Serializable {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -81,51 +85,8 @@ public class QuizController {
         return "codeproof";
     }
 
-    /**
-     * Code check
-     *
-     * Method to compare entered code with the original of location
-     *
-     * @param code Entered code
-     * @param slug URL-Part of Location
-     * @param model Model to add data to web page
-     * @param attributes
-     * @return
-     */
-    @RequestMapping(value = "/code/check", method = RequestMethod.POST)
-    public String checkCode(@RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
-
-        log.debug("--> CodeCheck. UserCode: " + code + ". LocationCode: " + locationService.getLocation(slug).getCode());
-
-        if (!(boolean) model.get("check")) {
-            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
-            return "redirect:" + "/";
-        }
-
-        // TODO: Die Frage der Location anhand des Slugs holen und im Fehlerfall auf die Homepage umleiten
-        Fragen frage = null;
-        try {
-            frage = quizService.getFrageOfLocation(slug);
-        } catch (Exception e) {
-            attributes.addFlashAttribute("message", "Sie wurden auf die Homeseite umgeleitet!");
-            return "redirect:" + "/";
-        }
-
-        // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
-        if (code.equals(locationService.getLocation(slug).getCode()) && frage != null) {
-            model.put("location", locationService.getLocation(slug));
-            model.put("Frage", frage);
-            return "quiz";
-        }
-        model.put("location", locationService.getLocation(slug));
-        model.put("codeCheck", false);
-        log.debug("Code war nicht korrekt!");
-
-        return "codeproof";
-    }
-
     @RequestMapping(value = "/quiz")
-    public String quiz(@CookieValue("UUID") String uuid, @RequestParam boolean hint, @RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
+    public String quiz(@CookieValue("UUID") String uuid, HttpServletRequest request, @RequestParam boolean mail, @RequestParam String code, @PathVariable("slug") String slug, Map<String, Object> model, RedirectAttributes attributes) {
 
         log.debug("--> CodePage");
 
@@ -138,41 +99,73 @@ public class QuizController {
 
         Fragen frage = null;
         if (code.equalsIgnoreCase(locationService.getLocation(slug).getCode())) {
-
-            if (hint) {
+//TODO Mail auskommentieren
+            if (mail) {
 //                try {
 //                    mailService.sendMessage(loc.getName() + ": " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!", uuid);
 //                } catch (MailException ex) {
 //                    log.error(ex.toString());
 //                }
-
                 scoreService.newSpielstandEntry(uuid, null, null, "Hinweis", Float.valueOf(5));
             }
 
-            log.debug("Code war korrekt! :D");
             try {
                 frage = quizService.getFrageOfLocation(slug);
                 model.put("frage", frage);
-            } catch (Exception e) {
+            } catch (FrageException e) {
                 log.error(e.getMessage());
+                throw new FrageNotFoundException("Keine Frage zu LocationSlug: " + slug + "gefunden!");
             }
             model.put("location", locationService.getLocation(slug));
             model.put("codeCheck", true);
 
             return "quiz";
 
-        } // TODO: Wenn der eigegebene Code übereinstimmt und die Frage vorhanden ist - an model übergeben
-        else {
-            model.put("codeCheck", false);
-            log.debug("Code war nicht korrekt!");
-
+        } else {
             model.put("location", locationService.getLocation(slug));
             model.put("codeCheck", false);
-            log.debug("Code war nicht korrekt!");
-
+            if (codeEntryCounter(slug, request, uuid)) {
+                model.put("maxEntries", true);
+            }
             return "codeproof";
         }
+    }
 
+    /**
+     * Code counter
+     *
+     * Method to count entered code of location
+     *
+     * @param slug URL-Part of Location
+     * @param request
+     * @return
+     */
+    private boolean codeEntryCounter(String slug, HttpServletRequest request, String uuid) {
+
+        log.debug("--> codeEntryCounter");
+
+        boolean entriesFull = false;
+        HttpSession session = request.getSession();
+
+        if (session != null) {
+            if (session.getAttribute("Location_" + slug) != null) {
+                String value = session.getAttribute("Location_" + slug).toString();
+                Integer counter = Integer.valueOf(value);
+                log.debug("LocationCode: " + locationService.getLocation(slug).getCode() + ". Entries: " + counter);
+                counter++;
+                log.debug(counter + " Mal falsch eingegeben");
+
+                if (counter >= 10) {
+                    log.info("Code Eingabe gesperrt! UUID: " + uuid);
+                    entriesFull = true;
+                }
+                session.setAttribute("Location_" + slug, counter);
+
+            } else {
+                session.setAttribute("Location_" + slug, "0");
+            }
+        }
+        return entriesFull;
     }
 
     /**
@@ -199,9 +192,8 @@ public class QuizController {
             return "redirect:" + "/";
         }
 
-        // TODO: Prüfen, ob die originale Lösung mit der eingegebenen Lösung übereinstimmt, Punkte vergeben und eine Rückmeldung an model übergeben
         Fragen frage = quizService.getFrageOfID(fragenID);
-        Float score = scoreService.getScoreOfSpielstand(scoreCookie);
+        Float score;
         if (frage.getLoesung().equals(Float.valueOf(antwort))) {
             model.put("loesung", true);
             score = Float.valueOf(10);
@@ -209,8 +201,10 @@ public class QuizController {
             model.put("loesung", false);
             score = Float.valueOf(1);
         }
-        model.put("loesungText", frage.getLoesungText());
+
         scoreService.newSpielstandEntry(scoreCookie, locationService.getLocation(slug), fragenID, antwort, score);
+
+        model.put("loesungText", frage.getLoesungText());
         model.put("location", locationService.getLocation(slug));
 
         return "quiz-check";

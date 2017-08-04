@@ -3,7 +3,9 @@ package com.sybit.r750explorer.controller;
 /**
  * Created by fzr on 06.03.17.
  */
+import com.sybit.r750explorer.repository.tables.Gewinn;
 import com.sybit.r750explorer.repository.tables.Location;
+import com.sybit.r750explorer.service.GewinnService;
 import com.sybit.r750explorer.service.LocationService;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +34,9 @@ public class HomeController {
     @Autowired
     private LocationService locationService;
 
-    
-    //HINT Als Beispiel wie Controller funktionieren
-    
+    @Autowired
+    private GewinnService gewinnService;
+
     /**
      * Controller method to get to Homepage.
      *
@@ -46,11 +48,11 @@ public class HomeController {
     public String home(@CookieValue(value = "UUID", required = false) String uuid, Map<String, Object> model, RedirectAttributes redirectAttributes) {
 
         log.debug("--> Homepage");
-        
+
         List<Location> locations = locationService.getLocations(uuid);
-        
+
         model.put("locations", locations);
-      
+
         return "home";
     }
 
@@ -92,8 +94,8 @@ public class HomeController {
 
         return "teilnahme";
     }
-    
-        /**
+
+    /**
      * Controller method to get 'team' page.
      *
      * @return
@@ -104,5 +106,25 @@ public class HomeController {
         log.debug("--> Team");
 
         return "team";
+    }
+
+    @RequestMapping("/gewinne")
+    public String listGewinne(Map<String, Object> model) {
+        
+        log.debug("--> Gewinne");
+
+        List<Gewinn> allGewinne = gewinnService.getGewinnList();
+        List<Gewinn> allGewinneWithPic = new ArrayList<>();
+
+        for (Gewinn gewinn : allGewinne) {
+            if (gewinn.getFoto() != null) {
+                allGewinneWithPic.add(gewinn);
+            }
+        }
+
+        model.put("allGewinne", allGewinneWithPic);
+        model.put("gewinne", gewinnService.getGewinnOfMonth());
+
+        return "gewinne";
     }
 }

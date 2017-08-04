@@ -1,4 +1,3 @@
-
 package com.sybit.r750explorer.service;
 
 import com.sybit.r750explorer.exception.FrageException;
@@ -8,9 +7,6 @@ import java.util.List;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.el.MethodNotFoundException;
-//import javax.el.FrageNotFoundException;
 
 import java.util.Random;
 
@@ -25,7 +21,6 @@ public class QuizService {
 
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
 
-    
     /**
      * Get a random Frage from a Location specified by its Slug.
      *
@@ -33,34 +28,30 @@ public class QuizService {
      * @return Fragen
      * @throws FrageException if no Fragen exist for specified Location
      */
-    
     public Fragen getFrageOfLocation(String slug) throws FrageException {
 
         log.debug("--> getFragenOfLocation: Slug: " + slug);
         //Fragenliste erstellen
-        List<Fragen> fragenList=quizRepository.getFragenOfLocation(slug);
+        List<Fragen> fragenList = quizRepository.getFragenOfLocation(slug);
 
-        
-       int anzFragen=fragenList.size();
-       Fragen frage;
-       if (anzFragen==1){
-           //Fragenlisten, die nur eine Frage enthalten, sollen nur diese ausgeben
-           frage=fragenList.get(0);            
-       }
-       else if(anzFragen>1){
-           //zufällige Zahl wählen aus der Anzahl der Fragen in der Fragenliste
-           Random randGenerator=new Random();       
-           int zufall=randGenerator.nextInt(anzFragen-1);
-           frage=fragenList.get(zufall);         
-       }
-       else{
-           //Fehlermeldung, wenn keine Fragen in der Fragenliste enthalten sind
-           throw new FrageException("Keine Fragen zu dieser Location vorhanden.");
-       }
-        
-       return frage;        
-        
-        
+        int anzFragen = fragenList.size();
+        Fragen frage;
+        if (anzFragen == 1) {
+            //Fragenlisten, die nur eine Frage enthalten, sollen nur diese ausgeben
+            frage = fragenList.get(0);
+        } else if (anzFragen > 1) {
+            //zufällige Zahl wählen aus der Anzahl der Fragen in der Fragenliste
+            Random randGenerator = new Random();
+            int zufall = randGenerator.nextInt(anzFragen - 1);
+            frage = fragenList.get(zufall);
+        } else {
+            //Fehlermeldung, wenn keine Fragen in der Fragenliste enthalten sind
+            throw new FrageException("Keine Fragen zu dieser Location vorhanden.");
+        }
+
+        log.debug("<-- getFragenOfLocation");
+        return frage;
+
     }
 
     /**
@@ -69,13 +60,11 @@ public class QuizService {
      * @param id
      * @return Fragen
      */
-    
     public Fragen getFrageOfID(String id) {
 
         log.debug("--> getFrageOfID: ID: " + id);
         //Hole dir die Frage anhand ihrer ID
-        Fragen frage=quizRepository.getFrageOfId(id);
+        Fragen frage = quizRepository.getFrageOfId(id);
         return frage;
     }
 }
-

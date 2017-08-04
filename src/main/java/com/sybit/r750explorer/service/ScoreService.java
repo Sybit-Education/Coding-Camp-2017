@@ -7,13 +7,10 @@ import com.sybit.r750explorer.repository.tables.Spielstand;
 import com.sybit.r750explorer.repository.SpielstandRepository;
 import java.util.ArrayList;
 import java.util.List;
-import javax.el.MethodNotFoundException;
-import javax.swing.text.html.parser.DTDConstants;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -73,6 +70,7 @@ public class ScoreService {
         //Dann übergib ihn an das Repository
         spielstand = spielstandRepository.newEntry(spielstand);
 
+        log.debug("<-- newSpielstandEntry");
         return spielstand;
 
     }
@@ -95,6 +93,7 @@ public class ScoreService {
             score += Float.valueOf(i.getScore());
         }
 
+        log.debug("<-- getScoreOfSpielstand");
         return score;
 
     }
@@ -107,27 +106,42 @@ public class ScoreService {
     public List<Highscore> getHighscoreList() {
 
         log.debug("--> getHighscoreList");
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        return spielstandRepository.getHighscore();
 
     }
 
     /**
-     * Format the Highscore List. Date gets shorter. * Damit die Highscoreliste
-     * schöner aussieht
+     * Get the Highscore List. Holt dir die Highscoreliste des aktuellen Monats
      *
-     * @param list
-     * @return formatted Highscore List
+     * @return List of Higscores
      */
-    public List<Highscore> formatHighscoreList(List<Highscore> list) {
+    public List<Highscore> getHighscoreListForMonth() {
+        log.debug("--> getHighscoreListForMonth");
 
-        log.debug("--> formatHighscoreList");
-        //Formatiere die Liste
-        throw new MethodNotFoundException("Methode nicht implementiert");
+        List<Highscore> currentMonth = new ArrayList<>();
+        List<Highscore> listMonth = spielstandRepository.getHighscore();
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+
+        for (Highscore hs : listMonth) {
+            String date = hs.getDate();
+            date = date.substring(0, 7);
+
+            if (date.equalsIgnoreCase(formatdate)) {
+                currentMonth.add(hs);
+            }
+
+        }
+
+        log.debug("<-- getHighscoreListForMonth");
+        return currentMonth;
     }
 
     /**
-     * Checks if a player already registered a Highscore. Methode die Nachschaut
-     * ob ein Spieler existiert
+     * Iterates over all highscores of a specified UUID. Returns false if there
+     * is none or if the Month isnt equal to the current month
      *
      * @param uuid
      * @return boolean
@@ -147,16 +161,20 @@ public class ScoreService {
             date = date.substring(0, 7);
 
             if (date.equalsIgnoreCase(formatdate)) {
+                log.debug("<-- checkIfPlayerExists");
                 return true;
             }
         }
 
+        log.debug("<-- checkIfPlayerExists");
         return false;
     }
 
     /**
      * Creates a new Highscore and writes it in the Highscore Table.
      *
+     * @param vorname
+     * @param nachname
      * @param nickname
      * @param email
      * @param uuid
@@ -185,8 +203,7 @@ public class ScoreService {
             result = null;
         }
 
-        //Informationen zum Abspeichern des Highscores
-        //Den Score registrieren
+        log.debug("<-- newHighscore");
         return result;
 
     }
@@ -199,8 +216,6 @@ public class ScoreService {
     public void removeHighscore(String uuid) {
 
         log.debug("--> removeHighscore. UUID: " + uuid);
-
-        //Spielstand Löschen über spielstandRepository
         spielstandRepository.deleteHighscore(uuid);
     }
 

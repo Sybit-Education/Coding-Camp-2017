@@ -10,10 +10,7 @@ import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.tables.Spielstand;
 import com.sybit.r750explorer.repository.SpielstandRepository;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -246,25 +243,6 @@ public class ScoreServiceTest {
 
     }
 
-    @Ignore
-    @Test
-    public void formatHighscoreTest() {
-
-        List<Highscore> highscoreTestList = new ArrayList<>();
-
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-
-        Highscore h1 = new Highscore();
-        h1.setDate(dateFormat.format(date));
-
-        highscoreTestList.add(h1);
-
-        List<Highscore> response = scoreService.formatHighscoreList(highscoreTestList);
-
-        assertEquals(10, response.get(0).getDate().length());
-
-    }
 
     @Test
     public void hintRequestedOver5() {
