@@ -120,10 +120,7 @@ public class HomeController {
         for (Gewinn gewinn : allGewinne) {
             if (gewinn.getFoto() != null) {
                 byte gewinnDate = Byte.valueOf(gewinn.getVerlosungsmonat().substring(5, 7));
-                log.debug(String.valueOf(gewinnDate));
-
                 byte currentDate = Byte.valueOf(gewinnService.getGewinnOfMonth().get(0).getVerlosungsmonat().substring(5, 7));
-                log.debug(String.valueOf(currentDate));
 
                 if (gewinnDate > currentDate) {
                     allGewinneWithPic.add(gewinn);
