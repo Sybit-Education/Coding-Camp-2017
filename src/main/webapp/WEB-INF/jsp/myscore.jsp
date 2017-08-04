@@ -26,7 +26,7 @@
                             <!--Username(Nickname) and the email adress required-->
                             <div class="form-group">
                                 <label for="recipient-name" class="form-control-label">Nickname<sup>*</sup>:</label>
-                                <input type="text" class="form-control" name="nickname" placeholder="Nickname fuer Highscore">
+                                <input type="text" class="form-control" name="nickname" placeholder="Nickname fuer Highscore" min="4" max="16" maxlength="16">
                                 <p>Der Nickname wird in der Highscore angezeigt.</p>
                             </div> 
                             <div>
@@ -65,47 +65,44 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1 class = "text-center" >Dein Highscore: <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
-                
+                <h1 class = "text-center" >Highscore</h1>
+
             </div>
-            <div class="col-md-12 col-xs-12">
-                <center>
-                    <!-- Eine Tabelle der Highscores -->
-                    ${message}</br></br>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Deine aktuellen Punkte: <fmt:formatNumber type = "number" value = "${Punkte}"/></p>
+                    <p>Deine Punkte in der Highscore: </p>
+                    <center>
+                        ${message}
+                        </br></br>
 
+                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
 
-                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
-
-                </center>
+                    </center>
+                </div>
             </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Platzierung</th>
+                        <th>Nickname</th>
+                        <th>Punkte</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${Liste}" var="score" varStatus="loop">
+                        <tr>
+                            <th scope="row">${loop.index +1}</th>
+                            <td>${score.getNickname()}</td>
+                            <td><fmt:formatNumber type = "number" value = "${score.getScore()}"/></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div> 
+                    
         <c:import url="include/footer.jsp"/>
     </body>
-
 </html>
 
-
-
-
-<table class="table">
-    <thead class="thead-inverse">
-        <tr>
-            <th>Platzierung</th>
-            <th>Nickname</th>
-            <th>Punkte</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach items="${Liste}" var="score" varStatus="loop">
-
-            <tr>
-                <th scope="row">${loop.index +1}</th>
-                <td>${score.getNickname()}</td>
-                
-                <td><fmt:formatNumber type = "number" value = "${score.getScore()}"/></td>
-
-            </tr>
-        </c:forEach>
-    </tbody>
-</table>
