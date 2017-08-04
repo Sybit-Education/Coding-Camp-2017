@@ -42,7 +42,7 @@
             <p>
                 Wenn man den Sticker <b>nicht findet</b>, kann man sich mit <kbt>Hinweis zum Code</kbt> 
                 einen Hinweis mit Fotos geben lassen. <br>
-                Dabei werden allerdings <b>5 Punkte vom aktuellen Punktestand abgzogen!</b> 
+                Dabei werden allerdings <b>5 Punkte vom aktuellen Punktestand abgezogen!</b> 
                 Durch diese Hilfe muss man den Sticker nicht mehr suchen und hat es  einfacher die Frage zu beantworten.
             </p>
             <h3>Gewinnspiel teilnehmen</h3>
