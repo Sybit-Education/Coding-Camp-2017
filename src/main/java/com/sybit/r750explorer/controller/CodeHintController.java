@@ -6,9 +6,7 @@
 package com.sybit.r750explorer.controller;
 
 import com.sybit.r750explorer.exception.MailException;
-import com.sybit.r750explorer.repository.GewinnRepository;
 import com.sybit.r750explorer.repository.tables.Location;
-import com.sybit.r750explorer.repository.tables.Gewinn;
 import com.sybit.r750explorer.service.LocationService;
 import com.sybit.r750explorer.service.MailService;
 import com.sybit.r750explorer.service.ScoreService;
@@ -19,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Controller for the Code Hints.
@@ -54,7 +51,7 @@ public class CodeHintController {
     public String sendMessage(@CookieValue("UUID") String uuid, @PathVariable("slug") String locationSlug, Map<String, Object> model) {
         
         log.debug("--> sendMessage: Location Slug: " + locationSlug + ". UUID: " + uuid);
-        log.info("Message: " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!");
+        log.error("Message: " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!");
 
         Location location = locationService.getLocation(locationSlug);
         try {
@@ -90,9 +87,9 @@ public class CodeHintController {
 
         Location location = locationService.getLocation(slug);
         log.info("Hinweis für LocationSlug: " + location.getName() + " wurde aufgerufen!");
+        
+        //Neuer Spielstand mit -5 Punkten wird angelegt
         scoreService.newSpielstandEntry(scoreCookie, null, null, "Hinweis", scoreService.hintRequested(scoreCookie));
-
-        // TODO: Einen neuen Spielstand speichern (Punkte abziehen) und Informationen an model übergeben
         
         model.put("locationSlug",slug );
         model.put("code", location.getCode());

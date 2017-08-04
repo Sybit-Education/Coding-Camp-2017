@@ -33,11 +33,10 @@ public class HomeController {
      */
     @Autowired
     private LocationService locationService;
-    
+
     @Autowired
     private GewinnService gewinnService;
 
-    //HINT Als Beispiel wie Controller funktionieren
     /**
      * Controller method to get to Homepage.
      *
@@ -111,22 +110,21 @@ public class HomeController {
 
     @RequestMapping("/gewinne")
     public String listGewinne(Map<String, Object> model) {
-
-        model.put( "gewinne", gewinnService.getGewinnOfMonth());
         
+        log.debug("--> Gewinne");
+
         List<Gewinn> allGewinne = gewinnService.getGewinnList();
         List<Gewinn> allGewinneWithPic = new ArrayList<>();
-        
-        for( Gewinn gewinn : allGewinne )
-        {
-            if ( gewinn.getFoto() != null )
-            {
+
+        for (Gewinn gewinn : allGewinne) {
+            if (gewinn.getFoto() != null) {
                 allGewinneWithPic.add(gewinn);
             }
         }
-        
-        model.put( "allGewinne", allGewinneWithPic );
-        
+
+        model.put("allGewinne", allGewinneWithPic);
+        model.put("gewinne", gewinnService.getGewinnOfMonth());
+
         return "gewinne";
     }
 }

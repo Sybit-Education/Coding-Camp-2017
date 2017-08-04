@@ -49,12 +49,9 @@ public class ScoreController {
     public String score(@CookieValue(name = "UUID", required = false) String uuid, Map<String, Object> model) {
 
         log.debug("--> MyScore");
-        //Hole dir den Score des Users(UUID)
-        Float s = scoreService.getScoreOfSpielstand(uuid);
-        //Hole dir alle Highscores
 
+        Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
-        //Vergiss nicht die Sachen dem Model zu übergeben
 
         model.put("Punkte", s);
         model.put("Liste", lScore);
@@ -79,10 +76,7 @@ public class ScoreController {
         log.debug("--> Registering... UUID: " + uuid);
 
         Float s = scoreService.getScoreOfSpielstand(uuid);
-        //Hole dir alle Highscores
-
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
-        //Vergiss nicht die Sachen dem Model zu übergeben
 
         model.put("Punkte", s);
         model.put("Liste", lScore);
