@@ -50,10 +50,11 @@
                             <img src="${weitererGewinn.foto[0].url}" class="img-responsive cards"/>
                         </div>
                     </div>
+                    <!-- Krasser dropdown shit -->
+                    <!-- Modal -->
                 </c:forEach>
             </div>
         </div>
-
 
         <c:import url="include/footer.jsp"/>
     </body>
