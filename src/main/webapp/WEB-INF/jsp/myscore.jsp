@@ -65,7 +65,12 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1 class = "text-center" >Dein Highscore: </br> <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
+                <h1 class = "text-center" >Dein Highscore: </h1>
+
+                <h2 class="text-center well well-sm">
+                    <fmt:formatNumber type = "number" value = "${Punkte}"/>
+                </h2>
+
                 <center>
                     <c:choose>
                         <c:when test = "${Badge == 1}">
