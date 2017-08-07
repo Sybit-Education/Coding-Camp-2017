@@ -130,7 +130,7 @@ public class MailService {
                 this.prop = propl;
             }
         } catch (IOException ex) {
-            log.error("PropertiesFile corrupted!" + ex);
+            log.error(ex.getMessage(), ex);
         } 
         
         IOUtils.closeQuietly(input);
