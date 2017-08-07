@@ -7,7 +7,7 @@
     <head>
         <meta name="robots" content="noindex, follow" />
         <c:import url="include/head.jsp"/>
-        <title>Regeln & Teilnahmebedingung | R750Explorer</title>
+        <title>Spielregeln & Teilnahmebedingung | R750Explorer</title>
     </head>
 
 
