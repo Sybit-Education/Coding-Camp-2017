@@ -157,6 +157,11 @@ body {
     object-fit: cover;
 }
 
+kbd {
+     white-space: nowrap;
+     background-color: #37569a;
+}
+
 @media (min-width: 768px) {
     body { 
         padding-bottom: 120px; 

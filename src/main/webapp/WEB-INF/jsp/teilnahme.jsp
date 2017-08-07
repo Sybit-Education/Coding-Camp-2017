@@ -25,7 +25,7 @@
             </p>
             <p>
                 <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="50%" alt="Code Sticker" class="img-thumbnail pull-right">
-                Um die Fragen beantworten zu können, muss man mit <span class="btn btn-default">Quiz starten ...</span> einen Code eingeben.
+                Um die Fragen beantworten zu können, muss man mit <kbd>Quiz starten ...</kbd> einen Code eingeben.
                 Dieser Code ist in der Nähe der jeweiligen Sehenswürdigkeit als <b>Sticker</b> angebracht.
             </p>
             <p>
