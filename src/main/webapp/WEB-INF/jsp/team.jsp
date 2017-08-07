@@ -6,7 +6,7 @@
 
     <head>
         <c:import url="include/head.jsp"/>
-        <title>Team | R750Explorer</title>
+        <title>Das Team | R750Explorer</title>
     </head>
     <body>
 
