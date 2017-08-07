@@ -27,7 +27,7 @@
                 </c:otherwise>
             </c:choose>
             </br> 
-            <div class="well well-sm">${loesungText}</div>
+            <div class="well well-sm"><i class="fa fa-lightbulb-o" style="font-size: 50px;" aria-hidden="true"></i>${loesungText}</div>
 
             <div class="col-xs-6 col-md-4"><a href="<c:url value="/"/>"><button type="button" class="btn btn-default text-field">Location-Übersicht</button></a></div>
             <div class="col-xs-6 col-md-4"><a href="<c:url value="/myscore"/>"><button type="button" class="btn btn-default text-field">MyScore-Übersicht</button></a></div>
