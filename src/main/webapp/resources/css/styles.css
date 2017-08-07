@@ -14,9 +14,7 @@
     position: fixed;
     left: 1.5em;
     top: 1em;
-    width: 2.5em;
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter: drop-shadow(5px 5px 5px #222);    
+    width: 2.5em;   
 }
 
 #AntwortRichtig {
@@ -113,6 +111,21 @@
 .row.is-flex > [class*='col-'] {
     display: flex;
     flex-direction: column;
+}
+
+.row.row-horizon {
+    background-color: #555;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    vertical-align: middle;
+}
+
+.row-horizon > [class*="col-lg"], .row-horizon > [class*="col-md"], .row-horizon > [class*="col-sm"], .row-horizon > [class*="col-xs"] {
+    vertical-align: middle;
+}
+
+.panel {
+    margin-bottom: 0;
 }
 
 /*

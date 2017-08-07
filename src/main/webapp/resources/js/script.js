@@ -97,7 +97,7 @@ function createMarkers(allLocations, markers, infoWindows) {
             contentStringInfoWindow =
                     '<div id="content">' +
                     '<a href=' + contextPath + '/location/' + allLocations[i]["Slug"] + '>\n\
-                        <img src=' + '' + allLocations[i]["Foto"][0].url + ' class="img-responsive" width="100%" />\n\
+                        <img src=' + '' + allLocations[i]["Foto"][0].thumbnails.large.url + ' class="img-responsive" width="100%" />\n\
                         <div class="locationName"><b>' + allLocations[i].Name + '</b></div>\n\
                     </a>' +
                     '</div>';
