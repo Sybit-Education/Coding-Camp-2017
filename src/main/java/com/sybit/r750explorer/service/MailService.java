@@ -6,8 +6,6 @@
 package com.sybit.r750explorer.service;
 
 import com.sybit.r750explorer.exception.MailException;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -18,6 +16,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Service;
@@ -56,10 +55,17 @@ public class MailService {
 
         log.debug("--> sendMessage. UUID: " + uuid);
 
-        ClassLoader classLoader = getClass().getClassLoader();
-        File propertiesFile = new File(classLoader.getResource("gmail.properties").getFile());
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        
+        InputStream is;
+        try {                
+            is =  classLoader.getResourceAsStream("gmail.properties");
+        } catch (NullPointerException e) {
+            log.error("No Propertie File found!", e);
+            is = null;
+        }
 
-        if (propertiesExist(propertiesFile)) {
+        if (propertiesExist(is)) {
 
             String username = prop.getProperty("E-MAIL");
             String password = prop.getProperty("PASSWORD");
@@ -72,6 +78,7 @@ public class MailService {
 
             Session session = Session.getInstance(gMailProps,
                     new javax.mail.Authenticator() {
+                @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
                     return new PasswordAuthentication(username, password);
                 }
@@ -105,35 +112,28 @@ public class MailService {
      * @param propertiesFile
      * @return 
      */
-    private boolean propertiesExist(File propertiesFile) {
+    private boolean propertiesExist(InputStream input) {
 
         log.debug("--> propertiesExist");
 
-        Properties prop = new Properties();
-        InputStream input = null;
+        Properties propl = new Properties();
+
         boolean exists = false;
 
         try {
-            input = new FileInputStream(propertiesFile);
 
             prop.load(input);
 
-            exists = prop.getProperty("E-MAIL") != null
-                    && prop.getProperty("PASSWORD") != null;
+            exists = propl.getProperty("E-MAIL") != null
+                    && propl.getProperty("PASSWORD") != null;
             if (exists) {
-                this.prop = prop;
+                this.prop = propl;
             }
         } catch (IOException ex) {
             log.error("PropertiesFile corrupted!" + ex);
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    log.error("Cant close Input!");
-                }
-            }
-        }
+        } 
+        
+        IOUtils.closeQuietly(input);
 
         return exists;
     }
