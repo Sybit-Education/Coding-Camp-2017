@@ -109,7 +109,7 @@ public class ScoreController {
         //Erstelle den Highscore.
         Highscore hs = scoreService.newHighscore(vorname, nachname, nickname, email, uuid);
         if (hs != null) {
-            model.put("message", "Du hast dich registriert.");
+            model.put("message", "Du hast dich registriert. Dein Score wird NICHT automatisch geupdatet! Du musst ihn manuell aktualisieren.");
         } else {
             model.put("message", "<b>Du hast deinen Score aktualisiert.</b>");
 
