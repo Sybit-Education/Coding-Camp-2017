@@ -34,7 +34,7 @@
                 </div>
             </div>
             
-            <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
+            <div class="row row-horizon">
                 <c:forEach items="${locations}" var="location" varStatus="loop">
                     <c:if test="${location.status == 'aktiv'}">
 
@@ -61,7 +61,7 @@
                 </div>
             </div>
             
-            <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
+            <div class="row row-horizon">
                 <c:forEach items="${gewinne}" var="gewinn" varStatus="loop">
                     <div  class="col-xs-6 col-md-4" >
                         <a href="<c:url value="/gewinne" />">

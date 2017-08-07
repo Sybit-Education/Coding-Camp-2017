@@ -113,6 +113,21 @@
     flex-direction: column;
 }
 
+.row.row-horizon {
+    background-color: #555;
+    padding-bottom: 2em;
+    padding-top: 2em;
+    vertical-align: middle;
+}
+
+.row-horizon > [class*="col-lg"], .row-horizon > [class*="col-md"], .row-horizon > [class*="col-sm"], .row-horizon > [class*="col-xs"] {
+    vertical-align: middle;
+}
+
+.panel {
+    margin-bottom: 0;
+}
+
 /*
 * And with max cross-browser enabled.
 * Nobody should ever write this by hand. 
