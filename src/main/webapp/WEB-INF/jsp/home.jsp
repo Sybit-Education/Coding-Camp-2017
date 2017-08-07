@@ -23,11 +23,17 @@
                     <p>${message}</p>
                 </div>
             </c:if>
+            
             <p>
                 Entdecke Radolfzell auf eine neue Weise, sammle Punkte und gewinne tolle Preise!
             </p>
-
-            <h2>Alle Ziele</h2>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Alle Ziele</h2>
+                </div>
+            </div>
+            
             <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
                 <c:forEach items="${locations}" var="location" varStatus="loop">
                     <c:if test="${location.status == 'aktiv'}">
@@ -48,17 +54,25 @@
                     </c:if>
                 </c:forEach>
             </div>
-            </br></br><h2>Gewinne des Monats</h2>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Die Gewinne des Monats</h2>
+                </div>
+            </div>
+            
             <div class="row row-horizon" style="background-color: #555; padding-top:3em;">
                 <c:forEach items="${gewinne}" var="gewinn" varStatus="loop">
                     <div  class="col-xs-6 col-md-4" >
-                        <div class="panel panel-default bootcards-media" >
-                            <img src="${gewinn.foto[0].url}" class="img-responsive cards"/>
+                        <a href="<c:url value="/gewinne" />">
+                            <div class="panel panel-default bootcards-media" >
+                                <img src="${gewinn.foto[0].thumbnails.large.url}" class="img-responsive cards"/>
 
-                            <div class="panel-footer">
-                                <small>${gewinn.name}</small>
+                                <div class="panel-footer">
+                                    <small>${gewinn.name}</small>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </c:forEach>
             </div>
