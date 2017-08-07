@@ -84,14 +84,6 @@ public class ScoreController {
 
         log.debug("--> Registering... UUID: " + uuid);
 
-        int badge = scoreService.getRang(uuid);
-        Float s = scoreService.getScoreOfSpielstand(uuid);
-        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
-
-        model.put("Badge", badge);
-        model.put("Punkte", s);
-        model.put("Liste", lScore);
-
         // Überprüfung des Namens 
         Pattern pattern = Pattern.compile(NICKNAME_PATTERN);
         Matcher matcher = pattern.matcher(nickname);
@@ -122,6 +114,14 @@ public class ScoreController {
             model.put("message", "<b>Du hast deinen Score aktualisiert.</b>");
 
         }
+
+        int badge = scoreService.getRang(uuid);
+        Float s = scoreService.getScoreOfSpielstand(uuid);
+        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
+
+        model.put("Badge", badge);
+        model.put("Punkte", s);
+        model.put("Liste", lScore);
 
         return "myscore";
     }
