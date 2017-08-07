@@ -59,6 +59,8 @@ public class ScoreController {
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
 
+        log.error("Error: " + scoreService.checkIfPlayerExists(uuid));
+        model.put("register", scoreService.checkIfPlayerExists(uuid));
         model.put("Badge", badge);
         model.put("Punkte", s);
         model.put("Liste", lScore);
@@ -120,6 +122,24 @@ public class ScoreController {
             model.put("message", "<b>Du hast deinen Score aktualisiert.</b>");
 
         }
+
+        return "myscore";
+    }
+
+    @RequestMapping("/update")
+    public String updateScore(@CookieValue(name = "UUID", required = false) String uuid, Map<String, Object> model) {
+
+        log.debug("--> updateScore");
+
+        Highscore hs = scoreService.getHighscore(uuid);
+        hs = scoreService.newHighscore(hs.getVorname(), hs.getNachname(), hs.getNickname(), hs.getEmail(), uuid);
+        
+
+        model.put("register", scoreService.checkIfPlayerExists(uuid));
+        
+        //model.put("Badge", badge);
+        //model.put("Punkte", s);
+        //model.put("Liste", lScore);
 
         return "myscore";
     }

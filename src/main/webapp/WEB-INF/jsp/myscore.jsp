@@ -89,7 +89,14 @@
                 </c:choose>
                 <!-- Benachrichtigungen an den User bei registrierungsproblemen -->
                 ${message}</br></br>
-                <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
+                <c:choose>
+                    <c:when test="${register == false}">
+                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="<c:url value="/update"/>"><button type="button" class="btn btn-default">Highscore aktualisieren</button></a>
+                    </c:otherwise>
+                </c:choose>
             </center>
 
 

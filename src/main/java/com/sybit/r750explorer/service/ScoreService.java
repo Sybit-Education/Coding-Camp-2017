@@ -219,6 +219,12 @@ public class ScoreService {
         spielstandRepository.deleteHighscore(uuid);
     }
 
+    /**
+     * Method that checks if the score can be reduced
+     *
+     * @param uuid
+     * @return
+     */
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float
@@ -233,19 +239,53 @@ public class ScoreService {
         return score;
     }
 
+    /**
+     * Method that returns integer to determine the Player-Rank
+     *
+     * 0 == lowest Rank 1 == Rank 1 2 == Rank 2 3 == highest Rank
+     *
+     * @param uuid
+     * @return
+     */
     public int getRang(String uuid) {
-        Float spielstand = getScoreOfSpielstand(uuid);        
-        int rang=0;
-        if (spielstand<=22){
-            rang=0;
-        } else if (spielstand<=70){
-            rang=1;            
-        } else if (spielstand<=120){
-            rang=2;            
+        Float spielstand = getScoreOfSpielstand(uuid);
+        int rang = 0;
+        if (spielstand <= 22) {
+            rang = 0;
+        } else if (spielstand <= 70) {
+            rang = 1;
+        } else if (spielstand <= 120) {
+            rang = 2;
         } else {
-            rang=3;            
+            rang = 3;
         }
         return rang;
+    }
+
+    public Highscore getHighscore(String uuid) {
+
+        log.debug("--> getHighscore of UUID: " + uuid);
+        //wenn UUID bereits einen Highscore eingetragen hat, false übergeben werden
+        // Datum überprüfen
+
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+
+        for (Highscore hs : spielstandRepository.getHighscoreOfUUID(uuid)) {
+            String date = hs.getDate();
+            date = date.substring(0, 7);
+
+            if (date.equalsIgnoreCase(formatdate)) {
+                log.debug("<-- etHighscore of UUID: " + uuid);
+                return hs;
+            }
+        }
+
+        log.debug("<-- etHighscore of UUID: " + uuid);
+
+        return null;
     }
 
 }
