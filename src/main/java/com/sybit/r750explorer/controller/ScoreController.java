@@ -133,13 +133,16 @@ public class ScoreController {
 
         Highscore hs = scoreService.getHighscore(uuid);
         hs = scoreService.newHighscore(hs.getVorname(), hs.getNachname(), hs.getNickname(), hs.getEmail(), uuid);
-        
+
+        int badge = scoreService.getRang(uuid);
+
+        Float s = scoreService.getScoreOfSpielstand(uuid);
+        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
 
         model.put("register", scoreService.checkIfPlayerExists(uuid));
-        
-        //model.put("Badge", badge);
-        //model.put("Punkte", s);
-        //model.put("Liste", lScore);
+        model.put("Badge", badge);
+        model.put("Punkte", s);
+        model.put("Liste", lScore);
 
         return "myscore";
     }
