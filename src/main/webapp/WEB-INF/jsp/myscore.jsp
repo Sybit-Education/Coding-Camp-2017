@@ -65,12 +65,12 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1 class = "text-center" >Dein Highscore: </h1>
+                <h1 class ="text-left" >Highscore</h1>
 
                 <div class="score" style="display: inline-block">
-                    <h2 class="well well-sm" >
-                        <fmt:formatNumber type = "number" value = "${Punkte}"/>
-                    </h2>
+                    <h4>
+                        Dein aktueller Punktestand: <b><fmt:formatNumber type = "number" value = "${Punkte}"/></b>
+                    </h4>
                 </div>
             </div>
 
