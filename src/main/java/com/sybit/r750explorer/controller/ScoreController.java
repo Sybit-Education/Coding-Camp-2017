@@ -59,7 +59,6 @@ public class ScoreController {
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
 
-        log.error("Error: " + scoreService.checkIfPlayerExists(uuid));
         model.put("register", scoreService.checkIfPlayerExists(uuid));
         model.put("Badge", badge);
         model.put("Punkte", s);
