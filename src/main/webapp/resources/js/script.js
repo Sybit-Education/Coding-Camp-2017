@@ -1,3 +1,5 @@
+/* global contextPath */
+
 /** 
  * General call if page is completly loaded.
  */
@@ -82,7 +84,7 @@ function buildComponents(allLocations) {
                     }
                 }
             });
-            bounds.extend({lat: parseFloat(response[i]['Geo-Lat']), lng: parseFloat(response[i]['Geo-Lng'])});
+            bounds.extend({lat: parseFloat(response[i]['geoLat']), lng: parseFloat(response[i]['geoLng'])});
         }
         map.fitBounds(bounds);
     });
@@ -93,32 +95,34 @@ function createMarkers(allLocations, markers, infoWindows) {
     return new Promise(function (resolve, reject) {
 
         for (i = 0; i < allLocations.length; i++) {
+            
+            var loc = allLocations[i];
 
             contentStringInfoWindow =
                     '<div id="content">' +
-                    '<a href=' + contextPath + '/location/' + allLocations[i]["Slug"] + '>\n\
-                        <img src=' + '' + allLocations[i]["Foto"][0].thumbnails.large.url + ' class="img-responsive" width="100%" />\n\
-                        <div class="locationName"><b>' + allLocations[i].Name + '</b></div>\n\
+                    '<a href="' + contextPath + '/location/' + loc['slug'] + '">\n\
+                        <img src="'  + loc['thumbnail'] + '" class="img-responsive" width="100%" />\n\
+                        <div class="locationName"><b>' + loc['name'] + '</b></div>\n\
                     </a>' +
                     '</div>';
 
-
             markers.push(
-                    new google.maps.Marker({
-                        position: {lat: parseFloat(allLocations[i]['Geo-Lat']), lng: parseFloat(allLocations[i]['Geo-Lng'])},
-                        map: map,
-                        icon: getIcon(allLocations[i]),
-                        title: allLocations[i].Name,
-                        url: contextPath + '/location/' + allLocations[i]["Slug"]
-                    })
-                    );
+                new google.maps.Marker({
+                    position: {lat: parseFloat(loc['geoLat']), lng: parseFloat(loc['geoLng'])},
+                    map: map,
+                    icon: getIcon(loc),
+                    title: loc['name'],
+                    url: contextPath + '/location/' + loc['slug']
+                })
+            );
 
             infoWindows.push(
-                    new google.maps.InfoWindow({
-                        content: contentStringInfoWindow,
-                        maxWidth: 200
-                    })
-                    );
+                new google.maps.InfoWindow({
+                    content: contentStringInfoWindow,
+                    maxWidth: 200
+                })
+            );
+            
         }
 
         resolve([markers, infoWindows]);
