@@ -53,7 +53,10 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                            <a href="<c:url value="/register"/>"><button type="submit" class="btn btn-primary">Registrieren</button></a>
+                            <a href="<c:url value="/register"/>"
+                               onClick="ga('send', 'event', 'Registrieren', 'send');">
+                                <button type="submit" class="btn btn-primary">Registrieren</button>
+                            </a>
                         </div>
                     </form>
                 </div>
