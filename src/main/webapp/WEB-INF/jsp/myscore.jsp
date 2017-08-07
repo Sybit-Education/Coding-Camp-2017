@@ -84,7 +84,8 @@
                     </c:choose>
                     <!-- Benachrichtigungen an den User bei registrierungsproblemen -->
                     ${message}</br></br>
-                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default"
+                            onClick="ga('send', 'event', 'Registrieren', 'open');">Highscore registrieren</button>
 
                 </center>
 
