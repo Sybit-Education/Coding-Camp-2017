@@ -21,7 +21,8 @@
                  <p class="col-xs-12">${locationDescription}</p>                        
                  <c:if test="${QuizAnswered==false}">
                      <div class="col-xs-12 text-center">
-                         <a href="<c:url value="/location/${locationSlug}/code"/>">
+                         <a href="<c:url value="/location/${locationSlug}/code"/>"
+                            onClick="ga('send', 'event', 'Quiz', 'start', 'Seite Beginn');">
                              <button typ="button" class="btn btn-default">Quiz starten ...</button>
                          </a>
                      </div>
@@ -64,7 +65,8 @@
             <div class="row">                      
                  <c:if test="${QuizAnswered==false}">
                      <div class="col-xs-12 text-center">
-                         <a href="<c:url value="/location/${locationSlug}/code"/>">
+                         <a href="<c:url value="/location/${locationSlug}/code"/>"
+                            onClick="ga('send', 'event', 'Quiz', 'start', 'Seite Ende');">
                              <button typ="button" class="btn btn-default">Quiz starten ...</button>
                          </a>
                      </div>
