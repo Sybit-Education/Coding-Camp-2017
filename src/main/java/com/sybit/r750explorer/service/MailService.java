@@ -55,10 +55,10 @@ public class MailService {
 
         log.debug("--> sendMessage. UUID: " + uuid);
 
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         
         InputStream is;
-        try {                
+        try {
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
             is =  classLoader.getResourceAsStream("gmail.properties");
         } catch (NullPointerException e) {
             log.error("No Propertie File found!", e);
@@ -122,7 +122,7 @@ public class MailService {
 
         try {
 
-            prop.load(input);
+            propl.load(input);
 
             exists = propl.getProperty("E-MAIL") != null
                     && propl.getProperty("PASSWORD") != null;
