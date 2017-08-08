@@ -16,7 +16,7 @@
 <meta property="og:url"           content="https://r750explorer.me" />
 <meta property="og:type"          content="website" />
 <meta property="og:title"         content="R750Explorer: Entdecke Radolfzell" />
-<meta property="og:description"   content="Endecke mit dieser app Radolfzell und gewinne einen Gutschein." />
+<meta property="og:description"   content="Endecke mit dieser App Radolfzell und gewinne einen Gutschein." />
 <meta property="og:image"         content="<c:url value="/resources/images/icon.svg"/>" />
 
 <link rel="dns-prefetch" href="https://code.jquery.com" />
