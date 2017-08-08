@@ -23,7 +23,7 @@
                  <c:if test="${QuizAnswered==false}">
                      <div class="col-xs-12 text-center">
                          <a href="<c:url value="/location/${locationSlug}/code"/>"
-                            onClick="ga('send', 'event', 'Quiz', 'start', 'Seite Beginn');">
+                            onClick="ga('send', 'event', 'Quiz', 'start', 'page-start');">
                              <button typ="button" class="btn btn-default">Quiz starten ...</button>
                          </a>
                      </div>
@@ -67,7 +67,7 @@
                  <c:if test="${QuizAnswered==false}">
                      <div class="col-xs-12 text-center">
                          <a href="<c:url value="/location/${locationSlug}/code"/>"
-                            onClick="ga('send', 'event', 'Quiz', 'start', 'Seite Ende');">
+                            onClick="ga('send', 'event', 'Quiz', 'start', 'page-end');">
                              <button typ="button" class="btn btn-default">Quiz starten ...</button>
                          </a>
                      </div>
