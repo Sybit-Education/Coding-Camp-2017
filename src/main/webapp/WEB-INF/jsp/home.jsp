@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -79,7 +80,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <p style="padding-top:10px">Viel Spaﬂ beim Erforschen der Stadt Radolfzell.</p>
+                    <p style="padding-top:10px">Viel Spa√ü beim Erforschen der Stadt Radolfzell.</p>
                 </div>
             </div>
 

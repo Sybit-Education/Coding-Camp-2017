@@ -5,6 +5,8 @@
 --%>
 
 <!DOCTYPE html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="de">
@@ -18,7 +20,6 @@
         <div class="container">
 
             <div>
-                <!-- TODO: Code Hinweis für eine Location anzeigen -->
                 <h1>Code Hinweis</h1>
                 <h2>${locationName}</h2>
             </div>
