@@ -29,6 +29,16 @@
     </springProfile>    
     
     <springProfile name="production">
+        
+        
+        <logger name="com.sybit.airtable" level="ERROR" additivity="false">  
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="FILE" />
+        </logger> 
+        <logger name="com.sybit.r750explorer" level="INFO" additivity="false">  
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="FILE" />
+        </logger> 
         <root level="WARN">
             <appender-ref ref="FILE" />
         </root>

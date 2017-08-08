@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sybit.r750explorer.controller;
 
-import com.sybit.r750explorer.exception.MailException;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
-import com.sybit.r750explorer.service.MailService;
 import com.sybit.r750explorer.service.ScoreService;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +24,7 @@ public class CodeHintController {
     private final org.slf4j.Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private LocationService locationService;    
+    private LocationService locationService;
 
     @Autowired
     private ScoreService scoreService;
