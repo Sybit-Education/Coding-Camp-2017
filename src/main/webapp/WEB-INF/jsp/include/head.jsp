@@ -9,6 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-title" content="R750Explorer" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="theme-color" content="#1c3f8d">
 
 <!-- You can use Open Graph tags to customize link previews.
    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
@@ -26,6 +27,7 @@
 <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
 <link rel="icon" type="image/gif" href="<c:url value='/resources/images/favicon.gif' />" />
+<link rel="icon" sizes="192x192" href="<c:url value='/resources/images/icon-196.png' />">
 <link rel="apple-touch-icon" href="<c:url value='/resources/images/favicon.png' />" />
 <link rel="shortcut icon" sizes="16x16" href="<c:url value='/resources/images/icon-16.png' />">
 <link rel="shortcut icon" sizes="196x196" href="<c:url value='/resources/images/icon-196.png' />">
