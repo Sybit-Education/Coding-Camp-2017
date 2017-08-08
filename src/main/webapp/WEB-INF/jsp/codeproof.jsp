@@ -1,9 +1,10 @@
 ﻿<!DOCTYPE html>
 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<meta http-equiv="Content-Type" charset=utf-8"/>
+
 
 <html lang="de">
 
@@ -74,7 +75,10 @@
                         </div>
                         <div class="col-xs-12 text-center">
 
-                            <a href="<c:url value="/location/${location.getSlug()}/code/hint"/>"><button type="button" class="btn btn-default btn-md">Hinweis zum Code</button></a>
+                            <a href="<c:url value="/location/${location.getSlug()}/code/hint"/>">
+                                <button type="button" class="btn btn-default btn-md"
+                                        onClick="ga('send', 'event', 'Code', 'hint-request');">Hinweis zum Code</button>
+                            </a>
                         </div>
                         <br/>
                     </div>
