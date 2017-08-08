@@ -176,6 +176,10 @@ body {
 .fa-lightbulb-o {
     font-size: 2.5em;
     margin-right: 10px;
+
+kbd {
+     white-space: nowrap;
+     background-color: #37569a;
 }
 
 @media (min-width: 768px) {
