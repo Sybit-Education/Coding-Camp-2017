@@ -13,7 +13,7 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1>Lösung fÃ¼r ${location.name}</h1>
+                <h1>Lösung für ${location.name}</h1>
             </div>
             <c:choose>
                 <c:when test="${loesung == 'true'}">
