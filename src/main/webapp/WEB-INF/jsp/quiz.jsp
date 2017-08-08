@@ -1,5 +1,6 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="de">
@@ -10,8 +11,6 @@
     </head>
 
     <body>
-
-
         <div class="container"> 
 
             <div class="page-header">
@@ -21,13 +20,14 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <b>${frage.getFrage()}</b>
+                    <h3>${frage.getFrage()}</h3>
+                    <hr />
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-12">                
-                    <p>Wähle eine richtige Antwort aus.</p>
+                    <p>Wähle die richtige Antwort aus:</p>
                 </div>
                 <form action="<c:url value="/location/${location.slug}/quiz/check"/>" method="POST">
                     <input type="hidden" name="fragenID" value="${frage.getId()}">
