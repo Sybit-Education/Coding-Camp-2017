@@ -19,7 +19,7 @@
             </div>
             <c:choose>
                 <c:when test="${loesung == 'true'}">
-                    <div> <b>Super! Du hast die <b style="color: red">richtige Lösung</b> eingegeben! Hier kannst du die richtige Lösung nochmal nachlesen:</b></div>
+                    <div> <b>Super! Du hast die <b style="color: green">richtige Lösung</b> eingegeben! Hier kannst du die richtige Lösung nochmal nachlesen:</b></div>
 
                 </c:when>
                 <c:otherwise>
