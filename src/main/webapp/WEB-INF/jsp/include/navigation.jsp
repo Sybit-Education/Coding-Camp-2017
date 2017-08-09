@@ -5,7 +5,7 @@
 
     <div class="row" id="bottomNav">
         <div class="col-xs-3 col-sm-4 text-center">
-            <a href="<c:url value='/'/>"><i class="glyphicon glyphicon-list-alt"></i><br><small>Übersicht</small></a>
+            <a href="<c:url value='/'/>"><i class="glyphicon glyphicon-list-alt"></i><br><small>Ãœbersicht</small></a>
         </div>
         <div class="col-xs-3 col-sm-4 text-center">
             <a href="<c:url value='/myscore' />" onClick="ga('send', 'event', 'Highscore', 'open', 'Navigation');"><span class="badge" id ="score"></span><br><small>Punkte</small></a>
@@ -27,8 +27,8 @@
             <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/team'/>" >Das&nbsp;Team</a> </li>
             <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/sponsoren'/>">Sponsoren</a></li>
             <li class="col-xs-6 col-sm-2 text-center">
-                <a class="col-xs-6 pull-left" href="https://www.instagram.com/r750explorer" target="_blank"><i class="fa fa-instagram" aria-hidden="true" style="font-size: 1.5em"></i></a>
-                <a class="col-xs-6 pull-left" href="https://www.facebook.com/R750Explorer-133230133892290/" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true" style="font-size: 1.5em"></i></a>
+                <a class="col-xs-6 pull-left" href="https://www.instagram.com/r750explorer" target="_blank"  rel="noopener"><i class="fa fa-instagram" aria-hidden="true" style="font-size: 1.5em"></i></a>
+                <a class="col-xs-6 pull-left" href="https://www.facebook.com/R750Explorer-133230133892290/" target="_blank"  rel="noopener"><i class="fa fa-facebook-official" aria-hidden="true" style="font-size: 1.5em"></i></a>
             </li>
             <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/impressum'/>" >Impressum</a> </li>
             <li class="col-xs-6 col-sm-2 text-center"><a href="<c:url value='/datenschutz'/>" >Datenschutz</a> </li>             
