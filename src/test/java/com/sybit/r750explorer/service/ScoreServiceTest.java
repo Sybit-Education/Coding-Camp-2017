@@ -10,6 +10,8 @@ import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.repository.LocationRepository;
 import com.sybit.r750explorer.repository.tables.Spielstand;
 import com.sybit.r750explorer.repository.SpielstandRepository;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
@@ -105,6 +107,32 @@ public class ScoreServiceTest {
         assertEquals(response.getScore(), update.getScore());
         assertEquals(response.getUserAnswerIndex(), update.getUserAnswerIndex());
         assertEquals(response.getUuid(), update.getUuid());
+
+    }
+
+    @Test
+    public void getHighscoreTest() {
+
+        Highscore hs = new Highscore();
+
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+
+        hs.setId("test hs");
+        String testuuid = "123";
+        hs.setUuid(testuuid);
+        hs.setDate(formatdate);
+
+        List<Highscore> entrys = new ArrayList<>();
+        entrys.add(hs);
+
+        Mockito.when(spielstandRepository.getHighscoreOfUUID(testuuid)).thenReturn(entrys);
+
+        Highscore response = scoreService.getHighscore(testuuid);
+
+        assertEquals(response, hs);
 
     }
 
@@ -243,7 +271,6 @@ public class ScoreServiceTest {
 
     }
 
-
     @Test
     public void hintRequestedOver5() {
         String testUUID = "1234";
@@ -312,14 +339,14 @@ public class ScoreServiceTest {
         Float response = scoreService.hintRequested("1234");
         assertEquals(Float.valueOf(-1), response);
     }
-    
+
     @Ignore
     @Test
     public void rangMitScore20Test() {
         String testUUID = "1234";
-        Float testZahl=Float.valueOf(20);
+        Float testZahl = Float.valueOf(20);
         Mockito.when(scoreService.getScoreOfSpielstand(testUUID)).thenReturn(testZahl);
-        int rang=scoreService.getRang(testUUID);
+        int rang = scoreService.getRangofUUID(testUUID);
         assertEquals(rang, 3);
     }
 }

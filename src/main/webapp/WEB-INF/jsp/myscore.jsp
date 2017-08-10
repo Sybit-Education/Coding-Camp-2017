@@ -70,7 +70,15 @@
         <div class="container"> 
 
             <div class="page-header">
-                <h1 class = "text-center" >Dein Highscore: </br> <fmt:formatNumber type = "number" value = "${Punkte}"/></h1>
+                <h1 class ="text-left" >Highscore</h1>
+
+                <div class="score" style="display: inline-block">
+                    <h4>
+                        Dein aktueller Punktestand: <b><fmt:formatNumber type = "number" value = "${Punkte}"/></b>
+                    </h4>
+                </div>
+
+
                 <center>
                     <c:choose>
                         <c:when test = "${Badge == 1}">
@@ -84,37 +92,99 @@
                         </c:when>
                         <c:when test = "${Badge == 0}"></c:when>
                     </c:choose>
-                    <!-- Benachrichtigungen an den User bei registrierungsproblemen -->
-                    ${message}</br></br>
-                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default"
-                            onClick="ga('send', 'event', 'Registrieren', 'open');">Highscore registrieren</button>
+                </center> 
+                <!-- Benachrichtigungen an den User bei registrierungsproblemen -->
+                <c:if test="${not empty message}">
+                    <div class="alert alert-info alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <p>${message}</p>
+                    </div>
+                </c:if>
 
-                </center>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                    <c:choose>
+                        <c:when test="${register == false}">
+                            <p>Um einen der Preise gewinnen zu können, musst Du dich in der Highscore mit deinen Punkten registrieren:</p>
+                            <button type="button" 
+                                    data-toggle="modal" data-target="#myModal" class="btn btn-default"
+                                    onClick="ga('send', 'event', 'Registrieren', 'open');">Highscore registrieren</button>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="<c:url value="/update"/>">
+                                <button type="button" class="btn btn-default"
+                                        onClick="ga('send', 'event', 'Registrieren', 'update');">Highscore aktualisieren</button>
+                            </a>
+                        </c:otherwise>
+                    </c:choose>
+                    </div>
+                </div>
 
             </div>
-            <div class="col-md-12 col-xs-12">
-                <!-- Die Highscoretabelle -->
-                <table class="table">
-                    <thead class="thead-inverse">
-                        <tr>
-                            <th>Platzierung</th>
-                            <th>Nickname</th>
-                            <th>Punkte</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach items="${Liste}" var="score" varStatus="loop">
+                   
+            <div class="row">                
+
+                <div class="row col-xs-12 col-sm-9 col-md-6">
+                    <div class="col-xs-4 text-center"><b>Bronze</b>
+                     <img src="<c:url value="/resources/images/bronze128x128.png" />" class="img-responsive" alt="Code Sticker Bronze" />
+                     22-70 Punkte
+                    </div>
+                    <div class="col-xs-4 text-center"><b>Silber</b>
+                     <img src="<c:url value="/resources/images/silber128x128.png" />" class="img-responsive" alt="Code Sticker Silber" />
+                     71-120 Punkte
+                    </div>
+                    <div class="col-xs-4 text-center"><b>Gold</b>
+                     <img src="<c:url value="/resources/images/gold128x128.png" />" class="img-responsive" alt="Code Sticker Gold" />
+                     über 120 Punkte
+                    </div>
+                </div> 
+            </div>
+            <div class="row">                      
+                <div class="col-xs-12 col-sm-9 col-md-6">
+                    <!-- Die Highscoretabelle -->
+                    <table class="table">
+                        <thead>
                             <tr>
-                                <th scope="row">${loop.index +1}</th>
-                                <td>${score.getNickname()}</td>
-                                <td><fmt:formatNumber type = "number" value = "${score.getScore()}"/></td>
+                                <th>#</th>
+                                <th></th>
+                                <th width="70%">Nickname</th>
+                                <th>Punkte</th>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${Liste}" var="score" varStatus="loop">
+                                <tr >
+                                    <th scope="row" class="text-right">${loop.index +1}</th>
+                                    <td class="text-right">
+                                        
+                                        <c:choose>
+                                            <c:when test = "${score.badge == 1}">
+                                                <img src="<c:url value="/resources/images/bronze128x128.png" />" width="30px">
+                                            </c:when>
+                                            <c:when test = "${score.badge == 2}">
+                                                <img src="<c:url value="/resources/images/silber128x128.png" />" width="30px">
+                                            </c:when>
+                                            <c:when test = "${score.badge == 3}">
+                                                <img src="<c:url value="/resources/images/gold128x128.png" />" width="30px">
+                                            </c:when>
+                                            <c:when test = "${score.badge == 0}"></c:when>
+                                        </c:choose>
+                                    </td>
+                                    <td>
+                                        ${score.nickname}
+                                    </td>
+                                    <td class="text-right">
+                                        <fmt:formatNumber type = "number" value = "${score.score}"/>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
 
-        </div> 
+            </div> 
+        </div>
 
         <c:import url="include/footer.jsp"/>
     </body>
