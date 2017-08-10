@@ -92,7 +92,7 @@ public class ScoreService {
         for (Spielstand i : spielstand) {
             score += Float.valueOf(i.getScore());
         }
-
+        
         log.debug("<-- getScoreOfSpielstand");
         return score;
 
@@ -130,6 +130,7 @@ public class ScoreService {
             date = date.substring(0, 7);
 
             if (date.equalsIgnoreCase(formatdate)) {
+                hs.setBadge(getRang(hs.getScore()));
                 currentMonth.add(hs);
             }
 
@@ -219,6 +220,12 @@ public class ScoreService {
         spielstandRepository.deleteHighscore(uuid);
     }
 
+    /**
+     * Method that checks if the score can be reduced
+     *
+     * @param uuid
+     * @return
+     */
     public Float hintRequested(String uuid) {
 
         //Hole aktuellen Spielstand aus Airtable als Float
@@ -233,19 +240,62 @@ public class ScoreService {
         return score;
     }
 
-    public int getRang(String uuid) {
-        Float spielstand = getScoreOfSpielstand(uuid);        
-        int rang=0;
-        if (spielstand<=22){
-            rang=0;
-        } else if (spielstand<=70){
-            rang=1;            
-        } else if (spielstand<=120){
-            rang=2;            
-        } else {
-            rang=3;            
-        }
+    /**
+     * Method that returns integer to determine the Player-Rank
+     *
+     * 0 == lowest Rank 1 == Rank 1 2 == Rank 2 3 == highest Rank
+     *
+     * @param uuid
+     * @return
+     */
+    public int getRangofUUID(String uuid) {
+        Float spielstand = getScoreOfSpielstand(uuid);
+        int rang = getRang(spielstand);
         return rang;
+    }
+
+    protected int getRang(Float spielstand) {
+        log.debug("--> getRang spielstand=" + spielstand);
+        
+        final int rang;
+        if (spielstand <= 21) {
+            rang = 0;
+        } else if (spielstand > 21 && spielstand <= 70) {
+            rang = 1;
+        } else if (spielstand > 70 && spielstand <= 120) {
+            rang = 2;
+        } else {
+            rang = 3;
+        }
+        
+        log.debug("<-- getRang " + rang);
+        return rang;
+    }
+
+    public Highscore getHighscore(String uuid) {
+
+        log.debug("--> getHighscore of UUID: " + uuid);
+        //wenn UUID bereits einen Highscore eingetragen hat, false übergeben werden
+        // Datum überprüfen
+
+        LocalDateTime currentdate = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ISO_LOCAL_DATE;
+        String formatdate = currentdate.format(df);
+        formatdate = formatdate.substring(0, 7);
+
+        for (Highscore hs : spielstandRepository.getHighscoreOfUUID(uuid)) {
+            String date = hs.getDate();
+            date = date.substring(0, 7);
+
+            if (date.equalsIgnoreCase(formatdate)) {
+                log.debug("<-- etHighscore of UUID: " + uuid);
+                return hs;
+            }
+        }
+
+        log.debug("<-- etHighscore of UUID: " + uuid);
+
+        return null;
     }
 
 }

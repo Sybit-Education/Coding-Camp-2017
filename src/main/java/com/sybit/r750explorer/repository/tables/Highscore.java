@@ -29,7 +29,7 @@ public class Highscore {
     @SerializedName("Nachname")
     private String nachname;
     
-    private String badge;
+    private int badge;
     
     
     
@@ -137,14 +137,14 @@ public class Highscore {
     /**
      * @return the badge
      */
-    public String getBadge() {
+    public int getBadge() {
         return badge;
     }
 
     /**
      * @param badge the badge to set
      */
-    public void setBadge(String badge) {
+    public void setBadge(int badge) {
         this.badge = badge;
     }
 

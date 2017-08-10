@@ -54,11 +54,12 @@ public class ScoreController {
 
         log.debug("--> MyScore");
 
-        int badge = scoreService.getRang(uuid);
+        int badge = scoreService.getRangofUUID(uuid);
 
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
 
+        model.put("register", scoreService.checkIfPlayerExists(uuid));
         model.put("Badge", badge);
         model.put("Punkte", s);
         model.put("Liste", lScore);
@@ -82,20 +83,13 @@ public class ScoreController {
 
         log.debug("--> Registering... UUID: " + uuid);
 
-        int badge = scoreService.getRang(uuid);
-        Float s = scoreService.getScoreOfSpielstand(uuid);
-        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
-
-        model.put("Badge", badge);
-        model.put("Punkte", s);
-        model.put("Liste", lScore);
-
         // Überprüfung des Namens 
         Pattern pattern = Pattern.compile(NICKNAME_PATTERN);
         Matcher matcher = pattern.matcher(nickname);
         if (!matcher.matches()) {
             model.put("message", "Bitte wähle einen Nickname von einer Länge zwischen 4 und 16 Zeichen. Sonderzeichen sind nicht erlaubt.");
-            return "myscore";
+            model.put("register", false);
+            
         }
 
         // Überprüfung der EMail
@@ -108,18 +102,48 @@ public class ScoreController {
         } else {
             log.debug("<-- register(): EMail ist nicht im richtigen Format");
             model.put("message", "<b>Fehler: Deine eMail-Addresse ist nicht richtig.</b>");
-            return "myscore";
+            model.put("register", false);
+            
         }
 
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
         //Erstelle den Highscore.
         Highscore hs = scoreService.newHighscore(vorname, nachname, nickname, email, uuid);
         if (hs != null) {
-            model.put("message", "Du hast dich registriert.");
+            model.put("message", "Du hast dich registriert. Dein Score wird NICHT automatisch geupdatet! Du musst ihn manuell aktualisieren.");
         } else {
             model.put("message", "<b>Du hast deinen Score aktualisiert.</b>");
 
         }
+
+        int badge = scoreService.getRangofUUID(uuid);
+        Float s = scoreService.getScoreOfSpielstand(uuid);
+        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
+
+        model.put("Badge", badge);
+        model.put("Punkte", s);
+        model.put("Liste", lScore);
+
+        return "myscore";
+    }
+
+    @RequestMapping("/update")
+    public String updateScore(@CookieValue(name = "UUID", required = false) String uuid, Map<String, Object> model) {
+
+        log.debug("--> updateScore");
+
+        Highscore hs = scoreService.getHighscore(uuid);
+        hs = scoreService.newHighscore(hs.getVorname(), hs.getNachname(), hs.getNickname(), hs.getEmail(), uuid);
+
+        int badge = scoreService.getRangofUUID(uuid);
+
+        Float s = scoreService.getScoreOfSpielstand(uuid);
+        List<Highscore> lScore = scoreService.getHighscoreListForMonth();
+
+        model.put("register", scoreService.checkIfPlayerExists(uuid));
+        model.put("Badge", badge);
+        model.put("Punkte", s);
+        model.put("Liste", lScore);
 
         return "myscore";
     }
@@ -152,7 +176,7 @@ public class ScoreController {
         log.debug("--> getBadge");
 
         //Der Score des User mithilfe der UUID abfragen.
-        int rang = scoreService.getRang(uuid);
+        int rang = scoreService.getRangofUUID(uuid);
         String returnvalue;
         switch (rang) {
             case 3:
