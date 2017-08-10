@@ -15,7 +15,7 @@ node{
 
             if(env.BRANCH_NAME == 'develop'){         
 
-                sh 'cp target/githubr750.war /data/r750'       
+                sh 'cp target/r750explorer.war /data/r750'       
 
             }
 
