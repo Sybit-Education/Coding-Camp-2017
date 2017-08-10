@@ -21,13 +21,14 @@
             <div class="page-header">
                 <h1>Spielregeln und Teilnahme&shy;bedingung</h1>
             </div>
+            
             <h2>Spielregeln</h2>
             <p>
                 Das Ziel des Spiels ist es, an verschiedenen historischen Orten Radolfzells Fragen zu beantworten. 
                 Die Lösungen zu den Fragen findet man in den zugehörigen Infotexten, welche teilweise aus Dokumenten des Stadtarchivs kommen. 
             </p>
             <p>
-                <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="50%" alt="Code Sticker" class="img-thumbnail pull-right">
+                <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="30%" alt="Code Sticker" class="img-thumbnail pull-right">
                 Um die Fragen beantworten zu können, muss man mit <kbd>Quiz starten ...</kbd> einen Code eingeben.
                 Dieser Code ist in der Nähe der jeweiligen Sehenswürdigkeit als <b>Sticker</b> angebracht.
             </p>
@@ -47,14 +48,21 @@
                
             </p>
             <p> Diese Ränge sind:</p>
-            <ul>
-                <li>Bronze (22-70 Punkte):
-                 <img src="<c:url value="/resources/images/bronze128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li>
-                <li>Silber (71-120 Punkte):
-                 <img src="<c:url value="/resources/images/silber128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li></li>
-                <li>Gold (<120 Punkte):
-                 <img src="<c:url value="/resources/images/gold128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li></li>
-            </ul>
+                
+            <div class="row">
+                <div class="col-xs-4 text-center"><b>Bronze</b>
+                 <img src="<c:url value="/resources/images/bronze128x128.png" />" class="img-responsive" alt="Code Sticker Bronze" />
+                 22-70 Punkte
+                </div>
+                <div class="col-xs-4 text-center"><b>Silber</b>
+                 <img src="<c:url value="/resources/images/silber128x128.png" />" class="img-responsive" alt="Code Sticker Silber" />
+                 71-120 Punkte
+                </div>
+                <div class="col-xs-4 text-center"><b>Gold</b>
+                 <img src="<c:url value="/resources/images/gold128x128.png" />" class="img-responsive" alt="Code Sticker Gold" />
+                 über 120 Punkte
+                </div>
+            </div>
             <p>
                 Diese Rangabzeichen werden auf der Highscoreliste angezeigt.
             </p>
