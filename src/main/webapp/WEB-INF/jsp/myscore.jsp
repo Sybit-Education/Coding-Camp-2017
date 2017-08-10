@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
@@ -53,7 +55,10 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                            <a href="<c:url value="/register"/>"><button type="submit" class="btn btn-primary">Registrieren</button></a>
+                            <a href="<c:url value="/register"/>"
+                               onClick="ga('send', 'event', 'Registrieren', 'send');">
+                                <button type="submit" class="btn btn-primary">Registrieren</button>
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -101,11 +106,16 @@
                     <div class="col-xs-12">
                     <c:choose>
                         <c:when test="${register == false}">
-                            <p>Um einen der Preise gewinnen zu können, musst Du dich in der Highscore mit deinen Punkten registrieren:</p>
-                            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
+                            <p>Um einen der Preise gewinnen zu kÃ¶nnen, musst Du dich in der Highscore mit deinen Punkten registrieren:</p>
+                            <button type="button" 
+                                    data-toggle="modal" data-target="#myModal" class="btn btn-default"
+                                    onClick="ga('send', 'event', 'Registrieren', 'open');">Highscore registrieren</button>
                         </c:when>
                         <c:otherwise>
-                            <a href="<c:url value="/update"/>"><button type="button" class="btn btn-default">Highscore aktualisieren</button></a>
+                            <a href="<c:url value="/update"/>">
+                                <button type="button" class="btn btn-default"
+                                        onClick="ga('send', 'event', 'Registrieren', 'update');">Highscore aktualisieren</button>
+                            </a>
                         </c:otherwise>
                     </c:choose>
                     </div>

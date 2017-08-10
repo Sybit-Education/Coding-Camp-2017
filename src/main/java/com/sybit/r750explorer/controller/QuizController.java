@@ -5,6 +5,7 @@ package com.sybit.r750explorer.controller;
  */
 import com.sybit.r750explorer.exception.FrageException;
 import com.sybit.r750explorer.exception.FrageNotFoundException;
+import com.sybit.r750explorer.exception.MailException;
 import com.sybit.r750explorer.repository.tables.Fragen;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.LocationService;
@@ -100,13 +101,13 @@ public class QuizController implements Serializable {
         HttpSession session = request.getSession();
         Fragen frage = null;
         if (code.equalsIgnoreCase(locationService.getLocation(slug).getCode())) {
-//TODO Mail auskommentieren
+
             if (mail && session.getAttribute("Location_Hint_report_" + slug) == null) {
-//                try {
-//                    mailService.sendMessage(loc.getName() + ": " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!", uuid);
-//                } catch (MailException ex) {
-//                    log.error(ex.toString());
-//                }
+                try {
+                    mailService.sendMessage(loc.getName() + ": " + "Code ist nicht auffindbar/lesbar. Bitte umgehend neu anbringen!", uuid);
+                } catch (MailException ex) {
+                    log.error(ex.getMessage(), ex);
+                }
                 session.setAttribute("Location_Hint_report_" + slug, true);
                 scoreService.newSpielstandEntry(uuid, null, null, "Hinweis", Float.valueOf(5));
             }

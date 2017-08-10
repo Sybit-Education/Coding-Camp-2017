@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -23,17 +24,24 @@
                     <p>${message}</p>
                 </div>
             </c:if>
+            
             <p>
                 Entdecke Radolfzell auf eine neue Weise, sammle Punkte und gewinne tolle Preise!
             </p>
-
-            <h2>Alle Ziele</h2>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Alle Ziele</h2>
+                </div>
+            </div>
+            
             <div class="row row-horizon">
                 <c:forEach items="${locations}" var="location" varStatus="loop">
                     <c:if test="${location.status == 'aktiv'}">
 
 
-                        <a href="<c:url value="/location/${location.slug}"/>" class="col-xs-6 col-md-4">
+                        <a href="<c:url value="/location/${location.slug}"/>" class="col-xs-6 col-md-4"
+                           onClick="ga('send', 'event', 'Location', 'open', 'Home Gallery');">
                             <div class="panel panel-default bootcards-media" >
                                 <img src="${location.photo[0].thumbnails.large.url}" class="img-responsive cards"/>
                                 <c:if test="${location.visited==true}">
@@ -48,24 +56,33 @@
                     </c:if>
                 </c:forEach>
             </div>
-            </br></br><h2>Gewinne des Monats</h2>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>Die Gewinne des Monats</h2>
+                </div>
+            </div>
+            
             <div class="row row-horizon">
                 <c:forEach items="${gewinne}" var="gewinn" varStatus="loop">
                     <div  class="col-xs-6 col-md-4" >
-                        <div class="panel panel-default bootcards-media" >
-                            <img src="${gewinn.foto[0].url}" class="img-responsive cards"/>
+                        <a href="<c:url value="/gewinne" />"
+                           onClick="ga('send', 'event', 'Gewinne', 'open', 'Home Gallery');">
+                            <div class="panel panel-default bootcards-media" >
+                                <img src="${gewinn.foto[0].thumbnails.large.url}" class="img-responsive cards"/>
 
-                            <div class="panel-footer">
-                                <small>${gewinn.name}</small>
+                                <div class="panel-footer">
+                                    <small>${gewinn.name}</small>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </c:forEach>
             </div>
 
             <div class="row">
                 <div class="col-xs-12">
-                    <p style="padding-top:10px">Viel Spaﬂ beim Erforschen der Stadt Radolfzell.</p>
+                    <p style="padding-top:10px">Viel Spa√ü beim Erforschen der Stadt Radolfzell.</p>
                 </div>
             </div>
 

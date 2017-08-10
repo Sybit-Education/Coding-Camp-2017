@@ -1,13 +1,16 @@
-﻿<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+﻿<!DOCTYPE html>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>﻿
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+
 
 <html lang="de">
 
     <head>
         <meta name="robots" content="noindex, follow" />
         <c:import url="include/head.jsp"/>
-        <title>Regeln & Teilnahmebedingung | R750Explorer</title>
+        <title>Spielregeln & Teilnahmebedingung | R750Explorer</title>
     </head>
 
 
@@ -18,13 +21,14 @@
             <div class="page-header">
                 <h1>Spielregeln und Teilnahme&shy;bedingung</h1>
             </div>
+            
             <h2>Spielregeln</h2>
             <p>
                 Das Ziel des Spiels ist es, an verschiedenen historischen Orten Radolfzells Fragen zu beantworten. 
-                Die Lösungen zu den Fragen findet man in den zugehörigen Infotexten, welche teilweise aus Dokumenten des Stadtarchiv kommen. 
+                Die Lösungen zu den Fragen findet man in den zugehörigen Infotexten, welche teilweise aus Dokumenten des Stadtarchivs kommen. 
             </p>
             <p>
-                <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="50%" alt="Code Sticker" class="img-thumbnail pull-right">
+                <img src="<c:url value="/resources/images/code-aufkleber.jpg" />" width="30%" alt="Code Sticker" class="img-thumbnail pull-right">
                 Um die Fragen beantworten zu können, muss man mit <kbd>Quiz starten ...</kbd> einen Code eingeben.
                 Dieser Code ist in der Nähe der jeweiligen Sehenswürdigkeit als <b>Sticker</b> angebracht.
             </p>
@@ -44,14 +48,21 @@
                
             </p>
             <p> Diese Ränge sind:</p>
-            <ul>
-                <li>Bronze (22-70 Punkte):
-                 <img src="<c:url value="/resources/images/bronze128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li>
-                <li>Silber (71-120 Punkte):
-                 <img src="<c:url value="/resources/images/silber128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li></li>
-                <li>Gold (<120 Punkte):
-                 <img src="<c:url value="/resources/images/gold128x128.png" />" width="25%" alt="Code Sticker" class="center-block"></li></li>
-            </ul>
+                
+            <div class="row">
+                <div class="col-xs-4 text-center"><b>Bronze</b>
+                 <img src="<c:url value="/resources/images/bronze128x128.png" />" class="img-responsive" alt="Code Sticker Bronze" />
+                 22-70 Punkte
+                </div>
+                <div class="col-xs-4 text-center"><b>Silber</b>
+                 <img src="<c:url value="/resources/images/silber128x128.png" />" class="img-responsive" alt="Code Sticker Silber" />
+                 71-120 Punkte
+                </div>
+                <div class="col-xs-4 text-center"><b>Gold</b>
+                 <img src="<c:url value="/resources/images/gold128x128.png" />" class="img-responsive" alt="Code Sticker Gold" />
+                 über 120 Punkte
+                </div>
+            </div>
             <p>
                 Diese Rangabzeichen werden auf der Highscoreliste angezeigt.
             </p>
@@ -68,6 +79,7 @@
                 Damit man nicht unendlich viele Punkte sammeln kann, ist an jedem Ort nur eine Antwort pro Monat möglich.
                 Um am <b>monatlichen Gewinnspiel teilzunehmen</b>, muss man sich mit <b>E-Mail und Namen registrieren</b>. 
                 Damit wird der Punktestand auch in die öffentliche Highscore übernommen. 
+                Der <b>aktuelle Punktestand</b> muss nach der Registrierung <b>manuell aktualisiert</b> werden, damit dieser auch öffentlich verfügbar wird.
                 Unter den Personen mit den höchsten Punkteständen wird am Ende des Monats der Gewinn verlost. 
                 Der Gewinner wird per E-Mail benachrichtigt. Es gilt die unten angeführte Teilnahmebedingung.
             </p>
@@ -86,14 +98,14 @@
             <p>
                 Der Gewinner wird nach Ende des Gewinnspiels/Preisausschreibens per E-Mail 
                 benachrichtigt. Sofern der Gewinner nicht erreichbar ist und er sich nicht 
-                innerhalb von 5 Werktage nach der Kontaktaufnahme zurückmeldet, 
+                innerhalb von 5 Werktagen nach der Kontaktaufnahme zurückmeldet, 
                 verfällt der Gewinn und es wird ein neuer Gewinner ermittelt. 
                 Im Falle einer nicht zustellbaren Gewinnbenachrichtigung ist Sybit nicht 
                 verpflichtet, weitere Nachforschungen anzustellen.            
             </p>
             <h3>Gewinne</h3>
             <p>
-                Die Sachpreise werden Sybit oder einem von Sybit beauftragten Dritten per 
+                Die Sachpreise werden durch Sybit oder einem von Sybit beauftragten Dritten per 
                 Spedition, Paketdienst oder Post an die vom Gewinner anzugebende Postadresse 
                 versendet. Die Lieferung erfolgt innerhalb Deutschlands, Österreichs und der 
                 Schweiz frei Haus. Darüber hinaus anfallende Transportkosten und Zölle hat 

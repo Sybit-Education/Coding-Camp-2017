@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
@@ -39,11 +40,12 @@ public class AirtableRepository {
 
             Airtable airtable = new Airtable();
             ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-            InputStream is = null;
+            InputStream is;
             try {                
                 is =  classLoader.getResourceAsStream("airtable.properties");
             } catch (NullPointerException e) {
                 log.warn("No Propertie File found!");
+                is = null;
             }
 
             if (is != null && propertiesExist(is)) {
@@ -67,6 +69,7 @@ public class AirtableRepository {
                 base = airtable.base("appDZ609ies85XW1D");
                 log.info("Airtable configured manually.");
             }
+            IOUtils.closeQuietly(is);
 
         }
         return base;

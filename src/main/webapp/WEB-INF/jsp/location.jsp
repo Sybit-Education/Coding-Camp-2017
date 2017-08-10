@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -21,7 +22,8 @@
                  <p class="col-xs-12">${locationDescription}</p>                        
                  <c:if test="${QuizAnswered==false}">
                      <div class="col-xs-12 text-center">
-                         <a href="<c:url value="/location/${locationSlug}/code"/>">
+                         <a href="<c:url value="/location/${locationSlug}/code"/>"
+                            onClick="ga('send', 'event', 'Quiz', 'start', 'page-start');">
                              <button typ="button" class="btn btn-default">Quiz starten ...</button>
                          </a>
                      </div>
@@ -64,7 +66,8 @@
             <div class="row">                      
                  <c:if test="${QuizAnswered==false}">
                      <div class="col-xs-12 text-center">
-                         <a href="<c:url value="/location/${locationSlug}/code"/>">
+                         <a href="<c:url value="/location/${locationSlug}/code"/>"
+                            onClick="ga('send', 'event', 'Quiz', 'start', 'page-end');">
                              <button typ="button" class="btn btn-default">Quiz starten ...</button>
                          </a>
                      </div>

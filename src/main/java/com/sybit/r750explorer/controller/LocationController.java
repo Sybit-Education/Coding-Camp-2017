@@ -103,19 +103,16 @@ public class LocationController {
 
         log.debug("--> getAllLocationsData");
 
+        List<GoogleMapsLocation> googleLocations = new ArrayList<>();
         List<Location> locations = locationService.getLocations(uuid);
-        for (Location location : locations) {
-            //unused data 
-            location.setCode("");
-            location.setCodeHintPhoto(null);
-            location.setCodeHinweis(null);
-            location.setFragen(null);
-            location.setMedien(null);
-            
-        }
+        
+        locations.forEach((location) -> {
+            googleLocations.add(new GoogleMapsLocation(location));
+        });
+        
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        final String json = gson.toJson(locations);
+        final String json = gson.toJson(googleLocations);
 
         log.debug("<-- getAllLocationsData: " + json);
         return json;
