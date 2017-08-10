@@ -8,6 +8,7 @@ package com.sybit.r750explorer.config;
 import com.sybit.r750explorer.repository.tables.Location;
 import com.sybit.r750explorer.service.ScoreService;
 import java.util.UUID;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,9 @@ public class CookieInterceptor implements HandlerInterceptor {
 
         } else {
             String uuid = UUID.randomUUID().toString();
-            javax.servlet.http.Cookie ncookie = new javax.servlet.http.Cookie("UUID", uuid);
+            Cookie ncookie = new Cookie("UUID", uuid);
+            ncookie.setSecure(true);
+            ncookie.setMaxAge(60*60*24*365);
             response.addCookie(ncookie);
 
             scoreService.newSpielstandEntry(uuid, null, null, "Startwert", Float.valueOf(10));
