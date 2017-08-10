@@ -20,32 +20,34 @@
                 <h1>Unsere Sponsoren</h1>
                 <p>
                     Wir danken unseren Sponsoren für Ihre Unterstützung mit 
-                    Sachpreisen und Materialien für das Projekt:
+                    Sachpreisen und Materialien für dieses Projekt:
                 </p>               
             </div>
 
-            <c:forEach items="${sponsoren}" var="sponsor" varStatus="loop">
-                <div class="well well-sm">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-3">
-                            <a href="${sponsor.link}" target="_blank" >
-                                <img class="img-thumbnail" src="${sponsor.logo[0].url}"/>
-                            </a>
-                        </div>
+            <div class="row">
+                <c:forEach items="${sponsoren}" var="sponsor" varStatus="loop">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3">
+                                <a href="${sponsor.link}" target="_blank" rel="noopener">
+                                    <img class="img-thumbnail" src="${sponsor.logo[0].url}"/>
+                                </a>
+                            </div>
 
-                        <div class="col-xs-12 col-sm-9">
-                            <h3><a href="${sponsor.link}" target="_blank" >${sponsor.name}</a></h3>
-
-                            <p>
-                                ${sponsor.description}
-                            </p>
-                            <p>
-                                <a href="${sponsor.link}" target="_blank" >${sponsor.link}</a>
-                            </p>
+                            <div class="col-xs-12 col-sm-9">
+                                <h3><a href="${sponsor.link}" target="_blank" rel="noopener">${sponsor.name}</a></h3>
+                                <p>
+                                    ${sponsor.description}
+                                </p>
+                                <p>
+                                    <a href="${sponsor.link}" target="_blank" rel="noopener">${sponsor.link}</a>
+                                </p>
+                            </div>
                         </div>
+                        <hr>
                     </div>
-                </div></br>
-            </c:forEach>
+                </c:forEach>
+            </div>
         </div>
         <c:import url="include/footer.jsp"/>
     </body>
