@@ -100,7 +100,8 @@ function createMarkers(allLocations, markers, infoWindows) {
 
             contentStringInfoWindow =
                     '<div id="content">' +
-                    '<a href="' + contextPath + '/location/' + loc['slug'] + '">\n\
+                    '<a href="' + contextPath + '/location/' + loc['slug'] + '"' +
+                        ' onClick="ga("send", "event", "Location", "open", "Home Map");">\n\
                         <img src="'  + loc['thumbnail'] + '" class="img-responsive" width="100%" />\n\
                         <div class="locationName"><b>' + loc['name'] + '</b></div>\n\
                     </a>' +

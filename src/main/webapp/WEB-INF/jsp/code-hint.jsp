@@ -39,15 +39,18 @@
 
             <div>
                 <p> Code gefunden?</p>
-                <a href="<c:url value="/location/${locationSlug}/code"/>"><button  type="button" class="btn btn-default">Code eingeben!</button></a>
+                <a href="<c:url value="/location/${locationSlug}/code"/>"
+                   onClick="ga('send', 'event', 'Code', 'hint-helped');">
+                   <button  type="button" class="btn btn-default">Code eingeben!</button>
+                </a>
                 <br>
-                <br>
-<!-- TODO: Formular auf "/location/${locationSlug}/code/check" abschicken, falls kein code vorhanden/gefunden -->     
+                <br>    
                 <p>Der Code wurde nicht gefunden oder ist nicht mehr vorhanden.</p>
                 <form action="<c:url value= "/location/${locationSlug}/quiz"/>" method="POST">
                     <input type="hidden" class="form-control" id="code" value="${code}" name="code">
                     <input type="hidden" class="form-control" id="mail" value="true" name="mail">
-                    <button type="submit" class="btn btn-default">Weiter zum Quiz</button>
+                    <button type="submit" class="btn btn-default"
+                            onClick="ga('send', 'event', 'Code', 'not-found');">Weiter zum Quiz</button>
                 </form>             
                 <br>
             </div>

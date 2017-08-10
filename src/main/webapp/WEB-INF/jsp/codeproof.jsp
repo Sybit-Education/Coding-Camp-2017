@@ -75,7 +75,10 @@
                         </div>
                         <div class="col-xs-12 text-center">
 
-                            <a href="<c:url value="/location/${location.getSlug()}/code/hint"/>"><button type="button" class="btn btn-default btn-md">Hinweis zum Code</button></a>
+                            <a href="<c:url value="/location/${location.getSlug()}/code/hint"/>">
+                                <button type="button" class="btn btn-default btn-md"
+                                        onClick="ga('send', 'event', 'Code', 'hint-request');">Hinweis zum Code</button>
+                            </a>
                         </div>
                         <br/>
                     </div>

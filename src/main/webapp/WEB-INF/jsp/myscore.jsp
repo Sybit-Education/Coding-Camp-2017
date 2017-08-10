@@ -55,7 +55,10 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
-                            <a href="<c:url value="/register"/>"><button type="submit" class="btn btn-primary">Registrieren</button></a>
+                            <a href="<c:url value="/register"/>"
+                               onClick="ga('send', 'event', 'Registrieren', 'send');">
+                                <button type="submit" class="btn btn-primary">Registrieren</button>
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -83,7 +86,8 @@
                     </c:choose>
                     <!-- Benachrichtigungen an den User bei registrierungsproblemen -->
                     ${message}</br></br>
-                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
+                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default"
+                            onClick="ga('send', 'event', 'Registrieren', 'open');">Highscore registrieren</button>
 
                 </center>
 

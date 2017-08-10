@@ -40,7 +40,8 @@
                     <c:if test="${location.status == 'aktiv'}">
 
 
-                        <a href="<c:url value="/location/${location.slug}"/>" class="col-xs-6 col-md-4">
+                        <a href="<c:url value="/location/${location.slug}"/>" class="col-xs-6 col-md-4"
+                           onClick="ga('send', 'event', 'Location', 'open', 'Home Gallery');">
                             <div class="panel panel-default bootcards-media" >
                                 <img src="${location.photo[0].thumbnails.large.url}" class="img-responsive cards"/>
                                 <c:if test="${location.visited==true}">
@@ -65,7 +66,8 @@
             <div class="row row-horizon">
                 <c:forEach items="${gewinne}" var="gewinn" varStatus="loop">
                     <div  class="col-xs-6 col-md-4" >
-                        <a href="<c:url value="/gewinne" />">
+                        <a href="<c:url value="/gewinne" />"
+                           onClick="ga('send', 'event', 'Gewinne', 'open', 'Home Gallery');">
                             <div class="panel panel-default bootcards-media" >
                                 <img src="${gewinn.foto[0].thumbnails.large.url}" class="img-responsive cards"/>
 
