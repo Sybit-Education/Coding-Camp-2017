@@ -11,33 +11,33 @@ node{
             archiveArtifacts allowEmptyArchive: true, artifacts: '**/target/*.war', fingerprint: true
         }
 
+
+        stage('Test'){
+            sh 'mvn test'
+            junit 'target/surefire-reports/*.xml'
+            step( [ $class: 'JacocoPublisher' ] )
+        }
+
         stage('Deploy'){
 
             if(env.BRANCH_NAME == 'develop'){         
-
+                echo 'Deploy develop on Test-Server ...'  
                 sh 'cp target/r750explorer.war /data/r750'       
 
             }
 
 
             if(env.BRANCH_NAME == 'master'){
-                echo 'Deploy master on PROD Server ...'  
+                echo 'Deploy master on PROD-Server ...'  
+
                 withCredentials([usernamePassword(credentialsId: 'r750explorer', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    // available as an env variable, but will be masked if you try to print it out any which way
-                    sh 'echo $PASSWORD'
-                    // also available as a Groovy variable—note double quotes for string interpolation
-                    echo "$USERNAME"
-                    sh "ssh $USERNAME@r750explorer.me  \"echo ${env.BUILD_ID}\""
+                    
+                    sh 'sshpass -p \'$PASSWORD\' ssh $USERNAME@r750explorer.me "service r750explorer stop; scp ./target/r750explorer.war /var/r750explorer/ ; service r750explorer start;"'
+                    
                 }
 
                             
             }
-        }
-
-        stage('Test'){
-            sh 'mvn test'
-            junit 'target/surefire-reports/*.xml'
-            step( [ $class: 'JacocoPublisher' ] )
         }   
 
     } catch (e){
