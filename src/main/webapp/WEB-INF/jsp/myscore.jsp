@@ -72,57 +72,85 @@
                         Dein aktueller Punktestand: <b><fmt:formatNumber type = "number" value = "${Punkte}"/></b>
                     </h4>
                 </div>
-            </div>
 
-            <center>
-                <c:choose>
-                    <c:when test = "${Badge == 1}">
-                        <img src="<c:url value="/resources/images/bronze128x128.png" />" width="25%">
-                    </c:when>
-                    <c:when test = "${Badge == 2}">
-                        <img src="<c:url value="/resources/images/silber128x128.png" />" width="25%">
-                    </c:when>
-                    <c:when test = "${Badge == 3}">
-                        <img src="<c:url value="/resources/images/gold128x128.png" />" width="25%">
-                    </c:when>
-                    <c:when test = "${Badge == 0}"></c:when>
-                </c:choose>
+
+                <center>
+                    <c:choose>
+                        <c:when test = "${Badge == 1}">
+                            <img src="<c:url value="/resources/images/bronze128x128.png" />" width="25%">
+                        </c:when>
+                        <c:when test = "${Badge == 2}">
+                            <img src="<c:url value="/resources/images/silber128x128.png" />" width="25%">
+                        </c:when>
+                        <c:when test = "${Badge == 3}">
+                            <img src="<c:url value="/resources/images/gold128x128.png" />" width="25%">
+                        </c:when>
+                        <c:when test = "${Badge == 0}"></c:when>
+                    </c:choose>
+                </center> 
                 <!-- Benachrichtigungen an den User bei registrierungsproblemen -->
-                ${message}</br></br>
-                <c:choose>
-                    <c:when test="${register == false}">
-                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
-                    </c:when>
-                    <c:otherwise>
-                        <a href="<c:url value="/update"/>"><button type="button" class="btn btn-default">Highscore aktualisieren</button></a>
-                    </c:otherwise>
-                </c:choose>
-            </center>
+                <c:if test="${not empty message}">
+                    <div class="alert alert-info alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <p>${message}</p>
+                    </div>
+                </c:if>
 
 
-            <div class="col-md-12 col-xs-12">
-                <!-- Die Highscoretabelle -->
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Platzierung</th>
-                            <th>Nickname</th>
-                            <th>Punkte</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach items="${Liste}" var="score" varStatus="loop">
-                            <tr>
-                                <th scope="row">${loop.index +1}</th>
-                                <td>${score.getNickname()}</td>
-                                <td><fmt:formatNumber type = "number" value = "${score.getScore()}"/></td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col-xs-12">
+                    <c:choose>
+                        <c:when test="${register == false}">
+                            <p>Um einen der Preise gewinnen zu können, musst Du dich in der Highscore mit deinen Punkten registrieren:</p>
+                            <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">Highscore registrieren</button>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="<c:url value="/update"/>"><button type="button" class="btn btn-default">Highscore aktualisieren</button></a>
+                        </c:otherwise>
+                    </c:choose>
+                    </div>
+                </div>
+
             </div>
+            <div class="row">                
+                <div class="col-xs-12 col-sm-9 col-md-6">
+                    <!-- Die Highscoretabelle -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Platzierung</th>
+                                <th>Nickname</th>
+                                <th>Punkte</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${Liste}" var="score" varStatus="loop">
+                                <tr>
+                                    <th scope="row">${loop.index +1}</th>
+                                    <td>
+                                        ${score.nickname}
+                                        <c:choose>
+                                            <c:when test = "${score.badge == 1}">
+                                                <img src="<c:url value="/resources/images/bronze128x128.png" />" width="25%">
+                                            </c:when>
+                                            <c:when test = "${score.badge == 2}">
+                                                <img src="<c:url value="/resources/images/silber128x128.png" />" width="25%">
+                                            </c:when>
+                                            <c:when test = "${score.badge == 3}">
+                                                <img src="<c:url value="/resources/images/gold128x128.png" />" width="25%">
+                                            </c:when>
+                                            <c:when test = "${score.badge == 0}"></c:when>
+                                        </c:choose>
+                                    </td>
+                                    <td><fmt:formatNumber type = "number" value = "${score.score}"/></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
 
-        </div> 
+            </div> 
+        </div>
 
         <c:import url="include/footer.jsp"/>
     </body>

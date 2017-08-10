@@ -130,6 +130,7 @@ public class ScoreService {
             date = date.substring(0, 7);
 
             if (date.equalsIgnoreCase(formatdate)) {
+                hs.setBadge(getRang(hs.getUuid()));
                 currentMonth.add(hs);
             }
 
@@ -249,12 +250,12 @@ public class ScoreService {
      */
     public int getRang(String uuid) {
         Float spielstand = getScoreOfSpielstand(uuid);
-        int rang = 0;
-        if (spielstand <= 22) {
+        int rang;
+        if (spielstand <= 21) {
             rang = 0;
-        } else if (spielstand <= 70) {
+        } else if (spielstand > 21 && spielstand <= 70) {
             rang = 1;
-        } else if (spielstand <= 120) {
+        } else if (spielstand > 70 && spielstand <= 120) {
             rang = 2;
         } else {
             rang = 3;

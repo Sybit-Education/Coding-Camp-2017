@@ -88,7 +88,8 @@ public class ScoreController {
         Matcher matcher = pattern.matcher(nickname);
         if (!matcher.matches()) {
             model.put("message", "Bitte wähle einen Nickname von einer Länge zwischen 4 und 16 Zeichen. Sonderzeichen sind nicht erlaubt.");
-            return "myscore";
+            model.put("register", false);
+            
         }
 
         // Überprüfung der EMail
@@ -101,7 +102,8 @@ public class ScoreController {
         } else {
             log.debug("<-- register(): EMail ist nicht im richtigen Format");
             model.put("message", "<b>Fehler: Deine eMail-Addresse ist nicht richtig.</b>");
-            return "myscore";
+            model.put("register", false);
+            
         }
 
         //Der User möchte sich registrieren. Was muss hierfür überprüft werden?
