@@ -54,7 +54,7 @@ public class ScoreController {
 
         log.debug("--> MyScore");
 
-        int badge = scoreService.getRang(uuid);
+        int badge = scoreService.getRangofUUID(uuid);
 
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
@@ -116,7 +116,7 @@ public class ScoreController {
 
         }
 
-        int badge = scoreService.getRang(uuid);
+        int badge = scoreService.getRangofUUID(uuid);
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
 
@@ -135,7 +135,7 @@ public class ScoreController {
         Highscore hs = scoreService.getHighscore(uuid);
         hs = scoreService.newHighscore(hs.getVorname(), hs.getNachname(), hs.getNickname(), hs.getEmail(), uuid);
 
-        int badge = scoreService.getRang(uuid);
+        int badge = scoreService.getRangofUUID(uuid);
 
         Float s = scoreService.getScoreOfSpielstand(uuid);
         List<Highscore> lScore = scoreService.getHighscoreListForMonth();
@@ -176,7 +176,7 @@ public class ScoreController {
         log.debug("--> getBadge");
 
         //Der Score des User mithilfe der UUID abfragen.
-        int rang = scoreService.getRang(uuid);
+        int rang = scoreService.getRangofUUID(uuid);
         String returnvalue;
         switch (rang) {
             case 3:

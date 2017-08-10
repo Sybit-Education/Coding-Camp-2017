@@ -346,7 +346,7 @@ public class ScoreServiceTest {
         String testUUID = "1234";
         Float testZahl = Float.valueOf(20);
         Mockito.when(scoreService.getScoreOfSpielstand(testUUID)).thenReturn(testZahl);
-        int rang = scoreService.getRang(testUUID);
+        int rang = scoreService.getRangofUUID(testUUID);
         assertEquals(rang, 3);
     }
 }

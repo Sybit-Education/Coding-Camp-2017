@@ -92,7 +92,7 @@ public class ScoreService {
         for (Spielstand i : spielstand) {
             score += Float.valueOf(i.getScore());
         }
-
+        
         log.debug("<-- getScoreOfSpielstand");
         return score;
 
@@ -130,7 +130,7 @@ public class ScoreService {
             date = date.substring(0, 7);
 
             if (date.equalsIgnoreCase(formatdate)) {
-                hs.setBadge(getRang(hs.getUuid()));
+                hs.setBadge(getRang(hs.getScore()));
                 currentMonth.add(hs);
             }
 
@@ -248,9 +248,16 @@ public class ScoreService {
      * @param uuid
      * @return
      */
-    public int getRang(String uuid) {
+    public int getRangofUUID(String uuid) {
         Float spielstand = getScoreOfSpielstand(uuid);
-        int rang;
+        int rang = getRang(spielstand);
+        return rang;
+    }
+
+    protected int getRang(Float spielstand) {
+        log.debug("--> getRang spielstand=" + spielstand);
+        
+        final int rang;
         if (spielstand <= 21) {
             rang = 0;
         } else if (spielstand > 21 && spielstand <= 70) {
@@ -260,6 +267,8 @@ public class ScoreService {
         } else {
             rang = 3;
         }
+        
+        log.debug("<-- getRang " + rang);
         return rang;
     }
 
