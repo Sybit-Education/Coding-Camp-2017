@@ -103,7 +103,7 @@
             <div class="col-md-12 col-xs-12">
                 <!-- Die Highscoretabelle -->
                 <table class="table">
-                    <thead class="thead-inverse">
+                    <thead>
                         <tr>
                             <th>Platzierung</th>
                             <th>Nickname</th>
