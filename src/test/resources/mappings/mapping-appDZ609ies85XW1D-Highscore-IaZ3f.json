@@ -1,0 +1,28 @@
+{
+  "id" : "0101d1a0-089c-309f-861c-ffbc4257bbf8",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Highscore",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\"fields\":{\"Name\":\"nickname\",\"E-Mail\":\"email\",\"Punkte\":10.0,\"Datum\":\"2017-05-19 11:32:31\",\"UUID\":\"uuid\"}}",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Highscore-IaZ3f.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:52:03 GMT",
+      "ETag" : "W/\"ae-B1pyBdW1KhC/UVO/seUEysUlWT8\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "0101d1a0-089c-309f-861c-ffbc4257bbf8"
+}

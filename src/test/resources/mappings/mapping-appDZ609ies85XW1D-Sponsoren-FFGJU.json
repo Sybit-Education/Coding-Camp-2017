@@ -1,0 +1,23 @@
+{
+  "id" : "fb62da9a-20f1-3049-9eaa-73ac2cd1158e",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Sponsoren?filterByFormula=%28%7BStatus%7D+%3D+%27aktiv%27%29&sort%5B0%5D%5Bfield%5D=Name&sort%5B0%5D%5Bdirection%5D=asc",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Sponsoren-FFGJU.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:52:05 GMT",
+      "ETag" : "W/\"14d0-SxKXTgre7Etd/qJN78ozLLwfFBY\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "fb62da9a-20f1-3049-9eaa-73ac2cd1158e"
+}

@@ -1,0 +1,23 @@
+{
+  "id" : "3df99286-1aa2-350b-afeb-6f1852c13750",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Fragen?filterByFormula=%28%7BLocation%7D+%3D+%27M%C3%BCnster+Unserer+Lieben+Frau%27%29",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Fragen-5o9Az.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:53:48 GMT",
+      "ETag" : "W/\"c5c-jrKs8WA7051tZ6FyJ063ZeqcEYM\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "3df99286-1aa2-350b-afeb-6f1852c13750"
+}

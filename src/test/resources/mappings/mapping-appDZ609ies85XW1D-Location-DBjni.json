@@ -1,0 +1,23 @@
+{
+  "id" : "e532eaaa-b881-38f0-85df-6e85e9b7b4ea",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Location?filterByFormula=%28%7BSlug%7D+%3D+%27hoellturm%27%29",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Location-DBjni.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:52:00 GMT",
+      "ETag" : "W/\"375-wvPXpv7haBhqT1j3OeunZ6HvE84\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "e532eaaa-b881-38f0-85df-6e85e9b7b4ea"
+}

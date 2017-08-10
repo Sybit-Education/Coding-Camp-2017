@@ -1,0 +1,23 @@
+{
+  "id" : "671f21ed-1f48-3d21-95e6-1887c19157ac",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Medien?filterByFormula=%28%7BLocation%7D+%3D+%27Stadttor+%28Obertor+an+der+Br%C3%BCcke%29%27%29&sort%5B0%5D%5Bfield%5D=Sortierung&sort%5B0%5D%5Bdirection%5D=desc",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Medien-6kawI.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Tue, 25 Jul 2017 08:05:26 GMT",
+      "ETag" : "W/\"70e-um7dLRGtfTOeu2P1H8BUOotPw80\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "671f21ed-1f48-3d21-95e6-1887c19157ac"
+}

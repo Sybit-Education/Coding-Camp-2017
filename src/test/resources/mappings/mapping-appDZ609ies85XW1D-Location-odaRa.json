@@ -1,0 +1,23 @@
+{
+  "id" : "c4363d5e-24b5-32c7-a9cc-fd897956d0e0",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Location?filterByFormula=%28%7BSlug%7D+%3D+%27muenster%27%29",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Location-odaRa.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:53:48 GMT",
+      "ETag" : "W/\"9e1-v8TZ3VZIqL8iyqW3w0RSQv4BC+U\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "c4363d5e-24b5-32c7-a9cc-fd897956d0e0"
+}

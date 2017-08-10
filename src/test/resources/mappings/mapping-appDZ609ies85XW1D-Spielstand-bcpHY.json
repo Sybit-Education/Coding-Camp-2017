@@ -1,0 +1,28 @@
+{
+  "id" : "8a4545d1-cc3a-359a-b770-2ce22a307a36",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Spielstand",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\"fields\":{\"UUID\":\"testUUID\",\"Location\":[\"recTYixrevYumxv87\"],\"Score\":\"testScore\",\"Frage\":[\"recBwoenWxxLiEnQz\"],\"Antwort\":\"tstIndex\"}}",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Spielstand-bcpHY.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:52:03 GMT",
+      "ETag" : "W/\"eb-oPrk8NWSwOw46j9drBkfKt8KHHU\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "8a4545d1-cc3a-359a-b770-2ce22a307a36"
+}

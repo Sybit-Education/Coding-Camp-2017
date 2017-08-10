@@ -1,0 +1,23 @@
+{
+  "id" : "9f7b7a05-36c2-3479-8110-ba282d8d25b2",
+  "request" : {
+    "url" : "/appDZ609ies85XW1D/Location?filterByFormula=AND%28%7BSlug%7D+%3D+%27rathaus%27%2C%7BStatus%7D+%3D+%27aktiv%27%29",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-appDZ609ies85XW1D-Location-BMLjs.json",
+    "headers" : {
+      "access-control-allow-headers" : "content-type, authorization, content-length, x-requested-with, x-api-version, x-airtable-application-id",
+      "access-control-allow-methods" : "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+      "access-control-allow-origin" : "*",
+      "Content-Type" : "application/json; charset=utf-8",
+      "Date" : "Fri, 21 Jul 2017 05:53:47 GMT",
+      "ETag" : "W/\"3fb-fv/kooIZ0SclPWW018+erED/DDI\"",
+      "Server" : "Tengine",
+      "Vary" : "Accept-Encoding",
+      "Connection" : "keep-alive"
+    }
+  },
+  "uuid" : "9f7b7a05-36c2-3479-8110-ba282d8d25b2"
+}
