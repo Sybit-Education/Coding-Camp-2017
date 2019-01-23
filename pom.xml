@@ -108,7 +108,7 @@
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>1.5.2</version>
+            <version>1.5.7</version>
         </dependency>
         
         <!-- For Unit Tests -->
@@ -128,7 +128,7 @@
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock</artifactId>
-            <version>2.6.0</version>
+            <version>2.17.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven.reporting</groupId>
